@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -135,21 +136,25 @@ export default function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center space-x-4">
-            <motion.button
-              className="text-black cursor-pointer font-medium"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Sign In
-            </motion.button>
+            <Link href={'/workspace'}>
+              <motion.button
+                className="text-black cursor-pointer font-medium"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Sign In
+              </motion.button>
+            </Link>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button className="bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-semibold shadow-lg hover:shadow-purple-500/25 transition-all duration-300 glow-purple">
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <Link href={'/workspace'}>
+                <Button className="bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-semibold shadow-lg hover:shadow-purple-500/25 transition-all duration-300 glow-purple">
+                  Get Started
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </motion.div>
           </div>
 
@@ -209,13 +214,12 @@ export default function Header() {
                   </motion.a>
                 ))}
                 <div className="px-6 py-2 space-y-3">
-                  <button className="block w-full text-left text-black font-medium">
-                    Sign In
-                  </button>
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold">
-                    Get Started
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <Link href={'/workspace'}>
+                    <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold">
+                      Get Started
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>

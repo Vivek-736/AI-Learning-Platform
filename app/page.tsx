@@ -14,6 +14,7 @@ import {
   Star
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const features = [
@@ -97,11 +98,13 @@ export default function Home() {
                 Notes, doubts, interviews, quizzes & flashcards — all powered by AI.
               </p>
               
-              <Button className="bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-8 py-6 text-lg font-semibold rounded-lg shadow-lg hover:shadow-purple-500/25 transition-all duration-300 glow-purple">
-                Get Started Free
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              
+              <Link href={'/workspace'}>
+                <Button className="bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-8 py-6 text-lg font-semibold rounded-lg shadow-lg hover:shadow-purple-500/25 transition-all duration-300 glow-purple">
+                  Get Started Free
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+
               <p className="text-sm text-gray-500 mt-4">
                 Free trial with one course generation
               </p>
