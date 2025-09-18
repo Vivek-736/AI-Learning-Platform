@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Brain, Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -100,18 +101,12 @@ export default function Header() {
             whileHover="hover"
             whileTap="tap"
           >
-            <div className="relative">
-              <motion.div
-                className="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-              >
-                <Brain className="h-6 w-6 text-white" />
-              </motion.div>
-              <motion.div
-                className="absolute -top-1 -right-1 w-3 h-3 bg-purple-400 rounded-full"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
+            <div>
+              <Image
+                src={"/favicon.png"}
+                alt="Logo"
+                width={40}
+                height={40}
               />
             </div>
             <span className="text-2xl font-bold text-black">EruditeAI</span>
@@ -141,7 +136,7 @@ export default function Header() {
 
           <div className="hidden lg:flex items-center space-x-4">
             <motion.button
-              className="text-black font-medium"
+              className="text-black cursor-pointer font-medium"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -151,7 +146,7 @@ export default function Header() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-semibold shadow-lg hover:shadow-purple-500/25 transition-all duration-300 glow-purple">
+              <Button className="bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-semibold shadow-lg hover:shadow-purple-500/25 transition-all duration-300 glow-purple">
                 Get Started
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

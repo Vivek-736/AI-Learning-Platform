@@ -79,7 +79,7 @@ export default function Home() {
     <div className="min-h-screen bg-white text-black">
       <Header />
       
-      <section id="hero" className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32">
+      <section id="hero" className="relative overflow-hidden pt-32 pb-20 lg:pt-32 lg:pb-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <div className="flex-1 text-center lg:text-left">
@@ -97,20 +97,20 @@ export default function Home() {
                 Notes, doubts, interviews, quizzes & flashcards — all powered by AI.
               </p>
               
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 text-lg font-semibold rounded-lg shadow-lg hover:shadow-purple-500/25 transition-all duration-300 glow-purple">
+              <Button className="bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-8 py-6 text-lg font-semibold rounded-lg shadow-lg hover:shadow-purple-500/25 transition-all duration-300 glow-purple">
                 Get Started Free
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               
               <p className="text-sm text-gray-500 mt-4">
-                No credit card required • 7-day free trial
+                Free trial with one course generation
               </p>
             </div>
             
             <div className="flex-1 relative">
               <div className="relative w-full max-w-lg mx-auto">
                 <Image
-                  src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src="/hero.jpg"
                   alt="AI-powered learning platform"
                   width={600}
                   height={400}
@@ -228,14 +228,7 @@ export default function Home() {
             </h2>
             <p className="text-xl text-gray-300 mb-10 leading-relaxed">
               Join over 50,000 students who have transformed their learning with EruditeAI. 
-              Your academic success story starts here.
-            </p>
-            <Button className="bg-purple-600 hover:bg-purple-700 text-white px-10 py-6 text-xl font-semibold rounded-lg shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 glow-purple">
-              Get Started Free
-              <ArrowRight className="ml-3 h-6 w-6" />
-            </Button>
-            <p className="text-gray-400 mt-6">
-              Free 7-day trial • Cancel anytime • No commitment
+              Your academic success story starts here. With one course generation for free
             </p>
           </div>
         </div>
