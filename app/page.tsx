@@ -1,103 +1,245 @@
+"use client";
+
+import Header from "@/components/Header";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { 
+  BookOpen, 
+  MessageCircleQuestion, 
+  Mic, 
+  Brain, 
+  ArrowRight, 
+  Sparkles,
+  TrendingUp,
+  Star
+} from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const features = [
+    {
+      icon: <BookOpen className="h-8 w-8" />,
+      title: "Notes Generation",
+      description: "AI transforms your lectures into comprehensive, organized notes instantly."
+    },
+    {
+      icon: <MessageCircleQuestion className="h-8 w-8" />,
+      title: "Doubt Solving",
+      description: "Get instant answers to your questions with detailed explanations."
+    },
+    {
+      icon: <Mic className="h-8 w-8" />,
+      title: "Voice Interviews",
+      description: "Practice with AI-powered mock interviews and receive instant feedback."
+    },
+    {
+      icon: <Brain className="h-8 w-8" />,
+      title: "Quizzes & Flashcards",
+      description: "Adaptive learning materials that adjust to your progress and understanding."
+    }
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const steps = [
+    {
+      icon: <MessageCircleQuestion className="h-12 w-12" />,
+      title: "Ask",
+      description: "Upload your content or ask questions about any topic"
+    },
+    {
+      icon: <Brain className="h-12 w-12" />,
+      title: "Learn",
+      description: "AI processes and delivers personalized learning materials"
+    },
+    {
+      icon: <TrendingUp className="h-12 w-12" />,
+      title: "Grow",
+      description: "Track progress and master concepts with adaptive learning"
+    }
+  ];
+
+  const testimonials = [
+    {
+      text: "EruditeAI transformed how I study. My grades improved by 40% in just one semester!",
+      author: "Sarah Chen",
+      role: "Computer Science Student"
+    },
+    {
+      text: "The voice interviews feature helped me land my dream internship. The feedback was incredibly detailed.",
+      author: "Marcus Johnson",
+      role: "Business Major"
+    },
+    {
+      text: "I love how it turns my messy lecture recordings into perfect study notes. It's like having a personal AI tutor.",
+      author: "Emily Rodriguez",
+      role: "Pre-Med Student"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white text-black">
+      <Header />
+      
+      <section id="hero" className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div className="flex-1 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <Sparkles className="h-4 w-4" />
+                AI-Powered Learning Platform
+              </div>
+              
+              <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                Learn Smarter
+                <span className="block text-purple-600">with AI.</span>
+              </h1>
+              
+              <p className="text-xl lg:text-2xl text-gray-600 mb-8 leading-relaxed">
+                Notes, doubts, interviews, quizzes & flashcards — all powered by AI.
+              </p>
+              
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 text-lg font-semibold rounded-lg shadow-lg hover:shadow-purple-500/25 transition-all duration-300 glow-purple">
+                Get Started Free
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              
+              <p className="text-sm text-gray-500 mt-4">
+                No credit card required • 7-day free trial
+              </p>
+            </div>
+            
+            <div className="flex-1 relative">
+              <div className="relative w-full max-w-lg mx-auto">
+                <Image
+                  src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="AI-powered learning platform"
+                  width={600}
+                  height={400}
+                  className="rounded-2xl shadow-2xl"
+                  priority
+                />
+                <div className="absolute -top-4 -right-4 bg-purple-600 text-white p-4 rounded-full shadow-lg animate-pulse">
+                  <Brain className="h-8 w-8" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      <section id="features" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              Powered by Advanced AI
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Experience learning like never before with our suite of AI-powered tools designed to accelerate your academic success.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                <CardContent className="p-8">
+                  <div className="text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              How It Works
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Start your AI-powered learning journey in three simple steps
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {steps.map((step, index) => (
+              <div key={index} className="text-center group">
+                <div className="relative mb-8">
+                  <div className="inline-flex items-center justify-center w-24 h-24 bg-purple-100 text-purple-600 rounded-full mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                    {step.icon}
+                  </div>
+                  {index < steps.length - 1 && (
+                    <div className="hidden md:block absolute top-12 left-full w-full">
+                      <ArrowRight className="h-6 w-6 text-gray-300 mx-auto" />
+                    </div>
+                  )}
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
+                <p className="text-gray-600 text-lg leading-relaxed">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              Student Voices
+            </h2>
+            <p className="text-xl text-gray-600">
+              Join thousands of students already learning smarter with EruditeAI
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-8">
+                  <div className="flex mb-6">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <blockquote className="text-lg text-gray-700 mb-6 leading-relaxed">
+                    &quot;{testimonial.text}&quot;
+                  </blockquote>
+                  <div className="border-l-4 border-purple-600 pl-4">
+                    <p className="font-semibold text-black">{testimonial.author}</p>
+                    <p className="text-gray-600">{testimonial.role}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="py-20 bg-black text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl lg:text-6xl font-bold mb-6">
+              Start Learning
+              <span className="block text-purple-400">Smarter Today</span>
+            </h2>
+            <p className="text-xl text-gray-300 mb-10 leading-relaxed">
+              Join over 50,000 students who have transformed their learning with EruditeAI. 
+              Your academic success story starts here.
+            </p>
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white px-10 py-6 text-xl font-semibold rounded-lg shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 glow-purple">
+              Get Started Free
+              <ArrowRight className="ml-3 h-6 w-6" />
+            </Button>
+            <p className="text-gray-400 mt-6">
+              Free 7-day trial • Cancel anytime • No commitment
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
