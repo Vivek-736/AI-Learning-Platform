@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useUser } from '@clerk/nextjs';
+import { UserDetailContext } from '@/context/userDetailContext';
 
 function Provider( { children }: { children: React.ReactNode } ) {
     const { user } = useUser();
+    const [userDetail, setUserDetail] = useState();
 
     useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
@@ -19,12 +21,16 @@ function Provider( { children }: { children: React.ReactNode } ) {
             email: user?.primaryEmailAddress?.emailAddress
         });
         console.log("User data:", result.data);
+        
+        setUserDetail(result.data);
     }
 
     return (
-        <div>
-            {children}
-        </div>
+        <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
+            <div>
+                {children}
+            </div>
+        </UserDetailContext.Provider>
     )
 }
 
