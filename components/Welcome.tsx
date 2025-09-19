@@ -1,39 +1,53 @@
 'use client';
 
-import React, { useState } from 'react'
+import React from 'react'
+import { TrendingUp } from 'lucide-react'
+import Image from 'next/image'
+import { useUser } from '@clerk/nextjs'
 
 const Welcome = () => {
-    const [isHovered, setIsHovered] = useState(false)
-    
+    const { user } = useUser();
+
     return (
-        <div 
-            className="relative overflow-hidden p-8 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 rounded-2xl shadow-2xl transform transition-all duration-500 hover:shadow-3xl cursor-pointer"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-purple-400/20 to-pink-400/20 animate-pulse"></div>
-            <div className="absolute inset-0">
-                <div className="absolute top-4 left-4 w-2 h-2 bg-white/30 rounded-full animate-bounce delay-100"></div>
-                <div className="absolute top-8 right-8 w-3 h-3 bg-yellow-300/40 rounded-full animate-bounce delay-300"></div>
-                <div className="absolute bottom-6 left-12 w-1.5 h-1.5 bg-pink-300/50 rounded-full animate-bounce delay-500"></div>
-                <div className="absolute bottom-4 right-4 w-2.5 h-2.5 bg-blue-300/40 rounded-full animate-bounce delay-700"></div>
-            </div>
-            <div className={`absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-xl transition-all duration-700 ${isHovered ? 'scale-150 opacity-30' : 'scale-100 opacity-20'}`}></div>
-            <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-3">
-                    <div className="text-4xl">🤖</div>
-                    <h2 className="font-bold text-2xl text-white tracking-tight">
-                        Welcome to 
-                        <span className="ml-2 bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent font-extrabold">
-                            EruditeAI
-                        </span>
-                    </h2>
+        <div className='relative p-6 bg-gradient-to-r from-white via-purple-50/30 to-white border border-purple-100/50 rounded-xl mb-6 shadow-[0_0_15px_rgba(0,0,0,0.2)] overflow-hidden'>
+            <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100/20 to-transparent rounded-full -translate-y-8 translate-x-8'></div>
+            <div className='absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-50/30 to-transparent rounded-full translate-y-6 -translate-x-6'></div>
+            <div className='relative z-10'>
+                <div className='flex items-center gap-3'>
+                    <div className='w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/25'>
+                        <Image 
+                            src="/favicon.png"
+                            alt="EruditeAI Logo"
+                            width={32}
+                            height={32}
+                            className='w-8 h-8 object-contain'
+                        />
+                    </div>
+                    <div className='flex-1'>
+                        <h2 className='font-semibold text-xl text-gray-900 flex items-center gap-2'>
+                            Welcome to EruditeAI! <span className='text-purple-500 font-medium'>{user?.firstName}</span>
+                        </h2>
+                    </div>
+                    <div className='flex items-center gap-1 px-2 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-full'>
+                        <TrendingUp className='w-3 h-3' />
+                        Active
+                    </div>
                 </div>
-                <p className="text-white/90 text-base leading-relaxed flex items-center gap-2">
-                    📚 Learn, 🎨 Create and 🔍 Explore your AI Courses ✨
-                </p>
+                
+                <div className='ml-13'>
+                    <p className='text-gray-600 mb-2'>Learn, Create and Explore your AI Courses</p>
+                    <div className='flex items-center gap-4 text-xs text-gray-500'>
+                        <span className='flex items-center gap-1'>
+                            <div className='w-2 h-2 bg-purple-400 rounded-full'></div>
+                            Smart Learning Enabled
+                        </span>
+                        <span className='flex items-center gap-1'>
+                            <div className='w-2 h-2 bg-green-400 rounded-full'></div>
+                            AI Assistant Ready
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-yellow-400/20 to-orange-400/20 rounded-bl-full"></div>
         </div>
     )
 }

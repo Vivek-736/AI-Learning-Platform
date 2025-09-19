@@ -12,7 +12,7 @@ const CourseList = () => {
             <h2 className='font-bold text-3xl'>
                 Course List
             </h2>
-            {courseList?.length == 0 ? <div className='flex p-7 items-center justify-center flex-col border-black border-dashed border-2 rounded-xl mt-6 bg-purple-50'>
+            {courseList?.length == 0 ? <div className='flex p-7 gap-y-3 items-center justify-center flex-col border-black border-dashed border-2 rounded-xl mt-6 bg-purple-50'>
                 <Image src={'/workspace.png'} alt='education' width={80} height={80} />
                 <h2 className='my-2 text-xl font-bold'>Looks like you haven&apos;t created any course yet</h2>
                 <Button className='cursor-pointer'>
