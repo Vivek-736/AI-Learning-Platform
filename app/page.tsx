@@ -38,7 +38,7 @@ export default function Home() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex justify-between items-center h-16">
             <motion.div
               className="font-bold text-xl text-gray-900"
