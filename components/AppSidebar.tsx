@@ -25,6 +25,7 @@ import {
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
+import AddNewCourseDialog from "./AddNewCourseDialog";
 
 const AppSidebar = () => {
   const { user } = useUser();
@@ -70,7 +71,11 @@ const AppSidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <Button className="cursor-pointer">Create New Course</Button>
+          <AddNewCourseDialog>
+            <Button className="cursor-pointer">
+              Create New Course
+            </Button>
+          </AddNewCourseDialog>
         </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupContent>
