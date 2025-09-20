@@ -14,7 +14,7 @@ const Welcome = () => {
             <div className='absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-50/30 to-transparent rounded-full translate-y-6 -translate-x-6'></div>
             <div className='relative z-10'>
                 <div className='flex items-center gap-3'>
-                    <div className='w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/25'>
+                    <div className='md:w-10 md:h-10 w-6 h-6 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/25'>
                         <Image 
                             src="/favicon.png"
                             alt="EruditeAI Logo"
@@ -24,7 +24,7 @@ const Welcome = () => {
                         />
                     </div>
                     <div className='flex-1'>
-                        <h2 className='font-semibold text-xl text-gray-900 flex items-center gap-2'>
+                        <h2 className='font-semibold text-xs md:text-xl text-gray-900 flex items-center gap-2'>
                             Welcome to EruditeAI! <span className='text-purple-500 font-medium'>{user?.firstName}</span>
                         </h2>
                     </div>
@@ -34,7 +34,7 @@ const Welcome = () => {
                     </div>
                 </div>
                 
-                <div className='ml-13'>
+                <div className='md:ml-13 ml-0'>
                     <p className='text-gray-600 mb-2'>Learn, Create and Explore your AI Courses</p>
                     <div className='flex items-center gap-4 text-xs text-gray-500'>
                         <span className='flex items-center gap-1'>
