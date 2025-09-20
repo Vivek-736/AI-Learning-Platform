@@ -5,6 +5,8 @@ import { Book, Clock, Loader, Settings, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -15,6 +17,7 @@ interface CourseInfoProps {
 const CourseInfo = ({ course }: CourseInfoProps) => {
     const courseLayout = course?.courseJson?.course
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const calculateTotalDuration = () => {
         if (!courseLayout?.chapters) return '0 hours';
@@ -37,9 +40,12 @@ const CourseInfo = ({ course }: CourseInfoProps) => {
             });
             console.log(result.data);
             setLoading(false);
+            router.replace('/workspace');
+            toast.success('Course generated successfully!');
         } catch (error) {
             setLoading(false);
             console.error(error);
+            toast.error('An error occurred while generating course content. Please try again.');
         }
     }
 
