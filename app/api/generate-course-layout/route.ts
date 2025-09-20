@@ -2,6 +2,7 @@ import { db } from "@/config/db";
 import { coursesTable } from "@/config/schema";
 import { currentUser } from "@clerk/nextjs/server";
 import { GoogleGenAI } from "@google/genai";
+import axios from "axios";
 import { NextResponse } from "next/server";
 
 const PROMPT = `
@@ -64,19 +65,44 @@ export async function POST(request: Request) {
   console.log(response?.candidates?.[0]?.content?.parts?.[0]?.text);
 
   const RawResponse = response?.candidates?.[0]?.content?.parts?.[0]?.text;
-  const RawJson = RawResponse?.replace('```json', '')?.replace('```', '');
+  const RawJson = RawResponse?.replace("```json", "")?.replace("```", "");
 
-  const JSONResponse = JSON.parse(RawJson || '{}');
+  const JSONResponse = JSON.parse(RawJson || "{}");
 
   // Generate Image
+  const imagePrompt = JSONResponse?.course?.bannerImagePrompt;
+  const bannerImageUrl = await GenerateImage(imagePrompt);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const result = await db.insert(coursesTable).values({
     ...formData,
     courseJson: JSONResponse,
     userEmail: user?.primaryEmailAddress?.emailAddress,
-    cid: courseId
-  })
+    cid: courseId,
+    bannerImageUrl: bannerImageUrl
+  });
 
   return NextResponse.json({ courseId: courseId });
 }
+
+const GenerateImage = async (imagePrompt: string) => {
+  const BASE_URL = "https://aigurulab.tech";
+  const result = await axios.post(
+    BASE_URL + "/api/generate-image",
+    {
+      width: 1024,
+      height: 1024,
+      input: imagePrompt,
+      model: "flux",
+      aspectRatio: "16:9",
+    },
+    {
+      headers: {
+        "x-api-key": process.env.OPENAI_API_KEY,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  console.log(result.data.image);
+  return result.data.image;
+};
