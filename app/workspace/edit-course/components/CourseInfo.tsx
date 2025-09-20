@@ -88,7 +88,7 @@ const CourseInfo = ({ course }: CourseInfoProps) => {
                 alt='Course Banner'
                 width={400}
                 height={400}
-                className='w-full h-auto rounded-2xl object-cover aspect-auto'
+                className='rounded-2xl object-cover aspect-auto'
             />
         </div>
     )
