@@ -1,7 +1,10 @@
-import React from 'react'
-import { Book, Clock, Settings, TrendingUp } from 'lucide-react';
+'use client';
+
+import React, { useState } from 'react'
+import { Book, Clock, Loader, Settings, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import axios from 'axios';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -11,6 +14,7 @@ interface CourseInfoProps {
 
 const CourseInfo = ({ course }: CourseInfoProps) => {
     const courseLayout = course?.courseJson?.course
+    const [loading, setLoading] = useState(false);
 
     const calculateTotalDuration = () => {
         if (!courseLayout?.chapters) return '0 hours';
@@ -22,6 +26,22 @@ const CourseInfo = ({ course }: CourseInfoProps) => {
         
         return `${totalHours} hours`;
     };
+
+    const GenerateCourseContent = async () => {
+        setLoading(true);
+        try {
+            const result = await axios.post('/api/generate-course-content', {
+                courseJson: courseLayout,
+                courseTitle: course?.name,
+                courseId: course?.cid
+            });
+            console.log(result.data);
+            setLoading(false);
+        } catch (error) {
+            setLoading(false);
+            console.error(error);
+        }
+    }
 
     return (
         <div className='flex md:flex-row flex-col-reverse gap-5 justify-between p-5 rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.2)]'>
@@ -55,7 +75,7 @@ const CourseInfo = ({ course }: CourseInfoProps) => {
                         </section>
                     </div>
                 </div>
-                <Button className='w-full cursor-pointer text-center  mt-3'><Settings /> Generate Content</Button>
+                <Button onClick={GenerateCourseContent} className='w-full cursor-pointer text-center mt-3' disabled={loading}>{!loading ? <Settings /> : <Loader className='animate-spin' />} {!loading ? 'Generate Content' : 'Generating Content'}</Button>
             </div>
             <Image 
                 src={course?.bannerImageUrl || '/course.jpg'}
