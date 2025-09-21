@@ -29,6 +29,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
   const [loading, setLoading] = useState(false);
   const [isContentGenerated, setIsContentGenerated] = useState(!!course.courseContent?.length);
   const courseLayout = course?.courseJson?.course;
+  const [isLoading, setIsLoading] = useState(false);
 
   const generateCourseContent = async () => {
     setLoading(true);
@@ -49,6 +50,27 @@ const CourseCard = ({ course }: CourseCardProps) => {
     }
   };
 
+  const onEnrollCourse = async () => {
+    try {
+      setIsLoading(true);
+      const result = await axios.post('/api/enroll-course', {
+        courseId: course?.cid,
+      });
+      console.log(result.data);
+      if(result.data.res === 'Already Enrolled') {
+        toast.warning('You are already enrolled in this course.');
+        setIsLoading(false);
+        return;
+      }
+      toast.success('Enrolled in course successfully!');
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.error(error);
+      toast.error('An error occurred while enrolling in the course. Please try again.');
+    }
+  };
+
   return (
     <div className="rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.2)] mt-4">
       <Image
@@ -66,8 +88,8 @@ const CourseCard = ({ course }: CourseCardProps) => {
             <Book className="h-5 w-5 text-primary" /> {courseLayout?.noOfChapters} Chapters
           </h2>
           {isContentGenerated ? (
-            <Button className="cursor-pointer" size="sm">
-              <PlayCircle className="mr-2 h-4 w-4" /> Start Learning
+            <Button disabled={isLoading} onClick={onEnrollCourse} className="cursor-pointer" size="sm">
+              {!isLoading ? <PlayCircle className="mr-2 h-4 w-4" /> : <Loader className='animate-spin mr-2 h-4 w-4' />}  {isLoading ? 'Enrolling...' : 'Enroll Course'}
             </Button>
           ) : (
             <Button
