@@ -81,7 +81,7 @@ const CourseInfo = ({ course }: CourseInfoProps) => {
                         </section>
                     </div>
                 </div>
-                <Button onClick={GenerateCourseContent} className='w-full cursor-pointer text-center mt-3' disabled={loading}>{!loading ? <Settings /> : <Loader className='animate-spin' />} {!loading ? 'Generate Content' : 'Generating Content'}</Button>
+                <Button onClick={GenerateCourseContent} className='w-full cursor-pointer text-center mt-3' disabled={loading || course?.courseContent != null}>{!loading ? <Settings /> : <Loader className='animate-spin' />} {!loading ? 'Generate Content' : 'Generating Content'}</Button>
             </div>
             <Image 
                 src={course?.bannerImageUrl || '/course.jpg'}

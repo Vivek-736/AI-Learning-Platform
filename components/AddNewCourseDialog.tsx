@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog'
-import { Input } from './ui/input'
-import { Textarea } from './ui/textarea'
-import { Switch } from './ui/switch'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
-import { Button } from './ui/button'
-import { Loader, Sparkles } from 'lucide-react'
-import axios from 'axios'
-import { v4 as uuidv4 } from 'uuid'
-import { useRouter } from 'next/navigation'
+import React, { useState } from 'react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { Switch } from './ui/switch';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { Button } from './ui/button';
+import { Loader, Sparkles } from 'lucide-react';
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+import { useRouter } from 'next/navigation';
 
 const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
     const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         description: '',
@@ -30,7 +31,7 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
             [field]: value
         }));
         console.log(formData);
-    }
+    };
 
     const onGenerate = async () => {
         console.log(formData);
@@ -43,14 +44,16 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
             });
             console.log(result.data);
             setLoading(false);
+            setOpen(false);
             router.push(`/workspace/edit-course/${result.data?.courseId}`);
         } catch (error) {
             console.error(error);
+            setLoading(false);
         }
-    }
+    };
 
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 {children}
             </DialogTrigger>
@@ -65,25 +68,35 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                                 <label className='ml-0.5 text-gray-900'>
                                     Course Name
                                 </label>
-                                <Input placeholder='Enter Course Name' onChange={(event) => onHandleInputChange('name', event?.target.value)} />
+                                <Input
+                                    placeholder='Enter Course Name'
+                                    onChange={(event) => onHandleInputChange('name', event?.target.value)}
+                                />
                             </div>
                             <div className='flex flex-col gap-y-2 mt-4'>
                                 <label className='ml-0.5 text-gray-900'>
                                     Course Description (Optional)
                                 </label>
-                                <Textarea placeholder='Enter Course Description' onChange={(event) => onHandleInputChange('description', event?.target.value)} />
+                                <Textarea
+                                    placeholder='Enter Course Description'
+                                    onChange={(event) => onHandleInputChange('description', event?.target.value)}
+                                />
                             </div>
                             <div className='flex flex-col gap-y-2 mt-4'>
                                 <label className='ml-0.5 text-gray-900'>
                                     Number of Chapters
                                 </label>
-                                <Input placeholder='Enter Number of Chapters' type='number' onChange={(event) => onHandleInputChange('noOfChapters', event?.target.value)} />
+                                <Input
+                                    placeholder='Enter Number of Chapters'
+                                    type='number'
+                                    onChange={(event) => onHandleInputChange('noOfChapters', event?.target.value)}
+                                />
                             </div>
                             <div className='mt-4 flex gap-x-4 items-center'>
                                 <label className='ml-0.5 text-gray-900'>
                                     Include Video
                                 </label>
-                                <Switch 
+                                <Switch
                                     onCheckedChange={() => onHandleInputChange('includeVideo', !formData?.includeVideo)}
                                 />
                             </div>
@@ -112,11 +125,19 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                                 <label className='ml-0.5 text-gray-900'>
                                     Category
                                 </label>
-                                <Input placeholder='Enter Course Category (Separated by Commas)' onChange={(event) => onHandleInputChange('category', event?.target.value)} />
+                                <Input
+                                    placeholder='Enter Course Category (Separated by Commas)'
+                                    onChange={(event) => onHandleInputChange('category', event?.target.value)}
+                                />
                             </div>
                             <div className='mt-6 text-center'>
-                                <Button className='w-full cursor-pointer' disabled={loading} onClick={onGenerate}>
-                                    {loading ? <Loader className='animate-spin' /> : <Sparkles />} {loading ? 'Generating Course...' : 'Generate Course'}
+                                <Button
+                                    className='w-full cursor-pointer'
+                                    disabled={loading}
+                                    onClick={onGenerate}
+                                >
+                                    {loading ? <Loader className='animate-spin' /> : <Sparkles />}
+                                    {loading ? 'Generating Course...' : 'Generate Course'}
                                 </Button>
                             </div>
                         </div>
@@ -124,7 +145,7 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                 </DialogHeader>
             </DialogContent>
         </Dialog>
-    )
-}
+    );
+};
 
-export default AddNewCourseDialog
+export default AddNewCourseDialog;
