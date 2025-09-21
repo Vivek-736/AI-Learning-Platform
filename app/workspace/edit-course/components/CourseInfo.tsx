@@ -1,20 +1,22 @@
 'use client';
 
 import React, { useState } from 'react'
-import { Book, Clock, Loader, Settings, TrendingUp } from 'lucide-react';
+import { Book, Clock, Loader, PlayCircle, Settings, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import Link from 'next/link';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 interface CourseInfoProps {
     course: any;
+    viewCourse: boolean;
 }
 
-const CourseInfo = ({ course }: CourseInfoProps) => {
+const CourseInfo = ({ course, viewCourse }: CourseInfoProps) => {
     const courseLayout = course?.courseJson?.course
     const [loading, setLoading] = useState(false);
     const router = useRouter();
@@ -81,7 +83,9 @@ const CourseInfo = ({ course }: CourseInfoProps) => {
                         </section>
                     </div>
                 </div>
-                <Button onClick={GenerateCourseContent} className='w-full cursor-pointer text-center mt-3' disabled={loading || course?.courseContent != null}>{!loading ? <Settings /> : <Loader className='animate-spin' />} {!loading ? 'Generate Content' : 'Generating Content'}</Button>
+                {!viewCourse ? <Button onClick={GenerateCourseContent} className='w-full cursor-pointer text-center mt-3' disabled={loading}>{!loading ? <Settings /> : <Loader className='animate-spin' />} {!loading ? 'Generate Content' : 'Generating Content'}</Button>: <Link href={`/course/${course?.cid}`}><Button className='w-full cursor-pointer text-center mt-3'>
+                    <PlayCircle /> Continue Learning
+                </Button></Link>}
             </div>
             <Image 
                 src={course?.bannerImageUrl || '/course.jpg'}

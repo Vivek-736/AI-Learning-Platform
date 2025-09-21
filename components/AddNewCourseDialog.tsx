@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
-import { Switch } from './ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Button } from './ui/button';
 import { Loader, Sparkles } from 'lucide-react';
@@ -90,14 +89,6 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                                     placeholder='Enter Number of Chapters'
                                     type='number'
                                     onChange={(event) => onHandleInputChange('noOfChapters', event?.target.value)}
-                                />
-                            </div>
-                            <div className='mt-4 flex gap-x-4 items-center'>
-                                <label className='ml-0.5 text-gray-900'>
-                                    Include Video
-                                </label>
-                                <Switch
-                                    onCheckedChange={() => onHandleInputChange('includeVideo', !formData?.includeVideo)}
                                 />
                             </div>
                             <div className='mt-4 flex flex-col gap-y-2'>

@@ -4,15 +4,17 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useUser } from '@clerk/nextjs';
 import { UserDetailContext } from '@/context/userDetailContext';
+import { SelectedChapterIndexContext } from '@/context/selectedChapterIndexContext';
 
 function Provider( { children }: { children: React.ReactNode } ) {
     const { user } = useUser();
     const [userDetail, setUserDetail] = useState();
+    const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
 
     useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         user && CreateNewUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
     const CreateNewUser = async () => {
@@ -27,9 +29,11 @@ function Provider( { children }: { children: React.ReactNode } ) {
 
     return (
         <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
-            <div>
-                {children}
-            </div>
+            <SelectedChapterIndexContext.Provider value={{ selectedChapterIndex, setSelectedChapterIndex }}>
+                <div>
+                    {children}
+                </div>
+            </SelectedChapterIndexContext.Provider>
         </UserDetailContext.Provider>
     )
 }
