@@ -54,6 +54,7 @@ export const quizAttemptsTable = pgTable("quizAttempts", {
     totalQuestions: integer().notNull(),
     percentage: integer().notNull(),
     timeSpent: integer(),
+    feedback: json(),
     completedAt: timestamp().defaultNow()
 });
 
@@ -79,6 +80,8 @@ export const flashcardProgressTable = pgTable("flashcardProgress", {
     userEmail: varchar('userEmail').references(() => usersTable.email).notNull(),
     masteredCards: json().default([]),
     reviewCards: json().default([]),
+    currentStreak: integer().default(0),
+    longestStreak: integer().default(0),
     lastStudied: timestamp().defaultNow(),
     studySessions: integer().default(0),
     totalTimeSpent: integer().default(0)
@@ -107,7 +110,8 @@ export const interviewAttemptsTable = pgTable("interviewAttempts", {
     vapiCallId: varchar(),
     responses: json(),
     overallScore: integer(),
-    feedback: text(),
+    detailedFeedback: json(),
+    overallFeedback: text(),
     duration: integer(),
     status: varchar().default('pending'),
     completedAt: timestamp().defaultNow()
