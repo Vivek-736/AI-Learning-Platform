@@ -3,7 +3,7 @@ import { UserProfile } from "@clerk/nextjs";
 
 const ProfilePage = () => {
   return (
-    <div>
+    <div className="flex items-center justify-center">
       <UserProfile
         appearance={{
           baseTheme: undefined,
