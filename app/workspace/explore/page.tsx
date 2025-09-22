@@ -158,8 +158,7 @@ const ExploreCourses: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
-      <div className="container mx-auto px-4 py-8">
-        {/* Header */}
+      <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="p-3 bg-purple-100 rounded-full">
@@ -185,7 +184,6 @@ const ExploreCourses: React.FC = () => {
           </div>
         </div>
 
-        {/* Search and Filters */}
         <div className="mb-8 space-y-4">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="relative flex-1 max-w-md">
@@ -235,7 +233,6 @@ const ExploreCourses: React.FC = () => {
             </div>
           </div>
 
-          {/* Active Filters */}
           {(searchTerm || selectedLevel !== 'all' || selectedCategory !== 'all') && (
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-sm text-gray-600">Active filters:</span>
@@ -273,7 +270,6 @@ const ExploreCourses: React.FC = () => {
           )}
         </div>
 
-        {/* Results Summary */}
         <div className="mb-6">
           <p className="text-sm text-gray-600">
             Showing <span className="font-semibold text-gray-900">{filteredCourses.length}</span> 
@@ -282,7 +278,6 @@ const ExploreCourses: React.FC = () => {
           </p>
         </div>
 
-        {/* Course Grid */}
         {filteredCourses.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCourses.map((course) => (

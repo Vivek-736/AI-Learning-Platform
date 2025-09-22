@@ -125,15 +125,9 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
               {course.level}
             </Badge>
           )}
-          {course.includeVideo && (
-            <Badge className="bg-purple-100 text-purple-800 border-purple-200 text-xs">
-              <PlayCircle className="w-3 h-3 mr-1" />
-              Video
-            </Badge>
-          )}
         </div>
         {course.category && (
-          <div className="absolute top-3 right-3">
+          <div className="absolute top-2 right-3">
             <Badge className={`text-xs font-medium border ${getCategoryColor(course.category)}`}>
               {course.category}
             </Badge>
