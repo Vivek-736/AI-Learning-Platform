@@ -23,15 +23,16 @@ interface Course {
 
 interface CourseCardProps {
   course: Course;
+  onEnrollSuccess?: () => void;
 }
 
-const CourseCard = ({ course }: CourseCardProps) => {
-  const [loading, setLoading] = useState(false);
-  const [isContentGenerated, setIsContentGenerated] = useState(!!course.courseContent?.length);
+const CourseCard: React.FC<CourseCardProps> = ({ course, onEnrollSuccess }) => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isContentGenerated, setIsContentGenerated] = useState<boolean>(!!course.courseContent?.length);
   const courseLayout = course?.courseJson?.course;
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const generateCourseContent = async () => {
+  const generateCourseContent = async (): Promise<void> => {
     setLoading(true);
     try {
       const result = await axios.post('/api/generate-course-content', {
@@ -50,7 +51,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
     }
   };
 
-  const onEnrollCourse = async () => {
+  const onEnrollCourse = async (): Promise<void> => {
     try {
       setIsLoading(true);
       const result = await axios.post('/api/enroll-course', {
@@ -64,6 +65,10 @@ const CourseCard = ({ course }: CourseCardProps) => {
       }
       toast.success('Enrolled in course successfully!');
       setIsLoading(false);
+      
+      if (onEnrollSuccess) {
+        onEnrollSuccess();
+      }
     } catch (error) {
       setIsLoading(false);
       console.error(error);

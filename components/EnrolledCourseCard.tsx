@@ -5,21 +5,40 @@ import { Button } from "./ui/button";
 import { PlayCircleIcon } from "lucide-react";
 import Link from "next/link";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-interface EnrolledCourseCardProps {
-  course: any;
-  enrollCourse?: any;
+interface Course {
+  cid: string;
+  name: string;
+  bannerImageUrl?: string;
+  courseJson: {
+    course: {
+      name: string;
+      description: string;
+      noOfChapters: number;
+    };
+  };
+  courseContent?: unknown[];
 }
 
-const EnrolledCourseCard = ({
+interface EnrollCourse {
+  completedChapters?: unknown[];
+}
+
+interface EnrolledCourseCardProps {
+  course: Course;
+  enrollCourse?: EnrollCourse;
+}
+
+const EnrolledCourseCard: React.FC<EnrolledCourseCardProps> = ({
   course,
   enrollCourse,
-}: EnrolledCourseCardProps) => {
+}) => {
   const courseLayout = course?.courseJson?.course;
 
-  const CalculateProgress = () => {
-    return (enrollCourse?.completedChapters?.length ?? 0 / course?.courseContent?.length) * 100;
-  }
+  const CalculateProgress = (): number => {
+    const completedChapters = enrollCourse?.completedChapters?.length ?? 0;
+    const totalChapters = course?.courseContent?.length ?? 1;
+    return (completedChapters / totalChapters) * 100;
+  };
 
   return (
     <div className="rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.2)] mt-4">
@@ -37,12 +56,12 @@ const EnrolledCourseCard = ({
         </p>
         <div className="">
           <h2 className="flex justify-between text-sm text-primary mb-2">
-            Progress <span>{CalculateProgress()}%</span>
+            Progress <span>{Math.round(CalculateProgress())}%</span>
           </h2>
           <Progress value={CalculateProgress()} />
           <Link href={`/workspace/view-course/${course?.cid}`}>
             <Button className="w-full mt-3 cursor-pointer">
-                <PlayCircleIcon /> Continue Learning
+                <PlayCircleIcon className="mr-2 h-4 w-4" /> Continue Learning
             </Button>
           </Link>
         </div>
