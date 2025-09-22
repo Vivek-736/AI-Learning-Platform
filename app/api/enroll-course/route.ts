@@ -50,3 +50,22 @@ export async function GET(request: Request) {
         return NextResponse.json(result);
     }
 }
+
+export async function PUT (request: Request) {
+    const { completedChapter, courseId } = await request.json();
+    const user = await currentUser();
+
+    try {
+        const result = await db.update(enrollCourseTable).set({
+            completedChapters: completedChapter
+        }).where(and(
+            eq(enrollCourseTable.cid, courseId), 
+            eq(enrollCourseTable.userEmail, user?.primaryEmailAddress?.emailAddress || '')
+        )).returning();
+
+        return NextResponse.json(result);
+    } catch (error) {
+        console.error('Error updating completed chapters:', error);
+        return NextResponse.json({ error: 'Failed to update completed chapters' }, { status: 500 });
+    }
+}

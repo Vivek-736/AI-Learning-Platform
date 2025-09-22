@@ -8,6 +8,11 @@ import { github } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import javascript from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
 import java from 'react-syntax-highlighter/dist/esm/languages/hljs/java';
 import swift from 'react-syntax-highlighter/dist/esm/languages/hljs/swift';
+import { Button } from '@/components/ui/button';
+import { CheckCircle } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import axios from 'axios';
+import { toast } from 'sonner';
 
 SyntaxHighlighter.registerLanguage('javascript', javascript);
 SyntaxHighlighter.registerLanguage('java', java);
@@ -17,9 +22,11 @@ SyntaxHighlighter.registerLanguage('swift', swift);
 /* eslint-disable @typescript-eslint/no-unused-vars */
 interface ChapterContentProps {
     courseInfo: any;
+    refreshData: () => void;
 }
 
-const ChapterContent = ({ courseInfo }: ChapterContentProps) => {
+const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
+    const { courseId } = useParams();
     const { course, enrollCourse } = courseInfo;
     const courseContent = courseInfo?.courses?.courseContent;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -83,13 +90,50 @@ const ChapterContent = ({ courseInfo }: ChapterContentProps) => {
         );
     }
 
+    const markChapterAsCompleted = async () => {
+        try {
+            const completedChapter = enrollCourse?.completedChapters ?? [];
+            
+            if (completedChapter.includes(selectedChapterIndex)) {
+                toast.info('Chapter already marked as completed!');
+                return;
+            }
+            
+            completedChapter.push(selectedChapterIndex);
+            
+            const result = await axios.put('/api/enroll-course', {
+                completedChapter: completedChapter,
+                courseId: courseId
+            });
+            
+            console.log(result);
+            refreshData();
+            toast.success('Chapter marked as completed!');
+        } catch (error) {
+            console.error('Error marking chapter as completed:', error);
+            toast.error('Failed to mark chapter as completed. Please try again.');
+        }
+    }
+
+    const isChapterCompleted = enrollCourse?.completedChapters?.includes(selectedChapterIndex) ?? false;
+
     return (
         <div className='flex-1 p-5 lg:p-10 bg-white overflow-y-auto'>
             <div className='max-w-4xl'>
                 <div className='mb-8'>
-                    <h1 className='font-bold text-2xl lg:text-3xl text-black mb-4'>
-                        {courseContent?.[selectedChapterIndex]?.courseData?.chapterName || courseContent?.[selectedChapterIndex]?.courseData?.[0]?.chapterName}
-                    </h1>
+                    <div className='flex justify-between items-center'>
+                        <h1 className='font-bold text-2xl lg:text-3xl text-black mb-4'>
+                            {courseContent?.[selectedChapterIndex]?.courseData?.chapterName || courseContent?.[selectedChapterIndex]?.courseData?.[0]?.chapterName}
+                        </h1>
+                        <Button 
+                            onClick={() => markChapterAsCompleted()} 
+                            className={`cursor-pointer ${isChapterCompleted ? 'bg-green-600 hover:bg-green-700' : ''}`}
+                            disabled={isChapterCompleted}
+                        >
+                            <CheckCircle className="mr-2 h-4 w-4" />
+                            {isChapterCompleted ? 'Completed' : 'Mark as completed'}
+                        </Button>
+                    </div>
                     
                     {videoData && videoData.length > 0 && (
                         <div className='mb-8'>

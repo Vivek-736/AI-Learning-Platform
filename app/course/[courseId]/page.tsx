@@ -63,7 +63,7 @@ const CoursePage = () => {
             <AppHeader hideSidebar={true} />
             <div className='flex flex-col lg:flex-row gap-4 lg:gap-10'>
                 <ChapterListSidebar courseInfo={courseInfo} />
-                <ChapterContent courseInfo={courseInfo} />
+                <ChapterContent courseInfo={courseInfo} refreshData={() => GetEnrolledCoursesById()} />
             </div>
         </div>
     )
