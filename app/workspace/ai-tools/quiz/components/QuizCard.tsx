@@ -45,10 +45,10 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, onQuizUpdate }) => {
             <CardHeader>
                 <div className="flex justify-between items-start">
                     <div className="flex-1">
-                        <CardTitle className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
+                        <CardTitle className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors line-clamp-1">
                             {quiz.title}
                         </CardTitle>
-                        <CardDescription className="mt-2 text-sm text-gray-600">
+                        <CardDescription className="mt-2 text-sm text-gray-600 line-clamp-1">
                             {quiz.description || 'No description provided'}
                         </CardDescription>
                     </div>
