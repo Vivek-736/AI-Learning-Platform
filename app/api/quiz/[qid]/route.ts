@@ -4,16 +4,17 @@ import { currentUser } from "@clerk/nextjs/server";
 import { eq, and } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request, { params }: { params: { qid: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ qid: string }> }) {
     try {
         const user = await currentUser();
         if (!user?.primaryEmailAddress?.emailAddress) {
             return new Response('Unauthorized', { status: 401 });
         }
 
+        const resolvedParams = await params;
         const quiz = await db.select().from(quizzesTable)
             .where(and(
-                eq(quizzesTable.qid, params.qid),
+                eq(quizzesTable.qid, resolvedParams.qid),
                 eq(quizzesTable.userEmail, user.primaryEmailAddress.emailAddress)
             ))
             .limit(1);
