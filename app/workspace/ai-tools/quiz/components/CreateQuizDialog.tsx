@@ -182,7 +182,7 @@ const CreateQuizDialog: React.FC<CreateQuizDialogProps> = ({
                         </div>
                     ) : (
                         <div>
-                            <Label htmlFor="customTopic">Custom Topic</Label>
+                            <Label htmlFor="customTopic" className='ml-1 mb-2'>Custom Topic</Label>
                             <Input
                                 id="customTopic"
                                 value={formData.customTopic}
