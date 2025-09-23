@@ -285,10 +285,6 @@ const FlashcardStudyPage = () => {
                                             </div>
                                         )}
                                     </div>
-
-                                    <div className="text-center mt-2.5">
-                                        <p className="text-sm text-gray-600">How well did you know this?</p>
-                                    </div>
                                 </CardContent>
                             </Card>
                         </ReactCardFlip>
