@@ -4,16 +4,18 @@ import { currentUser } from "@clerk/nextjs/server";
 import { eq, and } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request, { params }: { params: { fid: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ fid: string }> }) {
     try {
         const user = await currentUser();
         if (!user?.primaryEmailAddress?.emailAddress) {
             return new Response('Unauthorized', { status: 401 });
         }
 
+        const { fid } = await params;
+
         const flashcardSet = await db.select().from(flashcardSetsTable)
             .where(and(
-                eq(flashcardSetsTable.fid, params.fid),
+                eq(flashcardSetsTable.fid, fid),
                 eq(flashcardSetsTable.userEmail, user.primaryEmailAddress.emailAddress)
             ))
             .limit(1);
