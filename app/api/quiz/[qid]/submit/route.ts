@@ -5,8 +5,9 @@ import { eq, and } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from 'uuid';
 
-export async function POST(request: Request, { params }: { params: { qid: string } }) {
+export async function POST(request: Request, { params }: { params: Promise<{ qid: string }> }) {
     try {
+        const { qid } = await params;
         const user = await currentUser();
         if (!user?.primaryEmailAddress?.emailAddress) {
             return new Response('Unauthorized', { status: 401 });
@@ -16,7 +17,7 @@ export async function POST(request: Request, { params }: { params: { qid: string
 
         const quiz = await db.select().from(quizzesTable)
             .where(and(
-                eq(quizzesTable.qid, params.qid),
+                eq(quizzesTable.qid, qid),
                 eq(quizzesTable.userEmail, user.primaryEmailAddress.emailAddress)
             ))
             .limit(1);
@@ -38,10 +39,9 @@ export async function POST(request: Request, { params }: { params: { qid: string
 
         const percentage = Math.round((correctAnswers / questions.length) * 100);
         const attemptId = uuidv4();
-
         await db.insert(quizAttemptsTable).values({
             attemptId,
-            quizId: params.qid,
+            quizId: qid,
             userEmail: user.primaryEmailAddress.emailAddress,
             answers,
             score: correctAnswers,
