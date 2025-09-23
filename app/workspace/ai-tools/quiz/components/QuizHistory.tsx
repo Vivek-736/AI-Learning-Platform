@@ -12,7 +12,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Trophy, Clock, Target, RotateCcw, TrendingUp, TrendingDown } from 'lucide-react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
@@ -89,9 +90,11 @@ const QuizHistory: React.FC<QuizHistoryProps> = ({ open, onOpenChange }) => {
     };
 
     const PerformanceChart = () => {
+        const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
+
         if (attempts.length < 2) {
             return (
-                <div className="h-64 flex items-center justify-center border border-dashed border-gray-200 rounded-lg">
+                <div className="h-64 flex items-center justify-center border border-dashed border-gray-200 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100">
                     <div className="text-center">
                         <TrendingUp className="h-12 w-12 text-gray-400 mx-auto mb-2" />
                         <p className="text-gray-500">Take more quizzes to see your performance trend</p>
@@ -113,60 +116,124 @@ const QuizHistory: React.FC<QuizHistoryProps> = ({ open, onOpenChange }) => {
         const isImproving = secondHalfAvg > firstHalfAvg;
         const trendPercentage = Math.abs(secondHalfAvg - firstHalfAvg).toFixed(1);
 
+        const getCurvePoints = () => {
+            const points = sortedAttempts.map((attempt, index) => {
+                const x = (index / (sortedAttempts.length - 1)) * 85 + 10;
+                const y = 95 - (attempt.percentage * 0.95);
+                return { x, y, percentage: attempt.percentage, date: attempt.completedAt };
+            });
+
+            let path = `M${points[0].x},${points[0].y}`;
+            for (let i = 0; i < points.length - 1; i++) {
+                const p0 = points[i];
+                const p1 = points[i + 1];
+                const cp1x = p0.x + (p1.x - p0.x) / 2;
+                const cp1y = p0.y;
+                const cp2x = p0.x + (p1.x - p0.x) / 2;
+                const cp2y = p1.y;
+                path += ` C${cp1x},${cp1y} ${cp2x},${cp2y} ${p1.x},${p1.y}`;
+            }
+            return path;
+        };
+
         return (
-            <div className="h-64 relative">
-                <div className="absolute inset-0 p-4">
-                    <div className="h-full border-l-2 border-b-2 border-gray-200 relative">
-                        <div className="absolute -left-8 top-0 text-xs text-gray-500">100%</div>
-                        <div className="absolute -left-8 top-1/2 text-xs text-gray-500">50%</div>
-                        <div className="absolute -left-8 bottom-0 text-xs text-gray-500">0%</div>
-                        
+            <TooltipProvider>
+                <div className="h-64 relative bg-gradient-to-br from-white to-gray-50 rounded-lg shadow-lg p-4">
+                    <div className="absolute inset-0 p-6">
+                        {[0, 25, 50, 75, 100].map((value) => (
+                            <div
+                                key={value}
+                                className="absolute left-4 right-10 border-t border-gray-200/50"
+                                style={{ bottom: `${value * 0.95}%` }}
+                            >
+                                <span className="absolute -left-10 text-[9px] text-gray-400 font-medium">
+                                    {value}%
+                                </span>
+                            </div>
+                        ))}
+
                         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <polyline
+                            <defs>
+                                <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stopColor={isImproving ? "#10b981" : "#ef4444"} stopOpacity="0.3" />
+                                    <stop offset="100%" stopColor={isImproving ? "#10b981" : "#ef4444"} stopOpacity="0" />
+                                </linearGradient>
+                            </defs>
+
+                            <path
+                                d={`${getCurvePoints()} L95,95 L10,95 Z`}
+                                fill="url(#chartGradient)"
+                                className="animate-[draw_1s_ease-in-out]"
+                            />
+
+                            <path
+                                d={getCurvePoints()}
                                 fill="none"
                                 stroke={isImproving ? "#10b981" : "#ef4444"}
                                 strokeWidth="2"
-                                points={sortedAttempts.map((attempt, index) => {
-                                    const x = (index / (sortedAttempts.length - 1)) * 90 + 5;
-                                    const y = 95 - (attempt.percentage * 0.9);
-                                    return `${x},${y}`;
-                                }).join(' ')}
+                                className="animate-[draw_1s_ease-in-out]"
                             />
+
                             {sortedAttempts.map((attempt, index) => {
-                                const x = (index / (sortedAttempts.length - 1)) * 90 + 5;
-                                const y = 95 - (attempt.percentage * 0.9);
+                                const x = (index / (sortedAttempts.length - 1)) * 85 + 10;
+                                const y = 95 - (attempt.percentage * 0.95);
                                 return (
-                                    <circle
-                                        key={index}
-                                        cx={x}
-                                        cy={y}
-                                        r="2"
-                                        fill={isImproving ? "#10b981" : "#ef4444"}
-                                    />
+                                    <Tooltip key={index}>
+                                        <TooltipTrigger asChild>
+                                            <g onMouseEnter={() => setHoveredPoint(index)} onMouseLeave={() => setHoveredPoint(null)}>
+                                                <circle
+                                                    cx={x}
+                                                    cy={y}
+                                                    r={hoveredPoint === index ? "3" : "2"}
+                                                    fill={isImproving ? "#10b981" : "#ef4444"}
+                                                    className="transition-all duration-200"
+                                                />
+                                            </g>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p className="text-sm font-medium">{attempt.percentage}%</p>
+                                        </TooltipContent>
+                                    </Tooltip>
                                 );
                             })}
                         </svg>
                     </div>
+
+                    <div className="absolute top-4 right-4 flex items-center space-x-2 bg-white/80 backdrop-blur-sm px-3 py-8 rounded-full shadow">
+                        {isImproving ? (
+                            <>
+                                <TrendingUp className="h-5 w-5 text-green-600" />
+                                <span className="text-sm font-medium text-green-600">
+                                    +{trendPercentage}% trend
+                                </span>
+                            </>
+                        ) : (
+                            <>
+                                <TrendingDown className="h-5 w-5 text-red-600" />
+                                <span className="text-sm font-medium text-red-600">
+                                    -{trendPercentage}% trend
+                                </span>
+                            </>
+                        )}
+                    </div>
+
+                    <style jsx>{`
+                        @keyframes draw {
+                            from {
+                                stroke-dashoffset: 1000;
+                            }
+                            to {
+                                stroke-dashoffset: 0;
+                            }
+                        }
+                        path {
+                            stroke-dasharray: 1000;
+                            stroke-dashoffset: 1000;
+                            animation: draw 1s ease-in-out forwards;
+                        }
+                    `}</style>
                 </div>
-                
-                <div className="absolute top-0 right-0 flex items-center space-x-2">
-                    {isImproving ? (
-                        <>
-                            <TrendingUp className="h-5 w-5 text-green-600" />
-                            <span className="text-sm font-medium text-green-600">
-                                +{trendPercentage}% trend
-                            </span>
-                        </>
-                    ) : (
-                        <>
-                            <TrendingDown className="h-5 w-5 text-red-600" />
-                            <span className="text-sm font-medium text-red-600">
-                                -{trendPercentage}% trend
-                            </span>
-                        </>
-                    )}
-                </div>
-            </div>
+            </TooltipProvider>
         );
     };
 
@@ -199,7 +266,6 @@ const QuizHistory: React.FC<QuizHistoryProps> = ({ open, onOpenChange }) => {
                         <TabsTrigger value="history">Quiz History</TabsTrigger>
                         <TabsTrigger value="stats">Statistics</TabsTrigger>
                     </TabsList>
-
                     <TabsContent value="history" className="space-y-4">
                         <ScrollArea className="h-[60vh]">
                             {attempts.length === 0 ? (
