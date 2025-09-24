@@ -247,7 +247,7 @@ const FlashcardStudyPage = () => {
                                 onClick={handleFlipCard}
                             >
                                 <CardContent className="h-full flex flex-col justify-between p-8">
-                                    <div className="flex justify-between items-center -mt-8">
+                                    <div className="flex justify-between items-center">
                                         <Badge className="bg-blue-100 text-blue-800 border-blue-200">
                                             Answer
                                         </Badge>
@@ -257,11 +257,8 @@ const FlashcardStudyPage = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex-1 flex flex-col justify-center space-y-6">
+                                    <div className="flex-1 flex flex-col items-center justify-center space-y-6">
                                         <div className="text-center">
-                                            <p className="text-sm font-medium text-blue-700 mb-3">Question:</p>
-                                            <p className="text-lg text-gray-700 mb-6">{currentCard.front}</p>
-                                            
                                             <div className="border-t border-blue-200 pt-6">
                                                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                                     <span className="text-2xl">✅</span>
