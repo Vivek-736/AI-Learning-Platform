@@ -294,7 +294,7 @@ const FlashcardStudyPage = () => {
                 {isFlipped && (
                     <div className="mb-8 flex justify-center">
                         <Card className="w-96 border-2 border-gray-200 bg-white shadow-lg">
-                            <CardContent className="pt-6">
+                            <CardContent className="pt-2">
                                 <div className="flex justify-center space-x-4">
                                     <Button
                                         onClick={handleNeedsReview}
