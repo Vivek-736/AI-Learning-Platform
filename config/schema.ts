@@ -84,31 +84,99 @@ export const flashcardProgressTable = pgTable("flashcardProgress", {
     totalTimeSpent: integer().default(0)
 });
 
-export const interviewsTable = pgTable("interviews", {
+export const interviewTemplatesTable = pgTable("interviewTemplates", {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    iid: varchar().notNull().unique(),
+    templateId: varchar().notNull().unique(),
     title: varchar().notNull(),
-    type: varchar().notNull(),
-    courseId: varchar('courseId').references(() => coursesTable.cid),
-    customTopic: varchar(),
-    questions: json().notNull(),
+    description: text(),
+    courseId: varchar('courseId').references(() => coursesTable.cid).notNull(),
+    creatorEmail: varchar('creatorEmail').references(() => usersTable.email).notNull(),
     difficulty: varchar().default('medium'),
-    duration: integer().default(30),
-    userEmail: varchar('userEmail').references(() => usersTable.email).notNull(),
+    estimatedDuration: integer().default(15),
+    questions: json().notNull(),
+    skillsToAssess: json().notNull(),
+    isActive: boolean().default(true),
     createdAt: timestamp().defaultNow(),
     updatedAt: timestamp().defaultNow()
 });
 
-export const interviewAttemptsTable = pgTable("interviewAttempts", {
+export const interviewLinksTable = pgTable("interviewLinks", {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    attemptId: varchar().notNull().unique(),
-    interviewId: varchar('interviewId').references(() => interviewsTable.iid).notNull(),
-    userEmail: varchar('userEmail').references(() => usersTable.email).notNull(),
-    vapiCallId: varchar(),
-    responses: json(),
-    overallScore: integer(),
-    feedback: text(),
-    duration: integer(),
+    linkId: varchar().notNull().unique(),
+    templateId: varchar('templateId').references(() => interviewTemplatesTable.templateId).notNull(),
+    createdBy: varchar('createdBy').references(() => usersTable.email).notNull(),
+    title: varchar().notNull(),
+    instructions: text(),
+    expiresAt: timestamp(),
+    maxAttempts: integer(),
+    isActive: boolean().default(true),
+    allowAnonymous: boolean().default(true),
+    createdAt: timestamp().defaultNow()
+});
+
+export const interviewSessionsTable = pgTable("interviewSessions", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    sessionId: varchar().notNull().unique(),
+    linkId: varchar('linkId').references(() => interviewLinksTable.linkId).notNull(),
+    templateId: varchar('templateId').references(() => interviewTemplatesTable.templateId).notNull(),
+    candidateName: varchar().notNull(),
+    candidateEmail: varchar().notNull(),
+    candidatePhone: varchar(),
     status: varchar().default('pending'),
-    completedAt: timestamp().defaultNow()
+    startedAt: timestamp(),
+    completedAt: timestamp(),
+    duration: integer(),
+    conversationTranscript: json(),
+    audioRecordingUrl: varchar(),
+    overallScore: integer(),
+    skillScores: json(),
+    detailedFeedback: json(),
+    strengths: json(),
+    improvements: json(),
+    recommendations: json(),
+    ipAddress: varchar(),
+    userAgent: text(),
+    createdAt: timestamp().defaultNow()
+});
+
+export const interviewFeedbackTable = pgTable("interviewFeedback", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    feedbackId: varchar().notNull().unique(),
+    sessionId: varchar('sessionId').references(() => interviewSessionsTable.sessionId).notNull(),
+    templateId: varchar('templateId').references(() => interviewTemplatesTable.templateId).notNull(),
+    creatorEmail: varchar('creatorEmail').references(() => usersTable.email).notNull(),
+    isVisible: boolean().default(true),
+    candidateName: varchar().notNull(),
+    candidateEmail: varchar().notNull(),
+    completedAt: timestamp().notNull(),
+    overallScore: integer().notNull(),
+    summary: text(),
+    createdAt: timestamp().defaultNow()
+});
+
+export const interviewAnalyticsTable = pgTable("interviewAnalytics", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    templateId: varchar('templateId').references(() => interviewTemplatesTable.templateId).notNull(),
+    linkId: varchar('linkId').references(() => interviewLinksTable.linkId),
+    totalAttempts: integer().default(0),
+    completedAttempts: integer().default(0),
+    averageScore: integer().default(0),
+    averageDuration: integer().default(0),
+    dateRecorded: timestamp().defaultNow(),
+    topSkillScores: json(),
+    commonWeaknesses: json(),
+    createdAt: timestamp().defaultNow(),
+    updatedAt: timestamp().defaultNow()
+});
+
+export const interviewNotificationsTable = pgTable("interviewNotifications", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    notificationId: varchar().notNull().unique(),
+    recipientEmail: varchar('recipientEmail').references(() => usersTable.email).notNull(),
+    sessionId: varchar('sessionId').references(() => interviewSessionsTable.sessionId).notNull(),
+    type: varchar().notNull(),
+    title: varchar().notNull(),
+    message: text().notNull(),
+    isRead: boolean().default(false),
+    createdAt: timestamp().defaultNow()
 });
