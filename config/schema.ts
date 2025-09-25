@@ -72,18 +72,6 @@ export const flashcardSetsTable = pgTable("flashcardSets", {
     updatedAt: timestamp().defaultNow()
 });
 
-export const flashcardProgressTable = pgTable("flashcardProgress", {
-    id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    progressId: varchar().notNull().unique(),
-    flashcardSetId: varchar('flashcardSetId').references(() => flashcardSetsTable.fid).notNull(),
-    userEmail: varchar('userEmail').references(() => usersTable.email).notNull(),
-    masteredCards: json().default([]),
-    reviewCards: json().default([]),
-    lastStudied: timestamp().defaultNow(),
-    studySessions: integer().default(0),
-    totalTimeSpent: integer().default(0)
-});
-
 export const interviewTemplatesTable = pgTable("interviewTemplates", {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
     templateId: varchar().notNull().unique(),
