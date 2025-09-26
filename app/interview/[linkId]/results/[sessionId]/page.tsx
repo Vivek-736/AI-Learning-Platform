@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Trophy, Clock, Target, CheckCircle, AlertTriangle, Lightbulb, Star } from 'lucide-react';
+import { Trophy, CheckCircle, AlertTriangle, Lightbulb, Star } from 'lucide-react';
 import axios from 'axios';
 
 interface InterviewResults {
@@ -66,12 +66,6 @@ const InterviewResultsPage = () => {
         return 'Needs Improvement';
     };
 
-    const formatTime = (seconds: number) => {
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${mins}m ${secs}s`;
-    };
-
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center">
@@ -110,17 +104,6 @@ const InterviewResultsPage = () => {
                             <div className="text-4xl font-bold">{results.overallScore}</div>
                         </div>
                         <h3 className="text-2xl font-bold mb-2">{getScoreLabel(results.overallScore)}</h3>
-                        <div className="flex justify-center space-x-6 text-sm text-gray-600">
-                            <div className="flex items-center">
-                                <Clock className="h-4 w-4 mr-1" />
-                                {formatTime(results.duration)}
-                            </div>
-                            <div className="flex items-center">
-                                <Target className="h-4 w-4 mr-1" />
-                                {results.courseName}
-                            </div>
-                            <Badge>{results.difficulty}</Badge>
-                        </div>
                     </CardContent>
                 </Card>
 
