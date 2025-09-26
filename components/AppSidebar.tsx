@@ -16,6 +16,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import {
   Book,
+  Bot,
   Compass,
   LayoutDashboard,
   PencilRulerIcon,
@@ -50,6 +51,11 @@ const AppSidebar = () => {
       title: "AI Tools",
       icon: PencilRulerIcon,
       path: "/workspace/ai-tools",
+    },
+    {
+      title: "Assistant",
+      icon: Bot,
+      path: "/workspace/assistant"
     },
     {
       title: "Account Billing",
