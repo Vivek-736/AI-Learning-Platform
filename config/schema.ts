@@ -168,3 +168,36 @@ export const interviewNotificationsTable = pgTable("interviewNotifications", {
     isRead: boolean().default(false),
     createdAt: timestamp().defaultNow()
 });
+
+export const assistantConversationsTable = pgTable("assistantConversations", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    conversationId: varchar().notNull().unique(),
+    enrollmentId: integer('enrollmentId').references(() => enrollCourseTable.id).notNull(),
+    userEmail: varchar('userEmail').references(() => usersTable.email).notNull(),
+    title: varchar().default("New Conversation"),
+    isActive: boolean().default(true),
+    lastMessageAt: timestamp().defaultNow(),
+    createdAt: timestamp().defaultNow(),
+    updatedAt: timestamp().defaultNow()
+});
+
+export const assistantMessagesTable = pgTable("assistantMessages", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    messageId: varchar().notNull().unique(),
+    conversationId: varchar('conversationId').references(() => assistantConversationsTable.conversationId).notNull(),
+    role: varchar().notNull(),
+    content: text().notNull(),
+    timestamp: timestamp().defaultNow(),
+    tokenCount: integer(),
+    metadata: json()
+});
+
+export const assistantContextTable = pgTable("assistantContext", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    enrollmentId: integer('enrollmentId').references(() => enrollCourseTable.id).notNull(),
+    contextType: varchar().notNull(),
+    contextData: json().notNull(),
+    embeddings: json(),
+    createdAt: timestamp().defaultNow(),
+    updatedAt: timestamp().defaultNow()
+});
