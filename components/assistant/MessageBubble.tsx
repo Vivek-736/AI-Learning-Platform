@@ -34,7 +34,7 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
 
   const handleFeedback = (type: 'up' | 'down') => {
     setFeedback(type);
-    console.log(`Feedback for message ${message.id}: ${type}`);
+    // console.log(`Feedback for message ${message.id}: ${type}`);
   };
 
   const formatContent = (content: string) => {

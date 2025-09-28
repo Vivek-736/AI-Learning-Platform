@@ -13,7 +13,7 @@ export async function GET(request: Request) {
         const result = await db.select().from(coursesTable)
         .where(eq(coursesTable.cid, courseId))
         
-        console.log(result);
+        // console.log(result);
         return NextResponse.json(result[0]);
     } else {
         if (!user?.primaryEmailAddress?.emailAddress) {
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
         
         const result = await db.select().from(coursesTable).where(eq(coursesTable.userEmail, user.primaryEmailAddress.emailAddress)).orderBy(desc(coursesTable.id));
 
-        console.log(result);
+        // console.log(result);
         return NextResponse.json(result);
     }
 }

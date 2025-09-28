@@ -41,7 +41,7 @@ const CourseList: React.FC<CourseListProps> = ({ onCourseEnrolled }) => {
         setLoading(true);
         try {
             const result = await axios.get('/api/courses');
-            console.log(result.data);
+            // console.log(result.data);
             setCourseList(result.data);
         } catch (error) {
             console.error('Error fetching courses:', error);

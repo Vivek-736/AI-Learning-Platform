@@ -29,11 +29,11 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
             ...prev,
             [field]: value
         }));
-        console.log(formData);
+        // console.log(formData);
     };
 
     const onGenerate = async () => {
-        console.log(formData);
+        // console.log(formData);
         const courseId = uuidv4();
         try {
             setLoading(true);
@@ -41,7 +41,7 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                 ...formData,
                 courseId
             });
-            console.log(result.data);
+            // console.log(result.data);
             setLoading(false);
             setOpen(false);
             router.push(`/workspace/edit-course/${result.data?.courseId}`);

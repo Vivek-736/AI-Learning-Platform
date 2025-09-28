@@ -62,7 +62,7 @@ export async function POST(request: Request) {
     contents,
     config,
   });
-  console.log(response?.candidates?.[0]?.content?.parts?.[0]?.text);
+  // console.log(response?.candidates?.[0]?.content?.parts?.[0]?.text);
 
   const RawResponse = response?.candidates?.[0]?.content?.parts?.[0]?.text;
   const RawJson = RawResponse?.replace("```json", "")?.replace("```", "");
@@ -103,6 +103,6 @@ const GenerateImage = async (imagePrompt: string) => {
       },
     }
   );
-  console.log(result.data.image);
+  // console.log(result.data.image);
   return result.data.image;
 };

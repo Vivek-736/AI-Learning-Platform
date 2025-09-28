@@ -42,12 +42,13 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
   const generateCourseContent = async (): Promise<void> => {
     setLoading(true);
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const result = await axios.post('/api/generate-course-content', {
         courseJson: courseLayout,
         courseTitle: course?.name,
         courseId: course?.cid,
       });
-      console.log(result.data);
+      // console.log(result.data);
       setIsContentGenerated(true);
       setLoading(false);
       toast.success('Course content generated successfully!');
@@ -64,7 +65,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
       const result = await axios.post('/api/enroll-course', {
         courseId: course?.cid,
       });
-      console.log(result.data);
+      // console.log(result.data);
       if(result.data.res === 'Already Enrolled') {
         toast.warning('You are already enrolled in this course.');
         setIsLoading(false);

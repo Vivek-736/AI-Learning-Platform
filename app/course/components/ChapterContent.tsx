@@ -106,7 +106,7 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                 courseId: courseId
             });
             
-            console.log(result);
+            // console.log(result);
             refreshData();
             toast.success('Chapter marked as completed!');
         } catch (error) {

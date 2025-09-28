@@ -23,7 +23,7 @@ function Provider( { children }: { children: React.ReactNode } ) {
             name: user?.fullName,
             email: user?.primaryEmailAddress?.emailAddress
         });
-        console.log("User data:", result.data);
+        // console.log("User data:", result.data);
         
         setUserDetail(result.data);
     }

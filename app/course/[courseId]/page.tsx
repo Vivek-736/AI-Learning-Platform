@@ -22,7 +22,7 @@ const CoursePage = () => {
         setLoading(true);
         try {
             const result = await axios.get('/api/enroll-course?courseId=' + courseId);
-            console.log(result.data);
+            // console.log(result.data);
             setCourseInfo(result.data);
         } catch (error) {
             console.error('Error fetching course:', error);

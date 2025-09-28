@@ -25,7 +25,7 @@ const EnrollCourseList: React.FC<EnrollCourseListProps> = ({ refreshTrigger }) =
     const GetEnrolledCourses = async (): Promise<void> => {
         try {
             const result = await axios.get('/api/enroll-course');
-            console.log(result.data);
+            // console.log(result.data);
             setEnrolledCourseList(result.data);
         } catch (error) {
             console.error('Error fetching enrolled courses:', error);

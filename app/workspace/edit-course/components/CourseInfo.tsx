@@ -35,12 +35,13 @@ const CourseInfo = ({ course, viewCourse }: CourseInfoProps) => {
     const GenerateCourseContent = async () => {
         setLoading(true);
         try {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const result = await axios.post('/api/generate-course-content', {
                 courseJson: courseLayout,
                 courseTitle: course?.name,
                 courseId: course?.cid
             });
-            console.log(result.data);
+            // console.log(result.data);
             setLoading(false);
             router.replace('/workspace');
             toast.success('Course generated successfully!');

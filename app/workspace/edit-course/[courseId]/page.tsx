@@ -29,7 +29,7 @@ const EditCoursePage = ({ viewCourse = false }: EditCoursePageProps) => {
         setLoading(true);
         try {
             const result = await axios.get(`/api/courses?courseId=${courseId}`);
-            console.log(result.data);
+            // console.log(result.data);
             setCourse(result.data);
         } catch (error) {
             console.error('Error fetching course:', error);
@@ -42,7 +42,7 @@ const EditCoursePage = ({ viewCourse = false }: EditCoursePageProps) => {
         setLoading(true);
         try {
             const result = await axios.get(`/api/enroll-course?courseId=${courseId}`);
-            console.log(result.data);
+            // console.log(result.data);
             setCourse(result.data?.courses);
             setEnrollCourse(result.data?.enrollCourse);
         } catch (error) {

@@ -18,7 +18,7 @@ export async function POST(request: Request) {
             // @ts-ignore
         }).returning(usersTable);
 
-        console.log("New user created:", result);
+        // console.log("New user created:", result);
         return NextResponse.json(result[0]);
     }
     

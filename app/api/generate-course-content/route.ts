@@ -135,7 +135,7 @@ const GetYoutubeVideos = async (topic: string) => {
             }
         });
 
-        console.log('YouTube Videos for topic:', topic, youtubeVideoList);
+        // console.log('YouTube Videos for topic:', topic, youtubeVideoList);
         return youtubeVideoList;
     } catch (error) {
         console.error('Error fetching YouTube videos for topic:', topic, error);
