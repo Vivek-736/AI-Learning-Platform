@@ -77,6 +77,7 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                                     Course Description (Optional)
                                 </label>
                                 <Textarea
+                                    className='h-24 resize-none'
                                     placeholder='Enter Course Description'
                                     onChange={(event) => onHandleInputChange('description', event?.target.value)}
                                 />
