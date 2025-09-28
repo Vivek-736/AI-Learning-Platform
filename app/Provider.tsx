@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useUser } from '@clerk/nextjs';
 import { UserDetailContext } from '@/context/userDetailContext';
 import { SelectedChapterIndexContext } from '@/context/selectedChapterIndexContext';
+import { AssistantProvider } from '@/context/assistantContext';
 
 function Provider( { children }: { children: React.ReactNode } ) {
     const { user } = useUser();
@@ -30,9 +31,11 @@ function Provider( { children }: { children: React.ReactNode } ) {
     return (
         <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
             <SelectedChapterIndexContext.Provider value={{ selectedChapterIndex, setSelectedChapterIndex }}>
-                <div>
-                    {children}
-                </div>
+                <AssistantProvider>
+                    <div>
+                        {children}
+                    </div>
+                </AssistantProvider>
             </SelectedChapterIndexContext.Provider>
         </UserDetailContext.Provider>
     )
