@@ -69,7 +69,8 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
       
       return (
         <div key={index}>
-          {part.split(/(`[^`]+`|\*\*[^*]+\*\*)/g).map((segment, segIndex) => {
+          {part.split(/(`[^`]+`|\*\*[^*]+\*\*|<sup>[^<]+<\/sup>|<sub>[^<]+<\/sub>|<[^>]+>[^<]*<\/[^>]+>)/g).map((segment, segIndex) => {
+            // Handle inline code
             if (segment.startsWith('`') && segment.endsWith('`')) {
               return (
                 <code
@@ -81,6 +82,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               );
             }
             
+            // Handle bold text
             if (segment.startsWith('**') && segment.endsWith('**')) {
               return (
                 <strong
@@ -90,6 +92,88 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
                   {segment.slice(2, -2)}
                 </strong>
               );
+            }
+
+            // Handle superscript
+            if (segment.startsWith('<sup>') && segment.endsWith('</sup>')) {
+              return (
+                <sup
+                  key={segIndex}
+                  className="text-xs font-medium text-purple-600"
+                  style={{ fontSize: '0.6em', verticalAlign: 'super' }}
+                >
+                  {segment.slice(5, -6)}
+                </sup>
+              );
+            }
+
+            // Handle subscript
+            if (segment.startsWith('<sub>') && segment.endsWith('</sub>')) {
+              return (
+                <sub
+                  key={segIndex}
+                  className="text-xs font-medium text-purple-600"
+                  style={{ fontSize: '0.6em', verticalAlign: 'sub' }}
+                >
+                  {segment.slice(5, -6)}
+                </sub>
+              );
+            }
+
+            // Handle other HTML tags (em, strong, u, etc.)
+            if (segment.startsWith('<') && segment.includes('</')) {
+              const tagMatch = segment.match(/^<(\w+)>([^<]*)<\/\1>$/);
+              if (tagMatch) {
+                const [, tag, content] = tagMatch;
+                switch (tag.toLowerCase()) {
+                  case 'em':
+                  case 'i':
+                    return (
+                      <em
+                        key={segIndex}
+                        className="italic text-purple-600 font-medium"
+                      >
+                        {content}
+                      </em>
+                    );
+                  case 'u':
+                    return (
+                      <u
+                        key={segIndex}
+                        className="underline text-purple-600"
+                      >
+                        {content}
+                      </u>
+                    );
+                  case 'mark':
+                    return (
+                      <mark
+                        key={segIndex}
+                        className="bg-yellow-200 text-gray-900 px-1 rounded"
+                      >
+                        {content}
+                      </mark>
+                    );
+                  case 'small':
+                    return (
+                      <small
+                        key={segIndex}
+                        className="text-sm text-gray-600"
+                      >
+                        {content}
+                      </small>
+                    );
+                  default:
+                    return (
+                      <span
+                        key={segIndex}
+                        className="text-purple-600 font-medium"
+                      >
+                        {content}
+                      </span>
+                    );
+                }
+              }
             }
             
             return (
