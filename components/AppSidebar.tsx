@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   Sidebar,
@@ -22,6 +22,7 @@ import {
   PencilRulerIcon,
   UserCircle2Icon,
   WalletCards,
+  BarChart2,
 } from "lucide-react";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
@@ -31,6 +32,20 @@ import AddNewCourseDialog from "./AddNewCourseDialog";
 const AppSidebar = () => {
   const { user } = useUser();
   const pathname = usePathname();
+
+  const adminEmails = [
+    "asishpraneethnamala@gmail.com",
+    "vivekvrc777@gmail.com",
+    "ashrafgalibshaik@gmail.com",
+    "yasodamalavya2006@gmail.com",
+    "myvini1411@gmail.com",
+    "chakkaharshitha98@gmail.com",
+  ];
+
+  const isAdmin =
+    user &&
+    adminEmails.includes(user?.primaryEmailAddress?.emailAddress as string);
+
   const SidebarOptions = [
     {
       title: "Dashboard",
@@ -55,7 +70,7 @@ const AppSidebar = () => {
     {
       title: "Assistant",
       icon: Bot,
-      path: "/workspace/assistant"
+      path: "/workspace/assistant",
     },
     {
       title: "Account Billing",
@@ -67,6 +82,15 @@ const AppSidebar = () => {
       icon: UserCircle2Icon,
       path: "/workspace/profile",
     },
+    ...(isAdmin
+      ? [
+          {
+            title: "Admin Panel",
+            icon: BarChart2,
+            path: "/workspace/analytics",
+          },
+        ]
+    : []),
   ];
 
   return (
@@ -78,9 +102,7 @@ const AppSidebar = () => {
       <SidebarContent>
         <SidebarGroup>
           <AddNewCourseDialog>
-            <Button className="cursor-pointer">
-              Create New Course
-            </Button>
+            <Button className="cursor-pointer">Create New Course</Button>
           </AddNewCourseDialog>
         </SidebarGroup>
         <SidebarGroup>
@@ -89,7 +111,13 @@ const AppSidebar = () => {
               {SidebarOptions.map((item, index) => (
                 <SidebarMenuItem key={index}>
                   <SidebarMenuButton asChild className="p-5">
-                    <Link href={item.path} className={`text-[17px] ${pathname === item.path ? "text-primary bg-purple-100" : "text-gray-600 hover:text-black"} flex items-center space-x-3`}>
+                    <Link
+                      href={item.path}
+                      className={`text-[17px] ${
+                        pathname === item.path
+                          ? "text-primary bg-purple-100"
+                          : "text-gray-600 hover:text-black"
+                      } flex items-center space-x-3`}>
                       <item.icon className="h-7 w-7" />
                       <span>{item.title}</span>
                     </Link>
