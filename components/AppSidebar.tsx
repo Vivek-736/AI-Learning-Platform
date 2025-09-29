@@ -23,6 +23,7 @@ import {
   UserCircle2Icon,
   WalletCards,
   BarChart2,
+  MapPin,
 } from "lucide-react";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
@@ -61,6 +62,11 @@ const AppSidebar = () => {
       title: "Explore Courses",
       icon: Compass,
       path: "/workspace/explore",
+    },
+    {
+      title: "NSQF Mapping",
+      icon: MapPin,
+      path: "/workspace/nsqf-mapping",
     },
     {
       title: "AI Tools",
