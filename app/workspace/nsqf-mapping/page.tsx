@@ -66,7 +66,6 @@ const NSQFMappingPage = () => {
 
     try {
       await navigator.clipboard.writeText(text);
-      
       setCopiedId(`${career.id}-${type}`);
       setTimeout(() => setCopiedId(""), 2000);
     } catch (err) {
@@ -172,11 +171,6 @@ const NSQFMappingPage = () => {
                 </option>
               ))}
             </select>
-          </div>
-
-          <div className="mt-4 text-sm text-gray-600">
-            Showing {filteredCareers.length} of {nsqfCareers.length} career
-            pathways
           </div>
         </div>
 

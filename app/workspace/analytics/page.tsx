@@ -373,7 +373,7 @@ const AnalyticsPage = () => {
                     <BarChart data={getTopPerformers()} layout="vertical">
                       <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                       <XAxis type="number" stroke="#888" />
-                      <YAxis dataKey="name" type="category" width={100} stroke="#888" />
+                      <YAxis dataKey="name" type="category" width={150} stroke="#888" />
                       <Tooltip
                         contentStyle={{
                           backgroundColor: 'rgba(255, 255, 255, 0.95)',
