@@ -6,7 +6,6 @@ import { Download, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
   readonly userChoice: Promise<{
@@ -23,16 +22,21 @@ const PWAInstallButton = () => {
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
-      if (!deferredPrompt) {
+      const dismissed = sessionStorage.getItem('pwa-install-dismissed');
+      if (!dismissed && !deferredPrompt) {
         e.preventDefault();
         setDeferredPrompt(e as BeforeInstallPromptEvent);
         setShowInstallButton(true);
+        console.log('PWA install prompt captured');
       }
     };
 
     const handleAppInstalled = () => {
       setShowInstallButton(false);
       setDeferredPrompt(null);
+      // Clear dismissal since app is now installed
+      sessionStorage.removeItem('pwa-install-dismissed');
+      console.log('PWA was installed');
     };
 
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -47,7 +51,10 @@ const PWAInstallButton = () => {
 
     if ((window as any).deferredPWAInstallPrompt && !deferredPrompt) {
       setDeferredPrompt((window as any).deferredPWAInstallPrompt);
-      setShowInstallButton(true);
+      const dismissed = sessionStorage.getItem('pwa-install-dismissed');
+      if (!dismissed) {
+        setShowInstallButton(true);
+      }
     }
 
     return () => {
@@ -58,20 +65,43 @@ const PWAInstallButton = () => {
   }, []);
 
   const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
-    (window as any).deferredPWAInstallPrompt = deferredPrompt;
-    await deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
-      (window as any).deferredPWAInstallPrompt = null;
+    if (!deferredPrompt) {
+      console.log('No deferred prompt available');
+      return;
     }
-    setDeferredPrompt(null);
-    setShowInstallButton(false);
+    
+    try {
+      console.log('Showing install prompt...');
+      (window as any).deferredPWAInstallPrompt = deferredPrompt;
+      
+      await deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      console.log('Install prompt outcome:', outcome);
+      
+      if (outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+        (window as any).deferredPWAInstallPrompt = null;
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+    } catch (error) {
+      console.error('Error showing install prompt:', error);
+    } finally {
+      setDeferredPrompt(null);
+      setShowInstallButton(false);
+    }
   };
 
   const handleDismiss = () => {
     setShowInstallButton(false);
     sessionStorage.setItem('pwa-install-dismissed', 'true');
+    console.log('Install button dismissed');
+    
+    if (deferredPrompt) {
+      setDeferredPrompt(null);
+      (window as any).deferredPWAInstallPrompt = null;
+    }
   };
 
   useEffect(() => {
