@@ -24,10 +24,15 @@ const PWAInstallButton = () => {
     const handleBeforeInstallPrompt = (e: Event) => {
       const dismissed = sessionStorage.getItem('pwa-install-dismissed');
       if (!dismissed && !deferredPrompt) {
+        // Prevent the mini-infobar from appearing on mobile
         e.preventDefault();
-        setDeferredPrompt(e as BeforeInstallPromptEvent);
+        // Stash the event so it can be triggered later
+        const promptEvent = e as BeforeInstallPromptEvent;
+        setDeferredPrompt(promptEvent);
+        // Store globally for persistence
+        (window as any).deferredPWAInstallPrompt = promptEvent;
         setShowInstallButton(true);
-        console.log('PWA install prompt captured');
+        console.log('PWA install prompt captured and ready');
       }
     };
 
@@ -72,16 +77,25 @@ const PWAInstallButton = () => {
     
     try {
       console.log('Showing install prompt...');
-      (window as any).deferredPWAInstallPrompt = deferredPrompt;
       
+      // Show the install prompt
       await deferredPrompt.prompt();
+      
+      // Wait for the user to respond to the prompt
       const { outcome } = await deferredPrompt.userChoice;
       
       console.log('Install prompt outcome:', outcome);
       
       if (outcome === 'accepted') {
         console.log('User accepted the install prompt');
+        // Clear the stored prompt
         (window as any).deferredPWAInstallPrompt = null;
+        
+        // After successful install, redirect to open the app
+        setTimeout(() => {
+          // This will open the installed PWA
+          window.location.href = window.location.origin;
+        }, 1000);
       } else {
         console.log('User dismissed the install prompt');
       }

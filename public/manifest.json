@@ -2,11 +2,11 @@
   "name": "EruditeAI - AI Learning Platform",
   "short_name": "EruditeAI",
   "description": "Your AI-powered learning companion for smarter education",
-  "start_url": "/",
+  "start_url": "/?source=pwa",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#9333ea",
-  "orientation": "portrait-primary",
+  "orientation": "any",
   "scope": "/",
   "icons": [
     {
