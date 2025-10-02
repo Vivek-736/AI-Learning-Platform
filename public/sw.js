@@ -1,4 +1,4 @@
-const CACHE_NAME = 'erudite-ai-v1';
+const CACHE_NAME = 'erudite-ai-v2';
 const urlsToCache = [
   '/',
   '/workspace',
@@ -6,15 +6,16 @@ const urlsToCache = [
   '/workspace/my-courses',
   '/workspace/explore',
   '/favicon.png',
+  '/icon-192.png',
+  '/icon-512.png',
   '/manifest.json'
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => {
-        return cache.addAll(urlsToCache);
-      })
+      .then((cache) => cache.addAll(urlsToCache))
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -37,6 +38,6 @@ self.addEventListener('activate', (event) => {
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });

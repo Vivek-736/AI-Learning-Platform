@@ -23,25 +23,20 @@ const PWAInstallButton = () => {
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
       const dismissed = sessionStorage.getItem('pwa-install-dismissed');
+      
       if (!dismissed && !deferredPrompt) {
-        // Prevent the mini-infobar from appearing on mobile
         e.preventDefault();
-        // Stash the event so it can be triggered later
         const promptEvent = e as BeforeInstallPromptEvent;
         setDeferredPrompt(promptEvent);
-        // Store globally for persistence
         (window as any).deferredPWAInstallPrompt = promptEvent;
         setShowInstallButton(true);
-        console.log('PWA install prompt captured and ready');
       }
     };
 
     const handleAppInstalled = () => {
       setShowInstallButton(false);
       setDeferredPrompt(null);
-      // Clear dismissal since app is now installed
       sessionStorage.removeItem('pwa-install-dismissed');
-      console.log('PWA was installed');
     };
 
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -50,16 +45,16 @@ const PWAInstallButton = () => {
     if (!isStandalone && !isInWebAppiOS) {
       window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.addEventListener('appinstalled', handleAppInstalled);
+      
+      if ((window as any).deferredPWAInstallPrompt && !deferredPrompt) {
+        setDeferredPrompt((window as any).deferredPWAInstallPrompt);
+        const dismissed = sessionStorage.getItem('pwa-install-dismissed');
+        if (!dismissed) {
+          setShowInstallButton(true);
+        }
+      }
     } else {
       setShowInstallButton(false);
-    }
-
-    if ((window as any).deferredPWAInstallPrompt && !deferredPrompt) {
-      setDeferredPrompt((window as any).deferredPWAInstallPrompt);
-      const dismissed = sessionStorage.getItem('pwa-install-dismissed');
-      if (!dismissed) {
-        setShowInstallButton(true);
-      }
     }
 
     return () => {
@@ -70,37 +65,21 @@ const PWAInstallButton = () => {
   }, []);
 
   const handleInstallClick = async () => {
-    if (!deferredPrompt) {
-      console.log('No deferred prompt available');
-      return;
-    }
+    if (!deferredPrompt) return;
     
     try {
-      console.log('Showing install prompt...');
-      
-      // Show the install prompt
       await deferredPrompt.prompt();
       
-      // Wait for the user to respond to the prompt
       const { outcome } = await deferredPrompt.userChoice;
       
-      console.log('Install prompt outcome:', outcome);
-      
       if (outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-        // Clear the stored prompt
         (window as any).deferredPWAInstallPrompt = null;
-        
-        // After successful install, redirect to open the app
         setTimeout(() => {
-          // This will open the installed PWA
           window.location.href = window.location.origin;
         }, 1000);
-      } else {
-        console.log('User dismissed the install prompt');
       }
     } catch (error) {
-      console.error('Error showing install prompt:', error);
+      console.error('PWA install error:', error);
     } finally {
       setDeferredPrompt(null);
       setShowInstallButton(false);
@@ -110,7 +89,6 @@ const PWAInstallButton = () => {
   const handleDismiss = () => {
     setShowInstallButton(false);
     sessionStorage.setItem('pwa-install-dismissed', 'true');
-    console.log('Install button dismissed');
     
     if (deferredPrompt) {
       setDeferredPrompt(null);
@@ -160,7 +138,7 @@ const PWAInstallButton = () => {
 
           <Button
             onClick={handleInstallClick}
-            className="h-14 w-14 rounded-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-lg shadow-purple-500/25 border-2 border-white/20 transition-all duration-300"
+            className="h-14 w-14 cursor-pointer rounded-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-lg shadow-purple-500/25 border-2 border-white/20 transition-all duration-300"
           >
             <Download className="h-6 w-6 text-white" />
           </Button>
