@@ -271,30 +271,3 @@ npm start
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Vivek-736)
 
 </div>
-
----
-
-## 🙏 Acknowledgments
-
-- [Next.js](https://nextjs.org/) for the incredible framework
-- [Google Gemini AI](https://ai.google.dev/) for powerful AI capabilities
-- [Clerk](https://clerk.dev/) for seamless authentication
-- [Neon](https://neon.tech/) for reliable database hosting
-- [VAPI](https://vapi.ai/) for voice AI technology
-- [Vercel](https://vercel.com/) for effortless deployment
-
----
-
-<div align="center">
-  
-  ### 🌟 Star us on GitHub!
-  
-  If EruditeAI helped you learn smarter, please give us a star ⭐
-  
-  **[⭐ Star this repository](https://github.com/Vivek-736/AI-Learning-Platform)**
-  
-  ---
-  
-  **Made with 💜 and lots of ☕ by the EruditeAI Team**
-  
-</div>
