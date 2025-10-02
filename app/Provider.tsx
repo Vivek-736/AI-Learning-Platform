@@ -6,6 +6,7 @@ import { useUser } from '@clerk/nextjs';
 import { UserDetailContext } from '@/context/userDetailContext';
 import { SelectedChapterIndexContext } from '@/context/selectedChapterIndexContext';
 import { AssistantProvider } from '@/context/assistantContext';
+import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
 
 function Provider( { children }: { children: React.ReactNode } ) {
     const { user } = useUser();
@@ -35,6 +36,7 @@ function Provider( { children }: { children: React.ReactNode } ) {
                     <div>
                         {children}
                     </div>
+                    <ServiceWorkerRegistration />
                 </AssistantProvider>
             </SelectedChapterIndexContext.Provider>
         </UserDetailContext.Provider>

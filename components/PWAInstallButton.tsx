@@ -1,0 +1,145 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Download, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[];
+  readonly userChoice: Promise<{
+    outcome: 'accepted' | 'dismissed';
+    platform: string;
+  }>;
+  prompt(): Promise<void>;
+}
+
+const PWAInstallButton = () => {
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const [showInstallButton, setShowInstallButton] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e as BeforeInstallPromptEvent);
+      setShowInstallButton(true);
+    };
+
+    const handleAppInstalled = () => {
+      console.log('PWA was installed');
+      setShowInstallButton(false);
+      setDeferredPrompt(null);
+    };
+
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    const isInWebAppiOS = (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
+    
+    if (!isStandalone && !isInWebAppiOS) {
+      window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.addEventListener('appinstalled', handleAppInstalled);
+    }
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+
+    const { outcome } = await deferredPrompt.userChoice;
+    
+    if (outcome === 'accepted') {
+      console.log('User accepted the install prompt');
+    } else {
+      console.log('User dismissed the install prompt');
+    }
+
+    setDeferredPrompt(null);
+    setShowInstallButton(false);
+  };
+
+  const handleDismiss = () => {
+    setShowInstallButton(false);
+    sessionStorage.setItem('pwa-install-dismissed', 'true');
+  };
+
+  useEffect(() => {
+    const dismissed = sessionStorage.getItem('pwa-install-dismissed');
+    if (dismissed) {
+      setShowInstallButton(false);
+    }
+  }, []);
+
+  if (!showInstallButton) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.8, y: 20 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="fixed bottom-6 right-6 z-50"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <motion.div
+          className="relative group"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <AnimatePresence>
+            {isHovered && (
+              <motion.div
+                initial={{ opacity: 0, x: 10, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 10, scale: 0.9 }}
+                transition={{ duration: 0.2 }}
+                className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg"
+              >
+                Install EruditeAI App
+                <div className="absolute left-full top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900"></div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <Button
+            onClick={handleInstallClick}
+            className="h-14 w-14 rounded-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-lg shadow-purple-500/25 border-2 border-white/20 transition-all duration-300"
+          >
+            <Download className="h-6 w-6 text-white" />
+          </Button>
+
+          <motion.button
+            onClick={handleDismiss}
+            className="absolute -top-2 -right-2 w-6 h-6 bg-gray-900 hover:bg-black text-white rounded-full flex items-center justify-center shadow-md transition-colors duration-200"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <X className="h-3 w-3" />
+          </motion.button>
+
+          <motion.div
+            className="absolute inset-0 rounded-full border-2 border-purple-400/30"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.5, 0, 0.5],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
+export default PWAInstallButton;

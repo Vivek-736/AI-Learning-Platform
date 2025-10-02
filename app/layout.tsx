@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import "./globals.css";
+import { Poppins } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./Provider";
 import { Toaster } from "@/components/ui/sonner"
@@ -11,11 +13,35 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#9333ea",
+};
+
 export const metadata: Metadata = {
   title: "EruditeAI - Your AI Learning Companion",
-  description: "AI-powered learning platform for students and educators.",
+  description: "AI-powered learning platform for students and educators. Transform any content into personalized flashcards, intelligent notes, and interactive voice interviews.",
   icons: {
     icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "EruditeAI",
+  },
+  other: {
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "default",
+    "apple-mobile-web-app-title": "EruditeAI",
+    "application-name": "EruditeAI",
+    "msapplication-TileColor": "#9333ea",
+    "msapplication-config": "/browserconfig.xml",
   },
 };
 
