@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Download, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
   readonly userChoice: Promise<{
