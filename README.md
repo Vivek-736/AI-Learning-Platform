@@ -260,26 +260,6 @@ npm start
 
 ---
 
-## 🛣️ Roadmap
-
-### 🔮 Upcoming Features
-- [ ] Multi-language support
-- [ ] Collaborative study rooms
-- [ ] Advanced analytics dashboard
-- [ ] Mobile app development
-- [ ] Integration with popular LMS platforms
-- [ ] Offline learning capabilities
-- [ ] Video content analysis
-- [ ] Gamification elements
-
-### 🎯 Long-term Vision
-- AI tutoring with personalized learning paths
-- VR/AR integration for immersive learning
-- Peer-to-peer learning networks
-- Advanced proctoring for assessments
-
----
-
 ## 👥 Meet the Team
 
 <div align="center">
