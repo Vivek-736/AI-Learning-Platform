@@ -21,44 +21,48 @@ const PWAInstallButton = () => {
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e as BeforeInstallPromptEvent);
-      setShowInstallButton(true);
+      if (!deferredPrompt) {
+        e.preventDefault();
+        setDeferredPrompt(e as BeforeInstallPromptEvent);
+        setShowInstallButton(true);
+      }
     };
 
     const handleAppInstalled = () => {
-      console.log('PWA was installed');
       setShowInstallButton(false);
       setDeferredPrompt(null);
     };
 
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
     const isInWebAppiOS = (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
-    
+
     if (!isStandalone && !isInWebAppiOS) {
       window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.addEventListener('appinstalled', handleAppInstalled);
+    } else {
+      setShowInstallButton(false);
+    }
+
+    if ((window as any).deferredPWAInstallPrompt && !deferredPrompt) {
+      setDeferredPrompt((window as any).deferredPWAInstallPrompt);
+      setShowInstallButton(true);
     }
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('appinstalled', handleAppInstalled);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) return;
-
-    deferredPrompt.prompt();
-
+    (window as any).deferredPWAInstallPrompt = deferredPrompt;
+    await deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
-    
     if (outcome === 'accepted') {
-      console.log('User accepted the install prompt');
-    } else {
-      console.log('User dismissed the install prompt');
+      (window as any).deferredPWAInstallPrompt = null;
     }
-
     setDeferredPrompt(null);
     setShowInstallButton(false);
   };
