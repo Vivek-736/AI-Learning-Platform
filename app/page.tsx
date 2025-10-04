@@ -14,7 +14,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-// import PWAInstallButton from "@/components/PWAInstallButton";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -454,7 +453,6 @@ export default function Home() {
           </p>
         </div>
       </footer>
-      {/* <PWAInstallButton /> */}
     </div>
   );
 }
