@@ -101,12 +101,12 @@ Custom Hooks         // Reusable logic patterns
 ### **Backend Power**
 ```typescript
 // API & Database
-Next.js API Routes   // Serverless functions
+Next.js API Routes  // Serverless functions
 Drizzle ORM         // Type-safe database operations
 PostgreSQL (Neon)   // Scalable cloud database
 
 // AI Integration
-Google Gemini AI    // Advanced content generation
+Google Gemini AI   // Advanced content generation
 VAPI               // Voice AI for interviews
 OpenAI (Future)    // Additional AI capabilities
 ```
