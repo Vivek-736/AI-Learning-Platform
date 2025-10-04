@@ -35,12 +35,10 @@ const AppSidebar = () => {
   const pathname = usePathname();
 
   const adminEmails = [
-    "asishpraneethnamala@gmail.com",
     "vivekvrc777@gmail.com",
     "ashrafgalibshaik@gmail.com",
     "yasodamalavya2006@gmail.com",
-    "myvini1411@gmail.com",
-    "chakkaharshitha98@gmail.com",
+    "myvini1411@gmail.com"
   ];
 
   const isAdmin =
