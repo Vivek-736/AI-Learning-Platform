@@ -16,12 +16,10 @@ import {
 import { eq, count } from "drizzle-orm";
 
 const adminEmails = [
-  "asishpraneethnamala@gmail.com",
   "vivekvrc777@gmail.com",
   "ashrafgalibshaik@gmail.com",
   "yasodamalavya2006@gmail.com",
   "myvini1411@gmail.com",
-  "chakkaharshitha98@gmail.com",
 ];
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
