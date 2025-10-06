@@ -117,7 +117,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
           alt="Course Banner"
           width={400}
           height={400}
-          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-48 object-cover transition-transform duration-300"
         />
         <div className="absolute top-3 left-3 flex gap-2">
           {course.level && (

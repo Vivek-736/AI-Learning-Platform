@@ -113,15 +113,13 @@ const ExploreCourses: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+      <div className="min-h-screen bg-white">
         <div className="container mx-auto px-4 py-8">
-          {/* Header Skeleton */}
           <div className="text-center mb-12 animate-pulse">
             <div className="h-12 bg-gray-200 rounded w-96 mx-auto mb-4"></div>
             <div className="h-6 bg-gray-200 rounded w-128 mx-auto"></div>
           </div>
 
-          {/* Filters Skeleton */}
           <div className="mb-8 animate-pulse">
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
               <div className="h-10 bg-gray-200 rounded w-80"></div>
@@ -132,7 +130,6 @@ const ExploreCourses: React.FC = () => {
             </div>
           </div>
 
-          {/* Course Cards Skeleton */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3, 4, 5, 6].map((index) => (
               <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden animate-pulse">
@@ -157,7 +154,7 @@ const ExploreCourses: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+    <div className="min-h-screen bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
