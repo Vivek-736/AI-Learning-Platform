@@ -111,34 +111,76 @@ export async function POST(request: Request) {
 }
 
 const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
+const YOUTUBE_VIDEOS_URL = 'https://www.googleapis.com/youtube/v3/videos';
 
 const GetYoutubeVideos = async (topic: string) => {
     try {
-        const params = {
+        const searchParams = {
             part: 'snippet',
             q: topic,
             type: 'video',
-            maxResults: 3,
+            maxResults: 10,
+            order: 'relevance',
+            videoDuration: 'medium',
+            videoDefinition: 'any',
             key: process.env.YOUTUBE_API_KEY,
         };
-        const res = await axios.get(YOUTUBE_BASE_URL, { params });
-        const youtubeVideoListRes = res.data.items || [];
-        const youtubeVideoList: { videoId: string; title: string }[] = [];
+        
+        const searchRes = await axios.get(YOUTUBE_BASE_URL, { params: searchParams });
+        const searchResults = searchRes.data.items || [];
+
+        if (searchResults.length === 0) {
+            return [];
+        }
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        youtubeVideoListRes.forEach((item: any) => {
-            if (item.id?.videoId && item.snippet?.title) {
-                youtubeVideoList.push({
-                    videoId: item.id.videoId,
-                    title: item.snippet.title,
-                });
-            }
-        });
+        const videoIds = searchResults.map((item: any) => item.id.videoId).join(',');
 
-        // console.log('YouTube Videos for topic:', topic, youtubeVideoList);
-        return youtubeVideoList;
+        const videoParams = {
+            part: 'snippet,contentDetails,statistics',
+            id: videoIds,
+            key: process.env.YOUTUBE_API_KEY,
+        };
+
+        const videoRes = await axios.get(YOUTUBE_VIDEOS_URL, { params: videoParams });
+        const videoDetails = videoRes.data.items || [];
+
+        const processedVideos = videoDetails
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .map((video: any) => ({
+                videoId: video.id,
+                title: video.snippet.title,
+                viewCount: parseInt(video.statistics.viewCount || '0', 10),
+                duration: video.contentDetails.duration,
+            }))
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .filter((video: any) => {
+                const duration = parseDuration(video.duration);
+                return duration >= 60; // Only videos 60 seconds or longer
+            })
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .sort((a: any, b: any) => b.viewCount - a.viewCount)
+            .slice(0, 3)
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .map((video: any) => ({
+                videoId: video.videoId,
+                title: video.title,
+            }));
+
+        return processedVideos;
     } catch (error) {
         console.error('Error fetching YouTube videos for topic:', topic, error);
         return [];
     }
+};
+
+const parseDuration = (duration: string): number => {
+    const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+    if (!match) return 0;
+    
+    const hours = parseInt(match[1] || '0', 10);
+    const minutes = parseInt(match[2] || '0', 10);
+    const seconds = parseInt(match[3] || '0', 10);
+    
+    return hours * 3600 + minutes * 60 + seconds;
 };
