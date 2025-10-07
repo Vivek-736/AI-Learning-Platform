@@ -158,10 +158,10 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
         </div>
 
         <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-          <div className="text-xs text-gray-500">
+          <div className="xl:text-[10px] 2xl:text-xs text-xs text-gray-500">
             <span>Created by:</span>
             <span className="font-medium text-gray-700 ml-1">
-              {course.userEmail?.split('@')[0]}
+              {course.userEmail?.split('@')[0].replace(/\d.*$/, '')}
             </span>
           </div>
           

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Input } from './ui/input';
@@ -30,6 +32,13 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
             [field]: value
         }));
         // console.log(formData);
+    };
+
+    const isFormValid = () => {
+        return formData.name.trim() !== '' && 
+               formData.noOfChapters > 0 && 
+               formData.level !== '' && 
+               formData.category.trim() !== '';
     };
 
     const onGenerate = async () => {
@@ -125,7 +134,7 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                             <div className='mt-6 text-center'>
                                 <Button
                                     className='w-full cursor-pointer'
-                                    disabled={loading}
+                                    disabled={loading || !isFormValid()}
                                     onClick={onGenerate}
                                 >
                                     {loading ? <Loader className='animate-spin' /> : <Sparkles />}
