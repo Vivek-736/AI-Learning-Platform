@@ -156,7 +156,7 @@ const GetYoutubeVideos = async (topic: string) => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .filter((video: any) => {
                 const duration = parseDuration(video.duration);
-                return duration >= 60; // Only videos 60 seconds or longer
+                return duration >= 60;
             })
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .sort((a: any, b: any) => b.viewCount - a.viewCount)
