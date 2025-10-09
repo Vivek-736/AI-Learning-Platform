@@ -35,7 +35,7 @@ const EnrollCourseList: React.FC<EnrollCourseListProps> = ({ refreshTrigger }) =
     return enrolledCourseList?.length > 0 ? (
         <div className='mt-10'>
             <h1 className='text-xl font-bold mb-4'>Continue Learning</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 mt-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-5 mt-4'>
                 {enrolledCourseList.map((course, index) => (
                     <EnrolledCourseCard 
                         key={index}
