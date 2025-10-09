@@ -84,18 +84,18 @@ EruditeAI revolutionizes education by combining cutting-edge AI technology with 
 ### **Frontend Excellence**
 ```typescript
 // Core Framework
-Next.js 15.5.3       // React meta-framework with app router
-React 19.1.0         // Latest React with concurrent features
-TypeScript 5         // Type-safe development
+Next.js 15.5.3      // React meta-framework with app router
+React 19.1.0        // Latest React with concurrent features
+TypeScript 5        // Type-safe development
 
 // Styling & Animation
-Tailwind CSS 4       // Utility-first CSS framework
-Framer Motion        // Smooth animations and transitions
-Radix UI             // Accessible, customizable components
+Tailwind CSS 4      // Utility-first CSS framework
+Framer Motion       // Smooth animations and transitions
+Radix UI            // Accessible, customizable components
 
 // State Management
-Context API          // Lightweight state management
-Custom Hooks         // Reusable logic patterns
+Context API         // Lightweight state management
+Custom Hooks        // Reusable logic patterns
 ```
 
 ### **Backend Power**
@@ -106,18 +106,18 @@ Drizzle ORM         // Type-safe database operations
 PostgreSQL (Neon)   // Scalable cloud database
 
 // AI Integration
-Google Gemini AI   // Advanced content generation
-VAPI               // Voice AI for interviews
-OpenAI (Future)    // Additional AI capabilities
+Google Gemini AI    // Advanced content generation
+VAPI                // Voice AI for interviews
+OpenAI (Future)     // Additional AI capabilities
 ```
 
 ### **Development Tools**
 ```typescript
 // Quality & Performance
-ESLint            // Code quality enforcement
-Turbopack         // Fast bundler for development
-Vercel            // Deployment and hosting
-UUID              // Unique identifier generation
+ESLint              // Code quality enforcement
+Turbopack           // Fast bundler for development
+Vercel              // Deployment and hosting
+UUID                // Unique identifier generation
 ```
 
 ---
