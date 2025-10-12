@@ -1,456 +1,540 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  BookOpen,
-  Youtube,
-  Mic,
-  Star,
-  Users,
-  Zap,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import Image from "next/image";
 import Link from "next/link";
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
-};
-
-const staggerChildren = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Brain, Mic } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Home() {
+  const scrollToFeatures = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const featuresSection = document.getElementById("features");
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
-      <motion.nav
-        className="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 z-50"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="flex justify-between items-center h-16">
-            <motion.div
-              className="font-bold text-xl text-gray-900"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Image
-                src={"/favicon.png"}
-                alt="EruditeAI Logo"
-                width={36}
-                height={36}
-                className="inline-block mr-2 mb-1"
-              />
-              EruditeAI
-            </motion.div>
-            <div className="hidden md:flex space-x-8">
-              <a
+    <div className="min-h-screen bg-white">
+      <nav className="fixed top-0 left-0 px-4 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center space-x-12">
+              <Link
                 href="#features"
-                className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium"
+                onClick={scrollToFeatures}
+                className="text-base text-gray-900 hover:text-purple-600 transition-colors cursor-pointer"
               >
                 Features
-              </a>
-              <a
-                href="#how-it-works"
-                className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium"
+              </Link>
+              <Link
+                href="/workspace/billing"
+                className="text-base text-gray-900 hover:text-purple-600 transition-colors"
               >
-                How it works
-              </a>
+                Pricing
+              </Link>
             </div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href={"/workspace"}>
-                <Button className="bg-purple-600 text-white hover:bg-purple-700 cursor-pointer transition-all duration-200 rounded-full px-6">
-                  Get Started
+
+            <Link
+              href="/"
+              className="absolute left-1/2 transform -translate-x-1/2"
+            >
+              <h1 className="text-3xl font-light tracking-wide text-gray-900">
+                EruditeAI
+              </h1>
+            </Link>
+
+            <div className="flex items-center space-x-4">
+              {/* <Link
+                href="/about"
+                className="text-base text-gray-900 hover:text-purple-600 transition-colors"
+              >
+                about us
+              </Link> */}
+              <Link href="/workspace">
+                <Button className="bg-black cursor-pointer hover:bg-gray-800 text-white px-6 rounded-md">
+                  LogIn
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <section className="pt-32 pb-12 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-5xl md:text-7xl 2xl:text-9xl font-serif italic text-gray-900 text-center mb-12 leading-tight">
+            Learning, Reimagined.
+          </h1>
+
+          <div className="px-4">
+            <div className="max-w-3xl md:-mb-10">
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                <span className="text-2xl mr-2">✦✦✦</span>
+                Empowering every student to achieve their learning goals through
+                personalized, AI-driven tools designed for seamless integration
+                with higher education.
+              </p>
+            </div>
+
+            <div className="mb-16 flex md:mr-14 justify-end">
+              <Link href="/workspace">
+                <Button className="bg-black cursor-pointer hover:bg-gray-800 text-white px-8 py-3 text-base rounded-md">
+                  Start Learning Free
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl border-2 border-black rounded-xl bg-black">
+            <div className="relative group overflow-hidden rounded-3xl bg-black shadow-2xl">
+              <div className="aspect-[4/3] relative">
+                <Image
+                  src="/hero1.png"
+                  alt="Reading book with green illustration"
+                  fill
+                  className="object-cover opacity-80"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+
+              <div className="absolute top-6 left-6">
+                <p className="text-white text-lg font-light leading-relaxed">
+                  No more hours of reading
+                  <br />
+                  and figuring out
+                </p>
+              </div>
+
+              <div className="absolute bottom-6 right-6">
+                <p className="text-white text-lg font-serif italic">
+                  It&apos;s <span className="font-normal">simple</span> now
+                </p>
+              </div>
+            </div>
+
+            <div className="relative group overflow-hidden rounded-3xl bg-black shadow-2xl">
+              <div className="aspect-[4/3] relative">
+                <Image
+                  src="/hero2.png"
+                  alt="Student studying at desk"
+                  fill
+                  className="object-cover opacity-80"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+
+              <div className="absolute top-6 right-6">
+                <p className="text-white text-lg font-light">
+                  no more <span className="italic">hours</span> of{" "}
+                  <span className="text-red-500 italic font-serif">
+                    mindlessness
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex justify-center mb-12">
+            <div className="inline-flex items-center space-x-3 text-sm font-medium text-gray-900">
+              <span className="text-xl">✦</span>
+              <span>AI-Learning management System</span>
+              <span className="text-xl">✦</span>
+            </div>
+          </div>
+
+          <div className="text-center mb-8">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif italic text-gray-900 mb-6 leading-tight">
+              An AI Driven
+            </h2>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-gray-900 mb-12 leading-tight">
+              self-learning platform
+            </h2>
+          </div>
+
+          <div className="flex justify-center mb-8">
+            <div className="relative">
+              <svg
+                width="180"
+                height="100"
+                viewBox="0 0 180 100"
+                className="transform -rotate-12"
+              >
+                <ellipse
+                  cx="90"
+                  cy="50"
+                  rx="80"
+                  ry="40"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className="text-gray-900"
+                />
+                <circle
+                  cx="90"
+                  cy="10"
+                  r="3"
+                  fill="currentColor"
+                  className="text-gray-900"
+                />
+                <circle
+                  cx="90"
+                  cy="90"
+                  r="3"
+                  fill="currentColor"
+                  className="text-gray-900"
+                />
+              </svg>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-2xl font-medium text-gray-900 tracking-wider">
+                  FOR
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mb-12">
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-gray-900 leading-tight">
+              People who Break Tradition
+            </h3>
+          </div>
+
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+              We&apos;re dismantling the rigid, one-size-fits-all classroom
+              model by replacing static lectures and generic textbooks with
+              AI-powered personalized learning that adapts in real-time to each
+              student&apos;s unique pace, style, and needs.
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="inline-flex items-center space-x-3 text-sm font-medium text-gray-900">
+              <span className="text-xl">✦</span>
+              <span>In Your way of Learning</span>
+              <span className="text-xl">✦</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6 lg:px-14 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+                AI-Powered
+                <br />
+                Course Generation
+              </h2>
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                Transform any topic into comprehensive learning experiences with
+                our advanced AI course generation engine. Simply input your
+                subject matter, learning objectives, and target audience.
+              </p>
+              <p className="text-base text-gray-600 italic leading-relaxed">
+                watch as our platform creates structured curricula complete with
+                lesson plans, interactive content, and assessments
+              </p>
+            </div>
+
+            <div className="relative flex items-center md:ml-8 justify-center">
+              <div className="relative w-full max-w-md aspect-square">
+                <Image
+                  src="/A.png"
+                  alt="AI-Powered Course Generation"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <motion.section 
+        id="features"
+        className="py-20 px-6 lg:px-8 bg-gray-50 scroll-mt-20"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              AI-Learning and Self-Assessment
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <motion.div 
+              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col items-center text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="w-20 h-20 mb-6 flex items-center justify-center">
+                <Brain className="w-20 h-20 text-gray-900" strokeWidth={1} />
+              </div>
+
+              <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-4">
+                Quiz Generator
+              </h3>
+
+              <p className="text-base text-gray-600 mb-8 leading-relaxed flex-grow">
+                Generate AI-powered quizzes from your courses
+              </p>
+
+              <Link href="/workspace/ai-tools/quiz">
+                <Button className="bg-black cursor-pointer hover:bg-gray-800 text-white px-8 py-3 rounded-md w-full">
+                  Get started
+                </Button>
+              </Link>
+            </motion.div>
+
+            <motion.div 
+              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col items-center text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="w-20 h-20 mb-6 flex items-center justify-center">
+                <svg className="w-20 h-20" viewBox="0 0 80 80" fill="none">
+                  <rect
+                    x="15"
+                    y="20"
+                    width="50"
+                    height="40"
+                    rx="4"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    fill="none"
+                    className="text-gray-900"
+                  />
+                  <text
+                    x="25"
+                    y="35"
+                    fontSize="16"
+                    fontWeight="bold"
+                    fill="currentColor"
+                    className="text-gray-900"
+                  >
+                    Aa
+                  </text>
+                  <line
+                    x1="20"
+                    y1="45"
+                    x2="60"
+                    y2="45"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    className="text-gray-900"
+                  />
+                  <line
+                    x1="20"
+                    y1="50"
+                    x2="55"
+                    y2="50"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    className="text-gray-900"
+                  />
+                  <line
+                    x1="20"
+                    y1="55"
+                    x2="50"
+                    y2="55"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    className="text-gray-900"
+                  />
+                </svg>
+              </div>
+
+              <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-4">
+                Flashcards
+              </h3>
+
+              <p className="text-base text-gray-600 mb-8 leading-relaxed flex-grow">
+                Create smart flashcards for better learning
+              </p>
+
+              <Link href="/workspace/ai-tools/flashcard">
+                <Button className="bg-black cursor-pointer hover:bg-gray-800 text-white px-8 py-3 rounded-md w-full">
+                  Get started
+                </Button>
+              </Link>
+            </motion.div>
+
+            <motion.div 
+              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col items-center text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="w-20 h-20 mb-6 flex items-center justify-center">
+                <Mic className="w-20 h-20 text-gray-900" strokeWidth={1} />
+              </div>
+
+              <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-4">
+                Voice Interview
+              </h3>
+
+              <p className="text-base text-gray-600 mb-8 leading-relaxed flex-grow">
+                Practice interviews with AI feedback
+              </p>
+
+              <Link href="/workspace/ai-tools/interview">
+                <Button className="bg-black cursor-pointer hover:bg-gray-800 text-white px-8 py-3 rounded-md w-full">
+                  Get started
                 </Button>
               </Link>
             </motion.div>
           </div>
         </div>
-      </motion.nav>
+      </motion.section>
 
-      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-            >
-              <div className="flex items-center gap-2 mb-6">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-                <span className="text-sm text-gray-600">Rated 5 by Vivek</span>
-              </div>
+      <section className="py-20 px-6 lg:px-8 bg-black text-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
+            <div>
+              <h2 className="text-5xl md:text-6xl font-serif font-light mb-8 leading-tight">
+                Why Choose<br />
+                Erudite.ai
+              </h2>
+            </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight mb-6 leading-tight text-gray-900">
-                Learn Smarter
-                <br />
-                <span>with AI</span>
-              </h1>
-
-              <p className="text-lg text-gray-600 mb-8 max-w-xl leading-relaxed">
-                Transform any content into personalized flashcards, intelligent
-                notes, and interactive voice interviews. Your AI-powered
-                learning companion.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+            <div className="flex justify-end items-start">
+              <Link href="/workspace">
+                <Button 
+                  variant="outline" 
+                  className="border-white text-black hover:text-gray-900 cursor-pointer rounded-md px-6 py-3 transition-all duration-300"
                 >
-                  <Link href={"/workspace"}>
-                    <Button
-                      size="lg"
-                      className="bg-gray-900 cursor-pointer text-white hover:bg-gray-800 px-8 py-3 rounded-full"
-                    >
-                      Start Learning Free
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Link href={"/workspace"}>
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="border-gray-300 cursor-pointer md:block hidden hover:bg-gray-100 px-8 py-3 rounded-full"
-                    >
-                      Watch Demo
-                    </Button>
-                  </Link>
-                </motion.div>
-              </div>
-
-              <div className="md:flex hidden items-center gap-6 text-sm text-gray-600">
-                <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4" />
-                  <span>10k+ active learners (Forthcoming)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Zap className="h-4 w-4" />
-                  <span>3x faster learning</span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-            >
-              <div className="relative">
-                <motion.div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      Learning Dashboard
-                    </h3>
-                    <div className="flex gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center">
-                          <BookOpen className="h-4 w-4 text-indigo-600" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-medium text-gray-900">
-                            AI Flashcards
-                          </div>
-                          <div className="text-xs text-gray-500">
-                            124 cards generated
-                          </div>
-                        </div>
-                      </div>
-                      <div className="text-sm text-green-600 font-medium">
-                        98% accuracy
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center">
-                          <Youtube className="h-4 w-4 text-red-600" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-medium text-gray-900">
-                            YouTube Notes
-                          </div>
-                          <div className="text-xs text-gray-500">
-                            45 videos processed
-                          </div>
-                        </div>
-                      </div>
-                      <div className="text-sm text-green-600 font-medium">
-                        12h saved
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                          <Mic className="h-4 w-4 text-purple-600" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-medium text-gray-900">
-                            Voice Interviews
-                          </div>
-                          <div className="text-xs text-gray-500">
-                            23 sessions completed
-                          </div>
-                        </div>
-                      </div>
-                      <div className="text-sm text-green-600 font-medium">
-                        +15% retention
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 pt-6 border-t border-gray-100">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-500">Weekly Progress</span>
-                      <span className="font-semibold text-gray-900">+24%</span>
-                    </div>
-                    <div className="mt-2 w-full bg-gray-200 rounded-full h-2">
-                      <motion.div
-                        className="bg-indigo-500 h-2 rounded-full"
-                        initial={{ width: 0 }}
-                        animate={{ width: "74%" }}
-                        transition={{ duration: 2, delay: 1 }}
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-lg p-4 border border-gray-100"
-                  animate={{ y: [-5, 5, -5] }}
-                  transition={{
-                    duration: 4,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                  }}
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span className="text-xs text-gray-600">
-                      AI Learning Active
-                    </span>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
+                  Start Learning Free
+                </Button>
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
 
-      <section id="features" className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-4 text-gray-900">
-              Three Powerful Tools
-            </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Everything you need to accelerate your learning journey, powered
-              by AI
+          <div className="max-w-4xl">
+            <p className="text-2xl md:text-3xl font-light leading-relaxed">
+              Unlike generic platforms, we&apos;re designed specifically for higher education with deep curriculum integration and academic focus.
             </p>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-3 gap-8"
-            variants={staggerChildren}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
-            <motion.div variants={fadeInUp}>
-              <Card className="p-8 h-full border-0 shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl bg-gradient-to-br from-gray-50 to-white">
-                <motion.div
-                  className="w-12 h-12 bg-gray-900 rounded-2xl flex items-center justify-center mb-6"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <BookOpen className="h-6 w-6 text-white" />
-                </motion.div>
-                <h3 className="text-xl font-medium mb-4 text-gray-900">
-                  AI Flashcards
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  Instantly generate smart flashcards from any content. Our AI
-                  understands context and creates meaningful questions for
-                  optimal retention.
-                </p>
-                <motion.a
-                  href="#"
-                  className="inline-flex items-center text-indigo-600 hover:text-indigo-700 transition-colors duration-200 font-medium"
-                  whileHover={{ x: 5 }}
-                >
-                  Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                </motion.a>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="p-8 h-full border-0 shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl bg-gradient-to-br from-gray-50 to-white">
-                <motion.div
-                  className="w-12 h-12 bg-gray-900 rounded-2xl flex items-center justify-center mb-6"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Youtube className="h-6 w-6 text-white" />
-                </motion.div>
-                <h3 className="text-xl font-medium mb-4 text-gray-900">
-                  YouTube Notes
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  Transform any YouTube video into structured notes. AI extracts
-                  key concepts, timestamps, and creates searchable summaries.
-                </p>
-                <motion.a
-                  href="#"
-                  className="inline-flex items-center text-indigo-600 hover:text-indigo-700 transition-colors duration-200 font-medium"
-                  whileHover={{ x: 5 }}
-                >
-                  Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                </motion.a>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="p-8 h-full border-0 shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl bg-gradient-to-br from-gray-50 to-white">
-                <motion.div
-                  className="w-12 h-12 bg-gray-900 rounded-2xl flex items-center justify-center mb-6"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Mic className="h-6 w-6 text-white" />
-                </motion.div>
-                <h3 className="text-xl font-medium mb-4 text-gray-900">
-                  Voice Interviews
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  Practice with AI-powered voice interviews. Get personalized
-                  questions, instant feedback, and improve your understanding
-                  through conversation.
-                </p>
-                <motion.a
-                  href="#"
-                  className="inline-flex items-center text-indigo-600 hover:text-indigo-700 transition-colors duration-200 font-medium"
-                  whileHover={{ x: 5 }}
-                >
-                  Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                </motion.a>
-              </Card>
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-gray-50">
-        <motion.div
-          className="max-w-4xl mx-auto text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-              className="p-6 bg-white rounded-2xl shadow-sm"
-            >
-              <div className="text-4xl font-light mb-2 text-gray-900">10k+</div>
-              <div className="text-gray-600">Flashcards Generated</div>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-              className="p-6 bg-white rounded-2xl shadow-sm"
-            >
-              <div className="text-4xl font-light mb-2 text-gray-900">5k+</div>
-              <div className="text-gray-600">Videos Processed</div>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-              className="p-6 bg-white rounded-2xl shadow-sm"
-            >
-              <div className="text-4xl font-light mb-2 text-gray-900">98%</div>
-              <div className="text-gray-600">Learning Improvement</div>
-            </motion.div>
+      <section className="py-20 px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <Image 
+            src="/favicon.png"
+            alt="Erudite Logo"
+            className="mx-auto mb-8"
+            width={200}
+            height={200}
+          />
+          <div className="text-center mb-16">
+            <h2 className="text-7xl md:text-8xl lg:text-9xl font-bold text-gray-900 tracking-tight leading-none">
+              Erudite
+            </h2>
           </div>
-        </motion.div>
-      </section>
 
-      <section className="py-20 px-4 bg-gray-900 text-white">
-        <motion.div
-          className="max-w-4xl mx-auto text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-            Ready to revolutionize
-            <br />
-            your learning?
-          </h2>
-          <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Join thousands of learners who have already transformed their study
-            habits with AI
-          </p>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link href={"/workspace"}>
-              <Button
-                size="lg"
-                className="bg-white cursor-pointer text-gray-900 hover:bg-gray-100 px-8 py-3 rounded-full"
-              >
-                Start Free Today
-                <ArrowRight className="ml-2 h-4 w-4" />
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-6xl mx-auto mb-16">
+            <div className="text-center">
+              <p className="text-xs md:text-sm text-gray-500 mb-2">what we are?</p>
+              <h3 className="text-lg md:text-xl font-serif text-gray-900 leading-tight">
+                An AI-LMS
+              </h3>
+            </div>
+
+            <div className="text-center">
+              <p className="text-xs md:text-sm text-gray-500 mb-2">What we do?</p>
+              <h3 className="text-lg md:text-xl font-serif text-gray-900 leading-tight">
+                Transform
+              </h3>
+            </div>
+
+            <div className="text-center">
+              <p className="text-xs md:text-sm text-gray-500 mb-2">What do we envision?</p>
+              <h3 className="text-lg md:text-xl font-serif text-gray-900 leading-tight">
+                A Better<br />Tomorrow
+              </h3>
+            </div>
+
+            <div className="text-center">
+              <p className="text-xs md:text-sm text-gray-500 mb-2">what we deliver</p>
+              <h3 className="text-lg md:text-xl font-serif text-gray-900 leading-tight">
+                Quality<br />content
+              </h3>
+            </div>
+
+            <div className="text-center">
+              <p className="text-xs md:text-sm text-gray-500 mb-2">what&apos;re we Breaking</p>
+              <h3 className="text-lg md:text-xl font-serif text-gray-900 leading-tight">
+                Traditional<br />classrooms
+              </h3>
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <Link href="/workspace">
+              <Button className="bg-black cursor-pointer hover:bg-gray-800 text-white px-8 py-3 rounded-md text-base">
+                Start Learning Free
               </Button>
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </section>
 
-      <footer className="py-6 px-4 bg-white border-t border-gray-100">
-        <div className="flex items-center justify-center">
-          <p className="md:text-sm text-xs">
-            © 2025 EruditeAI - Made with ❤️ by Vivek
-          </p>
+      <footer className="bg-black text-white py-8 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="text-sm text-gray-400">
+              <p>© 2025 EruditeAI. All educational and general purposes only 2025</p>
+              <Link href="/privacy" className="hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+            </div>
+
+            <div className="text-sm text-gray-400 flex items-center space-x-2">
+              <span>Learn with AI</span>
+              <span className="text-lg">✦</span>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <Link href="/" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </Link>
+              <Link href="/" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
+                </svg>
+              </Link>
+              <Link href="/" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+
+          <div className="text-right mt-6">
+            <p className="text-xs text-gray-500">All rights reserved. All wrongs reversed.</p>
+          </div>
         </div>
       </footer>
     </div>
