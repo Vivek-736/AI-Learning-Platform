@@ -5,8 +5,62 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Brain, Mic } from "lucide-react";
 import { motion } from "framer-motion";
+import { useUser } from "@clerk/nextjs";
+import localFont from "next/font/local";
+
+const nohemi = localFont({
+  src: [
+    {
+      path: "../public/fonts/nohemi/Nohemi-Thin-BF6438cc5896c67.ttf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-ExtraLight-BF6438cc58a2634.ttf",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-Light-BF6438cc5899919.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-Regular-BF6438cc4d0e493.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-Medium-BF6438cc5883899.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-SemiBold-BF6438cc588a48a.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-Bold-BF6438cc587b5b5.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-ExtraBold-BF6438cc5881baf.ttf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-Black-BF6438cc58744d4.ttf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-nohemi",
+});
 
 export default function Home() {
+  const { user } = useUser();
   const scrollToFeatures = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const featuresSection = document.getElementById("features");
@@ -16,7 +70,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className={`min-h-screen bg-white ${nohemi.variable}`}>
       <nav className="fixed top-0 left-0 px-4 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-purple-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -24,13 +78,13 @@ export default function Home() {
               <Link
                 href="#features"
                 onClick={scrollToFeatures}
-                className="text-base text-gray-900 hover:text-purple-600 transition-colors cursor-pointer"
+                className={`text-base text-gray-900 hover:text-purple-600 transition-colors cursor-pointer ${nohemi.className} font-medium tracking-wide`}
               >
                 Features
               </Link>
               <Link
                 href="/workspace/billing"
-                className="text-base text-gray-900 hover:text-purple-600 transition-colors"
+                className={`text-base text-gray-900 hover:text-purple-600 transition-colors ${nohemi.className} font-medium tracking-wide`}
               >
                 Pricing
               </Link>
@@ -40,7 +94,7 @@ export default function Home() {
               href="/"
               className="absolute left-1/2 transform -translate-x-1/2"
             >
-              <h1 className="text-3xl font-light tracking-wide bg-gradient-to-r from-gray-900 to-purple-600 bg-clip-text text-transparent">
+              <h1 className={`text-3xl font-bold tracking-wider bg-gradient-to-r from-gray-900 to-purple-600 bg-clip-text text-transparent ${nohemi.className}`}>
                 EruditeAI
               </h1>
             </Link>
@@ -48,7 +102,7 @@ export default function Home() {
             <div className="flex items-center space-x-4">
               <Link href="/workspace">
                 <Button className="bg-black hover:bg-purple-900 cursor-pointer text-white px-6 rounded-md transition-colors duration-200">
-                  LogIn
+                  {user ? "Dashboard" : "LogIn"}
                 </Button>
               </Link>
             </div>
@@ -58,14 +112,14 @@ export default function Home() {
 
       <section className="pt-32 pb-12 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl md:text-7xl 2xl:text-9xl font-serif italic text-gray-900 text-center mb-12 leading-tight">
-            Learning, Reimagined.
+          <h1 className="text-5xl md:text-7xl 2xl:text-9xl font-serif italic text-gray-900 text-center mb-12 leading-tight font-light">
+            Learning, Reimagined
           </h1>
 
           <div className="px-4">
             <div className="max-w-3xl md:-mb-10">
-              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                <span className="text-purple-600">✦✦✦</span>
+              <p className={`text-lg md:text-xl text-gray-700 leading-relaxed ${nohemi.className} font-normal`}>
+                <span className={`text-purple-600 ${nohemi.className} font-bold`}>✦✦✦</span>
                 Empowering every student to achieve their learning goals through
                 personalized, AI-driven tools designed for seamless integration
                 with higher education.
@@ -135,7 +189,7 @@ export default function Home() {
       <section className="py-20 px-6 lg:px-8 bg-gradient-to-b from-white via-purple-50/30 to-gray-50">
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-center mb-12">
-            <div className="inline-flex items-center space-x-3 text-sm font-medium text-gray-900">
+            <div className={`inline-flex items-center space-x-3 text-sm font-semibold text-gray-900 ${nohemi.className} tracking-wider`}>
               <span className="text-purple-600">✦</span>
               <span>AI-Learning management System</span>
               <span className="text-purple-600">✦</span>
@@ -143,10 +197,10 @@ export default function Home() {
           </div>
 
           <div className="text-center mb-8">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif italic text-gray-900 mb-6 leading-tight">
+            <h2 className={`text-5xl md:text-6xl lg:text-7xl font-serif italic text-gray-900 mb-6 leading-tight font-light`}>
               An AI Driven
             </h2>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-gray-900 mb-12 leading-tight">
+            <h2 className={`text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-12 leading-tight ${nohemi.className} font-bold`}>
               <span className="bg-gradient-to-r from-gray-900 to-purple-600 bg-clip-text text-transparent">self-learning</span> platform
             </h2>
           </div>
