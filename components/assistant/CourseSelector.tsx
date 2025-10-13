@@ -74,7 +74,7 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
 
   if (isLoading) {
     return (
-      <div className="p-4 bg-white border-b border-gray-200">
+      <div className="p-4 bg-[#FFFFFF] border-b border-gray-200">
         <div className="animate-pulse flex items-center space-x-3">
           <div className="w-12 h-12 bg-gray-200 rounded-lg"></div>
           <div className="flex-1">
@@ -88,7 +88,7 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
 
   if (enrolledCourses.length === 0) {
     return (
-      <div className="p-6 bg-white border-b border-gray-200 text-center">
+      <div className="p-6 bg-[#FFFFFF] border-b border-gray-200 text-center">
         <GraduationCap className="w-10 h-10 text-gray-300 mx-auto mb-3" />
         <h3 className="font-medium text-gray-900 mb-1">No Enrolled Courses</h3>
         <p className="text-sm text-gray-500 mb-4">You haven&apos;t enrolled in any courses yet</p>
@@ -104,7 +104,7 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
 
   return (
     <div className="relative">
-      <div className="p-4 bg-white border-b border-gray-200">
+      <div className="p-4 bg-[#FFFFFF] border-b border-gray-200">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           className="w-full flex items-center space-x-3 hover:bg-gray-50 p-3 rounded-lg transition-colors group"
@@ -150,7 +150,7 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
       </div>
 
       {isDropdownOpen && (
-        <div className="absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-50 max-h-96 overflow-hidden">
+        <div className="absolute top-full left-0 right-0 bg-[#FFFFFF] border-b border-gray-200 shadow-lg z-50 max-h-96 overflow-hidden">
           <div className="p-3 border-b border-gray-100">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />

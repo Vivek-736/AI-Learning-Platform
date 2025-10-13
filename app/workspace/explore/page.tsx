@@ -113,7 +113,7 @@ const ExploreCourses: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-[#FFFFFF]">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center mb-12 animate-pulse">
             <div className="h-12 bg-gray-200 rounded w-96 mx-auto mb-4"></div>
@@ -132,7 +132,7 @@ const ExploreCourses: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3, 4, 5, 6].map((index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden animate-pulse">
+              <div key={index} className="bg-[#FFFFFF] rounded-2xl shadow-lg overflow-hidden animate-pulse">
                 <div className="w-full h-48 bg-gray-200"></div>
                 <div className="p-5 space-y-4">
                   <div className="h-6 bg-gray-200 rounded w-3/4"></div>
@@ -154,7 +154,7 @@ const ExploreCourses: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#FFFFFF]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">

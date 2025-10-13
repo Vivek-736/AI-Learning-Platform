@@ -110,7 +110,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
   };
 
   return (
-    <div className="group rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:shadow-[0_0_25px_rgba(0,0,0,0.15)] transition-all duration-300 bg-white overflow-hidden">
+    <div className="group rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:shadow-[0_0_25px_rgba(0,0,0,0.15)] transition-all duration-300 bg-[#FFFFFF] overflow-hidden">
       <div className="relative">
         <Image
           src={course?.bannerImageUrl || '/course.jpg'}

@@ -205,7 +205,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
         className={`max-w-[85%] md:max-w-[75%] rounded-2xl px-4 py-3 ${
           isUser
             ? 'bg-purple-600 text-white shadow-md'
-            : 'bg-white text-gray-900 border border-gray-200 shadow-sm'
+            : 'bg-[#FFFFFF] text-gray-900 border border-gray-200 shadow-sm'
         }`}
       >
         <div className="flex items-start space-x-3">
@@ -213,7 +213,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
             isUser ? 'bg-purple-500' : 'bg-purple-100'
           }`}>
             {isUser ? (
-              <div className="w-4 h-4 bg-white rounded-full" />
+              <div className="w-4 h-4 bg-[#FFFFFF] rounded-full" />
             ) : (
               <Bot className="w-4 h-4 text-purple-600" />
             )}
@@ -385,8 +385,8 @@ export default function ChatInterface({
   ];
 
   return (
-    <div className="flex flex-col h-full bg-white">
-      <div className="border-b border-gray-100 p-4 bg-white">
+    <div className="flex flex-col h-full bg-[#FFFFFF]">
+      <div className="border-b border-gray-100 p-4 bg-[#FFFFFF]">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
@@ -501,7 +501,7 @@ export default function ChatInterface({
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="border-t border-gray-100 p-4 bg-white">
+      <div className="border-t border-gray-100 p-4 bg-[#FFFFFF]">
         <div className="flex space-x-3 -mb-6">
           <div className="flex-1 relative">
             <input

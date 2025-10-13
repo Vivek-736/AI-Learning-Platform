@@ -271,7 +271,7 @@ const FlashcardStudyPage = () => {
                                         </div>
 
                                         {currentCard.explanation && (
-                                            <div className="bg-white/80 backdrop-blur-sm border border-blue-200 rounded-lg p-4 -mt-4">
+                                            <div className="bg-[#FFFFFF]/80 backdrop-blur-sm border border-blue-200 rounded-lg p-4 -mt-4">
                                                 <div className="flex items-start space-x-2">
                                                     <Lightbulb className="h-4 w-4 text-amber-500 mt-0.5 flex-shrink-0" />
                                                     <div>
@@ -290,7 +290,7 @@ const FlashcardStudyPage = () => {
 
                 {isFlipped && (
                     <div className="mb-8 flex justify-center">
-                        <Card className="w-96 border-2 border-gray-200 bg-white shadow-lg">
+                        <Card className="w-96 border-2 border-gray-200 bg-[#FFFFFF] shadow-lg">
                             <CardContent className="pt-2">
                                 <div className="flex justify-center space-x-4">
                                     <Button

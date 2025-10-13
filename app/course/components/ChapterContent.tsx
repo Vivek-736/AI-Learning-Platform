@@ -118,7 +118,7 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
     const isChapterCompleted = enrollCourse?.completedChapters?.includes(selectedChapterIndex) ?? false;
 
     return (
-        <div className='flex-1 p-5 lg:p-10 bg-white overflow-y-auto'>
+        <div className='flex-1 p-5 lg:p-10 bg-[#FFFFFF] overflow-y-auto'>
             <div className='max-w-4xl container mx-auto'>
                 <div className='mb-8'>
                     <div className='flex justify-between items-center'>
@@ -165,7 +165,7 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                 <div className='space-y-6'>
                     {topics?.map((topic: any, index: any) => (
                         <div key={index} className='bg-secondary rounded-xl border border-gray-200 overflow-hidden'>
-                            <div className='bg-white px-6 py-4 border-b border-gray-200'>
+                            <div className='bg-[#FFFFFF] px-6 py-4 border-b border-gray-200'>
                                 <div className='flex items-center gap-3'>
                                     <div className='w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold'>
                                         {index + 1}
@@ -173,7 +173,7 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                                     <h2 className='font-bold text-lg text-black'>{topic?.topic}</h2>
                                 </div>
                             </div>
-                            <div className='p-6 bg-white'>
+                            <div className='p-6 bg-[#FFFFFF]'>
                                 <div className="prose prose-sm max-w-none text-gray-700">
                                     {processContent(topic?.content)}
                                 </div>

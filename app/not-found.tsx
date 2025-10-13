@@ -27,7 +27,7 @@ const NotFoundPage = () => {
                         </button>
                     </Link>
                     <Link href='/'>
-                        <button className='w-full cursor-pointer bg-white text-gray-700 py-3 px-6 rounded-lg font-medium border border-gray-200 hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center gap-2'>
+                        <button className='w-full cursor-pointer bg-[#FFFFFF] text-gray-700 py-3 px-6 rounded-lg font-medium border border-gray-200 hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center gap-2'>
                             <ArrowLeft className='w-4 h-4' />
                             Go Back
                         </button>

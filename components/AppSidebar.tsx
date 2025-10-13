@@ -132,7 +132,7 @@ const AppSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="md:bg-none bg-white">
+      <SidebarFooter className="md:bg-none bg-[#FFFFFF]">
         {user && (
           <div className="p-4 border-t border-gray-200">
             <div className="flex items-center space-x-3">

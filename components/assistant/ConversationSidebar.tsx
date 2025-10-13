@@ -97,7 +97,7 @@ export default function ConversationSidebar({
 
   return (
     <div className="flex flex-col h-full bg-gray-50">
-      <div className="p-4 bg-white border-b border-gray-200">
+      <div className="p-4 bg-[#FFFFFF] border-b border-gray-200">
         <div className="flex items-center space-x-2 mb-3">
           <Bot className="w-5 h-5 text-purple-600" />
           <div className="flex-1 min-w-0">
@@ -114,7 +114,7 @@ export default function ConversationSidebar({
         </button>
       </div>
 
-      <div className="p-3 bg-white border-b border-gray-200">
+      <div className="p-3 bg-[#FFFFFF] border-b border-gray-200">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input
@@ -132,7 +132,7 @@ export default function ConversationSidebar({
           <div className="p-4">
             <div className="animate-pulse space-y-3">
               {[...Array(3)].map((_, i) => (
-                <div key={i} className="bg-white rounded-lg p-3 border border-gray-200">
+                <div key={i} className="bg-[#FFFFFF] rounded-lg p-3 border border-gray-200">
                   <div className="h-4 bg-gray-200 rounded mb-2"></div>
                   <div className="h-3 bg-gray-200 rounded w-20"></div>
                 </div>
@@ -163,7 +163,7 @@ export default function ConversationSidebar({
                 className={`group flex items-start p-3 rounded-lg cursor-pointer transition-all hover:shadow-sm ${
                   activeConversationId === conversation.conversationId
                     ? 'bg-purple-100 border-purple-200 shadow-sm'
-                    : 'bg-white hover:bg-gray-50 border border-transparent hover:border-gray-200'
+                    : 'bg-[#FFFFFF] hover:bg-gray-50 border border-transparent hover:border-gray-200'
                 }`}
                 onClick={() => onConversationSelect(conversation.conversationId)}
               >

@@ -87,7 +87,7 @@ const ChapterListSidebar = ({ courseInfo }: ChapterListSidebarProps) => {
                             </AccordionTrigger>
                             <AccordionContent asChild>
                                 <div className={`border-t ${
-                                    chapterCompleted ? 'border-green-200 bg-white' : 'border-gray-200 bg-white'
+                                    chapterCompleted ? 'border-green-200 bg-[#FFFFFF]' : 'border-gray-200 bg-[#FFFFFF]'
                                 }`}>
                                     {(chapter?.courseData?.[0]?.topics || chapter?.courseData?.topics)?.map((topic: any, topicIndex: any) => (
                                         <div

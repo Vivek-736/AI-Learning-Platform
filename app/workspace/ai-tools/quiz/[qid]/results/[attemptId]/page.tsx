@@ -148,7 +148,7 @@ const QuizResultsPage = () => {
                                                                 ? 'bg-green-100 border-green-300'
                                                                 : isUserAnswer 
                                                                     ? 'bg-red-100 border-red-300'
-                                                                    : 'bg-white border-gray-200'
+                                                                    : 'bg-[#FFFFFF] border-gray-200'
                                                         }`}
                                                     >
                                                         <div className="flex items-center justify-between">

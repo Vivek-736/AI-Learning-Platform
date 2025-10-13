@@ -80,7 +80,7 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
         className={`max-w-[85%] md:max-w-[75%] rounded-2xl px-4 py-3 ${
           isUser
             ? 'bg-purple-600 text-white shadow-md'
-            : 'bg-white text-gray-900 border border-gray-200 shadow-sm'
+            : 'bg-[#FFFFFF] text-gray-900 border border-gray-200 shadow-sm'
         }`}
       >
         <div className="flex items-start space-x-3">

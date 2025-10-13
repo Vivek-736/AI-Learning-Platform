@@ -122,7 +122,7 @@ export default function EnrollmentAssistantPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
+      <div className="bg-[#FFFFFF] border-b border-gray-200 sticky top-0 z-40">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -160,7 +160,7 @@ export default function EnrollmentAssistantPage() {
       <div className="flex h-[calc(100vh-80px)]">
         <div className={`${
           isMobileView && !showSidebar ? 'hidden' : 'block'
-        } w-80 bg-white border-r border-gray-200 flex flex-col`}>
+        } w-80 bg-[#FFFFFF] border-r border-gray-200 flex flex-col`}>
           
           <div className="p-4 border-b border-gray-200 bg-purple-50">
             <div className="flex items-center space-x-3 mb-3">

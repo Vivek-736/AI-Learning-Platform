@@ -432,7 +432,7 @@ const AnalyticsPage = () => {
               {analyticsData.map((userData) => (
                 <div
                   key={userData.user.id}
-                  className="border-2 border-gray-100 rounded-xl p-5 hover:shadow-lg hover:border-purple-200 transition-all bg-white"
+                  className="border-2 border-gray-100 rounded-xl p-5 hover:shadow-lg hover:border-purple-200 transition-all bg-[#FFFFFF]"
                 >
                   <div
                     className="flex items-center justify-between cursor-pointer"
@@ -517,10 +517,10 @@ const AnalyticsPage = () => {
 
                       <Tabs defaultValue="courses" className="w-full">
                         <TabsList className="grid w-full grid-cols-4 bg-purple-100">
-                          <TabsTrigger value="courses" className="data-[state=active]:bg-white">Courses</TabsTrigger>
-                          <TabsTrigger value="learning" className="data-[state=active]:bg-white">Learning</TabsTrigger>
-                          <TabsTrigger value="interviews" className="data-[state=active]:bg-white">Interviews</TabsTrigger>
-                          <TabsTrigger value="assistant" className="data-[state=active]:bg-white">AI Assistant</TabsTrigger>
+                          <TabsTrigger value="courses" className="data-[state=active]:bg-[#FFFFFF]">Courses</TabsTrigger>
+                          <TabsTrigger value="learning" className="data-[state=active]:bg-[#FFFFFF]">Learning</TabsTrigger>
+                          <TabsTrigger value="interviews" className="data-[state=active]:bg-[#FFFFFF]">Interviews</TabsTrigger>
+                          <TabsTrigger value="assistant" className="data-[state=active]:bg-[#FFFFFF]">AI Assistant</TabsTrigger>
                         </TabsList>
 
                         <TabsContent value="courses" className="space-y-4">

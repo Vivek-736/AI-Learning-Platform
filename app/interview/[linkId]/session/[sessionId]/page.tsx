@@ -404,7 +404,7 @@ const VoiceInterviewSession = () => {
                                             <div className={`max-w-[80%] p-3 rounded-lg shadow-sm transition-all duration-200 ${
                                                 msg.sender === 'user' 
                                                     ? 'bg-blue-600 text-white' 
-                                                    : 'bg-white border border-gray-200'
+                                                    : 'bg-[#FFFFFF] border border-gray-200'
                                             }`}>
                                                 <div className="flex items-center mb-1">
                                                     {msg.sender === 'user' ? (

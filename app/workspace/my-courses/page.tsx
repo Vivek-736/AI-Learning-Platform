@@ -79,7 +79,7 @@ const MyCourses: React.FC = () => {
                         <div className="w-full max-w-6xl mt-8">
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {[1, 2, 3].map((index) => (
-                                    <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden animate-pulse">
+                                    <div key={index} className="bg-[#FFFFFF] rounded-2xl shadow-lg overflow-hidden animate-pulse">
                                         <div className="w-full h-48 bg-gray-200"></div>
                                         
                                         <div className="p-4 space-y-3">

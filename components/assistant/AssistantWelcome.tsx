@@ -5,7 +5,7 @@ import { Bot, BookOpen, TrendingUp, Target, Lightbulb } from 'lucide-react';
 
 export default function AssistantWelcome() {
   return (
-    <div className="flex-1 flex items-center justify-center bg-white">
+    <div className="flex-1 flex items-center justify-center bg-[#FFFFFF]">
       <div className="text-center max-w-2xl mx-auto px-6">
         <div className="relative mb-8 mt-1">
           <div className="w-24 h-24 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mx-auto">

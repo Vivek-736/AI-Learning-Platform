@@ -16,8 +16,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <nav className="fixed top-0 left-0 px-4 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+    <div className="min-h-screen bg-[#FFFFFF]">
+      <nav className="fixed top-0 left-0 px-4 right-0 z-50 bg-[#FFFFFF]/95 backdrop-blur-sm border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center space-x-12">
@@ -223,7 +223,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 px-6 lg:px-14 bg-white">
+      <section className="py-20 px-6 lg:px-14 bg-[#FFFFFF]">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -274,7 +274,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <motion.div 
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col items-center text-center"
+              className="bg-[#FFFFFF] rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col items-center text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -301,7 +301,7 @@ export default function Home() {
             </motion.div>
 
             <motion.div 
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col items-center text-center"
+              className="bg-[#FFFFFF] rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col items-center text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -377,7 +377,7 @@ export default function Home() {
             </motion.div>
 
             <motion.div 
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col items-center text-center"
+              className="bg-[#FFFFFF] rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col items-center text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -436,7 +436,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 px-6 lg:px-8 bg-white">
+      <section className="py-20 px-6 lg:px-8 bg-[#FFFFFF]">
         <div className="max-w-7xl mx-auto">
           <Image 
             src="/favicon.png"

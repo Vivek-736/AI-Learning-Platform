@@ -199,7 +199,7 @@ const QuizHistory: React.FC<QuizHistoryProps> = ({ open, onOpenChange }) => {
                         </svg>
                     </div>
 
-                    <div className="absolute top-4 right-4 flex items-center space-x-2 bg-white/80 backdrop-blur-sm px-3 py-8 rounded-full shadow">
+                    <div className="absolute top-4 right-4 flex items-center space-x-2 bg-[#FFFFFF]/80 backdrop-blur-sm px-3 py-8 rounded-full shadow">
                         {isImproving ? (
                             <>
                                 <TrendingUp className="h-5 w-5 text-green-600" />
