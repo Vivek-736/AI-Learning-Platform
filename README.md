@@ -202,6 +202,319 @@ Navigate to `http://localhost:3000` and start learning! 🎉
 
 ---
 
+## 🏗️ Architecture
+
+### 📐 System Architecture Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           🌐 USER INTERACTION LAYER                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         🔐 AUTHENTICATION (Clerk)                            │
+│                    Login → Email/OAuth → Session Management                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           🏠 WORKSPACE DASHBOARD                             │
+│   ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
+│   │  📚 Courses  │  │  🎯 AI Tools │  │ 📊 Progress  │  │  👤 Profile  │  │
+│   └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                    ┌─────────────────┼─────────────────┐
+                    ▼                 ▼                 ▼
+         ┌──────────────────┐ ┌──────────────┐ ┌──────────────────┐
+         │  📖 Course Path  │ │  🧠 AI Path  │ │  📈 Analytics   │
+         └──────────────────┘ └──────────────┘ └──────────────────┘
+                    │                 │                 │
+                    ▼                 ▼                 ▼
+```
+
+### 🎓 **Course Learning Flow**
+
+```
+User Login (🔐)
+    ↓
+Dashboard (🏠)
+    ↓
+Browse Courses (📚)
+    ↓
+    ├──→ Enroll in Course (✅)
+    │       ↓
+    │   Access Chapters (📑)
+    │       ↓
+    │   Read Content (📖)
+    │       ↓
+    │   Mark as Complete (✔️)
+    │       ↓
+    │   Progress Updated (📊)
+    │
+    └──→ Create New Course (➕)
+            ↓
+        AI Generates Structure (🤖)
+            ↓
+        Review & Edit (✏️)
+            ↓
+        Publish Course (🚀)
+```
+
+### 🧠 **AI Tools Workflow**
+
+#### 📚 Flashcard Generation Flow
+```
+User Input (💭)
+    ↓
+Topic/Course Selection (📝)
+    ↓
+AI Processing (🤖 Gemini)
+    ↓
+Flashcard Generation (🎴)
+    ↓
+Interactive Practice (🔄)
+    ↓
+    ├──→ Easy (💚) ──→ Archive
+    ├──→ Medium (💛) ──→ Review Later
+    └──→ Hard (❤️) ──→ Practice More
+    ↓
+Progress Tracking (📊)
+```
+
+#### 🎯 Quiz System Flow
+```
+Select Course/Topic (📚)
+    ↓
+Choose Difficulty (⚙️)
+    ↓
+AI Generates Questions (🤖 Gemini)
+    ↓
+Take Quiz (📝)
+    ↓
+Submit Answers (✅)
+    ↓
+AI Evaluation (🔍)
+    ↓
+Results & Feedback (📊)
+    ↓
+    ├──→ Score (🏆)
+    ├──→ Correct Answers (✔️)
+    ├──→ Explanations (💡)
+    └──→ Improvement Tips (📈)
+    ↓
+Statistics Updated (📉)
+```
+
+#### 🎤 Voice Interview Flow
+```
+Choose Interview Type (🎭)
+    ↓
+Select Template (📋)
+    ↓
+Start Interview (🎙️ VAPI)
+    ↓
+Voice Interaction (🗣️)
+    ↓
+    ├──→ Questions Asked (❓)
+    ├──→ User Responds (💬)
+    └──→ AI Listens (👂)
+    ↓
+AI Analysis (🤖)
+    ↓
+Generate Feedback (📝)
+    ↓
+    ├──→ Performance Score (⭐)
+    ├──→ Strengths (💪)
+    ├──→ Areas to Improve (📈)
+    └──→ Recommendations (💡)
+    ↓
+Save Session (💾)
+```
+
+### 🔄 **Data Flow Architecture**
+
+```
+┌──────────────┐
+│   Frontend   │  Next.js 15 + React 19
+│   (Client)   │  TypeScript + Tailwind CSS
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│  API Routes  │  Next.js Serverless Functions
+│   (Server)   │  /api/courses, /api/quiz, etc.
+└──────┬───────┘
+       │
+       ├────────────┐
+       ▼            ▼
+┌──────────┐  ┌──────────┐
+│  AI/ML   │  │ Database │
+│ Services │  │   Layer  │
+└──────────┘  └──────────┘
+     │              │
+     ▼              ▼
+┌──────────┐  ┌──────────┐
+│  Gemini  │  │   Neon   │
+│    AI    │  │PostgreSQL│
+└──────────┘  └──────────┘
+     │              │
+     ▼              ▼
+┌──────────┐  ┌──────────┐
+│   VAPI   │  │ Drizzle  │
+│  Voice   │  │   ORM    │
+└──────────┘  └──────────┘
+```
+
+### 🗄️ **Database Schema Overview**
+
+```
+┌─────────────────┐
+│     USERS       │
+│  ┌───────────┐  │
+│  │ id        │◄─┼──────┐
+│  │ email     │  │      │
+│  │ name      │  │      │
+│  │ createdAt │  │      │
+│  └───────────┘  │      │
+└─────────────────┘      │
+                         │
+                         │ Foreign Key
+                         │
+┌─────────────────┐      │
+│    COURSES      │      │
+│  ┌───────────┐  │      │
+│  │ id        │  │      │
+│  │ userId    │──┼──────┘
+│  │ name      │  │
+│  │ chapters  │◄─┼────┐
+│  │ createdAt │  │    │
+│  └───────────┘  │    │
+└─────────────────┘    │
+                       │
+┌─────────────────┐    │
+│     QUIZZES     │    │
+│  ┌───────────┐  │    │
+│  │ id        │  │    │
+│  │ courseId  │──┼────┘
+│  │ questions │  │
+│  │ attempts  │  │
+│  └───────────┘  │
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│  FLASHCARDS     │
+│  ┌───────────┐  │
+│  │ id        │  │
+│  │ courseId  │  │
+│  │ front     │  │
+│  │ back      │  │
+│  │ difficulty│  │
+│  └───────────┘  │
+└─────────────────┘
+```
+
+### 🔌 **API Endpoints Structure**
+
+```
+📁 /api
+  │
+  ├── 📁 courses
+  │   ├── GET    /api/courses          → List all courses
+  │   ├── POST   /api/courses          → Create new course
+  │   ├── GET    /api/courses/[id]     → Get course details
+  │   └── PUT    /api/courses/[id]     → Update course
+  │
+  ├── 📁 quiz
+  │   ├── POST   /api/quiz/generate    → Generate quiz questions
+  │   ├── POST   /api/quiz/attempts    → Submit quiz attempt
+  │   ├── GET    /api/quiz/results     → Get quiz results
+  │   └── GET    /api/quiz/stats       → Get statistics
+  │
+  ├── 📁 flashcard
+  │   ├── POST   /api/flashcard/generate → Generate flashcards
+  │   ├── GET    /api/flashcard/[id]    → Get flashcard set
+  │   └── PUT    /api/flashcard/[id]    → Update progress
+  │
+  ├── 📁 interview
+  │   ├── POST   /api/interview/sessions → Start interview
+  │   ├── GET    /api/interview/[id]     → Get interview data
+  │   └── POST   /api/interview/feedback → Submit feedback
+  │
+  └── 📁 assistant
+      ├── POST   /api/assistant/messages → Chat with AI
+      └── GET    /api/assistant/history  → Get chat history
+```
+
+### 🔐 **Security & Authentication Flow**
+
+```
+User Access Request (🌐)
+    ↓
+Clerk Middleware Check (🔒)
+    ↓
+    ├──→ Not Authenticated ──→ Redirect to Login (🔐)
+    │
+    └──→ Authenticated
+            ↓
+        Session Valid? (✅)
+            ↓
+            ├──→ Yes ──→ Grant Access (✔️)
+            │               ↓
+            │           Check Permissions (👮)
+            │               ↓
+            │               ├──→ User Role (👤)
+            │               ├──→ Admin Role (👑)
+            │               └──→ Premium User (⭐)
+            │
+            └──→ No ──→ Refresh Session (🔄)
+                        ↓
+                    Try Again (↩️)
+```
+
+### 🚀 **Deployment Architecture**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    GitHub Repository                     │
+│                  (Source Code Storage)                   │
+└─────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────┐
+│                    Vercel Platform                       │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │  Automatic Build & Deployment on Git Push         │  │
+│  │  • Next.js Optimizations                          │  │
+│  │  • Edge Functions                                 │  │
+│  │  • CDN Distribution                               │  │
+│  └───────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────┘
+                          │
+           ┌──────────────┼──────────────┐
+           ▼              ▼              ▼
+    ┌──────────┐   ┌──────────┐   ┌──────────┐
+    │ Frontend │   │ API      │   │ Static   │
+    │ Routes   │   │ Routes   │   │ Assets   │
+    └──────────┘   └──────────┘   └──────────┘
+           │              │              │
+           └──────────────┼──────────────┘
+                          ▼
+              ┌────────────────────┐
+              │  Global CDN Edge   │
+              │    Distribution    │
+              └────────────────────┘
+                          │
+                          ▼
+              ┌────────────────────┐
+              │    End Users 🌍    │
+              └────────────────────┘
+```
+
+---
+
 ## 🔧 Configuration
 
 ### Database Schema
