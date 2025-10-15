@@ -42,6 +42,7 @@
     "react": "19.1.0",
     "react-card-flip": "^1.2.3",
     "react-dom": "19.1.0",
+    "react-markdown": "^10.1.0",
     "react-syntax-highlighter": "^15.6.6",
     "react-youtube": "^10.1.0",
     "reactjs-flip-card": "^2.0.3",

@@ -24,6 +24,7 @@ import {
   WalletCards,
   BarChart2,
   MapPin,
+  GraduationCap,
 } from "lucide-react";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
@@ -50,6 +51,11 @@ const AppSidebar = () => {
       title: "Dashboard",
       icon: LayoutDashboard,
       path: "/workspace",
+    },
+    {
+      title: "Career Guide",
+      icon: GraduationCap,
+      path: "/workspace/career-guide",
     },
     {
       title: "My Learning",
