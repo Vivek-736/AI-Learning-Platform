@@ -27,22 +27,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
-  },
-  manifest: "/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "EruditeAI",
-  },
-  other: {
-    "mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "default",
-    "apple-mobile-web-app-title": "EruditeAI",
-    "application-name": "EruditeAI",
-    "msapplication-TileColor": "#9333ea",
-    "msapplication-config": "/browserconfig.xml",
-  },
+  }
 };
 
 export default function RootLayout({
