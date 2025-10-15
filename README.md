@@ -28,6 +28,7 @@ EruditeAI revolutionizes education by combining cutting-edge AI technology with 
 - 📊 **Progress Tracking**: Comprehensive analytics and performance insights
 - 🔊 **Voice Technology**: VAPI integration for realistic interview practice
 - 🎓 **Adaptive Learning**: Personalized difficulty adjustment based on performance
+- 💼 **Career Guidance**: AI-powered chatbot for personalized career counseling and course recommendations
 
 ---
 
@@ -64,6 +65,14 @@ EruditeAI revolutionizes education by combining cutting-edge AI technology with 
 - Instant doubt resolution
 - Smart note generation from any content
 - Context-aware responses
+
+#### 🎓 **Career Guide Chatbot**
+- AI-powered career guidance and counseling
+- Personalized course recommendations based on career goals
+- Real-time conversation with context preservation
+- Beautiful markdown-formatted responses
+- Interactive chat interface with refresh functionality
+- Helps users choose the right learning path for their aspirations
 
 ### 👤 **User Experience**
 - **Modern Dashboard**: Clean, intuitive workspace with easy navigation
@@ -194,6 +203,15 @@ Navigate to `http://localhost:3000` and start learning! 🎉
 1. **Flashcards**: Select a course or enter custom topic → Generate → Practice
 2. **Quizzes**: Choose difficulty and question count → Take quiz → Review results  
 3. **Interviews**: Select template → Start voice interview → Get AI feedback
+4. **Career Guide**: Chat with AI about career goals → Get personalized course suggestions → Plan your learning journey
+
+### Getting Career Guidance
+1. Navigate to "Career Guide" in the workspace sidebar
+2. Start a conversation about your career aspirations
+3. The AI will ask thoughtful questions to understand your goals
+4. Receive personalized course recommendations with detailed insights
+5. Get advice on career paths, skills, and industry trends
+6. Use the refresh button to start a new guidance session
 
 ### Tracking Progress
 - View learning analytics in the dashboard
@@ -443,6 +461,9 @@ Save Session (💾)
   │   ├── GET    /api/interview/[id]     → Get interview data
   │   └── POST   /api/interview/feedback → Submit feedback
   │
+  ├── 📁 career-guide
+  │   └── POST   /api/career-guide       → Get AI career guidance
+  │
   └── 📁 assistant
       ├── POST   /api/assistant/messages → Chat with AI
       └── GET    /api/assistant/history  → Get chat history
@@ -530,6 +551,7 @@ The application uses a robust schema with the following key tables:
 - `/api/quiz/generate` - AI quiz generation
 - `/api/flashcard/generate` - Flashcard creation
 - `/api/interview` - Voice interview handling
+- `/api/career-guide` - AI career guidance and course recommendations
 - `/api/assistant` - AI assistant conversations
 
 ---
