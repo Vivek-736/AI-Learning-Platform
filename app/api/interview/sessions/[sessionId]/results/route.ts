@@ -121,8 +121,8 @@ async function analyzeSession(sessionId: string) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       feedback = {
-        overallScore: 75,
-        skillScores: { technical: 75, communication: 75 },
+        overallScore: 0,
+        skillScores: { technical: 0, communication: 0 },
         detailedFeedback: {
           strengths: ["Completed the interview"],
           improvements: ["Continue practicing"],
