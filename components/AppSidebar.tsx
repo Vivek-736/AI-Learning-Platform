@@ -109,14 +109,14 @@ const AppSidebar = () => {
         <Image src={"/favicon.png"} alt="logo" width={60} height={60} />
         <p className="text-lg font-bold">EruditeAI</p>
       </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
+      <SidebarContent className="flex flex-col">
+        <SidebarGroup className="flex-shrink-0">
           <AddNewCourseDialog>
-            <Button className="cursor-pointer">Create New Course</Button>
+            <Button className="cursor-pointer w-full">Create New Course</Button>
           </AddNewCourseDialog>
         </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupContent>
+        <SidebarGroup className="flex-1 overflow-hidden flex flex-col">
+          <SidebarGroupContent className="flex-1 overflow-y-auto">
             <SidebarMenu>
               {SidebarOptions.map((item, index) => (
                 <SidebarMenuItem key={index}>
@@ -138,7 +138,7 @@ const AppSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="md:bg-none bg-[#FFFFFF]">
+      <SidebarFooter className="md:bg-none bg-[#FFFFFF] flex-shrink-0">
         {user && (
           <div className="p-4 border-t border-gray-200">
             <div className="flex items-center space-x-3">
