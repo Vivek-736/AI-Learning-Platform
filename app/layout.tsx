@@ -6,6 +6,7 @@ import type { Metadata, Viewport } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./Provider";
 import { Toaster } from "@/components/ui/sonner"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -67,14 +68,21 @@ export default function RootLayout({
         },
       }}
     >
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body
           className={`${poppins.variable} antialiased`}
         >
-          <Provider>
-            {children}
-          </Provider>
-          <Toaster />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Provider>
+              {children}
+            </Provider>
+            <Toaster />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
