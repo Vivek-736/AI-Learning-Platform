@@ -14,6 +14,7 @@ import {
   Award,
   Target,
   Zap,
+  Trophy,
 } from "lucide-react";
 import {
   Card,
@@ -99,6 +100,7 @@ const AnalyticsPage = () => {
   const [platformStats, setPlatformStats] = useState<PlatformStats | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedUsers, setExpandedUsers] = useState<Set<number>>(new Set());
+  const [isRecalculating, setIsRecalculating] = useState(false);
 
   useEffect(() => {
     if (
@@ -143,6 +145,27 @@ const AnalyticsPage = () => {
       newExpanded.add(userId);
     }
     setExpandedUsers(newExpanded);
+  };
+
+  const recalculateAllXp = async () => {
+    setIsRecalculating(true);
+    try {
+      const response = await fetch("/api/xp/recalculate-all", {
+        method: "POST",
+      });
+      const data = await response.json();
+      
+      if (data.success) {
+        alert(`Successfully recalculated XP for ${data.updatedCount} users!`);
+      } else {
+        alert("Failed to recalculate XP");
+      }
+    } catch (error) {
+      console.error("Error recalculating XP:", error);
+      alert("Error recalculating XP");
+    } finally {
+      setIsRecalculating(false);
+    }
   };
 
   // Prepare data for charts
@@ -231,10 +254,20 @@ const AnalyticsPage = () => {
                 Comprehensive platform analytics and user insights
               </p>
             </div>
-            <Badge className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 text-sm">
-              <Zap className="w-4 h-4 mr-2" />
-              Live Analytics
-            </Badge>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={recalculateAllXp}
+                disabled={isRecalculating}
+                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all shadow-lg hover:shadow-xl disabled:cursor-not-allowed flex items-center gap-2"
+              >
+                <Trophy className="w-4 h-4" />
+                {isRecalculating ? "Recalculating..." : "Recalculate All XP"}
+              </button>
+              <Badge className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 text-sm">
+                <Zap className="w-4 h-4 mr-2" />
+                Live Analytics
+              </Badge>
+            </div>
           </div>
         </div>
 
@@ -611,7 +644,6 @@ const AnalyticsPage = () => {
                             </div>
                           </div>
                         </TabsContent>
-
                         <TabsContent value="interviews" className="space-y-4">
                           <div className="grid grid-cols-3 gap-4">
                             <div className="p-5 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl text-center shadow-md">

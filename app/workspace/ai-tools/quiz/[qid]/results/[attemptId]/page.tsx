@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { CheckCircle, XCircle, ChevronDown, RotateCcw, Home } from 'lucide-react';
 import axios from 'axios';
+import { useUpdateXp } from '@/hooks/useUpdateXp';
 
 interface QuizResult {
     attemptId: string;
@@ -27,6 +28,7 @@ const QuizResultsPage = () => {
     const { qid, attemptId } = params;
     const [result, setResult] = useState<QuizResult | null>(null);
     const [loading, setLoading] = useState(true);
+    const { updateXp } = useUpdateXp();
 
     useEffect(() => {
         fetchResults();
@@ -37,6 +39,9 @@ const QuizResultsPage = () => {
         try {
             const response = await axios.get(`/api/quiz/results/${attemptId}`);
             setResult(response.data);
+            
+            // Update XP after quiz completion
+            await updateXp();
         } catch (error) {
             console.error('Error fetching results:', error);
             router.push('/workspace/ai-tools/quiz');

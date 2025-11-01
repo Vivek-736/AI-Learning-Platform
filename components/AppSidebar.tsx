@@ -25,6 +25,7 @@ import {
   BarChart2,
   MapPin,
   GraduationCap,
+  Trophy,
 } from "lucide-react";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
@@ -76,6 +77,11 @@ const AppSidebar = () => {
       title: "AI Tools",
       icon: PencilRulerIcon,
       path: "/workspace/ai-tools",
+    },
+    {
+      title: "Leaderboard",
+      icon: Trophy,
+      path: "/workspace/leaderboard",
     },
     {
       title: "Assistant",

@@ -149,3 +149,15 @@ export const assistantMessagesTable = pgTable("assistantMessages", {
     tokenCount: integer(),
     metadata: json()
 });
+
+export const userXpTable = pgTable("userXp", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    userEmail: varchar('userEmail').references(() => usersTable.email).notNull().unique(),
+    totalXp: integer().default(0).notNull(),
+    courseCompletionXp: integer().default(0).notNull(),
+    quizXp: integer().default(0).notNull(),
+    interviewXp: integer().default(0).notNull(),
+    flashcardXp: integer().default(0).notNull(),
+    lastUpdated: timestamp().defaultNow(),
+    createdAt: timestamp().defaultNow()
+});
