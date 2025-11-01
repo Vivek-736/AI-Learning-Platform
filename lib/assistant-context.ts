@@ -1,5 +1,5 @@
 import { db } from "@/config/db";
-import { assistantContextTable, coursesTable, enrollCourseTable, quizzesTable, flashcardSetsTable } from "@/config/schema";
+import { coursesTable, enrollCourseTable, quizzesTable, flashcardSetsTable } from "@/config/schema";
 import { eq, and } from "drizzle-orm";
 import { EnrollmentContext, EnrolledCourse } from "@/types/assistant";
 
@@ -67,37 +67,6 @@ export class AssistantContextManager {
     } catch (error) {
       console.error('Error fetching enrollment context:', error);
       return null;
-    }
-  }
-
-  async updateEnrollmentContext(enrollmentId: number, contextData: any): Promise<void> {
-    try {
-      const existingContext = await db
-        .select()
-        .from(assistantContextTable)
-        .where(eq(assistantContextTable.enrollmentId, enrollmentId));
-
-      if (existingContext.length > 0) {
-        await db
-          .update(assistantContextTable)
-          .set({
-            contextData,
-            updatedAt: new Date()
-          })
-          .where(eq(assistantContextTable.enrollmentId, enrollmentId));
-      } else {
-        // Insert new context
-        await db
-          .insert(assistantContextTable)
-          .values({
-            enrollmentId,
-            contextType: 'enrollment_progress',
-            contextData
-          });
-      }
-    } catch (error) {
-      console.error('Error updating enrollment context:', error);
-      throw new Error('Failed to update enrollment context');
     }
   }
 

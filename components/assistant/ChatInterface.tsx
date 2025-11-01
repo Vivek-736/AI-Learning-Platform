@@ -431,8 +431,8 @@ export default function ChatInterface({
           </div>
         ) : messages.length === 0 ? (
           <div className="text-center">
-            <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Bot className="w-6 h-6 text-purple-600" />
+            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Bot className="w-10 h-10 text-purple-600" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Hi! I&apos;m your personal learning assistant

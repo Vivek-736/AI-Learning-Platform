@@ -127,48 +127,6 @@ export const interviewSessionsTable = pgTable("interviewSessions", {
     createdAt: timestamp().defaultNow()
 });
 
-export const interviewFeedbackTable = pgTable("interviewFeedback", {
-    id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    feedbackId: varchar().notNull().unique(),
-    sessionId: varchar('sessionId').references(() => interviewSessionsTable.sessionId).notNull(),
-    templateId: varchar('templateId').references(() => interviewTemplatesTable.templateId).notNull(),
-    creatorEmail: varchar('creatorEmail').references(() => usersTable.email).notNull(),
-    isVisible: boolean().default(true),
-    candidateName: varchar().notNull(),
-    candidateEmail: varchar().notNull(),
-    completedAt: timestamp().notNull(),
-    overallScore: integer().notNull(),
-    summary: text(),
-    createdAt: timestamp().defaultNow()
-});
-
-export const interviewAnalyticsTable = pgTable("interviewAnalytics", {
-    id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    templateId: varchar('templateId').references(() => interviewTemplatesTable.templateId).notNull(),
-    linkId: varchar('linkId').references(() => interviewLinksTable.linkId),
-    totalAttempts: integer().default(0),
-    completedAttempts: integer().default(0),
-    averageScore: integer().default(0),
-    averageDuration: integer().default(0),
-    dateRecorded: timestamp().defaultNow(),
-    topSkillScores: json(),
-    commonWeaknesses: json(),
-    createdAt: timestamp().defaultNow(),
-    updatedAt: timestamp().defaultNow()
-});
-
-export const interviewNotificationsTable = pgTable("interviewNotifications", {
-    id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    notificationId: varchar().notNull().unique(),
-    recipientEmail: varchar('recipientEmail').references(() => usersTable.email).notNull(),
-    sessionId: varchar('sessionId').references(() => interviewSessionsTable.sessionId).notNull(),
-    type: varchar().notNull(),
-    title: varchar().notNull(),
-    message: text().notNull(),
-    isRead: boolean().default(false),
-    createdAt: timestamp().defaultNow()
-});
-
 export const assistantConversationsTable = pgTable("assistantConversations", {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
     conversationId: varchar().notNull().unique(),
@@ -190,14 +148,4 @@ export const assistantMessagesTable = pgTable("assistantMessages", {
     timestamp: timestamp().defaultNow(),
     tokenCount: integer(),
     metadata: json()
-});
-
-export const assistantContextTable = pgTable("assistantContext", {
-    id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    enrollmentId: integer('enrollmentId').references(() => enrollCourseTable.id).notNull(),
-    contextType: varchar().notNull(),
-    contextData: json().notNull(),
-    embeddings: json(),
-    createdAt: timestamp().defaultNow(),
-    updatedAt: timestamp().defaultNow()
 });
