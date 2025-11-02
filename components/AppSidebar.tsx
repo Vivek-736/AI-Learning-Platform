@@ -113,7 +113,7 @@ const AppSidebar = () => {
     <Sidebar>
       <SidebarHeader className="p-4 flex items-center flex-row">
         <Image src={"/favicon.png"} alt="logo" width={60} height={60} />
-        <p className="text-lg font-bold">EruditeAI</p>
+        <p className="text-lg font-bold">Fascinity</p>
       </SidebarHeader>
       <SidebarContent className="flex flex-col">
         <SidebarGroup className="flex-shrink-0">

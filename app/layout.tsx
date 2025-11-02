@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "EruditeAI - Your AI Learning Companion",
+  title: "Fascinity - Your AI Learning Companion",
   description: "AI-powered learning platform for students and educators. Transform any content into personalized flashcards, intelligent notes, and interactive voice interviews.",
   icons: {
     icon: "/favicon.png",

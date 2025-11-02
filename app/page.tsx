@@ -95,7 +95,7 @@ export default function Home() {
               className="absolute left-1/2 transform -translate-x-1/2"
             >
               <h1 className={`text-3xl font-bold tracking-wider bg-gradient-to-r from-gray-900 to-purple-600 bg-clip-text text-transparent ${nohemi.className}`}>
-                EruditeAI
+                Fascinity
               </h1>
             </Link>
 
@@ -455,7 +455,7 @@ export default function Home() {
             <div>
               <h2 className="text-5xl md:text-6xl font-serif font-light mb-8 leading-tight">
                 Why Choose<br />
-                <span className="text-purple-300">Erudite.ai</span>
+                <span className="text-purple-300">Fascinity</span>
               </h2>
             </div>
 
@@ -483,14 +483,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <Image 
             src="/favicon.png"
-            alt="Erudite Logo"
+            alt="Fascinity Logo"
             className="mx-auto mb-8"
             width={200}
             height={200}
           />
           <div className="text-center mb-16">
             <h2 className="text-7xl md:text-8xl lg:text-9xl font-bold text-gray-900 tracking-tight leading-none">
-              <span className="bg-gradient-to-r from-gray-900 via-purple-600 to-gray-900 bg-clip-text text-transparent">Erudite</span>
+              <span className="bg-gradient-to-r from-gray-900 via-purple-600 to-gray-900 bg-clip-text text-transparent">Fascinity</span>
             </h2>
           </div>
 
@@ -548,7 +548,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-gray-400">
-              <p>© 2025 EruditeAI. All educational and general purposes only 2025</p>
+              <p>© 2025 Fascinity. All educational and general purposes only 2025</p>
               <Link href="/privacy" className="hover:text-purple-400 transition-colors">
                 Privacy Policy
               </Link>

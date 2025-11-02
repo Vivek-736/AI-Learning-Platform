@@ -17,7 +17,7 @@ const Welcome = () => {
                     <div className='md:w-10 md:h-10 w-6 h-6 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/25'>
                         <Image 
                             src="/favicon.png"
-                            alt="EruditeAI Logo"
+                            alt="Fascinity Logo"
                             width={32}
                             height={32}
                             className='w-8 h-8 object-contain'
@@ -25,7 +25,7 @@ const Welcome = () => {
                     </div>
                     <div className='flex-1'>
                         <h2 className='font-semibold text-xs md:text-xl text-gray-900 flex items-center gap-2'>
-                            Welcome to EruditeAI! <span className='text-purple-500 font-medium'>{user?.firstName}</span>
+                            Welcome to Fascinity! <span className='text-purple-500 font-medium'>{user?.firstName}</span>
                         </h2>
                     </div>
                     <div className='flex items-center gap-1 px-2 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-full'>

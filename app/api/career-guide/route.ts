@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
       })
       .join("\n\n");
 
-    const systemPrompt = `You are an intelligent Career Guide AI assistant for EruditeAI, an AI-powered learning platform. Your role is to:
+    const systemPrompt = `You are an intelligent Career Guide AI assistant for Fascinity, an AI-powered learning platform. Your role is to:
 
     1. **Understand Career Goals**: Ask thoughtful questions about the user's interests, current skills, education level, and career aspirations.
 

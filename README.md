@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="public/favicon.png" alt="EruditeAI Logo" width="120" height="120" />
+  <img src="public/favicon.png" alt="Fascinity Logo" width="120" height="120" />
   
-  # EruditeAI 🧠✨
+  # Fascinity 🧠✨
   
   ### *Your AI-Powered Learning Companion*
   
@@ -16,11 +16,11 @@
 
 ---
 
-## 🌟 Why EruditeAI?
+## 🌟 Why Fascinity?
 
 > **"Learn Smarter, Not Harder"** - Transform your learning journey with AI-powered tools that adapt to your pace and style.
 
-EruditeAI revolutionizes education by combining cutting-edge AI technology with intuitive design to create personalized learning experiences. Whether you're a student preparing for exams, a professional upskilling, or a lifelong learner exploring new domains, EruditeAI is your intelligent companion.
+Fascinity revolutionizes education by combining cutting-edge AI technology with intuitive design to create personalized learning experiences. Whether you're a student preparing for exams, a professional upskilling, or a lifelong learner exploring new domains, Fascinity is your intelligent companion.
 
 ### 🎯 **Key Highlights**
 - 🤖 **AI-First Approach**: Powered by Google Gemini AI for content generation
@@ -586,7 +586,7 @@ npm start
   
 ### 💜 Built with Passion by [Vivek](https://github.com/Vivek-736)
   
-*"Education is the most powerful weapon which you can use to change the world. EruditeAI makes it smarter."*
+*"Education is the most powerful weapon which you can use to change the world. Fascinity makes it smarter."*
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Vivek-736)
 
