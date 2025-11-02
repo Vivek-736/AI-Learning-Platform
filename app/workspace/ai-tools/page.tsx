@@ -41,10 +41,8 @@ const AiToolsPage = () => {
             tagline: 'Challenge yourself',
             icon: Brain,
             href: '/workspace/ai-tools/quiz',
-            gradient: 'from-purple-600/10 via-purple-500/5 to-transparent',
             iconColor: 'text-purple-600 dark:text-purple-400',
-            borderColor: 'border-purple-200/50 dark:border-purple-800/50',
-            hoverShadow: 'hover:shadow-purple-200/50 dark:hover:shadow-purple-900/50',
+            borderColor: 'border-gray-200 dark:border-gray-800',
         },
         {
             title: 'Flashcards',
@@ -52,10 +50,8 @@ const AiToolsPage = () => {
             tagline: 'Learn smarter',
             icon: MessageSquare,
             href: '/workspace/ai-tools/flashcard',
-            gradient: 'from-pink-600/10 via-pink-500/5 to-transparent',
-            iconColor: 'text-pink-600 dark:text-pink-400',
-            borderColor: 'border-pink-200/50 dark:border-pink-800/50',
-            hoverShadow: 'hover:shadow-pink-200/50 dark:hover:shadow-pink-900/50',
+            iconColor: 'text-purple-600 dark:text-purple-400',
+            borderColor: 'border-gray-200 dark:border-gray-800',
         },
         {
             title: 'Voice Interview',
@@ -63,15 +59,13 @@ const AiToolsPage = () => {
             tagline: 'Speak confidently',
             icon: Mic,
             href: '/workspace/ai-tools/interview',
-            gradient: 'from-indigo-600/10 via-indigo-500/5 to-transparent',
-            iconColor: 'text-indigo-600 dark:text-indigo-400',
-            borderColor: 'border-indigo-200/50 dark:border-indigo-800/50',
-            hoverShadow: 'hover:shadow-indigo-200/50 dark:hover:shadow-indigo-900/50',
+            iconColor: 'text-purple-600 dark:text-purple-400',
+            borderColor: 'border-gray-200 dark:border-gray-800',
         }
     ];
 
     return (
-        <div className={`min-h-[76vh] bg-gradient-to-br from-white via-purple-50/30 to-white dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-950 ${nohemi.variable}`}>
+        <div className={`min-h-[76vh] bg-white dark:bg-gray-950 ${nohemi.variable}`}>
             <div className="max-w-7xl mx-auto p-6 py-12">
                 <div className="mb-16 flex items-center justify-between">   
                     <div>
@@ -100,15 +94,11 @@ const AiToolsPage = () => {
                                 transition={{ delay: index * 0.1 }}
                             >
                                 <Link href={tool.href}>
-                                    <div className={`group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border ${tool.borderColor} ${tool.hoverShadow} hover:shadow-2xl transition-all duration-500 cursor-pointer h-full`}>
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${tool.gradient} opacity-50 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                                    <div className={`group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border ${tool.borderColor} hover:shadow-lg transition-all duration-300 cursor-pointer h-full`}>
                                         
-                                        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100/20 dark:from-purple-900/20 to-transparent rounded-full -translate-y-8 translate-x-8 group-hover:scale-150 transition-transform duration-500"></div>
-                                        <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-50/30 dark:from-purple-950/30 to-transparent rounded-full translate-y-6 -translate-x-6 group-hover:scale-150 transition-transform duration-500"></div>
-
                                         <div className="relative p-8">
                                             <div className="mb-6">
-                                                <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br from-white/80 to-white/40 dark:from-gray-800/80 dark:to-gray-800/40 backdrop-blur-sm border border-purple-100 dark:border-purple-900/50 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                                <div className={`inline-flex p-4 rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 group-hover:scale-110 transition-transform duration-300`}>
                                                     <Icon className={`w-8 h-8 ${tool.iconColor}`} />
                                                 </div>
                                             </div>
@@ -129,14 +119,10 @@ const AiToolsPage = () => {
                                                 <span className={`text-sm font-medium text-gray-900 dark:text-gray-100 ${nohemi.className} group-hover:translate-x-1 transition-transform duration-300`}>
                                                     Get Started
                                                 </span>
-                                                <div className={`p-2 rounded-full ${tool.iconColor} bg-purple-50 dark:bg-purple-950/50 group-hover:translate-x-2 transition-transform duration-300`}>
+                                                <div className={`p-2 rounded-full ${tool.iconColor} bg-gray-50 dark:bg-gray-800 group-hover:translate-x-2 transition-transform duration-300`}>
                                                     <ArrowRight className="w-4 h-4" />
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-purple-500/20 blur-xl"></div>
                                         </div>
                                     </div>
                                 </Link>
