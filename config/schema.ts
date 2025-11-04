@@ -161,3 +161,60 @@ export const userXpTable = pgTable("userXp", {
     lastUpdated: timestamp().defaultNow(),
     createdAt: timestamp().defaultNow()
 });
+
+export const codingChallengesTable = pgTable("codingChallenges", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    challengeId: varchar().notNull().unique(),
+    title: varchar().notNull(),
+    description: text(),
+    testType: varchar().notNull(),
+    topic: varchar(),
+    difficulty: varchar().notNull(),
+    timeLimit: integer().notNull().default(60),
+    totalProblems: integer().notNull().default(4),
+    problems: json().notNull(),
+    userEmail: varchar('userEmail').references(() => usersTable.email).notNull(),
+    createdAt: timestamp().defaultNow(),
+    updatedAt: timestamp().defaultNow()
+});
+
+export const codingAttemptsTable = pgTable("codingAttempts", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    attemptId: varchar().notNull().unique(),
+    challengeId: varchar('challengeId').references(() => codingChallengesTable.challengeId).notNull(),
+    userEmail: varchar('userEmail').references(() => usersTable.email).notNull(),
+    startedAt: timestamp().defaultNow(),
+    submittedAt: timestamp(),
+    timeSpent: integer(),
+    status: varchar().default('in-progress'),
+    solutions: json(),
+    totalScore: integer().default(0),
+    problemsAttempted: integer().default(0),
+    problemsSolved: integer().default(0),
+    testCasesPassed: integer().default(0),
+    testCasesFailed: integer().default(0),
+    feedback: json(),
+    createdAt: timestamp().defaultNow()
+});
+
+export const codingProblemsTable = pgTable("codingProblems", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    problemId: varchar().notNull().unique(),
+    title: varchar().notNull(),
+    description: text().notNull(),
+    topic: varchar().notNull(),
+    difficulty: varchar().notNull(),
+    constraints: text(),
+    inputFormat: text(),
+    outputFormat: text(),
+    sampleInput: text(),
+    sampleOutput: text(),
+    explanation: text(),
+    testCases: json().notNull(),
+    hints: json(),
+    tags: json(),
+    timeComplexity: varchar(),
+    spaceComplexity: varchar(),
+    createdAt: timestamp().defaultNow(),
+    updatedAt: timestamp().defaultNow()
+});

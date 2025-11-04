@@ -26,6 +26,7 @@ import {
   MapPin,
   GraduationCap,
   Trophy,
+  Code2,
 } from "lucide-react";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
@@ -77,6 +78,11 @@ const AppSidebar = () => {
       title: "AI Tools",
       icon: PencilRulerIcon,
       path: "/workspace/ai-tools",
+    },
+    {
+      title: "Coding Playground",
+      icon: Code2,
+      path: "/workspace/coding-playground",
     },
     {
       title: "Leaderboard",
