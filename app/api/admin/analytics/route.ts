@@ -21,7 +21,6 @@ const adminEmails = [
   "vivekvrc777@gmail.com",
   "ashrafgalibshaik@gmail.com",
   "yasodamalavya2006@gmail.com",
-  "myvini1411@gmail.com",
 ];
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -282,6 +281,7 @@ export async function GET(request: Request) {
     });
   } catch (error) {
     console.error("Analytics API error:", error);
+    
     return NextResponse.json(
       { error: "Failed to fetch analytics data" },
       { status: 500 }

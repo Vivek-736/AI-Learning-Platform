@@ -53,7 +53,6 @@ const adminEmails = [
   "vivekvrc777@gmail.com",
   "ashrafgalibshaik@gmail.com",
   "yasodamalavya2006@gmail.com",
-  "myvini1411@gmail.com"
 ];
 
 interface UserAnalytics {

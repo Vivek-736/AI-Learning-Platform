@@ -41,12 +41,9 @@ const AppSidebar = () => {
     "vivekvrc777@gmail.com",
     "ashrafgalibshaik@gmail.com",
     "yasodamalavya2006@gmail.com",
-    "myvini1411@gmail.com"
   ];
 
-  const isAdmin =
-    user &&
-    adminEmails.includes(user?.primaryEmailAddress?.emailAddress as string);
+  const isAdmin = user && adminEmails.includes(user?.primaryEmailAddress?.emailAddress as string);
 
   const SidebarOptions = [
     {
@@ -104,6 +101,7 @@ const AppSidebar = () => {
       icon: UserCircle2Icon,
       path: "/workspace/profile",
     },
+    
     ...(isAdmin
       ? [
           {
