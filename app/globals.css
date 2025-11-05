@@ -144,98 +144,114 @@
     @apply bg-background text-foreground;
   }
 
+  /* Firefox - super thin scrollbar */
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(139, 92, 246, 0.4) transparent;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.3s ease;
   }
 
+  /* Show scrollbar on scroll (Firefox) */
+  *:hover {
+    scrollbar-color: rgba(139, 92, 246, 0.3) transparent;
+  }
+
+  /* Webkit browsers - ultra-thin, only visible when scrolling */
   *::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 4px;
+    height: 4px;
   }
 
   *::-webkit-scrollbar-track {
     background: transparent;
-    border-radius: 10px;
   }
 
+  /* Hidden by default - invisible scrollbar thumb */
   *::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-      135deg,
-      rgba(139, 92, 246, 0.4) 0%,
-      rgba(168, 85, 247, 0.5) 50%,
-      rgba(192, 132, 252, 0.4) 100%
-    );
+    background: transparent;
     border-radius: 10px;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  /* Show on hover - super thin and sexy */
+  *:hover::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      135deg,
+      rgba(139, 92, 246, 0.2) 0%,
+      rgba(168, 85, 247, 0.3) 50%,
+      rgba(192, 132, 252, 0.2) 100%
+    );
+  }
+
+  /* Brighter when hovering the scrollbar itself */
   *::-webkit-scrollbar-thumb:hover {
+    width: 6px;
     background: linear-gradient(
       135deg,
-      rgba(139, 92, 246, 0.7) 0%,
-      rgba(168, 85, 247, 0.8) 50%,
-      rgba(192, 132, 252, 0.7) 100%
+      rgba(139, 92, 246, 0.6) 0%,
+      rgba(168, 85, 247, 0.7) 50%,
+      rgba(192, 132, 252, 0.6) 100%
     );
-    
-    border: 2px solid rgba(139, 92, 246, 0.2);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
   }
 
+  /* Active state - full visibility when dragging */
   *::-webkit-scrollbar-thumb:active {
-    background: linear-gradient(
-      135deg,
-      rgba(139, 92, 246, 0.9) 0%,
-      rgba(168, 85, 247, 1) 50%,
-      rgba(192, 132, 252, 0.9) 100%
-    );
-  }
-
-  .dark *::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-      135deg,
-      rgba(139, 92, 246, 0.5) 0%,
-      rgba(168, 85, 247, 0.6) 50%,
-      rgba(192, 132, 252, 0.5) 100%
-    );
-  }
-
-  .dark *::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(
       135deg,
       rgba(139, 92, 246, 0.8) 0%,
       rgba(168, 85, 247, 0.9) 50%,
       rgba(192, 132, 252, 0.8) 100%
     );
-    border: 2px solid rgba(139, 92, 246, 0.3);
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+  }
+
+  /* Dark mode - slightly brighter for visibility */
+  .dark *:hover::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      135deg,
+      rgba(139, 92, 246, 0.3) 0%,
+      rgba(168, 85, 247, 0.4) 50%,
+      rgba(192, 132, 252, 0.3) 100%
+    );
+  }
+
+  .dark *::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(139, 92, 246, 0.7) 0%,
+      rgba(168, 85, 247, 0.8) 50%,
+      rgba(192, 132, 252, 0.7) 100%
+    );
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
   }
 
   .dark *::-webkit-scrollbar-thumb:active {
     background: linear-gradient(
       135deg,
-      rgba(139, 92, 246, 1) 0%,
+      rgba(139, 92, 246, 0.9) 0%,
       rgba(168, 85, 247, 1) 50%,
-      rgba(192, 132, 252, 1) 100%
+      rgba(192, 132, 252, 0.9) 100%
     );
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.7);
   }
 
-  .dark * {
-    scrollbar-color: rgba(139, 92, 246, 0.6) transparent;
+  /* Firefox dark mode */
+  .dark *:hover {
+    scrollbar-color: rgba(139, 92, 246, 0.4) transparent;
   }
 
   *::-webkit-scrollbar-corner {
     background: transparent;
   }
 
+  /* Even thinner dimensions */
   *::-webkit-scrollbar:horizontal {
-    height: 8px;
+    height: 4px;
   }
 
   *::-webkit-scrollbar:vertical {
-    width: 8px;
+    width: 4px;
   }
 
   html {
