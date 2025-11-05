@@ -5,7 +5,8 @@ import {
     quizAttemptsTable, 
     flashcardSetsTable,
     interviewSessionsTable,
-    coursesTable
+    coursesTable,
+    codingAttemptsTable
 } from "@/config/schema";
 import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
@@ -38,7 +39,6 @@ export async function POST(req: NextRequest) {
             courseCompletionXp += Math.round(completionPercentage);
         });
 
-        // Calculate quiz XP
         const quizAttempts = await db
             .select({
                 percentage: quizAttemptsTable.percentage
@@ -50,7 +50,6 @@ export async function POST(req: NextRequest) {
             return total + (attempt.percentage || 0);
         }, 0);
 
-        // Calculate interview XP
         const interviewSessions = await db
             .select({
                 overallScore: interviewSessionsTable.overallScore
@@ -73,7 +72,22 @@ export async function POST(req: NextRequest) {
             return total + (set.totalCards || 0);
         }, 0);
 
-        const totalXp = courseCompletionXp + quizXp + interviewXp + flashcardXp;
+        const codingAttempts = await db
+            .select({
+                totalScore: codingAttemptsTable.totalScore,
+                problemsAttempted: codingAttemptsTable.problemsAttempted
+            })
+            .from(codingAttemptsTable)
+            .where(eq(codingAttemptsTable.userEmail, userEmail));
+
+        const codingXp = codingAttempts.reduce((total, attempt) => {
+            const percentage = attempt.problemsAttempted && attempt.problemsAttempted > 0
+                ? (attempt.totalScore || 0) / attempt.problemsAttempted
+                : (attempt.totalScore || 0);
+            return total + Math.round(percentage);
+        }, 0);
+
+        const totalXp = courseCompletionXp + quizXp + interviewXp + flashcardXp + codingXp;
 
         const existingXp = await db
             .select()
@@ -90,6 +104,7 @@ export async function POST(req: NextRequest) {
                     quizXp,
                     interviewXp,
                     flashcardXp,
+                    codingXp,
                     lastUpdated: new Date()
                 })
                 .where(eq(userXpTable.userEmail, userEmail));
@@ -100,7 +115,8 @@ export async function POST(req: NextRequest) {
                 courseCompletionXp,
                 quizXp,
                 interviewXp,
-                flashcardXp
+                flashcardXp,
+                codingXp
             });
         }
 
@@ -111,7 +127,8 @@ export async function POST(req: NextRequest) {
                 courseCompletionXp,
                 quizXp,
                 interviewXp,
-                flashcardXp
+                flashcardXp,
+                codingXp
             }
         });
 
@@ -130,7 +147,6 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ error: "User email is required" }, { status: 400 });
         }
 
-        // Calculate XP from all database records in real-time
         const enrolledCourses = await db
             .select({
                 completedChapters: enrollCourseTable.completedChapters,
@@ -151,7 +167,6 @@ export async function GET(req: NextRequest) {
             courseCompletionXp += Math.round(completionPercentage);
         });
 
-        // Calculate quiz XP from all attempts
         const quizAttempts = await db
             .select({
                 percentage: quizAttemptsTable.percentage
@@ -163,7 +178,6 @@ export async function GET(req: NextRequest) {
             return total + (attempt.percentage || 0);
         }, 0);
 
-        // Calculate interview XP from all sessions
         const interviewSessions = await db
             .select({
                 overallScore: interviewSessionsTable.overallScore
@@ -175,7 +189,6 @@ export async function GET(req: NextRequest) {
             return total + (session.overallScore || 0);
         }, 0);
 
-        // Calculate flashcard XP from all sets
         const flashcardSets = await db
             .select({
                 totalCards: flashcardSetsTable.totalCards
@@ -187,9 +200,23 @@ export async function GET(req: NextRequest) {
             return total + (set.totalCards || 0);
         }, 0);
 
-        const totalXp = courseCompletionXp + quizXp + interviewXp + flashcardXp;
+        const codingAttempts = await db
+            .select({
+                totalScore: codingAttemptsTable.totalScore,
+                problemsAttempted: codingAttemptsTable.problemsAttempted
+            })
+            .from(codingAttemptsTable)
+            .where(eq(codingAttemptsTable.userEmail, userEmail));
 
-        // Update or insert the calculated XP in the database
+        const codingXp = codingAttempts.reduce((total, attempt) => {
+            const percentage = attempt.problemsAttempted && attempt.problemsAttempted > 0
+                ? (attempt.totalScore || 0) / attempt.problemsAttempted
+                : (attempt.totalScore || 0);
+            return total + Math.round(percentage);
+        }, 0);
+
+        const totalXp = courseCompletionXp + quizXp + interviewXp + flashcardXp + codingXp;
+
         const existingXp = await db
             .select()
             .from(userXpTable)
@@ -205,6 +232,7 @@ export async function GET(req: NextRequest) {
                     quizXp,
                     interviewXp,
                     flashcardXp,
+                    codingXp,
                     lastUpdated: new Date()
                 })
                 .where(eq(userXpTable.userEmail, userEmail));
@@ -215,7 +243,8 @@ export async function GET(req: NextRequest) {
                 courseCompletionXp,
                 quizXp,
                 interviewXp,
-                flashcardXp
+                flashcardXp,
+                codingXp
             });
         }
 
@@ -225,6 +254,7 @@ export async function GET(req: NextRequest) {
             quizXp,
             interviewXp,
             flashcardXp,
+            codingXp,
             lastUpdated: new Date()
         });
 

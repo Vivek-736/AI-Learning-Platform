@@ -158,6 +158,7 @@ export const userXpTable = pgTable("userXp", {
     quizXp: integer().default(0).notNull(),
     interviewXp: integer().default(0).notNull(),
     flashcardXp: integer().default(0).notNull(),
+    codingXp: integer().default(0).notNull(),
     lastUpdated: timestamp().defaultNow(),
     createdAt: timestamp().defaultNow()
 });
