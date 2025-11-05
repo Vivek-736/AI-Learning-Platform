@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react'
 import AppHeader from '@/components/AppHeader'
-import ChapterListSidebar from '../components/ChapterListSidebar'
 import ChapterContent from '../components/ChapterContent'
+import ChapterListSidebar from '../components/ChapterListSidebar';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
 
@@ -23,6 +23,7 @@ const CoursePage = () => {
         try {
             const result = await axios.get('/api/enroll-course?courseId=' + courseId);
             // console.log(result.data);
+            
             setCourseInfo(result.data);
         } catch (error) {
             console.error('Error fetching course:', error);
@@ -59,9 +60,9 @@ const CoursePage = () => {
     }
 
     return (
-        <div>
+        <div className='h-screen flex flex-col'>
             <AppHeader hideSidebar={true} />
-            <div className='flex flex-col lg:flex-row gap-4 lg:gap-10'>
+            <div className='flex flex-col lg:flex-row flex-1 overflow-hidden'>
                 <ChapterListSidebar courseInfo={courseInfo} />
                 <ChapterContent courseInfo={courseInfo} refreshData={() => GetEnrolledCoursesById()} />
             </div>

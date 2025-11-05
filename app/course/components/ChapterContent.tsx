@@ -118,8 +118,8 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
     const isChapterCompleted = enrollCourse?.completedChapters?.includes(selectedChapterIndex) ?? false;
 
     return (
-        <div className='flex-1 p-5 lg:p-10 bg-[#FFFFFF] overflow-y-auto'>
-            <div className='max-w-4xl container mx-auto'>
+        <div className='flex-1 bg-[#FFFFFF] overflow-y-auto h-full'>
+            <div className='max-w-4xl container mx-auto p-5 lg:p-10'>
                 <div className='mb-8'>
                     <div className='flex justify-between items-center'>
                         <h1 className='font-bold text-2xl lg:text-3xl text-black mb-4'>

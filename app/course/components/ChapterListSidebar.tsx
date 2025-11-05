@@ -31,16 +31,17 @@ const ChapterListSidebar = ({ courseInfo }: ChapterListSidebarProps) => {
     };
 
     return (
-        <div className='w-full lg:w-80 bg-secondary min-h-screen p-5 border-r border-gray-200'>
-            <div className='mb-6'>
+        <div className='w-full lg:w-80 bg-secondary flex flex-col border-r border-gray-200 h-full'>
+            <div className='p-5 border-b border-gray-200 flex-shrink-0'>
                 <h2 className='text-2xl font-bold text-black mb-2'>Course Content</h2>
                 <p className='text-sm text-gray-600'>Chapters ({courseContent?.length})</p>
                 <div className='mt-2 text-sm text-green-600'>
                     Completed: {completedChapters?.length || 0}/{courseContent?.length || 0}
                 </div>
             </div>
-                     
-            <Accordion type='single' collapsible className='space-y-2'>
+            
+            <div className='flex-1 overflow-y-auto p-5'>
+                <Accordion type='single' collapsible className='space-y-2'>
                 {courseContent?.map((chapter: any, index: React.Key | null | undefined) => {
                     const chapterCompleted = isChapterCompleted(Number(index));
                     const isSelected = selectedChapterIndex === index;
@@ -116,6 +117,7 @@ const ChapterListSidebar = ({ courseInfo }: ChapterListSidebarProps) => {
                     );
                 })}
             </Accordion>
+            </div>
         </div>
     )
 }
