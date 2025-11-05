@@ -77,6 +77,10 @@ interface UserAnalytics {
     averageInterviewScore: number;
     assistantConversations: number;
     assistantMessages: number;
+    codingChallengesCreated: number;
+    codingAttemptsCompleted: number;
+    averageCodingScore: number;
+    totalCodingProblems: number;
   };
   details: any;
 }
@@ -89,6 +93,8 @@ interface PlatformStats {
   totalFlashcardSets: number;
   totalInterviewTemplates: number;
   totalAssistantConversations: number;
+  totalCodingChallenges: number;
+  totalCodingAttempts: number;
 }
 
 const COLORS = ['#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#ec4899'];
@@ -168,7 +174,6 @@ const AnalyticsPage = () => {
     }
   };
 
-  // Prepare data for charts
   const getUserComparisonData = () => {
     return analyticsData.slice(0, 10).map(userData => ({
       name: userData.user.name.split(' ')[0],
@@ -186,6 +191,7 @@ const AnalyticsPage = () => {
       { name: 'Quizzes', value: platformStats.totalQuizzes },
       { name: 'Flashcards', value: platformStats.totalFlashcardSets },
       { name: 'Interviews', value: platformStats.totalInterviewTemplates },
+      { name: 'Coding', value: platformStats.totalCodingChallenges },
       { name: 'AI Chats', value: platformStats.totalAssistantConversations },
     ];
   };
@@ -273,7 +279,7 @@ const AnalyticsPage = () => {
 
         {platformStats && (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
               <Card className="border-none shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-purple-500 to-purple-600 text-white">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Total Users</CardTitle>
@@ -323,6 +329,21 @@ const AnalyticsPage = () => {
                     {platformStats.totalAssistantConversations}
                   </div>
                   <p className="text-xs opacity-80 mt-1">Active conversations</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-pink-500 to-rose-600 text-white">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Coding Challenges</CardTitle>
+                  <Target className="h-5 w-5 opacity-80" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold">
+                    {platformStats.totalCodingChallenges}
+                  </div>
+                  <p className="text-xs opacity-80 mt-1">
+                    {platformStats.totalCodingAttempts} attempts
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -496,7 +517,7 @@ const AnalyticsPage = () => {
                     </button>
                   </div>
 
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-5">
+                  <div className="grid grid-cols-2 md:grid-cols-6 gap-3 mt-5">
                     <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200">
                       <div className="text-2xl font-bold text-blue-700">
                         {userData.stats.coursesEnrolled}
@@ -520,6 +541,12 @@ const AnalyticsPage = () => {
                         {userData.stats.flashcardSets}
                       </div>
                       <div className="text-xs text-orange-600 font-medium">Flashcard Sets</div>
+                    </div>
+                    <div className="text-center p-4 bg-gradient-to-br from-rose-50 to-rose-100 rounded-xl border border-rose-200">
+                      <div className="text-2xl font-bold text-rose-700">
+                        {userData.stats.codingChallengesCreated}
+                      </div>
+                      <div className="text-xs text-rose-600 font-medium">Coding Challenges</div>
                     </div>
                     <div className="text-center p-4 bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl border border-pink-200">
                       <div className="text-2xl font-bold text-pink-700">
@@ -549,9 +576,10 @@ const AnalyticsPage = () => {
                       </Card>
 
                       <Tabs defaultValue="courses" className="w-full">
-                        <TabsList className="grid w-full grid-cols-4 bg-purple-100">
+                        <TabsList className="grid w-full grid-cols-5 bg-purple-100">
                           <TabsTrigger value="courses" className="data-[state=active]:bg-[#FFFFFF]">Courses</TabsTrigger>
                           <TabsTrigger value="learning" className="data-[state=active]:bg-[#FFFFFF]">Learning</TabsTrigger>
+                          <TabsTrigger value="coding" className="data-[state=active]:bg-[#FFFFFF]">Coding</TabsTrigger>
                           <TabsTrigger value="interviews" className="data-[state=active]:bg-[#FFFFFF]">Interviews</TabsTrigger>
                           <TabsTrigger value="assistant" className="data-[state=active]:bg-[#FFFFFF]">AI Assistant</TabsTrigger>
                         </TabsList>
@@ -644,6 +672,82 @@ const AnalyticsPage = () => {
                             </div>
                           </div>
                         </TabsContent>
+
+                        <TabsContent value="coding" className="space-y-4">
+                          <div>
+                            <h4 className="font-semibold mb-3 text-lg">Coding Challenge Performance</h4>
+                            <div className="grid grid-cols-4 gap-4 mb-4">
+                              <div className="p-5 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl text-center shadow-md">
+                                <div className="text-3xl font-bold text-white">{userData.stats.codingChallengesCreated}</div>
+                                <div className="text-sm text-rose-100 font-medium">Created</div>
+                              </div>
+                              <div className="p-5 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl text-center shadow-md">
+                                <div className="text-3xl font-bold text-white">{userData.stats.codingAttemptsCompleted}</div>
+                                <div className="text-sm text-pink-100 font-medium">Completed</div>
+                              </div>
+                              <div className="p-5 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl text-center shadow-md">
+                                <div className="text-3xl font-bold text-white">{userData.stats.averageCodingScore}%</div>
+                                <div className="text-sm text-purple-100 font-medium">Avg Score</div>
+                              </div>
+                              <div className="p-5 bg-gradient-to-br from-violet-500 to-violet-600 rounded-xl text-center shadow-md">
+                                <div className="text-3xl font-bold text-white">{userData.stats.totalCodingProblems}</div>
+                                <div className="text-sm text-violet-100 font-medium">Total Problems</div>
+                              </div>
+                            </div>
+
+                            {userData.details.recentCodingChallenges?.length > 0 && (
+                              <div>
+                                <h5 className="font-semibold mb-2">Recent Challenges</h5>
+                                <div className="space-y-2">
+                                  {userData.details.recentCodingChallenges.map((challenge: any, idx: number) => (
+                                    <div key={idx} className="p-4 bg-gradient-to-r from-rose-50 to-pink-50 rounded-lg border border-rose-200">
+                                      <div className="flex justify-between items-start">
+                                        <div>
+                                          <p className="font-semibold text-gray-900">{challenge.title}</p>
+                                          <p className="text-sm text-gray-600">
+                                            {challenge.totalProblems} problems • {challenge.difficulty}
+                                          </p>
+                                        </div>
+                                        <Badge variant="outline" className="border-rose-300 text-rose-700">
+                                          {challenge.testType}
+                                        </Badge>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {userData.details.recentCodingAttempts?.length > 0 && (
+                              <div className="mt-4">
+                                <h5 className="font-semibold mb-2">Recent Attempts</h5>
+                                <div className="space-y-2">
+                                  {userData.details.recentCodingAttempts.map((attempt: any, idx: number) => (
+                                    <div key={idx} className="p-3 bg-white rounded-lg border border-gray-200">
+                                      <div className="flex justify-between items-center">
+                                        <div className="flex gap-4 text-sm">
+                                          <span className="font-semibold text-gray-700">
+                                            Score: {attempt.score}
+                                          </span>
+                                          <span className="text-gray-600">
+                                            Solved: {attempt.problemsSolved}/{attempt.problemsAttempted}
+                                          </span>
+                                          <span className="text-gray-600">
+                                            Time: {Math.floor(attempt.timeSpent / 60)}m
+                                          </span>
+                                        </div>
+                                        <span className="text-xs text-gray-500">
+                                          {new Date(attempt.submittedAt).toLocaleDateString()}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </TabsContent>
+
                         <TabsContent value="interviews" className="space-y-4">
                           <div className="grid grid-cols-3 gap-4">
                             <div className="p-5 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl text-center shadow-md">

@@ -12,6 +12,8 @@ import {
   interviewSessionsTable,
   assistantConversationsTable,
   assistantMessagesTable,
+  codingChallengesTable,
+  codingAttemptsTable,
 } from "@/config/schema";
 import { eq, count } from "drizzle-orm";
 
@@ -128,6 +130,28 @@ export async function GET(request: Request) {
           )
           .where(eq(assistantConversationsTable.userEmail, userEmail));
 
+        const codingChallenges = await db
+          .select()
+          .from(codingChallengesTable)
+          .where(eq(codingChallengesTable.userEmail, userEmail));
+
+        const codingAttempts = await db
+          .select()
+          .from(codingAttemptsTable)
+          .where(eq(codingAttemptsTable.userEmail, userEmail));
+
+        const completedCodingAttempts = codingAttempts.filter(
+          (a) => a.status === "completed"
+        );
+
+        const avgCodingScore =
+          completedCodingAttempts.length > 0
+            ? completedCodingAttempts.reduce(
+                (acc, attempt) => acc + (attempt.totalScore || 0),
+                0
+              ) / completedCodingAttempts.length
+            : 0;
+
         return {
           user: {
             id: userData.id,
@@ -152,6 +176,13 @@ export async function GET(request: Request) {
             averageInterviewScore: Math.round(avgInterviewScore),
             assistantConversations: assistantConversations.length,
             assistantMessages: assistantMessagesCount[0]?.count || 0,
+            codingChallengesCreated: codingChallenges.length,
+            codingAttemptsCompleted: completedCodingAttempts.length,
+            averageCodingScore: Math.round(avgCodingScore),
+            totalCodingProblems: codingChallenges.reduce(
+              (acc, challenge) => acc + (challenge.totalProblems || 0),
+              0
+            ),
           },
           details: {
             courses: coursesCreated.map((c) => ({
@@ -191,6 +222,20 @@ export async function GET(request: Request) {
               completedAt: s.completedAt,
               duration: s.duration,
             })),
+            recentCodingChallenges: codingChallenges.slice(0, 5).map((c) => ({
+              title: c.title,
+              difficulty: c.difficulty,
+              topic: c.topic,
+              totalProblems: c.totalProblems,
+              testType: c.testType,
+            })),
+            recentCodingAttempts: completedCodingAttempts.slice(0, 5).map((a) => ({
+              score: a.totalScore,
+              problemsSolved: a.problemsSolved,
+              problemsAttempted: a.problemsAttempted,
+              timeSpent: a.timeSpent,
+              submittedAt: a.submittedAt,
+            })),
           },
         };
       })
@@ -212,6 +257,12 @@ export async function GET(request: Request) {
       totalAssistantConversations: await db
         .select({ count: count() })
         .from(assistantConversationsTable),
+      totalCodingChallenges: await db
+        .select({ count: count() })
+        .from(codingChallengesTable),
+      totalCodingAttempts: await db
+        .select({ count: count() })
+        .from(codingAttemptsTable),
     };
 
     return NextResponse.json({
@@ -224,8 +275,9 @@ export async function GET(request: Request) {
         totalQuizzes: platformStats.totalQuizzes[0].count,
         totalFlashcardSets: platformStats.totalFlashcardSets[0].count,
         totalInterviewTemplates: platformStats.totalInterviewTemplates[0].count,
-        totalAssistantConversations:
-          platformStats.totalAssistantConversations[0].count,
+        totalAssistantConversations: platformStats.totalAssistantConversations[0].count,
+        totalCodingChallenges: platformStats.totalCodingChallenges[0].count,
+        totalCodingAttempts: platformStats.totalCodingAttempts[0].count,
       },
     });
   } catch (error) {
