@@ -219,12 +219,12 @@ export default function Home() {
 
           <div className="text-center mb-8">
             <h2
-              className={`text-5xl md:text-6xl lg:text-7xl font-serif italic text-gray-900 mb-6 leading-tight font-light`}
+              className={`text-5xl md:text-6xl lg:text-7xl italic text-gray-900 mb-6 leading-tight font-light ${instrumentSerif.className}`}
             >
               An AI Driven
             </h2>
             <h2
-              className={`text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-12 leading-tight ${nohemi.className} font-bold`}
+              className={`text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-12 leading-tight ${nohemi.className}`}
             >
               <span>self-learning</span> platform
             </h2>
@@ -272,7 +272,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mb-12">
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-gray-900 leading-tight">
+            <h3 className={`${instrumentSerif.className} text-4xl md:text-5xl lg:text-6xl font-serif italic text-gray-900 leading-tight`}>
               People who <span className="text-black-600">Break</span> Tradition
             </h3>
           </div>
