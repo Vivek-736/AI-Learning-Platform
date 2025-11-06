@@ -65,7 +65,7 @@ const Welcome = () => {
             <div className='relative z-10'>
                 <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4'>
                     <div className='flex items-center gap-3'>
-                        <div className='w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center bg-white shadow-sm border border-gray-100'>
+                        <div className='w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center bg-white shadow-sm border border-gray-400'>
                             <Image 
                                 src="/favicon.png"
                                 alt="Fascinity Logo"
@@ -118,7 +118,7 @@ const Welcome = () => {
                 {!isLoading && xpData && (
                     <div className='mb-4'>
                         <div className='flex items-center justify-between mb-1.5'>
-                            <span className='text-xs text-gray-600 font-medium'>
+                            <span className='text-xs text-gray-600 font-medium ml-0.5 mb-0.5'>
                                 Level Progress
                             </span>
                             <span className='text-xs text-purple-600 font-semibold'>
@@ -127,7 +127,7 @@ const Welcome = () => {
                         </div>
                         <div className='w-full h-2 bg-gray-100 rounded-full overflow-hidden'>
                             <div 
-                                className='h-full bg-gradient-to-r from-purple-500 to-purple-600 rounded-full transition-all duration-500 ease-out'
+                                className='h-full bg-gradient-to-r from-purple-500 to-purple-600 rounded-full transition-all duration-500 ease-out mr-0.5 mb-0.5'
                                 style={{ width: `${getProgressPercentage(xpData.totalXp)}%` }}
                             ></div>
                         </div>
@@ -136,7 +136,7 @@ const Welcome = () => {
 
                 {!isLoading && xpData && (
                     <div className='grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-3'>
-                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-100'>
+                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-300'>
                             <div className='w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center'>
                                 <GraduationCap className='w-4 h-4 text-blue-600' />
                             </div>
@@ -146,7 +146,7 @@ const Welcome = () => {
                             </div>
                         </div>
 
-                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-100'>
+                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-300'>
                             <div className='w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center'>
                                 <Target className='w-4 h-4 text-green-600' />
                             </div>
@@ -156,7 +156,7 @@ const Welcome = () => {
                             </div>
                         </div>
 
-                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-100'>
+                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-300'>
                             <div className='w-8 h-8 rounded-lg bg-purple-50 flex items-center justify-center'>
                                 <Zap className='w-4 h-4 text-purple-600' />
                             </div>
@@ -166,7 +166,7 @@ const Welcome = () => {
                             </div>
                         </div>
 
-                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-100'>
+                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-300'>
                             <div className='w-8 h-8 rounded-lg bg-rose-50 flex items-center justify-center'>
                                 <Code className='w-4 h-4 text-rose-600' />
                             </div>
@@ -176,7 +176,7 @@ const Welcome = () => {
                             </div>
                         </div>
 
-                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-100'>
+                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-300'>
                             <div className='w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center'>
                                 <Trophy className='w-4 h-4 text-orange-600' />
                             </div>
