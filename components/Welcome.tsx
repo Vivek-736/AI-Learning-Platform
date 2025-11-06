@@ -65,7 +65,7 @@ const Welcome = () => {
             <div className='relative z-10'>
                 <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4'>
                     <div className='flex items-center gap-3'>
-                        <div className='w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center bg-white shadow-sm border border-gray-400'>
+                        <div className='w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center shadow-sm border border-gray-400 bg-black'>
                             <Image 
                                 src="/favicon.png"
                                 alt="Fascinity Logo"

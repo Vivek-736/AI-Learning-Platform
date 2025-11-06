@@ -32,6 +32,58 @@ import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import AddNewCourseDialog from "./AddNewCourseDialog";
+import localFont from "next/font/local";
+
+const nohemi = localFont({
+  src: [
+    {
+      path: "../public/fonts/nohemi/Nohemi-Thin-BF6438cc5896c67.ttf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-ExtraLight-BF6438cc58a2634.ttf",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-Light-BF6438cc5899919.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-Regular-BF6438cc4d0e493.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-Medium-BF6438cc5883899.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-SemiBold-BF6438cc588a48a.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-Bold-BF6438cc587b5b5.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-ExtraBold-BF6438cc5881baf.ttf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/nohemi/Nohemi-Black-BF6438cc58744d4.ttf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-nohemi",
+});
 
 const AppSidebar = () => {
   const { user } = useUser();
@@ -116,8 +168,8 @@ const AppSidebar = () => {
   return (
     <Sidebar>
       <SidebarHeader className="p-4 flex items-center flex-row">
-        <Image src={"/favicon.png"} alt="logo" width={60} height={60} />
-        <p className="text-lg font-bold">Fascinity</p>
+        <Image src={"/favicon.png"} alt="logo" className="rounded-lg bg-black" width={40} height={40} />
+        <p className={`text-3xl font-normal ${nohemi.className} mt-1`}>Fascinity</p>
       </SidebarHeader>
       <SidebarContent className="flex flex-col">
         <SidebarGroup className="flex-shrink-0">
