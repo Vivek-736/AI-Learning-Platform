@@ -8,6 +8,12 @@ import { motion } from "framer-motion";
 import { useUser } from "@clerk/nextjs";
 import localFont from "next/font/local";
 import { Instrument_Serif } from "next/font/google";
+import { Schibsted_Grotesk } from "next/font/google";
+
+const schibstedGrotesk = Schibsted_Grotesk({
+  variable: "--font-schibsted-grotesk",
+  subsets: ["latin"],
+});
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -131,10 +137,10 @@ export default function Home() {
           <div className="px-4">
             <div className="max-w-3xl md:-mb-10">
               <p
-                className={`text-lg md:text-xl text-gray-700 leading-relaxed ${nohemi.className} font-normal`}
+                className={`text-lg md:text-xl text-gray-700 leading-relaxed ${schibstedGrotesk.className} font-normal`}
               >
                 <span
-                  className={`text-black-600 ${nohemi.className} font-bold`}
+                  className={`text-black-600 font-bold`}
                 >
                   ✦✦✦
                 </span>

@@ -1,17 +1,16 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import "./globals.css";
-import { Poppins } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./Provider";
 import { Toaster } from "@/components/ui/sonner"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Schibsted_Grotesk } from "next/font/google";
 
-const poppins = Poppins({
+const schibstedGrotesk = Schibsted_Grotesk({
+  variable: "--font-schibsted-grotesk",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
 });
 
 export const viewport: Viewport = {
@@ -70,7 +69,7 @@ export default function RootLayout({
     >
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${poppins.variable} antialiased`}
+          className={`${schibstedGrotesk.variable} antialiased`}
         >
           <ThemeProvider
             attribute="class"

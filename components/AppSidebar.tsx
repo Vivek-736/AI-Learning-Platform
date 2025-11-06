@@ -33,6 +33,12 @@ import { useUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import AddNewCourseDialog from "./AddNewCourseDialog";
 import localFont from "next/font/local";
+import { Schibsted_Grotesk } from "next/font/google";
+
+const schibstedGrotesk = Schibsted_Grotesk({
+  variable: "--font-schibsted-grotesk",
+  subsets: ["latin"],
+});
 
 const nohemi = localFont({
   src: [
@@ -174,7 +180,7 @@ const AppSidebar = () => {
       <SidebarContent className="flex flex-col">
         <SidebarGroup className="flex-shrink-0">
           <AddNewCourseDialog>
-            <Button className="cursor-pointer w-full">Create New Course</Button>
+            <Button className={`cursor-pointer w-full ${schibstedGrotesk.className}`}>Create New Course</Button>
           </AddNewCourseDialog>
         </SidebarGroup>
         <SidebarGroup className="flex-1 overflow-hidden flex flex-col">
@@ -185,7 +191,7 @@ const AppSidebar = () => {
                   <SidebarMenuButton asChild className="p-5">
                     <Link
                       href={item.path}
-                      className={`text-[17px] ${
+                      className={`text-[17px] ${nohemi.className} ${
                         pathname === item.path
                           ? "text-primary bg-purple-100"
                           : "text-gray-600 hover:text-black"
@@ -210,7 +216,7 @@ const AppSidebar = () => {
                 alt="User profile"
                 className="w-8 h-8 rounded-full"
               />
-              <div>
+              <div className={`${schibstedGrotesk.className}`}>
                 <p className="text-sm font-semibold text-black">
                   {user.fullName || "User"}
                 </p>
