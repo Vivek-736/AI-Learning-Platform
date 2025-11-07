@@ -77,10 +77,10 @@ const Welcome = () => {
                         <div className='flex-1'>
                             <h2 className='font-bold text-base md:text-xl text-gray-900 flex flex-wrap items-center gap-2'>
                                 Welcome back, 
-                                <span className='bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent'>
+                                <span className='bg-[#000B88] text-transparent bg-clip-text'>
                                     {user?.firstName || 'Learner'}
                                 </span>
-                                <Sparkles className='w-4 h-4 text-purple-500' />
+                                <Sparkles className='w-4 h-4 text-[#000B88]' />
                             </h2>
                             <p className='text-xs md:text-sm text-gray-500 mt-0.5'>
                                 Continue your learning journey
@@ -91,24 +91,24 @@ const Welcome = () => {
                     <div className='flex items-center gap-2'>
                         {isLoading ? (
                             <div className='flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full border border-gray-200'>
-                                <div className='w-5 h-5 border-2 border-purple-500 border-t-transparent rounded-full animate-spin'></div>
+                                <div className='w-5 h-5 border-2 border-[#000B88] border-t-transparent rounded-full animate-spin'></div>
                                 <span className='text-sm text-gray-600 font-medium'>Loading XP...</span>
                             </div>
                         ) : xpData ? (
-                            <div className='flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-purple-50 to-purple-100/50 rounded-full border border-purple-200/50'>
+                            <div className='flex items-center gap-3 px-4 py-2 bg-gradient-to-r bg-indigo-100 rounded-full border border-[#000B88]/50'>
                                 <div className='flex items-center gap-1.5'>
-                                    <Trophy className='w-5 h-5 text-purple-600' />
+                                    <Trophy className='w-5 h-5 text-[#000B88]' />
                                     <div className='flex flex-col'>
-                                        <span className='text-xs text-purple-600 font-medium'>Level {getLevel(xpData.totalXp)}</span>
-                                        <span className='text-[10px] text-purple-500'>
+                                        <span className='text-xs text-[#000B88] font-medium'>Level {getLevel(xpData.totalXp)}</span>
+                                        <span className='text-[10px] text-[#000B88]'>
                                             {getXPToNextLevel(xpData.totalXp)} XP to next
                                         </span>
                                     </div>
                                 </div>
-                                <div className='h-8 w-px bg-purple-200'></div>
+                                <div className='h-8 w-px bg-[#000B88]'></div>
                                 <div className='flex flex-col items-end'>
-                                    <span className='text-sm font-bold text-purple-700'>{xpData.totalXp.toLocaleString()}</span>
-                                    <span className='text-[10px] text-purple-500 font-medium'>Total XP</span>
+                                    <span className='text-sm font-bold text-[#000B88]'>{xpData.totalXp.toLocaleString()}</span>
+                                    <span className='text-[10px] text-[#000B88] font-medium'>Total XP</span>
                                 </div>
                             </div>
                         ) : null}
@@ -121,13 +121,13 @@ const Welcome = () => {
                             <span className='text-xs text-gray-600 font-medium ml-0.5 mb-0.5'>
                                 Level Progress
                             </span>
-                            <span className='text-xs text-purple-600 font-semibold'>
+                            <span className='text-xs text-black font-semibold'>
                                 {Math.round(getProgressPercentage(xpData.totalXp))}%
                             </span>
                         </div>
                         <div className='w-full h-2 bg-gray-100 rounded-full overflow-hidden'>
                             <div 
-                                className='h-full bg-gradient-to-r from-purple-500 to-purple-600 rounded-full transition-all duration-500 ease-out mr-0.5 mb-0.5'
+                                className='h-full bg-slate-900 rounded-full transition-all duration-500 ease-out mr-0.5 mb-0.5'
                                 style={{ width: `${getProgressPercentage(xpData.totalXp)}%` }}
                             ></div>
                         </div>

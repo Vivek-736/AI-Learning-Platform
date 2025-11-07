@@ -75,7 +75,7 @@
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.55 0.2445 308.05);
+  --primary: oklch(0% 0 0);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
@@ -153,7 +153,7 @@
 
   /* Show scrollbar on scroll (Firefox) */
   *:hover {
-    scrollbar-color: rgba(139, 92, 246, 0.3) transparent;
+    scrollbar-color: rgba(120,120,120,0.35) transparent;
   }
 
   /* Webkit browsers - ultra-thin, only visible when scrolling */
@@ -175,70 +175,40 @@
 
   /* Show on hover - super thin and sexy */
   *:hover::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-      135deg,
-      rgba(139, 92, 246, 0.2) 0%,
-      rgba(168, 85, 247, 0.3) 50%,
-      rgba(192, 132, 252, 0.2) 100%
-    );
+    background: rgba(120,120,120,0.28);
   }
 
   /* Brighter when hovering the scrollbar itself */
   *::-webkit-scrollbar-thumb:hover {
     width: 6px;
-    background: linear-gradient(
-      135deg,
-      rgba(139, 92, 246, 0.6) 0%,
-      rgba(168, 85, 247, 0.7) 50%,
-      rgba(192, 132, 252, 0.6) 100%
-    );
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+    background: rgba(100,100,100,0.6);
+    box-shadow: 0 0 6px rgba(0,0,0,0.08);
   }
 
   /* Active state - full visibility when dragging */
   *::-webkit-scrollbar-thumb:active {
-    background: linear-gradient(
-      135deg,
-      rgba(139, 92, 246, 0.8) 0%,
-      rgba(168, 85, 247, 0.9) 50%,
-      rgba(192, 132, 252, 0.8) 100%
-    );
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+    background: rgba(80,80,80,0.8);
+    box-shadow: 0 0 10px rgba(0,0,0,0.12);
   }
 
   /* Dark mode - slightly brighter for visibility */
   .dark *:hover::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-      135deg,
-      rgba(139, 92, 246, 0.3) 0%,
-      rgba(168, 85, 247, 0.4) 50%,
-      rgba(192, 132, 252, 0.3) 100%
-    );
+    background: rgba(200,200,200,0.26);
   }
 
   .dark *::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(
-      135deg,
-      rgba(139, 92, 246, 0.7) 0%,
-      rgba(168, 85, 247, 0.8) 50%,
-      rgba(192, 132, 252, 0.7) 100%
-    );
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+    background: rgba(220,220,220,0.6);
+    box-shadow: 0 0 6px rgba(0,0,0,0.06);
   }
 
   .dark *::-webkit-scrollbar-thumb:active {
-    background: linear-gradient(
-      135deg,
-      rgba(139, 92, 246, 0.9) 0%,
-      rgba(168, 85, 247, 1) 50%,
-      rgba(192, 132, 252, 0.9) 100%
-    );
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.7);
+    background: rgba(200,200,200,0.9);
+    box-shadow: 0 0 8px rgba(0,0,0,0.08);
   }
 
   /* Firefox dark mode */
   .dark *:hover {
-    scrollbar-color: rgba(139, 92, 246, 0.4) transparent;
+    scrollbar-color: rgba(200,200,200,0.4) transparent;
   }
 
   *::-webkit-scrollbar-corner {

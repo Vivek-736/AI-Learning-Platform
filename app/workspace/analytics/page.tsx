@@ -53,6 +53,7 @@ const adminEmails = [
   "vivekvrc777@gmail.com",
   "ashrafgalibshaik@gmail.com",
   "yasodamalavya2006@gmail.com",
+  "myvini1411@gmail.com"
 ];
 
 interface UserAnalytics {
@@ -232,7 +233,7 @@ const AnalyticsPage = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-blue-50 p-6">
+      <div className="min-h-screen bg-gray-50 p-6">
         <div className="max-w-7xl mx-auto">
           <Skeleton className="h-12 w-64 mb-6" />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
@@ -247,12 +248,12 @@ const AnalyticsPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-blue-50 rounded-lg p-6">
+    <div className="min-h-screen bg-gray-50 rounded-lg p-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
+              <h1 className="text-4xl font-bold text-gray-900 mb-2">
                 Admin Analytics Dashboard
               </h1>
               <p className="text-gray-600">
@@ -263,13 +264,13 @@ const AnalyticsPage = () => {
               <button
                 onClick={recalculateAllXp}
                 disabled={isRecalculating}
-                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all shadow-lg hover:shadow-xl disabled:cursor-not-allowed flex items-center gap-2"
+                className="bg-gray-900 hover:bg-gray-800 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all shadow-sm disabled:cursor-not-allowed flex items-center gap-2"
               >
                 <Trophy className="w-4 h-4" />
                 {isRecalculating ? "Recalculating..." : "Recalculate All XP"}
               </button>
-              <Badge className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 text-sm">
-                <Zap className="w-4 h-4 mr-2" />
+              <Badge className="bg-gray-100 text-gray-800 px-4 py-2 text-sm border border-gray-200">
+                <Zap className="w-4 h-4 mr-2 text-gray-600" />
                 Live Analytics
               </Badge>
             </div>
@@ -279,7 +280,7 @@ const AnalyticsPage = () => {
         {platformStats && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
-              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-purple-500 to-purple-600 text-white">
+              <Card className="border border-gray-200 shadow-sm bg-white">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Total Users</CardTitle>
                   <Users className="h-5 w-5 opacity-80" />
@@ -290,7 +291,7 @@ const AnalyticsPage = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-blue-500 to-blue-600 text-white">
+              <Card className="border border-gray-200 shadow-sm bg-white">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Total Courses</CardTitle>
                   <BookOpen className="h-5 w-5 opacity-80" />
@@ -303,7 +304,7 @@ const AnalyticsPage = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-green-500 to-green-600 text-white">
+              <Card className="border border-gray-200 shadow-sm bg-white">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Learning Tools</CardTitle>
                   <Brain className="h-5 w-5 opacity-80" />
@@ -318,7 +319,7 @@ const AnalyticsPage = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-orange-500 to-orange-600 text-white">
+              <Card className="border border-gray-200 shadow-sm bg-white">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">AI Assistant</CardTitle>
                   <MessageSquare className="h-5 w-5 opacity-80" />
@@ -331,7 +332,7 @@ const AnalyticsPage = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-pink-500 to-rose-600 text-white">
+              <Card className="border border-gray-200 shadow-sm bg-white">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Coding Challenges</CardTitle>
                   <Target className="h-5 w-5 opacity-80" />
@@ -351,7 +352,7 @@ const AnalyticsPage = () => {
               <Card className="border-none shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-purple-600" />
+                    <TrendingUp className="w-5 h-5 text-gray-600" />
                     User Activity Comparison
                   </CardTitle>
                   <CardDescription>Top users by engagement metrics</CardDescription>
@@ -371,10 +372,10 @@ const AnalyticsPage = () => {
                         }}
                       />
                       <Legend />
-                      <Bar dataKey="courses" fill="#8b5cf6" radius={[8, 8, 0, 0]} />
-                      <Bar dataKey="quizzes" fill="#3b82f6" radius={[8, 8, 0, 0]} />
-                      <Bar dataKey="flashcards" fill="#10b981" radius={[8, 8, 0, 0]} />
-                      <Bar dataKey="messages" fill="#f59e0b" radius={[8, 8, 0, 0]} />
+                      <Bar dataKey="courses" fill="#374151" radius={[8, 8, 0, 0]} />
+                      <Bar dataKey="quizzes" fill="#4b5563" radius={[8, 8, 0, 0]} />
+                      <Bar dataKey="flashcards" fill="#6b7280" radius={[8, 8, 0, 0]} />
+                      <Bar dataKey="messages" fill="#9ca3af" radius={[8, 8, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </CardContent>
@@ -485,15 +486,15 @@ const AnalyticsPage = () => {
               {analyticsData.map((userData) => (
                 <div
                   key={userData.user.id}
-                  className="border-2 border-gray-100 rounded-xl p-5 hover:shadow-lg hover:border-purple-200 transition-all bg-[#FFFFFF]"
+                  className="border-2 border-gray-100 rounded-xl p-5 hover:shadow-lg hover:border-gray-200 transition-all bg-white"
                 >
                   <div
                     className="flex items-center justify-between cursor-pointer"
                     onClick={() => toggleUserExpand(userData.user.id)}
                   >
                     <div className="flex items-center space-x-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center shadow-md">
-                        <span className="text-xl font-bold text-white">
+                      <div className="w-14 h-14 bg-gray-200 rounded-full flex items-center justify-center shadow-sm">
+                        <span className="text-xl font-bold text-gray-700">
                           {userData.user.name.charAt(0).toUpperCase()}
                         </span>
                       </div>
@@ -502,16 +503,16 @@ const AnalyticsPage = () => {
                         <p className="text-sm text-gray-600">{userData.user.email}</p>
                       </div>
                       {userData.user.subscriptionId && (
-                        <Badge className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white border-none">
+                        <Badge className="bg-gray-100 text-gray-800 border border-gray-200">
                           ⭐ Premium
                         </Badge>
                       )}
                     </div>
-                    <button className="p-2 hover:bg-purple-50 rounded-full transition-colors">
+                    <button className="p-2 hover:bg-gray-50 rounded-full transition-colors">
                       {expandedUsers.has(userData.user.id) ? (
-                        <ChevronUp className="w-5 h-5 text-purple-600" />
+                        <ChevronUp className="w-5 h-5 text-gray-600" />
                       ) : (
-                        <ChevronDown className="w-5 h-5 text-purple-600" />
+                        <ChevronDown className="w-5 h-5 text-gray-600" />
                       )}
                     </button>
                   </div>

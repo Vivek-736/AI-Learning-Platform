@@ -193,11 +193,11 @@ const AppSidebar = () => {
                       href={item.path}
                       className={`text-[17px] ${nohemi.className} ${
                         pathname === item.path
-                          ? "text-primary bg-purple-100"
-                          : "text-gray-600 hover:text-black"
+                          ? "text-primary bg-gradient-to-b border-2 border-gray-900 from-gray-200 to-gray-100"
+                          : "text-gray-800 hover:text-black"
                       } flex items-center space-x-3`}>
                       <item.icon className="h-7 w-7" />
-                      <span>{item.title}</span>
+                      <span className="mt-1">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

@@ -201,7 +201,7 @@ export default function Home() {
               <div className="absolute top-6 right-6">
                 <p className="text-white text-lg font-light">
                   no more <span className="italic">hours</span> of{" "}
-                  <span className="text-black-300 italic font-serif">
+                  <span className="text-red-400 italic font-serif">
                     mindlessness
                   </span>
                 </p>
