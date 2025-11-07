@@ -5,7 +5,7 @@
   
   ### *Your AI-Powered Learning Companion*
   
-  **Transform any content into personalized learning experiences with intelligent flashcards, adaptive quizzes, and interactive voice interviews.**
+  **Transform your learning Fascinity, a platform that titilates your fascination and curiosity for a better learning.**
   
   [![Next.js](https://img.shields.io/badge/Next.js-15.5.3-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
   [![React](https://img.shields.io/badge/React-19.1.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
