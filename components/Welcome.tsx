@@ -62,7 +62,7 @@ const Welcome = () => {
             <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-100/20 to-transparent rounded-full -translate-y-8 translate-x-8'></div>
             <div className='absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo-50/30 to-transparent rounded-full translate-y-6 -translate-x-6'></div>
             
-            <div className='relative z-10'>
+            <div className='relative'>
                 <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4'>
                     <div className='flex items-center gap-3'>
                         <div className='w-8 h-8 md:w-12 md:h-12 rounded-xl flex items-center justify-center shadow-sm border border-gray-400 bg-black'>

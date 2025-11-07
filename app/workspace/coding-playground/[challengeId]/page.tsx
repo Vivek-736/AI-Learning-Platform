@@ -410,7 +410,7 @@ export default function ChallengeAttemptPage() {
     return (
         <div className={`min-h-screen bg-white dark:bg-gray-950 ${nohemi.variable}`}>
             {/* Timer Header */}
-            <div className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md">
+            <div className="sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md">
                 <div className="max-w-7xl mx-auto px-6 py-4">
                     <div className="flex items-center justify-between">
                         <div>
