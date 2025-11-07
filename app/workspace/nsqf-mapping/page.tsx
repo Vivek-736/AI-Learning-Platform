@@ -125,7 +125,7 @@ const NSQFMappingPage = () => {
                 placeholder="Search careers, skills, or pathways..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               />
             </div>
 
@@ -136,7 +136,7 @@ const NSQFMappingPage = () => {
                   e.target.value === "" ? "" : parseInt(e.target.value)
                 )
               }
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             >
               <option value="">All Levels</option>
               {nsqfLevels.map((level) => (
@@ -149,7 +149,7 @@ const NSQFMappingPage = () => {
             <select
               value={selectedDemand}
               onChange={(e) => setSelectedDemand(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             >
               <option value="">All Demands</option>
               {jobDemands.map((demand) => (
@@ -162,7 +162,7 @@ const NSQFMappingPage = () => {
             <select
               value={selectedSector}
               onChange={(e) => setSelectedSector(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             >
               <option value="">All Sectors</option>
               {sectors.map((sector) => (
@@ -239,7 +239,7 @@ const NSQFMappingPage = () => {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleCopyToClipboard(career, "skills")}
-                      className="h-6 w-6 p-0 hover:bg-purple-50"
+                      className="h-6 w-6 p-0 hover:bg-indigo-50"
                     >
                       {copiedId === `${career.id}-skills` ? (
                         <CheckCheck className="h-3 w-3 text-green-600" />
@@ -252,7 +252,7 @@ const NSQFMappingPage = () => {
                     {career.required_skills.map((skill, index) => (
                       <span
                         key={index}
-                        className="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded-md font-medium"
+                        className="px-2 py-1 bg-indigo-50 text-indigo-700 text-xs rounded-md font-medium"
                       >
                         {skill}
                       </span>
@@ -270,7 +270,7 @@ const NSQFMappingPage = () => {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleCopyToClipboard(career, "pathway")}
-                      className="h-6 w-6 p-0 hover:bg-purple-50"
+                      className="h-6 w-6 p-0 hover:bg-indigo-50"
                     >
                       {copiedId === `${career.id}-pathway` ? (
                         <CheckCheck className="h-3 w-3 text-green-600" />
@@ -282,8 +282,8 @@ const NSQFMappingPage = () => {
                   <div className="space-y-2">
                     {career.training_pathway.map((step, index) => (
                       <div key={index} className="flex items-start space-x-2">
-                        <div className="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="text-xs font-medium text-purple-600">
+                        <div className="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-xs font-medium text-indigo-600">
                             {index + 1}
                           </span>
                         </div>
@@ -295,8 +295,8 @@ const NSQFMappingPage = () => {
                   </div>
                 </div>
 
-                <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-                  <p className="text-xs text-purple-700 leading-relaxed">
+                <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-3">
+                  <p className="text-xs text-indigo-700 leading-relaxed">
                     💡 <strong>Tip:</strong> Copy the required skills and
                     training pathway above to use in course generation. Use
                     these details to create personalized learning paths in our

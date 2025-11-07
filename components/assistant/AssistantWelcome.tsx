@@ -8,8 +8,8 @@ export default function AssistantWelcome() {
     <div className="flex-1 flex items-center justify-center bg-[#FFFFFF]">
       <div className="text-center max-w-2xl mx-auto px-6">
         <div className="relative mb-8 mt-1">
-          <div className="w-24 h-24 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mx-auto">
-            <Bot className="w-12 h-12 text-purple-600" />
+          <div className="w-24 h-24 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mx-auto">
+            <Bot className="w-12 h-12 text-indigo-600" />
           </div>
         </div>
 
@@ -22,12 +22,12 @@ export default function AssistantWelcome() {
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 text-left border border-purple-200">
-            <div className="w-10 h-10 bg-purple-200 rounded-lg flex items-center justify-center mb-4">
-              <BookOpen className="w-5 h-5 text-purple-600" />
+          <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-6 text-left border border-indigo-200">
+            <div className="w-10 h-10 bg-indigo-200 rounded-lg flex items-center justify-center mb-4">
+              <BookOpen className="w-5 h-5 text-indigo-600" />
             </div>
-            <h3 className="font-semibold text-purple-900 mb-2">Course Content Help</h3>
-            <p className="text-sm text-purple-800 leading-relaxed">
+            <h3 className="font-semibold text-indigo-900 mb-2">Course Content Help</h3>
+            <p className="text-sm text-indigo-800 leading-relaxed">
               Get explanations of course concepts, clarify doubts, and dive deeper into topics you&apos;re studying.
             </p>
           </div>
@@ -75,7 +75,7 @@ export default function AssistantWelcome() {
               'Help with quiz preparation and review'
             ].map((item, index) => (
               <div key={index} className="flex items-start space-x-2">
-                <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
                 <span className="text-sm text-gray-700">{item}</span>
               </div>
             ))}

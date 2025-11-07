@@ -87,7 +87,7 @@ const PublicInterviewEntryPage = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
+            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
                 <div className="text-center">
                     <div className="w-8 h-8 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin mb-4"></div>
                 </div>
@@ -97,7 +97,7 @@ const PublicInterviewEntryPage = () => {
 
     if (!interview) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center p-4">
+            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center p-4">
                 <Card className="max-w-md w-full">
                     <CardContent className="pt-6 text-center">
                         <AlertCircle className="h-16 w-16 text-red-500 mx-auto mb-4" />
@@ -110,7 +110,7 @@ const PublicInterviewEntryPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-8 px-4">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-8">
                     <div className="rounded-full flex items-center justify-center mb-2">
@@ -119,7 +119,7 @@ const PublicInterviewEntryPage = () => {
                             alt='favicon'
                             width={62}
                             height={62}
-                            className='border-2 p-2 rounded-full border-purple-400'
+                            className='border-2 p-2 rounded-full border-indigo-400'
                         />
                     </div>
                     <h1 className="text-3xl font-bold text-gray-800 mb-2">{interview.title}</h1>
@@ -154,7 +154,7 @@ const PublicInterviewEntryPage = () => {
                                     </Badge>
                                 </div>
 
-                                <div className="flex flex-col items-center p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border">
+                                <div className="flex flex-col items-center p-4 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg border">
                                     <div className="text-sm font-medium text-gray-700 mb-2">Duration</div>
                                     <div className="flex items-center">
                                         <Clock className="h-4 w-4 text-gray-500 mr-2" />
@@ -264,7 +264,7 @@ const PublicInterviewEntryPage = () => {
                                     <Button 
                                         type="submit" 
                                         disabled={submitting || !formData.candidateName || !formData.candidateEmail}
-                                        className="w-full h-14 text-lg font-medium bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all cursor-pointer duration-200 shadow-lg hover:shadow-xl"
+                                        className="w-full h-14 text-lg font-medium bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white transition-all cursor-pointer duration-200 shadow-lg hover:shadow-xl"
                                     >
                                         {submitting ? (
                                             <div className="flex items-center">

@@ -75,7 +75,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               return (
                 <code
                   key={segIndex}
-                  className="px-2 py-1 bg-gray-100 text-purple-700 rounded font-mono text-sm border"
+                  className="px-2 py-1 bg-gray-100 text-indigo-700 rounded font-mono text-sm border"
                 >
                   {segment.slice(1, -1)}
                 </code>
@@ -87,7 +87,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               return (
                 <strong
                   key={segIndex}
-                  className="font-semibold text-purple-700 bg-purple-50 px-1 py-0.5 rounded"
+                  className="font-semibold text-indigo-700 bg-indigo-50 px-1 py-0.5 rounded"
                 >
                   {segment.slice(2, -2)}
                 </strong>
@@ -99,7 +99,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               return (
                 <sup
                   key={segIndex}
-                  className="text-xs font-medium text-purple-600"
+                  className="text-xs font-medium text-indigo-600"
                   style={{ fontSize: '0.6em', verticalAlign: 'super' }}
                 >
                   {segment.slice(5, -6)}
@@ -112,7 +112,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               return (
                 <sub
                   key={segIndex}
-                  className="text-xs font-medium text-purple-600"
+                  className="text-xs font-medium text-indigo-600"
                   style={{ fontSize: '0.6em', verticalAlign: 'sub' }}
                 >
                   {segment.slice(5, -6)}
@@ -131,7 +131,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
                     return (
                       <em
                         key={segIndex}
-                        className="italic text-purple-600 font-medium"
+                        className="italic text-indigo-600 font-medium"
                       >
                         {content}
                       </em>
@@ -140,7 +140,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
                     return (
                       <u
                         key={segIndex}
-                        className="underline text-purple-600"
+                        className="underline text-indigo-600"
                       >
                         {content}
                       </u>
@@ -167,7 +167,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
                     return (
                       <span
                         key={segIndex}
-                        className="text-purple-600 font-medium"
+                        className="text-indigo-600 font-medium"
                       >
                         {content}
                       </span>
@@ -204,18 +204,18 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
       <div
         className={`max-w-[85%] md:max-w-[75%] rounded-2xl px-4 py-3 ${
           isUser
-            ? 'bg-purple-600 text-white shadow-md'
+            ? 'bg-indigo-600 text-white shadow-md'
             : 'bg-[#FFFFFF] text-gray-900 border border-gray-200 shadow-sm'
         }`}
       >
         <div className="flex items-start space-x-3">
           <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-            isUser ? 'bg-purple-500' : 'bg-purple-100'
+            isUser ? 'bg-indigo-500' : 'bg-indigo-100'
           }`}>
             {isUser ? (
               <div className="w-4 h-4 bg-[#FFFFFF] rounded-full" />
             ) : (
-              <Bot className="w-4 h-4 text-purple-600" />
+              <Bot className="w-4 h-4 text-indigo-600" />
             )}
           </div>
           
@@ -234,7 +234,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
             
             <div className="flex items-center justify-between mt-3 pt-2 border-t border-opacity-20 border-gray-300">
               <span className={`text-xs ${
-                isUser ? 'text-purple-200' : 'text-gray-500'
+                isUser ? 'text-indigo-200' : 'text-gray-500'
               }`}>
                 {formatTime(message.timestamp)}
               </span>
@@ -389,13 +389,13 @@ export default function ChatInterface({
       <div className="border-b border-gray-100 p-4 bg-[#FFFFFF]">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-              <Bot className="w-6 h-6 text-purple-600" />
+            <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
+              <Bot className="w-6 h-6 text-indigo-600" />
             </div>
             <div>
               <h2 className="font-semibold text-gray-900">{enrolledCourse.courses.name}</h2>
               <p className="text-sm text-gray-500">
-                Progress: <span className="font-medium text-purple-600">
+                Progress: <span className="font-medium text-indigo-600">
                   {Math.round((enrolledCourse.enrollCourse.completedChapters?.length || 0) / enrolledCourse.courses.noOfChapters * 100)}%
                 </span> • AI Assistant
               </p>
@@ -425,25 +425,25 @@ export default function ChatInterface({
         {isLoadingMessages ? (
           <div className="flex justify-center py-8">
             <div className="text-center">
-              <Loader2 className="w-8 h-8 animate-spin text-purple-400 mx-auto mb-2" />
+              <Loader2 className="w-8 h-8 animate-spin text-indigo-400 mx-auto mb-2" />
               <p className="text-sm text-gray-500">Loading conversation...</p>
             </div>
           </div>
         ) : messages.length === 0 ? (
           <div className="text-center">
-            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Bot className="w-10 h-10 text-purple-600" />
+            <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Bot className="w-10 h-10 text-indigo-600" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Hi! I&apos;m your personal learning assistant
             </h3>
             <p className="text-gray-600 mb-6 max-w-md mx-auto">
-              I know about your progress in <strong className="text-purple-700">{enrolledCourse.courses.name}</strong> and can help you with:
+              I know about your progress in <strong className="text-indigo-700">{enrolledCourse.courses.name}</strong> and can help you with:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-lg mx-auto text-sm mb-6">
-              <div className="bg-purple-50 rounded-lg p-3 text-left border border-purple-100">
-                <strong className="text-purple-900">Course Content</strong>
-                <p className="text-purple-700">Explanations, concept clarification</p>
+              <div className="bg-indigo-50 rounded-lg p-3 text-left border border-indigo-100">
+                <strong className="text-indigo-900">Course Content</strong>
+                <p className="text-indigo-700">Explanations, concept clarification</p>
               </div>
               <div className="bg-blue-50 rounded-lg p-3 text-left border border-blue-100">
                 <strong className="text-blue-900">Progress Guidance</strong>
@@ -464,7 +464,7 @@ export default function ChatInterface({
                 <button
                   key={index}
                   onClick={() => setInputMessage(suggestion)}
-                  className="px-3 py-2 text-sm bg-purple-100 hover:bg-purple-200 text-purple-700 rounded-full transition-colors"
+                  className="px-3 py-2 text-sm bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors"
                 >
                   {suggestion}
                 </button>
@@ -484,13 +484,13 @@ export default function ChatInterface({
           <div className="flex justify-start">
             <div className="max-w-[80%] rounded-2xl px-4 py-3 bg-gray-100 border border-gray-200">
               <div className="flex items-center space-x-3">
-                <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center">
-                  <Bot className="w-3.5 h-3.5 text-purple-600" />
+                <div className="w-6 h-6 bg-indigo-100 rounded-full flex items-center justify-center">
+                  <Bot className="w-3.5 h-3.5 text-indigo-600" />
                 </div>
                 <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                 </div>
                 <span className="text-sm text-gray-600">Thinking...</span>
               </div>
@@ -511,7 +511,7 @@ export default function ChatInterface({
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Ask me anything about your course progress..."
-              className="w-full px-4 py-3 pr-12 border border-gray-200 rounded-full ring-2 ring-purple-500 transition-all"
+              className="w-full px-4 py-3 pr-12 border border-gray-200 rounded-full ring-2 ring-indigo-500 transition-all"
               disabled={isLoading}
             />
             <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-400">
@@ -521,7 +521,7 @@ export default function ChatInterface({
           <button
             onClick={sendMessage}
             disabled={!inputMessage.trim() || isLoading}
-            className="p-3 bg-purple-600 text-white rounded-full hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center cursor-pointer"
+            className="p-3 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center cursor-pointer"
           >
             {isLoading ? (
               <Loader2 className="w-5 h-5 animate-spin" />

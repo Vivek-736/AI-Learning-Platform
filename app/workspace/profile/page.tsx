@@ -25,7 +25,7 @@ const ProfilePage = () => {
             socialButtonsBlockButton:
               "border-2 border-gray-200 hover:border-indigo-300 rounded-lg",
             formButtonPrimary:
-              "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 rounded-lg font-medium transition-all duration-200 transform hover:scale-105",
+              "bg-gradient-to-r from-indigo-500 to-indigo-500 hover:from-indigo-600 hover:to-indigo-600 rounded-lg font-medium transition-all duration-200 transform hover:scale-105",
             footerActionLink:
               "text-indigo-600 hover:text-indigo-700 font-medium",
             identityPreviewText: "text-gray-700 font-medium",

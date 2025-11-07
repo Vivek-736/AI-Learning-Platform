@@ -91,7 +91,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, onQuizUpdate }) => {
 
                     <Button
                         onClick={handleStartQuiz}
-                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 cursor-pointer transition-opacity"
+                        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:opacity-90 cursor-pointer transition-opacity"
                     >
                         <Play className="h-4 w-4 mr-2" />
                         Start Quiz

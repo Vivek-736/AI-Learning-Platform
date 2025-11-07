@@ -21,7 +21,7 @@ const NotFoundPage = () => {
 
                 <div className='flex flex-col gap-y-4'>
                     <Link href='/workspace'>
-                        <button className='w-full cursor-pointer bg-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-purple-700 transition-colors duration-200 flex items-center justify-center gap-2'>
+                        <button className='w-full cursor-pointer bg-indigo-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-indigo-700 transition-colors duration-200 flex items-center justify-center gap-2'>
                             <Home className='w-4 h-4' />
                             Back to Dashboard
                         </button>

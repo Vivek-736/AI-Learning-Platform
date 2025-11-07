@@ -50,21 +50,21 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
     if (percentage >= 90) return 'text-green-600';
     if (percentage >= 70) return 'text-blue-600';
     if (percentage >= 40) return 'text-yellow-600';
-    return 'text-purple-600';
+    return 'text-indigo-600';
   };
 
   const getProgressBgColor = (percentage: number) => {
     if (percentage >= 90) return 'bg-green-100';
     if (percentage >= 70) return 'bg-blue-100';
     if (percentage >= 40) return 'bg-yellow-100';
-    return 'bg-purple-100';
+    return 'bg-indigo-100';
   };
 
   const getProgressBarColor = (percentage: number) => {
     if (percentage >= 90) return 'bg-green-500';
     if (percentage >= 70) return 'bg-blue-500';
     if (percentage >= 40) return 'bg-yellow-500';
-    return 'bg-purple-500';
+    return 'bg-indigo-500';
   };
 
   const filteredCourses = enrolledCourses.filter(enrollment =>
@@ -94,7 +94,7 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
         <p className="text-sm text-gray-500 mb-4">You haven&apos;t enrolled in any courses yet</p>
         <button
           onClick={() => window.location.href = '/workspace/explore'}
-          className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm"
+          className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm"
         >
           Explore Courses
         </button>
@@ -129,7 +129,7 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
               <div className="flex items-center space-x-3 mt-1">
                 <div className="flex items-center space-x-1">
                   <div className={`w-2 h-2 rounded-full ${
-                    getProgressPercentage(selectedEnrollment) === 100 ? 'bg-green-500' : 'bg-purple-500'
+                    getProgressPercentage(selectedEnrollment) === 100 ? 'bg-green-500' : 'bg-indigo-500'
                   }`}></div>
                   <span className="text-xs text-gray-600 font-medium">
                     {getProgressPercentage(selectedEnrollment)}%
@@ -159,7 +159,7 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
                 placeholder="Search courses..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               />
             </div>
           </div>
@@ -184,18 +184,18 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
                       setSearchQuery('');
                     }}
                     className={`w-full p-4 text-left hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 ${
-                      isSelected ? 'bg-purple-50 border-purple-100' : ''
+                      isSelected ? 'bg-indigo-50 border-indigo-100' : ''
                     }`}
                   >
                     <div className="flex items-start space-x-3">
                       <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                        isSelected ? 'bg-purple-200' : getProgressBgColor(progressPercentage)
+                        isSelected ? 'bg-indigo-200' : getProgressBgColor(progressPercentage)
                       }`}>
                         {progressPercentage === 100 ? (
                           <CheckCircle className="w-6 h-6 text-green-600" />
                         ) : (
                           <BookOpen className={`w-6 h-6 ${
-                            isSelected ? 'text-purple-700' : getProgressColor(progressPercentage)
+                            isSelected ? 'text-indigo-700' : getProgressColor(progressPercentage)
                           }`} />
                         )}
                       </div>

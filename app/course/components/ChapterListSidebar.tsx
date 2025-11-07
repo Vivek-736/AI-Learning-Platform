@@ -54,7 +54,7 @@ const ChapterListSidebar = ({ courseInfo }: ChapterListSidebarProps) => {
                                 chapterCompleted 
                                     ? 'border-green-300 bg-green-50' 
                                     : isSelected 
-                                        ? 'border-purple-300 bg-purple-50' 
+                                        ? 'border-indigo-300 bg-indigo-50' 
                                         : 'border-gray-200'
                             }`}
                             onClick={() => setSelectedChapterIndex(index)}
@@ -62,13 +62,13 @@ const ChapterListSidebar = ({ courseInfo }: ChapterListSidebarProps) => {
                             <AccordionTrigger className={`font-medium text-base px-4 py-3 text-left transition-colors duration-200 ${
                                 chapterCompleted 
                                     ? 'hover:bg-green-100' 
-                                    : 'hover:bg-purple-50'
+                                    : 'hover:bg-indigo-50'
                             }`}>
                                 <div className='flex items-center gap-3 w-full'>
                                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
                                         chapterCompleted 
                                             ? 'bg-green-600 text-white' 
-                                            : 'bg-purple-600 text-white'
+                                            : 'bg-indigo-600 text-white'
                                     }`}>
                                         {chapterCompleted ? (
                                             <CheckCircle className="w-4 h-4" />
@@ -96,12 +96,12 @@ const ChapterListSidebar = ({ courseInfo }: ChapterListSidebarProps) => {
                                             className={`p-3 border-b last:border-0 cursor-pointer transition-colors duration-150 ${
                                                 chapterCompleted 
                                                     ? 'hover:bg-green-50' 
-                                                    : 'hover:bg-purple-50'
+                                                    : 'hover:bg-indigo-50'
                                             }`}
                                         >
                                             <div className='flex items-center gap-2'>
                                                 <div className={`w-2 h-2 rounded-full ${
-                                                    chapterCompleted ? 'bg-green-400' : 'bg-purple-400'
+                                                    chapterCompleted ? 'bg-green-400' : 'bg-indigo-400'
                                                 }`}></div>
                                                 <span className={`text-sm ${
                                                     chapterCompleted ? 'text-green-700' : 'text-gray-700'

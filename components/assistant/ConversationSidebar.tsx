@@ -99,7 +99,7 @@ export default function ConversationSidebar({
     <div className="flex flex-col h-full bg-gray-50">
       <div className="p-4 bg-[#FFFFFF] border-b border-gray-200">
         <div className="flex items-center space-x-2 mb-3">
-          <Bot className="w-5 h-5 text-purple-600" />
+          <Bot className="w-5 h-5 text-indigo-600" />
           <div className="flex-1 min-w-0">
             <h3 className="font-semibold text-gray-900 truncate">Assistant Chat</h3>
             <p className="text-xs text-gray-600 truncate">{courseName}</p>
@@ -108,7 +108,7 @@ export default function ConversationSidebar({
         
         <button
           onClick={createNewConversation}
-          className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 bg-purple-600 text-white rounded-lg cursor-pointer hover:bg-purple-700 transition-colors font-medium"
+          className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 bg-indigo-600 text-white rounded-lg cursor-pointer hover:bg-indigo-700 transition-colors font-medium"
         >
           <span>New Chat</span>
         </button>
@@ -122,7 +122,7 @@ export default function ConversationSidebar({
             placeholder="Search conversations..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
           />
         </div>
       </div>
@@ -162,27 +162,27 @@ export default function ConversationSidebar({
                 key={conversation.conversationId}
                 className={`group flex items-start p-3 rounded-lg cursor-pointer transition-all hover:shadow-sm ${
                   activeConversationId === conversation.conversationId
-                    ? 'bg-purple-100 border-purple-200 shadow-sm'
+                    ? 'bg-indigo-100 border-indigo-200 shadow-sm'
                     : 'bg-[#FFFFFF] hover:bg-gray-50 border border-transparent hover:border-gray-200'
                 }`}
                 onClick={() => onConversationSelect(conversation.conversationId)}
               >
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mr-3 ${
                   activeConversationId === conversation.conversationId
-                    ? 'bg-purple-200'
-                    : 'bg-gray-100 group-hover:bg-purple-100'
+                    ? 'bg-indigo-200'
+                    : 'bg-gray-100 group-hover:bg-indigo-100'
                 }`}>
                   <MessageSquare className={`w-4 h-4 ${
                     activeConversationId === conversation.conversationId
-                      ? 'text-purple-700'
-                      : 'text-gray-500 group-hover:text-purple-600'
+                      ? 'text-indigo-700'
+                      : 'text-gray-500 group-hover:text-indigo-600'
                   }`} />
                 </div>
                 
                 <div className="flex-1 min-w-0">
                   <h4 className={`text-sm font-medium truncate mb-1 ${
                     activeConversationId === conversation.conversationId
-                      ? 'text-purple-900'
+                      ? 'text-indigo-900'
                       : 'text-gray-900'
                   }`}>
                     {conversation.title}

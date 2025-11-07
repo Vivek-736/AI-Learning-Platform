@@ -56,7 +56,7 @@ export default function LeaderboardPage() {
         return (
             <div className="min-h-[76vh] flex items-center justify-center bg-gray-50">
                 <div className="text-center space-y-4">
-                    <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto" />
+                    <div className="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto" />
                     <p className="text-lg font-semibold text-gray-700">Loading Leaderboard...</p>
                 </div>
             </div>
@@ -76,11 +76,9 @@ export default function LeaderboardPage() {
                     className="text-center mb-10"
                 >
                     <div className="inline-flex items-center gap-3 mb-3">
-                        <Trophy className="w-10 h-10 text-purple-600" strokeWidth={2} />
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
                             Global Leaderboard
                         </h1>
-                        <Trophy className="w-10 h-10 text-purple-600" strokeWidth={2} />
                     </div>
                     <p className="text-base md:text-lg text-gray-600 font-medium">
                         Top learners competing worldwide 🌍
@@ -94,7 +92,7 @@ export default function LeaderboardPage() {
                         transition={{ delay: 0.1, duration: 0.3 }}
                         className="mb-8 flex justify-center"
                     >
-                        <div className="inline-flex items-center gap-3 px-6 py-3 bg-purple-600 text-white rounded-xl shadow-lg">
+                        <div className="inline-flex items-center gap-3 px-6 py-3 bg-indigo-600 text-white rounded-xl shadow-lg">
                             <Sparkles className="w-5 h-5" />
                             <span className="text-lg font-bold">
                                 Your Rank: #{userRank}
@@ -160,7 +158,7 @@ export default function LeaderboardPage() {
                                         group relative overflow-hidden rounded-xl border-2
                                         transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5
                                         ${isCurrentUser 
-                                            ? 'bg-purple-50 border-purple-300' 
+                                            ? 'bg-indigo-50 border-indigo-300' 
                                             : 'bg-white border-gray-200 hover:border-gray-300'
                                         }
                                     `}
@@ -169,7 +167,7 @@ export default function LeaderboardPage() {
                                         <div className={`
                                             flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg font-bold text-lg
                                             ${isCurrentUser 
-                                                ? 'bg-purple-600 text-white shadow-md' 
+                                                ? 'bg-indigo-600 text-white shadow-md' 
                                                 : 'bg-gray-100 text-gray-700 group-hover:bg-gray-200'
                                             }
                                         `}>
@@ -179,13 +177,13 @@ export default function LeaderboardPage() {
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2 mb-1 flex-wrap">
                                                 <h3 className={`font-bold text-base md:text-lg truncate ${
-                                                    isCurrentUser ? 'text-purple-900' : 'text-gray-900'
+                                                    isCurrentUser ? 'text-indigo-900' : 'text-gray-900'
                                                 }`}>
                                                     {entry.name}
                                                 </h3>
 
                                                 {isCurrentUser && (
-                                                    <span className="bg-purple-600 text-white text-xs font-bold px-2 py-0.5 rounded-md">
+                                                    <span className="bg-indigo-600 text-white text-xs font-bold px-2 py-0.5 rounded-md">
                                                         YOU
                                                     </span>
                                                 )}
@@ -197,7 +195,7 @@ export default function LeaderboardPage() {
                                                         <div 
                                                             className={`h-full rounded-full transition-all duration-500 ${
                                                                 isCurrentUser 
-                                                                    ? 'bg-purple-600' 
+                                                                    ? 'bg-indigo-600' 
                                                                     : 'bg-blue-500'
                                                             }`}
                                                             style={{ width: `${progress}%` }}
@@ -210,7 +208,7 @@ export default function LeaderboardPage() {
                                             </div>
 
                                             <div className={`flex flex-wrap gap-1.5 md:gap-2 text-xs font-medium ${
-                                                isCurrentUser ? 'text-purple-700' : 'text-gray-600'
+                                                isCurrentUser ? 'text-indigo-700' : 'text-gray-600'
                                             }`}>
                                                 <span className="flex items-center gap-1">📚 {entry.courseCompletionXp}</span>
                                                 <span>•</span>
@@ -228,7 +226,7 @@ export default function LeaderboardPage() {
                                             <div className={`
                                                 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-bold
                                                 ${isCurrentUser 
-                                                    ? 'bg-purple-600 text-white' 
+                                                    ? 'bg-indigo-600 text-white' 
                                                     : 'bg-gray-800 text-white'
                                                 }
                                             `}>
@@ -240,7 +238,7 @@ export default function LeaderboardPage() {
                                         <div className={`
                                             flex flex-col items-end justify-center px-3 md:px-4 py-2 rounded-lg
                                             ${isCurrentUser 
-                                                ? 'bg-purple-600 text-white' 
+                                                ? 'bg-indigo-600 text-white' 
                                                 : 'bg-gray-800 text-white'
                                             }
                                         `}>
@@ -287,7 +285,7 @@ function TopThreeCard({ entry, currentUserEmail }: { entry: LeaderboardEntry; cu
             relative rounded-2xl shadow-xl overflow-hidden
             transition-all duration-300 hover:scale-105 hover:shadow-2xl
             border-2 ${colors.border}
-            ${isCurrentUser ? 'ring-4 ring-purple-400 ring-offset-2' : ''}
+            ${isCurrentUser ? 'ring-4 ring-indigo-400 ring-offset-2' : ''}
         `}>
             <div className={`${colors.bg} p-5 md:p-6`}>
                 <div className="relative mb-4">
@@ -312,7 +310,7 @@ function TopThreeCard({ entry, currentUserEmail }: { entry: LeaderboardEntry; cu
 
                 {isCurrentUser && (
                     <div className="flex justify-center mb-3">
-                        <div className="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-lg">
+                        <div className="bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-lg">
                             YOU! 🎉
                         </div>
                     </div>
@@ -362,32 +360,34 @@ function BreakdownRow({ label, value, color, textColor }: { label: string; value
 }
 
 function getTopThreeColors(rank: number) {
+    // Gold / Silver / Bronze palette for top 3
+    // 1st: yellow, 2nd: light gray (silver), 3rd: brown-like (stone)
     if (rank === 1) return {
-        bg: "bg-yellow-400",
-        text: "text-yellow-900",
-        border: "border-yellow-400",
-        iconBg: "bg-yellow-500",
-        accent: "bg-yellow-300/80",
-        levelBg: "bg-yellow-500",
-        progressBg: "bg-yellow-500"
+        bg: "bg-yellow-50",
+        text: "text-yellow-800",
+        border: "border-yellow-300",
+        iconBg: "bg-yellow-400",
+        accent: "bg-yellow-200/80",
+        levelBg: "bg-yellow-400",
+        progressBg: "bg-yellow-400"
     };
     if (rank === 2) return {
-        bg: "bg-blue-400",
-        text: "text-blue-900",
-        border: "border-blue-400",
-        iconBg: "bg-blue-500",
-        accent: "bg-blue-300/80",
-        levelBg: "bg-blue-500",
-        progressBg: "bg-blue-500"
+        bg: "bg-gray-50",
+        text: "text-gray-700",
+        border: "border-gray-200",
+        iconBg: "bg-gray-100",
+        accent: "bg-gray-100/80",
+        levelBg: "bg-gray-100",
+        progressBg: "bg-gray-300"
     };
     if (rank === 3) return {
-        bg: "bg-purple-400",
-        text: "text-purple-900",
-        border: "border-purple-400",
-        iconBg: "bg-purple-500",
-        accent: "bg-purple-300/80",
-        levelBg: "bg-purple-500",
-        progressBg: "bg-purple-500"
+        bg: "bg-stone-50",
+        text: "text-stone-800",
+        border: "border-stone-300",
+        iconBg: "bg-stone-400",
+        accent: "bg-stone-200/80",
+        levelBg: "bg-stone-400",
+        progressBg: "bg-stone-400"
     };
     return {
         bg: "bg-gray-100",
@@ -401,8 +401,8 @@ function getTopThreeColors(rank: number) {
 }
 
 function getRankIcon(rank: number) {
-    if (rank === 1) return <Crown className="w-8 h-8 text-yellow-900" strokeWidth={2.5} />;
-    if (rank === 2) return <Award className="w-8 h-8 text-blue-900" strokeWidth={2.5} />;
-    if (rank === 3) return <Medal className="w-8 h-8 text-purple-900" strokeWidth={2.5} />;
+    if (rank === 1) return <Crown className="w-8 h-8 text-yellow-700" strokeWidth={2.5} />;
+    if (rank === 2) return <Award className="w-8 h-8 text-gray-600" strokeWidth={2.5} />;
+    if (rank === 3) return <Medal className="w-8 h-8 text-stone-700" strokeWidth={2.5} />;
     return null;
 }

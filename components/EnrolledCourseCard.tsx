@@ -51,7 +51,7 @@ const EnrolledCourseCard: React.FC<EnrolledCourseCardProps> = ({
     const progress = CalculateProgress();
     if (progress === 100) return 'bg-green-100';
     if (progress >= 50) return 'bg-blue-50';
-    return 'bg-purple-50';
+    return 'bg-indigo-50';
   };
 
   const isCompleted = CalculateProgress() === 100;

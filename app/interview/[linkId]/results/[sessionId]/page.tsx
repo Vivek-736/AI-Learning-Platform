@@ -89,7 +89,7 @@ const InterviewResultsPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-4">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 p-4">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-8">
                     <Trophy className="h-16 w-16 text-yellow-500 mx-auto mb-4" />

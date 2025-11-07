@@ -48,8 +48,8 @@ export default function AssistantPage() {
     return (
       <div className="min-h-[76vh] bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Bot className="w-6 h-6 text-purple-600 animate-pulse" />
+          <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Bot className="w-6 h-6 text-indigo-600 animate-pulse" />
           </div>
         </div>
       </div>

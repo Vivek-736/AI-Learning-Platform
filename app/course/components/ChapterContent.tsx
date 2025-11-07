@@ -138,7 +138,7 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                     {videoData && videoData.length > 0 && (
                         <div className='mb-8'>
                             <h2 className='text-lg font-semibold text-black mb-4 flex items-center gap-2'>
-                                <span className='text-purple-600'>🎬</span>
+                                <span className='text-indigo-600'>🎬</span>
                                 Related Videos
                             </h2>
                             <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
@@ -167,7 +167,7 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                         <div key={index} className='bg-secondary rounded-xl border border-gray-200 overflow-hidden'>
                             <div className='bg-[#FFFFFF] px-6 py-4 border-b border-gray-200'>
                                 <div className='flex items-center gap-3'>
-                                    <div className='w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold'>
+                                    <div className='w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-bold'>
                                         {index + 1}
                                     </div>
                                     <h2 className='font-bold text-lg text-black'>{topic?.topic}</h2>

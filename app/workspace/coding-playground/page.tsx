@@ -168,8 +168,8 @@ export default function CodingPlaygroundPage() {
                     className="text-center mb-6"
                 >
                     <div className="flex items-center justify-center gap-3 mb-4">
-                        <Code2 className="w-10 h-10 text-purple-600 dark:text-purple-400" />
-                        <h1 className={`text-5xl font-bold text-purple-600 dark:text-purple-400 ${nohemi.className}`}>
+                        <Code2 className="w-10 h-10 text-indigo-600 dark:text-indigo-400" />
+                        <h1 className={`text-5xl font-bold text-indigo-600 dark:text-indigo-400 ${nohemi.className}`}>
                             Coding Playground
                         </h1>
                     </div>
@@ -192,7 +192,7 @@ export default function CodingPlaygroundPage() {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.1 }}
                             >
-                                <Card className="border-2 border-purple-200 dark:border-purple-800">
+                                <Card className="border-2 border-indigo-200 dark:border-indigo-800">
                                     <CardContent className="p-6">
                                         <h2 className={`text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 ${nohemi.className}`}>
                                             Configure Your Challenge
@@ -270,7 +270,7 @@ export default function CodingPlaygroundPage() {
                                             <Button
                                                 onClick={handleStartChallenge}
                                                 disabled={isGenerating || (testType === "individual-topic" && !topic)}
-                                                className="w-full bg-purple-600 hover:bg-purple-700 text-white py-6 cursor-pointer text-lg font-bold"
+                                                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-6 cursor-pointer text-lg font-bold"
                                             >
                                                 {isGenerating ? (
                                                     <>
@@ -296,29 +296,29 @@ export default function CodingPlaygroundPage() {
                                 transition={{ delay: 0.2 }}
                                 className="space-y-6"
                             >
-                                <Card className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 border-purple-200 dark:border-purple-800">
+                                <Card className="bg-gradient-to-br from-indigo-50 to-pink-50 dark:from-indigo-950/30 dark:to-pink-950/30 border-indigo-200 dark:border-indigo-800">
                                     <CardContent className="p-6">
                                         <div className="flex items-center gap-3 mb-4">
-                                            <Clock className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                                            <Clock className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
                                             <h3 className={`text-xl font-bold text-gray-900 dark:text-gray-100 ${nohemi.className}`}>
                                                 Challenge Format
                                             </h3>
                                         </div>
                                         <div className="space-y-3 text-gray-700 dark:text-gray-300">
                                             <div className="flex items-center gap-2">
-                                                <Target className="w-5 h-5 text-purple-500" />
+                                                <Target className="w-5 h-5 text-indigo-500" />
                                                 <span>4 Coding Problems</span>
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <Clock className="w-5 h-5 text-purple-500" />
+                                                <Clock className="w-5 h-5 text-indigo-500" />
                                                 <span>60 Minutes Total</span>
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <Zap className="w-5 h-5 text-purple-500" />
+                                                <Zap className="w-5 h-5 text-indigo-500" />
                                                 <span>Multiple Test Cases</span>
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <Trophy className="w-5 h-5 text-purple-500" />
+                                                <Trophy className="w-5 h-5 text-indigo-500" />
                                                 <span>Professional Feedback</span>
                                             </div>
                                         </div>
@@ -344,7 +344,7 @@ export default function CodingPlaygroundPage() {
                     <TabsContent value="history">
                         <div className="max-w-4xl mx-auto">
                             <div className="flex items-center gap-3 mb-6">
-                                <History className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                                <History className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
                                 <h2 className={`text-2xl font-bold text-gray-900 dark:text-gray-100 ${nohemi.className}`}>
                                     Your Attempt History
                                 </h2>
@@ -352,7 +352,7 @@ export default function CodingPlaygroundPage() {
 
                             {loadingHistory ? (
                                 <div className="flex justify-center py-12">
-                                    <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
+                                    <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
                                 </div>
                             ) : attempts.length === 0 ? (
                                 <Card>
@@ -399,7 +399,7 @@ export default function CodingPlaygroundPage() {
                                                         </div>
                                                         <div className="text-right">
                                                             <div className={`text-3xl font-bold ${nohemi.className}`}>
-                                                                <span className="text-purple-600 dark:text-purple-400">
+                                                                <span className="text-indigo-600 dark:text-indigo-400">
                                                                     {attempt.totalScore}
                                                                 </span>
                                                                 <span className="text-gray-400 text-xl">/100</span>

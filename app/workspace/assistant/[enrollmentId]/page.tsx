@@ -82,8 +82,8 @@ export default function EnrollmentAssistantPage() {
     return (
       <div className="min-h-[76vh] bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Bot className="w-6 h-6 text-purple-600 animate-pulse" />
+          <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Bot className="w-6 h-6 text-indigo-600 animate-pulse" />
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@ export default function EnrollmentAssistantPage() {
           <p className="text-gray-600 mb-6">The requested enrollment could not be found or you don&apos;t have access to it.</p>
           <button
             onClick={() => router.push('/workspace/assistant')}
-            className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+            className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
           >
             Go to Assistant Dashboard
           </button>
@@ -133,8 +133,8 @@ export default function EnrollmentAssistantPage() {
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
-              <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                <Bot className="w-6 h-6 text-purple-600" />
+              <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                <Bot className="w-6 h-6 text-indigo-600" />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900">{enrolledCourse.courses.name}</h1>
@@ -162,16 +162,16 @@ export default function EnrollmentAssistantPage() {
           isMobileView && !showSidebar ? 'hidden' : 'block'
         } w-80 bg-[#FFFFFF] border-r border-gray-200 flex flex-col`}>
           
-          <div className="p-4 border-b border-gray-200 bg-purple-50">
+          <div className="p-4 border-b border-gray-200 bg-indigo-50">
             <div className="flex items-center space-x-3 mb-3">
-              <div className="w-12 h-12 bg-purple-200 rounded-lg flex items-center justify-center">
-                <Bot className="w-6 h-6 text-purple-600" />
+              <div className="w-12 h-12 bg-indigo-200 rounded-lg flex items-center justify-center">
+                <Bot className="w-6 h-6 text-indigo-600" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-purple-900 truncate">
+                <h3 className="font-semibold text-indigo-900 truncate">
                   {enrolledCourse.courses.name}
                 </h3>
-                <p className="text-sm text-purple-700 capitalize">
+                <p className="text-sm text-indigo-700 capitalize">
                   {enrolledCourse.courses.level} • {enrolledCourse.courses.category}
                 </p>
               </div>
@@ -179,14 +179,14 @@ export default function EnrollmentAssistantPage() {
             
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-purple-700">Progress</span>
-                <span className="font-medium text-purple-900">
+                <span className="text-indigo-700">Progress</span>
+                <span className="font-medium text-indigo-900">
                   {enrolledCourse.enrollCourse.completedChapters?.length || 0} / {enrolledCourse.courses.noOfChapters}
                 </span>
               </div>
-              <div className="w-full bg-purple-200 rounded-full h-2">
+              <div className="w-full bg-indigo-200 rounded-full h-2">
                 <div
-                  className="bg-purple-600 h-2 rounded-full transition-all"
+                  className="bg-indigo-600 h-2 rounded-full transition-all"
                   style={{ 
                     width: `${Math.round((enrolledCourse.enrollCourse.completedChapters?.length || 0) / enrolledCourse.courses.noOfChapters * 100)}%` 
                   }}

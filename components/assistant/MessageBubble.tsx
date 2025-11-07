@@ -44,7 +44,7 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
       if (/^\d+\.\s/.test(line)) {
         return (
           <div key={index} className="ml-2 mb-1">
-            <span className="font-medium text-purple-700">{line.match(/^\d+\./)?.[0]}</span>
+            <span className="font-medium text-indigo-700">{line.match(/^\d+\./)?.[0]}</span>
             <span className="ml-1">{line.replace(/^\d+\.\s/, '')}</span>
           </div>
         );
@@ -53,7 +53,7 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
       if (/^[-•*]\s/.test(line)) {
         return (
           <div key={index} className="flex items-start ml-2 mb-1">
-            <span className="text-purple-600 mr-2 mt-1">•</span>
+            <span className="text-indigo-600 mr-2 mt-1">•</span>
             <span>{line.replace(/^[-•*]\s/, '')}</span>
           </div>
         );
@@ -79,18 +79,18 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
       <div
         className={`max-w-[85%] md:max-w-[75%] rounded-2xl px-4 py-3 ${
           isUser
-            ? 'bg-purple-600 text-white shadow-md'
+            ? 'bg-indigo-600 text-white shadow-md'
             : 'bg-[#FFFFFF] text-gray-900 border border-gray-200 shadow-sm'
         }`}
       >
         <div className="flex items-start space-x-3">
           <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-            isUser ? 'bg-purple-500' : 'bg-purple-100'
+            isUser ? 'bg-indigo-500' : 'bg-indigo-100'
           }`}>
             {isUser ? (
               <User className="w-4 h-4 text-white" />
             ) : (
-              <Bot className="w-4 h-4 text-purple-600" />
+              <Bot className="w-4 h-4 text-indigo-600" />
             )}
           </div>
           
@@ -109,7 +109,7 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
             
             <div className="flex items-center justify-between mt-3 pt-2 border-t border-opacity-20 border-gray-300">
               <span className={`text-xs ${
-                isUser ? 'text-purple-200' : 'text-gray-500'
+                isUser ? 'text-indigo-200' : 'text-gray-500'
               }`}>
                 {formatTime(message.timestamp)}
               </span>

@@ -389,7 +389,7 @@ export default function ChallengeAttemptPage() {
     if (loading) {
         return (
             <div className="min-h-[74vh] flex items-center justify-center bg-white dark:bg-gray-950">
-                <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
+                <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
             </div>
         );
     }
@@ -425,7 +425,7 @@ export default function ChallengeAttemptPage() {
                             <div className={`flex items-center gap-2 px-6 py-3 rounded-lg ${
                                 timeRemaining < 300 
                                     ? 'bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-400'
-                                    : 'bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-400'
+                                    : 'bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-400'
                             }`}>
                                 <Clock className="w-5 h-5" />
                                 <span className={`text-xl font-bold ${nohemi.className}`}>
@@ -752,7 +752,7 @@ export default function ChallengeAttemptPage() {
                                 onClick={() => setCurrentProblemIndex(index)}
                                 className={`w-10 h-10 rounded-full font-bold ${
                                     index === currentProblemIndex
-                                        ? 'bg-purple-600 text-white'
+                                        ? 'bg-indigo-600 text-white'
                                         : solutions[challenge.problems[index].problemId]
                                         ? 'bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-400'
                                         : 'bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-400'

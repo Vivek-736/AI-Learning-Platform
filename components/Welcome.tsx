@@ -58,9 +58,9 @@ const Welcome = () => {
     };
 
     return (
-        <div className='relative p-4 md:p-6 bg-gradient-to-r from-white via-purple-50/30 to-white border border-gray-200/50 rounded-xl mb-6 shadow-[0_0_15px_rgba(0,0,0,0.2)] overflow-hidden'>
-            <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100/20 to-transparent rounded-full -translate-y-8 translate-x-8'></div>
-            <div className='absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-50/30 to-transparent rounded-full translate-y-6 -translate-x-6'></div>
+        <div className='relative p-4 md:p-6 bg-gradient-to-r from-white via-indigo-50/30 to-white border border-gray-200/50 rounded-xl mb-6 shadow-[0_0_15px_rgba(0,0,0,0.2)] overflow-hidden'>
+            <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-100/20 to-transparent rounded-full -translate-y-8 translate-x-8'></div>
+            <div className='absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo-50/30 to-transparent rounded-full translate-y-6 -translate-x-6'></div>
             
             <div className='relative z-10'>
                 <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4'>
@@ -157,8 +157,8 @@ const Welcome = () => {
                         </div>
 
                         <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-300'>
-                            <div className='w-8 h-8 rounded-lg bg-purple-50 flex items-center justify-center'>
-                                <Zap className='w-4 h-4 text-purple-600' />
+                            <div className='w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center'>
+                                <Zap className='w-4 h-4 text-indigo-600' />
                             </div>
                             <div className='flex flex-col'>
                                 <span className='text-xs text-gray-500'>Flashcards</span>

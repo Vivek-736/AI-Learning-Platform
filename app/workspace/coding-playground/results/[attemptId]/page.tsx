@@ -115,7 +115,7 @@ export default function ResultsPage() {
     if (loading) {
         return (
             <div className="min-h-[74vh] flex items-center justify-center bg-white dark:bg-gray-950">
-                <div className="animate-pulse text-purple-600 dark:text-purple-400">Loading results...</div>
+                <div className="animate-pulse text-indigo-600 dark:text-indigo-400">Loading results...</div>
             </div>
         );
     }
@@ -149,8 +149,8 @@ export default function ResultsPage() {
                     className="text-center mb-12"
                 >
                     <div className="flex items-center justify-center gap-3 mb-4">
-                        <Trophy className="w-10 h-10 text-purple-600 dark:text-purple-400" />
-                        <h1 className={`text-5xl font-bold text-purple-600 dark:text-purple-400 ${nohemi.className}`}>
+                        <Trophy className="w-10 h-10 text-indigo-600 dark:text-indigo-400" />
+                        <h1 className={`text-5xl font-bold text-indigo-600 dark:text-indigo-400 ${nohemi.className}`}>
                             Challenge Results
                         </h1>
                     </div>
@@ -166,14 +166,14 @@ export default function ResultsPage() {
                     transition={{ delay: 0.2, type: "spring" }}
                     className="mb-12"
                 >
-                    <Card className="border-2 border-purple-200 dark:border-purple-800">
+                    <Card className="border-2 border-indigo-200 dark:border-indigo-800">
                         <CardContent className="p-8 text-center">
                             <div className={`text-8xl font-bold mb-4 ${getPerformanceColor()} ${nohemi.className}`}>
                                 {feedback.score}
                                 <span className="text-4xl text-gray-400">/100</span>
                             </div>
                             <div className="mb-6">
-                                <Badge className="text-lg px-6 py-2 bg-purple-600 text-white">
+                                <Badge className="text-lg px-6 py-2 bg-indigo-600 text-white">
                                     {feedback.performanceLevel}
                                 </Badge>
                             </div>
@@ -241,12 +241,12 @@ export default function ResultsPage() {
                         <Card>
                             <CardContent className="p-6">
                                 <div className="flex items-center gap-3 mb-4">
-                                    <Clock className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+                                    <Clock className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />
                                     <h3 className={`text-lg font-bold text-gray-900 dark:text-gray-100 ${nohemi.className}`}>
                                         Time Taken
                                     </h3>
                                 </div>
-                                <div className={`text-4xl font-bold text-purple-600 dark:text-purple-400 ${nohemi.className}`}>
+                                <div className={`text-4xl font-bold text-indigo-600 dark:text-indigo-400 ${nohemi.className}`}>
                                     {feedback.timeSpent} min
                                 </div>
                                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
@@ -399,11 +399,11 @@ export default function ResultsPage() {
 
                                         {/* Next Steps */}
                                         {solution.feedback.nextSteps.length > 0 && (
-                                            <div className="mt-4 bg-purple-50 dark:bg-purple-950/20 p-4 rounded-lg">
-                                                <h4 className="font-semibold text-purple-800 dark:text-purple-300 mb-2">
+                                            <div className="mt-4 bg-indigo-50 dark:bg-indigo-950/20 p-4 rounded-lg">
+                                                <h4 className="font-semibold text-indigo-800 dark:text-indigo-300 mb-2">
                                                     📖 Next Steps
                                                 </h4>
-                                                <ul className="space-y-1 text-sm text-purple-700 dark:text-purple-400">
+                                                <ul className="space-y-1 text-sm text-indigo-700 dark:text-indigo-400">
                                                     {solution.feedback.nextSteps.map((step, i) => (
                                                         <li key={i}>{i + 1}. {step}</li>
                                                     ))}
@@ -424,7 +424,7 @@ export default function ResultsPage() {
                     transition={{ delay: 0.9 }}
                     className="mb-12"
                 >
-                    <Card className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 border-purple-200 dark:border-purple-800">
+                    <Card className="bg-gradient-to-br from-indigo-50 to-pink-50 dark:from-indigo-950/30 dark:to-pink-950/30 border-indigo-200 dark:border-indigo-800">
                         <CardContent className="p-6">
                             <h3 className={`text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 ${nohemi.className}`}>
                                 📚 Overall Recommendations
@@ -432,7 +432,7 @@ export default function ResultsPage() {
                             <ul className="space-y-2">
                                 {feedback.recommendations.map((rec, index) => (
                                     <li key={index} className="flex items-start gap-2 text-gray-700 dark:text-gray-300">
-                                        <span className="text-purple-600 dark:text-purple-400 font-bold">{index + 1}.</span>
+                                        <span className="text-indigo-600 dark:text-indigo-400 font-bold">{index + 1}.</span>
                                         {rec}
                                     </li>
                                 ))}
@@ -457,7 +457,7 @@ export default function ResultsPage() {
                     </Button>
                     <Button
                         onClick={() => router.push('/workspace')}
-                        className="px-8 py-6 text-lg bg-purple-600 hover:bg-purple-700"
+                        className="px-8 py-6 text-lg bg-indigo-600 hover:bg-indigo-700"
                     >
                         <Home className="w-5 h-5 mr-2" />
                         Go to Dashboard

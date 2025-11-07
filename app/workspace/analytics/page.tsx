@@ -530,11 +530,11 @@ const AnalyticsPage = () => {
                       </div>
                       <div className="text-xs text-green-600 font-medium">Avg Progress</div>
                     </div>
-                    <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl border border-purple-200">
-                      <div className="text-2xl font-bold text-purple-700">
+                    <div className="text-center p-4 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl border border-indigo-200">
+                      <div className="text-2xl font-bold text-indigo-700">
                         {userData.stats.quizAttempts}
                       </div>
-                      <div className="text-xs text-purple-600 font-medium">Quiz Attempts</div>
+                      <div className="text-xs text-indigo-600 font-medium">Quiz Attempts</div>
                     </div>
                     <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl border border-orange-200">
                       <div className="text-2xl font-bold text-orange-700">
@@ -558,7 +558,7 @@ const AnalyticsPage = () => {
 
                   {expandedUsers.has(userData.user.id) && (
                     <div className="mt-6 space-y-6">
-                      <Card className="border-purple-100 bg-gradient-to-br from-purple-50 to-transparent">
+                      <Card className="border-indigo-100 bg-gradient-to-br from-indigo-50 to-transparent">
                         <CardHeader>
                           <CardTitle className="text-lg">User Activity Profile</CardTitle>
                         </CardHeader>
@@ -576,7 +576,7 @@ const AnalyticsPage = () => {
                       </Card>
 
                       <Tabs defaultValue="courses" className="w-full">
-                        <TabsList className="grid w-full grid-cols-5 bg-purple-100">
+                        <TabsList className="grid w-full grid-cols-5 bg-indigo-100">
                           <TabsTrigger value="courses" className="data-[state=active]:bg-[#FFFFFF]">Courses</TabsTrigger>
                           <TabsTrigger value="learning" className="data-[state=active]:bg-[#FFFFFF]">Learning</TabsTrigger>
                           <TabsTrigger value="coding" className="data-[state=active]:bg-[#FFFFFF]">Coding</TabsTrigger>
@@ -600,7 +600,7 @@ const AnalyticsPage = () => {
                                           {course.chapters} chapters • {course.level}
                                         </p>
                                       </div>
-                                      <Badge variant="outline" className="border-purple-300 text-purple-700">
+                                      <Badge variant="outline" className="border-indigo-300 text-indigo-700">
                                         {course.category}
                                       </Badge>
                                     </div>
@@ -619,10 +619,10 @@ const AnalyticsPage = () => {
                             {userData.details.enrollments.length > 0 ? (
                               <div className="space-y-3">
                                 {userData.details.enrollments.map((enroll: any, idx: number) => (
-                                  <div key={idx} className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200">
+                                  <div key={idx} className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
                                     <div className="flex justify-between items-center mb-2">
                                       <p className="font-semibold text-gray-900">{enroll.courseName}</p>
-                                      <span className="text-sm font-bold text-purple-600 bg-purple-100 px-3 py-1 rounded-full">
+                                      <span className="text-sm font-bold text-indigo-600 bg-indigo-100 px-3 py-1 rounded-full">
                                         {enroll.progress}%
                                       </span>
                                     </div>
@@ -651,9 +651,9 @@ const AnalyticsPage = () => {
                                 <div className="text-3xl font-bold text-white">{userData.stats.quizAttempts}</div>
                                 <div className="text-sm text-green-100 font-medium">Attempts</div>
                               </div>
-                              <div className="p-5 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl text-center shadow-md">
+                              <div className="p-5 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl text-center shadow-md">
                                 <div className="text-3xl font-bold text-white">{userData.stats.averageQuizScore}%</div>
-                                <div className="text-sm text-purple-100 font-medium">Avg Score</div>
+                                <div className="text-sm text-indigo-100 font-medium">Avg Score</div>
                               </div>
                             </div>
                           </div>
@@ -685,9 +685,9 @@ const AnalyticsPage = () => {
                                 <div className="text-3xl font-bold text-white">{userData.stats.codingAttemptsCompleted}</div>
                                 <div className="text-sm text-pink-100 font-medium">Completed</div>
                               </div>
-                              <div className="p-5 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl text-center shadow-md">
+                              <div className="p-5 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl text-center shadow-md">
                                 <div className="text-3xl font-bold text-white">{userData.stats.averageCodingScore}%</div>
-                                <div className="text-sm text-purple-100 font-medium">Avg Score</div>
+                                <div className="text-sm text-indigo-100 font-medium">Avg Score</div>
                               </div>
                               <div className="p-5 bg-gradient-to-br from-violet-500 to-violet-600 rounded-xl text-center shadow-md">
                                 <div className="text-3xl font-bold text-white">{userData.stats.totalCodingProblems}</div>

@@ -41,7 +41,7 @@ const AiToolsPage = () => {
             tagline: 'Challenge yourself',
             icon: Brain,
             href: '/workspace/ai-tools/quiz',
-            iconColor: 'text-purple-600 dark:text-purple-400',
+            iconColor: 'text-indigo-600 dark:text-indigo-400',
             borderColor: 'border-gray-200 dark:border-gray-800',
         },
         {
@@ -50,7 +50,7 @@ const AiToolsPage = () => {
             tagline: 'Learn smarter',
             icon: MessageSquare,
             href: '/workspace/ai-tools/flashcard',
-            iconColor: 'text-purple-600 dark:text-purple-400',
+            iconColor: 'text-indigo-600 dark:text-indigo-400',
             borderColor: 'border-gray-200 dark:border-gray-800',
         },
         {
@@ -59,7 +59,7 @@ const AiToolsPage = () => {
             tagline: 'Speak confidently',
             icon: Mic,
             href: '/workspace/ai-tools/interview',
-            iconColor: 'text-purple-600 dark:text-purple-400',
+            iconColor: 'text-indigo-600 dark:text-indigo-400',
             borderColor: 'border-gray-200 dark:border-gray-800',
         }
     ];
@@ -70,14 +70,14 @@ const AiToolsPage = () => {
                 <div className="mb-16 flex items-center justify-between">   
                     <div>
                         <div className="flex items-center gap-2 mb-3">
-                            <Sparkles className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                            <span className={`text-sm text-purple-600 dark:text-purple-400 font-medium tracking-wide ${nohemi.className}`}>
+                            <Sparkles className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                            <span className={`text-sm text-indigo-600 dark:text-indigo-400 font-medium tracking-wide ${nohemi.className}`}>
                                 AI-POWERED TOOLS
                             </span>
                         </div>
                         <h1 className={`text-4xl md:text-5xl font-serif text-gray-900 dark:text-gray-100 leading-tight font-light`}>
                             Master Learning with{' '}
-                            <span className="text-purple-600 dark:text-purple-400 font-serif">AI</span>
+                            <span className="text-indigo-600 dark:text-indigo-400 font-serif">AI</span>
                         </h1>
                     </div>
                     <XpDisplay />

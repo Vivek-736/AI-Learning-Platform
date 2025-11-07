@@ -125,7 +125,7 @@ export default function CareerGuidePage() {
                 }`}
               >
                 {message.role === "assistant" && (
-                  <div className="flex-shrink-0 bg-gradient-to-br from-purple-600 to-purple-800 p-3 rounded-2xl shadow-lg">
+                  <div className="flex-shrink-0 bg-gradient-to-br from-indigo-600 to-indigo-800 p-3 rounded-2xl shadow-lg">
                     <Sparkles className="h-6 w-6 text-white" />
                   </div>
                 )}
@@ -133,8 +133,8 @@ export default function CareerGuidePage() {
                 <div
                   className={`max-w-[75%] rounded-2xl p-4 shadow-md ${
                     message.role === "user"
-                      ? "bg-gradient-to-br from-purple-600 to-purple-700 text-white"
-                      : "bg-white border border-purple-100"
+                      ? "bg-gradient-to-br from-indigo-600 to-indigo-700 text-white"
+                      : "bg-white border border-indigo-100"
                   }`}
                 >
                   <div
@@ -148,17 +148,17 @@ export default function CareerGuidePage() {
                       <ReactMarkdown
                         components={{
                           h1: ({ children }) => (
-                            <h1 className={`${nohemi.className} font-bold text-2xl text-purple-900 mb-3`}>
+                            <h1 className={`${nohemi.className} font-bold text-2xl text-indigo-900 mb-3`}>
                               {children}
                             </h1>
                           ),
                           h2: ({ children }) => (
-                            <h2 className={`${nohemi.className} font-semibold text-xl text-purple-800 mb-2`}>
+                            <h2 className={`${nohemi.className} font-semibold text-xl text-indigo-800 mb-2`}>
                               {children}
                             </h2>
                           ),
                           h3: ({ children }) => (
-                            <h3 className={`${nohemi.className} font-semibold text-lg text-purple-700 mb-2`}>
+                            <h3 className={`${nohemi.className} font-semibold text-lg text-indigo-700 mb-2`}>
                               {children}
                             </h3>
                           ),
@@ -168,12 +168,12 @@ export default function CareerGuidePage() {
                             </p>
                           ),
                           strong: ({ children }) => (
-                            <strong className={`${nohemi.className} font-semibold text-purple-900`}>
+                            <strong className={`${nohemi.className} font-semibold text-indigo-900`}>
                               {children}
                             </strong>
                           ),
                           em: ({ children }) => (
-                            <em className="font-serif text-purple-600">
+                            <em className="font-serif text-indigo-600">
                               {children}
                             </em>
                           ),
@@ -193,7 +193,7 @@ export default function CareerGuidePage() {
                             </li>
                           ),
                           code: ({ children }) => (
-                            <code className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm font-mono">
+                            <code className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm font-mono">
                               {children}
                             </code>
                           ),
@@ -222,14 +222,14 @@ export default function CareerGuidePage() {
               animate={{ opacity: 1, y: 0 }}
               className="flex items-start space-x-3 mb-6"
             >
-              <div className="flex-shrink-0 bg-gradient-to-br from-purple-600 to-purple-800 p-3 rounded-2xl shadow-lg">
+              <div className="flex-shrink-0 bg-gradient-to-br from-indigo-600 to-indigo-800 p-3 rounded-2xl shadow-lg">
                 <Sparkles className="h-6 w-6 text-white" />
               </div>
-              <div className="bg-white border border-purple-100 rounded-2xl p-4 shadow-md">
+              <div className="bg-white border border-indigo-100 rounded-2xl p-4 shadow-md">
                 <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-                  <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                  <div className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
+                  <div className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
                 </div>
               </div>
             </motion.div>
@@ -239,7 +239,7 @@ export default function CareerGuidePage() {
         </div>
       </div>
 
-      <div className="flex-shrink-0 bg-white -mb-6 border-t border-purple-200 p-4 shadow-lg">
+      <div className="flex-shrink-0 bg-white -mb-6 border-t border-indigo-200 p-4 shadow-lg">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-end space-x-3">
             <div className="flex-1 relative">
@@ -248,14 +248,14 @@ export default function CareerGuidePage() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask about career paths, skills to learn, or course recommendations..."
-                className={`min-h-[60px] max-h-[120px] resize-none border-2 border-purple-200 focus:border-purple-500 rounded-xl pr-12 ${nohemi.className} placeholder:font-serif placeholder:italic`}
+                className={`min-h-[60px] max-h-[120px] resize-none border-2 border-indigo-200 focus:border-indigo-500 rounded-xl pr-12 ${nohemi.className} placeholder:font-serif placeholder:italic`}
                 disabled={isLoading}
               />
             </div>
             <Button
               onClick={handleSendMessage}
               disabled={!input.trim() || isLoading}
-              className="bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white h-[60px] px-6 rounded-xl shadow-lg disabled:opacity-50"
+              className="bg-gradient-to-r from-indigo-600 to-indigo-800 hover:from-indigo-700 hover:to-indigo-900 text-white h-[60px] px-6 rounded-xl shadow-lg disabled:opacity-50"
             >
               <Send className="h-5 w-5" />
             </Button>

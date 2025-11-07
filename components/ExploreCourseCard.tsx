@@ -100,7 +100,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
   const getCategoryColor = (category: string) => {
     const colors = [
       'bg-blue-100 text-blue-800 border-blue-200',
-      'bg-purple-100 text-purple-800 border-purple-200',
+      'bg-black-100 text-indigo-800 border-indigo-200',
       'bg-pink-100 text-pink-800 border-pink-200',
       'bg-indigo-100 text-indigo-800 border-indigo-200',
       'bg-cyan-100 text-cyan-800 border-cyan-200',
@@ -138,7 +138,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
       
       <div className="p-5 flex flex-col gap-4">
         <div className="space-y-2">
-          <h2 className="font-bold text-xl text-gray-900 line-clamp-1 group-hover:text-purple-700 transition-colors duration-200">
+          <h2 className="font-bold text-xl text-gray-900 line-clamp-1 group-hover:text-indigo-700 transition-colors duration-200">
             {courseLayout?.name || course.name}
           </h2>
           <p className="line-clamp-2 text-gray-600 text-sm leading-relaxed">
@@ -148,7 +148,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
 
         <div className="flex flex-wrap gap-4 text-xs text-gray-500">
           <div className="flex items-center gap-1">
-            <Book className="h-4 w-4 text-purple-600" />
+            <Book className="h-4 w-4 text-indigo-600" />
             <span className="font-medium">{course.noOfChapters || courseLayout?.noOfChapters} Chapters</span>
           </div>
           <div className="flex items-center gap-1">
@@ -169,7 +169,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
             <Button 
               disabled={isLoading} 
               onClick={onEnrollCourse} 
-              className="cursor-pointer bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 shadow-md hover:shadow-lg" 
+              className="cursor-pointer bg-black hover:bg-slate-900 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 shadow-md hover:shadow-lg" 
               size="sm"
             >
               {!isLoading ? (
@@ -182,7 +182,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
           ) : (
             <Button
               size="sm"
-              className="cursor-pointer border-purple-200 text-purple-700 hover:bg-purple-50 px-6 py-2 rounded-lg font-medium transition-all duration-200"
+              className="cursor-pointer border-indigo-200 text-indigo-700 hover:bg-indigo-50 px-6 py-2 rounded-lg font-medium transition-all duration-200"
               variant="outline"
               onClick={generateCourseContent}
               disabled={loading}

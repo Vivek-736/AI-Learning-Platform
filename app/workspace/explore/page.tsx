@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import ExploreCourseCard from '@/components/ExploreCourseCard';
-import { Search, Filter, BookOpen, Sparkles, TrendingUp } from 'lucide-react';
+import { Search, Filter, Sparkles, TrendingUp } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -158,13 +158,9 @@ const ExploreCourses: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 bg-purple-100 rounded-full">
-              <BookOpen className="h-8 w-8 text-purple-600" />
-            </div>
             <h1 className="text-4xl font-bold text-gray-900">
               Explore Courses
             </h1>
-            <Sparkles className="h-8 w-8 text-yellow-500" />
           </div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Discover amazing courses created by our community. Learn new skills, advance your career, and unlock your potential.
@@ -175,7 +171,7 @@ const ExploreCourses: React.FC = () => {
               <span>{courses.length} courses available</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-500">
-              <Sparkles className="h-4 w-4 text-purple-600" />
+              <Sparkles className="h-4 w-4 text-indigo-600" />
               <span>Updated daily</span>
             </div>
           </div>
@@ -190,7 +186,7 @@ const ExploreCourses: React.FC = () => {
                 placeholder="Search courses..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 border-gray-200 focus:border-purple-300 focus:ring-purple-200"
+                className="pl-10 border-gray-200 focus:border-indigo-300 focus:ring-indigo-200"
               />
             </div>
             
@@ -259,7 +255,7 @@ const ExploreCourses: React.FC = () => {
                   setSelectedLevel('all');
                   setSelectedCategory('all');
                 }}
-                className="text-purple-600 hover:text-purple-700 hover:bg-purple-50"
+                className="text-indigo-600 hover:text-indigo-700 hover:bg-indigo-50"
               >
                 Clear all
               </Button>
@@ -300,7 +296,7 @@ const ExploreCourses: React.FC = () => {
                 setSelectedLevel('all');
                 setSelectedCategory('all');
               }}
-              className="bg-purple-600 hover:bg-purple-700"
+              className="bg-indigo-600 hover:bg-indigo-700"
             >
               Clear Filters
             </Button>

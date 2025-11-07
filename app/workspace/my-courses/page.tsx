@@ -58,9 +58,9 @@ const MyCourses: React.FC = () => {
                 <div className="min-h-[70vh] flex items-center justify-center">
                     <div className="flex flex-col items-center space-y-6">
                         <div className="relative">
-                            <div className="w-20 h-20 border-4 border-gray-200 border-t-purple-600 rounded-full animate-spin"></div>
-                            <div className="w-16 h-16 border-4 border-gray-100 border-t-purple-400 rounded-full animate-spin absolute top-2 left-2"></div>
-                            <div className="w-12 h-12 border-4 border-gray-50 border-t-purple-300 rounded-full animate-spin absolute top-4 left-4"></div>
+                            <div className="w-20 h-20 border-4 border-gray-200 border-t-indigo-600 rounded-full animate-spin"></div>
+                            <div className="w-16 h-16 border-4 border-gray-100 border-t-indigo-400 rounded-full animate-spin absolute top-2 left-2"></div>
+                            <div className="w-12 h-12 border-4 border-gray-50 border-t-indigo-300 rounded-full animate-spin absolute top-4 left-4"></div>
                         </div>
 
                         <div className="text-center space-y-2">
@@ -71,9 +71,9 @@ const MyCourses: React.FC = () => {
                         </div>
 
                         <div className="flex space-x-2">
-                            <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce"></div>
-                            <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                            <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                            <div className="w-3 h-3 bg-indigo-600 rounded-full animate-bounce"></div>
+                            <div className="w-3 h-3 bg-indigo-600 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                            <div className="w-3 h-3 bg-indigo-600 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                         </div>
 
                         <div className="w-full max-w-6xl mt-8">
@@ -126,7 +126,7 @@ const MyCourses: React.FC = () => {
                         </div>
                         <Button 
                             onClick={fetchEnrolledCourses}
-                            className="bg-purple-600 hover:bg-purple-700"
+                            className="bg-indigo-600 hover:bg-indigo-700"
                         >
                             Try Again
                         </Button>
@@ -142,8 +142,8 @@ const MyCourses: React.FC = () => {
                 <div className="min-h-[70vh] flex items-center justify-center">
                     <div className="text-center space-y-8 max-w-2xl">
                         <div className="relative">
-                            <div className="w-32 h-32 bg-gradient-to-br from-purple-100 to-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
-                                <GraduationCap className="h-16 w-16 text-purple-600" />
+                            <div className="w-32 h-32 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                                <GraduationCap className="h-16 w-16 text-indigo-600" />
                             </div>
                             <div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
                                 <Star className="h-4 w-4 text-white" fill="currentColor" />
@@ -165,8 +165,8 @@ const MyCourses: React.FC = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                             <div className="space-y-3">
-                                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto">
-                                    <BookOpen className="h-6 w-6 text-purple-600" />
+                                <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto">
+                                    <BookOpen className="h-6 w-6 text-indigo-600" />
                                 </div>
                                 <h3 className="font-semibold text-gray-900">Quality Content</h3>
                                 <p className="text-sm text-gray-600">
@@ -197,7 +197,7 @@ const MyCourses: React.FC = () => {
                             <Link href="/workspace/explore">
                                 <Button 
                                     size="lg" 
-                                    className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform cursor-pointer"
+                                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform cursor-pointer"
                                 >
                                     <Search className="mr-2 h-5 w-5" />
                                     Explore Courses
