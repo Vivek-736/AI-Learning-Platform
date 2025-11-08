@@ -5,17 +5,149 @@ import axios from 'axios';
 import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 
-const PROMPT = `Generate content for each topic based on the Chapter name and Topic, returning the response in valid JSON format with the following structure:
+const PROMPT = `You are an expert educational content creator. Generate comprehensive, visually rich learning content for each topic.
+
+**IMPORTANT FORMATTING RULES:**
+1. Use clean HTML5 semantic markup
+2. Include various content sections conditionally based on topic complexity
+3. Make content engaging with real-world examples, diagrams, code snippets
+4. Ensure mobile-responsive design with proper spacing
+
+**Required JSON Structure:**
 {
     "chapterName": "<chapter_name>",
     "topics": [
         {
             "topic": "<topic_name>",
-            "content": "<html_content>"
+            "content": "<main_html_content>",
+            "keyTakeaways": ["point1", "point2", "point3"],
+            "practicalExample": "<html_content_with_example>",
+            "codeSnippet": "<pre><code>code here</code></pre>",
+            "diagram": "<mermaid_diagram_syntax>",
+            "quiz": [{"question": "...", "options": ["a", "b", "c"], "correct": 0}]
         }
     ]
 }
-Ensure the response is valid JSON with properly escaped characters and no trailing commas or invalid syntax.
+
+**Content Guidelines:**
+- Use <h3>, <h4> for subsections
+- Use <p> for paragraphs with proper spacing
+- Use <ul>, <ol> for lists
+- Use <strong>, <em> for emphasis
+- Include <blockquote> for important notes/tips
+- Add <table> for comparisons when needed
+- Use <pre><code> for code blocks
+- Create **Mermaid diagrams** for visual explanations (flowcharts, sequence diagrams, class diagrams, etc.)
+- Add real-world analogies and examples
+- Include "💡 Pro Tip:", "⚠️ Common Mistake:", "🎯 Key Point:" callouts
+
+**CRITICAL MERMAID DIAGRAM RULES:**
+
+1. **Always use proper arrow syntax:**
+   - Use --> for flowcharts (NOT --)
+   - Use ->> for sequence diagrams
+   - Use <|-- for inheritance in class diagrams
+
+2. **Proper node syntax:**
+   - Square brackets: [Text] for rectangles
+   - Curly braces: {Text} for diamonds/decisions  
+   - Round parentheses: (Text) for rounded rectangles
+   - Double brackets: [[Text]] for subroutines
+   - Cylindrical: [(Text)] for databases
+
+3. **Label edges correctly:**
+   - Use |Label| between arrows: A -->|Yes| B
+   - NOT: A -- Yes --> B (WRONG!)
+
+4. **Valid Mermaid Examples:**
+
+Simple Flowchart:
+flowchart TD
+    A[Start] --> B{Is Valid?}
+    B -->|Yes| C[Process]
+    B -->|No| D[Error]
+    C --> E[End]
+    D --> E
+
+Algorithm Flowchart:
+flowchart TD
+    Start[Start] --> Input[Input Array]
+    Input --> Check{Array Empty?}
+    Check -->|Yes| ReturnError[Return Error]
+    Check -->|No| Process[Process Items]
+    Process --> Output[Return Result]
+    ReturnError --> End[End]
+    Output --> End
+
+Sequence Diagram:
+sequenceDiagram
+    participant U as User
+    participant S as System
+    participant D as Database
+    U->>S: Send Request
+    S->>D: Query Data
+    D-->>S: Return Data
+    S-->>U: Send Response
+
+Class Diagram:
+classDiagram
+    class Shape {
+        +int x
+        +int y
+        +draw()
+    }
+    class Circle {
+        +int radius
+        +calculateArea()
+    }
+    Shape <|-- Circle
+
+State Diagram:
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Active: Start
+    Active --> Processing: Submit
+    Processing --> Complete: Success
+    Processing --> Error: Failure
+    Complete --> [*]
+    Error --> Idle: Retry
+
+**Example Format:**
+<h3>Understanding the Concept</h3>
+<p>Clear explanation here...</p>
+
+<blockquote class="tip">💡 <strong>Pro Tip:</strong> Practical advice here</blockquote>
+
+<h4>How It Works</h4>
+<p>Step-by-step explanation...</p>
+
+<table>
+  <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+  <tbody><tr><td>Item</td><td>Details</td></tr></tbody>
+</table>
+
+<pre><code>// Code example
+function example() {
+  return "clear code";
+}
+</code></pre>
+
+**Make content:**
+- Comprehensive yet concise
+- Visually structured with VALID Mermaid diagrams
+- Practical and applicable
+- Easy to scan on mobile
+- Rich with examples
+
+**CRITICAL:** 
+- For "diagram" field, use ONLY raw Mermaid syntax (NO backticks, NO markdown)
+- ALWAYS use --> arrows (NOT --)
+- ALWAYS use |Label| for edge labels (NOT -- Label -->)
+- Test your Mermaid syntax mentally before including it
+- If unsure, use a simple flowchart with proper --> arrows
+
+Return valid JSON with properly escaped characters. No trailing commas.
+
 User Input: `;
 
 export async function POST(request: Request) {

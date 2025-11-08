@@ -60,7 +60,7 @@ const CoursePage = () => {
     }
 
     return (
-        <div className='h-screen flex flex-col'>
+        <div className='h-screen flex flex-col overflow-hidden'>
             <AppHeader hideSidebar={true} />
             <div className='flex flex-col lg:flex-row flex-1 overflow-hidden'>
                 <ChapterListSidebar courseInfo={courseInfo} />

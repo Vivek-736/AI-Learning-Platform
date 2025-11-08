@@ -109,16 +109,16 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                                 </label>
                                 <Select onValueChange={(value) => onHandleInputChange('level', value)}>
                                     <SelectTrigger className='w-full'>
-                                        <SelectValue placeholder='Difficulty Level' />
+                                        <SelectValue placeholder='Difficulty Level' className='text-black' />
                                     </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value='beginner'>
+                                    <SelectContent className='text-black'>
+                                        <SelectItem value='beginner' className='text-black'>
                                             Beginner
                                         </SelectItem>
-                                        <SelectItem value='moderate'>
+                                        <SelectItem value='moderate' className='text-black'>
                                             Moderate
                                         </SelectItem>
-                                        <SelectItem value='advanced'>
+                                        <SelectItem value='advanced' className='text-black'>
                                             Advanced
                                         </SelectItem>
                                     </SelectContent>
