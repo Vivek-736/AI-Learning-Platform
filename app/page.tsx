@@ -303,7 +303,7 @@ export default function Home() {
       </section>
 
       <section className="py-20 px-6 lg:px-14 bg-white">
-        <div className="max-w-6xl mx-auto -mr-6">
+        <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
