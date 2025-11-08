@@ -71,7 +71,7 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                         Create New Course Using AI
                     </DialogTitle>
                     <DialogDescription asChild>
-                        <div>
+                        <div className="text-black">
                             <div className='flex flex-col gap-y-2'>
                                 <label className='ml-0.5 text-gray-900'>
                                     Course Name
@@ -79,6 +79,7 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                                 <Input
                                     placeholder='Enter Course Name'
                                     onChange={(event) => onHandleInputChange('name', event?.target.value)}
+                                    className="text-black"
                                 />
                             </div>
                             <div className='flex flex-col gap-y-2 mt-4'>
@@ -86,7 +87,7 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                                     Course Description (Optional)
                                 </label>
                                 <Textarea
-                                    className='h-24 resize-none'
+                                    className='h-24 resize-none text-black'
                                     placeholder='Enter Course Description'
                                     onChange={(event) => onHandleInputChange('description', event?.target.value)}
                                 />
@@ -99,6 +100,7 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                                     placeholder='Enter Number of Chapters'
                                     type='number'
                                     onChange={(event) => onHandleInputChange('noOfChapters', event?.target.value)}
+                                    className="text-black"
                                 />
                             </div>
                             <div className='mt-4 flex flex-col gap-y-2'>
@@ -129,6 +131,7 @@ const AddNewCourseDialog = ({ children }: { children: React.ReactNode }) => {
                                 <Input
                                     placeholder='Enter Course Category (Separated by Commas)'
                                     onChange={(event) => onHandleInputChange('category', event?.target.value)}
+                                    className='text-black'
                                 />
                             </div>
                             <div className='mt-6 text-center'>
