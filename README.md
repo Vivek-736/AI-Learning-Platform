@@ -255,30 +255,6 @@ Navigate to `http://localhost:3000` and start learning! 🎉
       └── GET    /api/assistant/history  → Get chat history
 ```
 
-### 🔐 **Security & Authentication Flow**
-
-```
-User Access Request (🌐)
-    ↓
-Clerk Middleware Check (🔒)
-    ↓
-    ├──→ Not Authenticated ──→ Redirect to Login (🔐)
-    │
-    └──→ Authenticated
-            ↓
-        Session Valid? (✅)
-            ↓
-            ├──→ Yes ──→ Grant Access (✔️)
-            │               ↓
-            │           Check Permissions (👮)
-            │               ↓
-            │               ├──→ User Role (👤)
-            │               ├──→ Admin Role (👑)
-            │               └──→ Premium User (⭐)
-            │
-            └──→ No ──→ Refresh Session (🔄)
-                        ↓
-                    Try Again (↩️)
 ```
 
 ### 🚀 **Deployment Architecture**
