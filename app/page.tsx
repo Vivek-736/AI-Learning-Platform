@@ -150,7 +150,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mb-16 flex md:mr-14 justify-end">
+            <div className="mb-16 flex md:mt-0 mt-2 md:mr-14 justify-end">
               <Link href="/workspace">
                 <Button className="bg-black hover:bg-black-900 cursor-pointer text-white px-8 py-3 text-base rounded-md transition-colors duration-200">
                   Start Learning Free
@@ -529,7 +529,7 @@ export default function Home() {
               height={120}
             />
 
-            <h2 className="text-6xl md:text-9xl font-bold text-gray-900">
+            <h2 className="text-4xl md:text-9xl font-bold text-gray-900">
               <span className={`bg-gradient-to-r font-normal from-gray-900 via-black-600 to-gray-900 bg-clip-text text-transparent ${nohemi.className}`}>
                 Fascinity
               </span>
