@@ -23,7 +23,6 @@ const CoursePage = () => {
         try {
             const result = await axios.get('/api/enroll-course?courseId=' + courseId);
             // console.log(result.data);
-            
             setCourseInfo(result.data);
         } catch (error) {
             console.error('Error fetching course:', error);
@@ -62,9 +61,14 @@ const CoursePage = () => {
     return (
         <div className='h-screen flex flex-col overflow-hidden'>
             <AppHeader hideSidebar={true} />
-            <div className='flex flex-col lg:flex-row flex-1 overflow-hidden'>
-                <ChapterListSidebar courseInfo={courseInfo} />
-                <ChapterContent courseInfo={courseInfo} refreshData={() => GetEnrolledCoursesById()} />
+            <div className='flex flex-1 overflow-hidden'>
+                <div className='hidden lg:block'>
+                    <ChapterListSidebar courseInfo={courseInfo} />
+                </div>
+                
+                <div className='w-full lg:flex-1'>
+                    <ChapterContent courseInfo={courseInfo} refreshData={() => GetEnrolledCoursesById()} />
+                </div>
             </div>
         </div>
     )

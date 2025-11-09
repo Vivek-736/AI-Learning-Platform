@@ -109,7 +109,7 @@ export default function Home() {
               className="absolute left-1/2 transform -translate-x-1/2"
             >
               <h1
-                className={`md:text-3xl text-xl font-bold tracking-wider ${nohemi.className}`}
+                className={`md:text-3xl text-lg font-bold tracking-wider ${nohemi.className}`}
               >
                 Fascinity
               </h1>

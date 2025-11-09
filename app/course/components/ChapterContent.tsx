@@ -17,6 +17,13 @@ import { useParams } from 'next/navigation';
 import axios from 'axios';
 import { toast } from 'sonner';
 import MermaidDiagram from '@/components/MermaidDiagram';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 
 SyntaxHighlighter.registerLanguage('javascript', javascript);
 SyntaxHighlighter.registerLanguage('java', java);
@@ -36,7 +43,6 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
     const { courseId } = useParams();
     const { course, enrollCourse } = courseInfo;
     const courseContent = courseInfo?.courses?.courseContent;
-    
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const { selectedChapterIndex, setSelectedChapterIndex } = useContext(SelectedChapterIndexContext);
@@ -131,6 +137,33 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
     return (
         <div className='flex-1 bg-gray-50 overflow-y-auto h-full'>
             <div className='max-w-5xl container mx-auto p-4 sm:p-6 lg:p-10'>
+                {/* Mobile Chapter Selector */}
+                <div className='lg:hidden mb-4'>
+                    <Select 
+                        value={String(selectedChapterIndex)} 
+                        onValueChange={(value) => setSelectedChapterIndex(Number(value))}
+                    >
+                        <SelectTrigger className="w-full bg-white border-2 border-indigo-200 h-12">
+                            <SelectValue placeholder="Select Chapter" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {courseContent?.map((chapter: any, index: number) => {
+                                const completed = enrollCourse?.completedChapters?.includes(index) ?? false;
+                                return (
+                                    <SelectItem key={index} value={String(index)}>
+                                        <div className='flex items-center gap-2'>
+                                            {completed && <CheckCircle className='w-4 h-4 text-green-600' />}
+                                            <span className={completed ? 'text-green-700 font-medium' : ''}>
+                                                Chapter {index + 1}: {chapter?.courseData?.chapterName || chapter?.courseData?.[0]?.chapterName}
+                                            </span>
+                                        </div>
+                                    </SelectItem>
+                                );
+                            })}
+                        </SelectContent>
+                    </Select>
+                </div>
+
                 <div className='mb-6 sm:mb-8 bg-white rounded-2xl shadow-sm border border-gray-200 p-4 sm:p-6'>
                     <div className='flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4'>
                         <div className='flex-1'>
@@ -152,7 +185,6 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                         </Button>
                     </div>
                 </div>
-                    
                 {videoData && videoData.length > 0 && (
                     <div className='mb-6 sm:mb-8 bg-white rounded-2xl shadow-sm border border-gray-200 p-4 sm:p-6 lg:p-8'>
                         <div className='flex items-center gap-2 mb-4 sm:mb-6'>
