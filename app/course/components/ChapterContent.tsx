@@ -50,11 +50,14 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
     const topics = courseContent?.[selectedChapterIndex]?.courseData?.topics
 
     const processContent = (content: string) => {
+        if (!content) return null;
+        
         const codeBlockRegex = /<pre><code>([\s\S]*?)<\/code><\/pre>/g;
         const parts = content.split(codeBlockRegex);
         
         return parts.map((part, index) => {
             if (index % 2 === 1) {
+                // Code block
                 const decodedCode = part
                     .replace(/&lt;/g, '<')
                     .replace(/&gt;/g, '>')
@@ -62,7 +65,7 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                     .replace(/&quot;/g, '"');
                 
                 return (
-                    <div key={index} className="my-6">
+                    <div key={index} className="my-8">
                         <SyntaxHighlighter
                             language="javascript"
                             style={atomOneDark}
@@ -86,7 +89,27 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                     <div 
                         key={index} 
                         dangerouslySetInnerHTML={{ __html: part }}
-                        className="prose prose-sm sm:prose-base max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-strong:text-gray-900 prose-ul:text-gray-700 prose-ol:text-gray-700 prose-blockquote:border-l-indigo-600 prose-blockquote:bg-indigo-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r prose-table:border-collapse prose-th:bg-gray-100 prose-th:border prose-th:border-gray-300 prose-td:border prose-td:border-gray-300"
+                        className="prose prose-sm sm:prose-base lg:prose-lg max-w-none 
+                            prose-headings:text-gray-900 prose-headings:font-bold prose-headings:mb-6 prose-headings:mt-10
+                            prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-6 prose-h3:leading-tight
+                            prose-h4:text-xl prose-h4:mt-8 prose-h4:mb-4 prose-h4:leading-snug
+                            prose-p:text-gray-700 prose-p:leading-loose prose-p:mb-6 prose-p:text-base sm:prose-p:text-lg
+                            prose-strong:text-gray-900 prose-strong:font-bold
+                            prose-ul:text-gray-700 prose-ul:my-6 prose-ul:space-y-3 prose-ul:pl-6
+                            prose-ol:text-gray-700 prose-ol:my-6 prose-ol:space-y-3 prose-ol:pl-6
+                            prose-li:text-base sm:prose-li:text-lg prose-li:leading-loose prose-li:mb-3 prose-li:pl-2
+                            prose-blockquote:border-l-4 prose-blockquote:border-l-indigo-600 
+                            prose-blockquote:bg-indigo-50 prose-blockquote:py-5 prose-blockquote:px-6 
+                            prose-blockquote:rounded-r-lg prose-blockquote:my-8 prose-blockquote:italic prose-blockquote:text-base sm:prose-blockquote:text-lg
+                            
+                            [&_table]:w-full [&_table]:my-8 [&_table]:border-collapse [&_table]:shadow-lg [&_table]:rounded-xl [&_table]:overflow-hidden
+                            [&_thead]:bg-gradient-to-r [&_thead]:from-indigo-600 [&_thead]:to-indigo-700
+                            [&_th]:text-white [&_th]:font-bold [&_th]:text-left [&_th]:py-5 [&_th]:px-6 [&_th]:text-base sm:[&_th]:text-lg [&_th]:border-0
+                            [&_tbody]:bg-white [&_tbody]:divide-y [&_tbody]:divide-gray-200
+                            [&_tr]:transition-colors hover:[&_tbody_tr]:bg-gray-50
+                            [&_td]:py-5 [&_td]:px-6 [&_td]:text-gray-700 [&_td]:text-base sm:[&_td]:text-lg [&_td]:border-0 [&_td]:leading-relaxed
+                            
+                            first:[&_h3]:mt-0 first:[&_p]:mt-0"
                     />
                 );
             }
@@ -234,22 +257,24 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                                 </div>
                             </div>
 
-                            <div className='p-4 sm:p-6 lg:p-8 space-y-6'>
+                            <div className='p-6 sm:p-8 lg:p-10 space-y-8'>
                                 <div className="prose prose-sm sm:prose-base max-w-none">
                                     {processContent(topic?.content)}
                                 </div>
 
                                 {topic?.keyTakeaways && topic?.keyTakeaways?.length > 0 && (
-                                    <div className='bg-amber-50 border border-amber-200 rounded-xl p-4 sm:p-6'>
-                                        <div className='flex items-center gap-2 mb-3 sm:mb-4'>
-                                            <Target className='w-5 h-5 text-amber-600' />
-                                            <h3 className='font-bold text-base sm:text-lg text-amber-900'>Key Takeaways</h3>
+                                    <div className='bg-amber-50 border-2 border-amber-200 rounded-xl p-5 sm:p-7 shadow-sm'>
+                                        <div className='flex items-center gap-3 mb-5'>
+                                            <div className='w-9 h-9 bg-amber-600 rounded-lg flex items-center justify-center'>
+                                                <Target className='w-5 h-5 text-white' />
+                                            </div>
+                                            <h3 className='font-bold text-lg sm:text-xl text-amber-900'>Key Takeaways</h3>
                                         </div>
-                                        <ul className='space-y-2 sm:space-y-3'>
+                                        <ul className='space-y-3 sm:space-y-4'>
                                             {topic.keyTakeaways.map((takeaway: string, idx: number) => (
-                                                <li key={idx} className='flex items-start gap-2 sm:gap-3'>
-                                                    <CheckCircle className='w-4 h-4 sm:w-5 sm:h-5 text-amber-600 flex-shrink-0 mt-0.5' />
-                                                    <span className='text-sm sm:text-base text-amber-900'>{takeaway}</span>
+                                                <li key={idx} className='flex items-start gap-3 sm:gap-4'>
+                                                    <CheckCircle className='w-5 h-5 sm:w-6 sm:h-6 text-amber-600 flex-shrink-0 mt-1' />
+                                                    <span className='text-base sm:text-lg text-amber-900 leading-relaxed'>{takeaway}</span>
                                                 </li>
                                             ))}
                                         </ul>
@@ -257,31 +282,35 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                                 )}
 
                                 {topic?.practicalExample && (
-                                    <div className='bg-green-50 border border-green-200 rounded-xl p-4 sm:p-6'>
-                                        <div className='flex items-center gap-2 mb-3 sm:mb-4'>
-                                            <Lightbulb className='w-5 h-5 text-green-600' />
-                                            <h3 className='font-bold text-base sm:text-lg text-green-900'>Practical Example</h3>
+                                    <div className='bg-green-50 border-2 border-green-200 rounded-xl p-5 sm:p-7 shadow-sm'>
+                                        <div className='flex items-center gap-3 mb-5'>
+                                            <div className='w-9 h-9 bg-green-600 rounded-lg flex items-center justify-center'>
+                                                <Lightbulb className='w-5 h-5 text-white' />
+                                            </div>
+                                            <h3 className='font-bold text-lg sm:text-xl text-green-900'>Practical Example</h3>
                                         </div>
-                                        <div className="prose prose-sm sm:prose-base max-w-none prose-p:text-green-900">
+                                        <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none prose-p:text-green-900 prose-p:leading-relaxed prose-p:text-base sm:prose-p:text-lg">
                                             {processContent(topic.practicalExample)}
                                         </div>
                                     </div>
                                 )}
 
                                 {topic?.codeSnippet && (
-                                    <div className='bg-gray-900 border border-gray-700 rounded-xl overflow-hidden shadow-lg'>
-                                        <div className='bg-gray-800 px-4 sm:px-6 py-3 flex items-center gap-2 border-b border-gray-700'>
-                                            <Code className='w-4 h-4 sm:w-5 sm:h-5 text-green-400' />
-                                            <h3 className='font-bold text-sm sm:text-base text-gray-100'>Code Example</h3>
+                                    <div className='bg-gray-900 border-2 border-gray-700 rounded-xl overflow-hidden shadow-lg'>
+                                        <div className='bg-gray-800 px-5 sm:px-6 py-4 flex items-center gap-3 border-b border-gray-700'>
+                                            <div className='w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center'>
+                                                <Code className='w-4 h-4 sm:w-5 sm:h-5 text-white' />
+                                            </div>
+                                            <h3 className='font-bold text-base sm:text-lg text-gray-100'>Code Example</h3>
                                         </div>
-                                        <div className='p-4 sm:p-5'>
+                                        <div className='p-5 sm:p-6'>
                                             <SyntaxHighlighter
                                                 language="python"
                                                 style={atomOneDark}
                                                 customStyle={{
                                                     borderRadius: '8px',
-                                                    fontSize: '13px',
-                                                    padding: '16px',
+                                                    fontSize: '14px',
+                                                    padding: '20px',
                                                     margin: 0,
                                                     backgroundColor: '#1f2937',
                                                     border: 'none'
@@ -300,47 +329,51 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                                 )}
 
                                 {topic?.diagram && (
-                                    <div className='bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl p-4 sm:p-6 shadow-md'>
-                                        <div className='flex items-center gap-2 mb-4 sm:mb-5'>
-                                            <div className='w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center'>
+                                    <div className='bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl p-5 sm:p-7 shadow-md'>
+                                        <div className='flex items-center gap-3 mb-5'>
+                                            <div className='w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center'>
                                                 <BookOpen className='w-5 h-5 text-white' />
                                             </div>
                                             <h3 className='font-bold text-lg sm:text-xl text-blue-900'>Visual Diagram</h3>
                                         </div>
-                                        <div className='bg-white rounded-xl p-2 sm:p-4 border-2 border-blue-300 shadow-inner overflow-x-auto'>
+                                        <div className='bg-white rounded-xl p-4 sm:p-6 border-2 border-blue-300 shadow-inner overflow-x-auto'>
                                             <MermaidDiagram chart={topic.diagram} />
                                         </div>
-                                        <p className='text-xs sm:text-sm text-blue-700 mt-3 italic'>
+                                        <p className='text-sm sm:text-base text-blue-700 mt-4 italic'>
                                             💡 Interactive diagram - zoom and pan as needed
                                         </p>
                                     </div>
                                 )}
                                 {topic?.quiz && topic?.quiz?.length > 0 && (
-                                    <div className='bg-indigo-50 border border-indigo-200 rounded-xl p-4 sm:p-6'>
-                                        <div className='flex items-center gap-2 mb-4 sm:mb-6'>
-                                            <Award className='w-5 h-5 text-indigo-600' />
-                                            <h3 className='font-bold text-base sm:text-lg text-indigo-900'>Quick Quiz</h3>
+                                    <div className='bg-purple-50 border-2 border-purple-200 rounded-xl p-5 sm:p-7 shadow-sm'>
+                                        <div className='flex items-center gap-3 mb-5'>
+                                            <div className='w-9 h-9 bg-purple-600 rounded-lg flex items-center justify-center'>
+                                                <Award className='w-5 h-5 text-white' />
+                                            </div>
+                                            <h3 className='font-bold text-lg sm:text-xl text-purple-900'>Quick Quiz</h3>
                                         </div>
-                                        <div className='space-y-4 sm:space-y-6'>
+                                        <div className='space-y-5 sm:space-y-6'>
                                             {topic.quiz.map((q: any, qIdx: number) => (
-                                                <div key={qIdx} className='bg-white rounded-lg p-3 sm:p-4 border border-indigo-200'>
-                                                    <p className='font-semibold text-sm sm:text-base text-indigo-900 mb-3'>
+                                                <div key={qIdx} className='bg-white rounded-lg p-4 sm:p-5 border-2 border-purple-200 shadow-sm'>
+                                                    <p className='font-semibold text-base sm:text-lg text-purple-900 mb-4'>
                                                         Q{qIdx + 1}. {q.question}
                                                     </p>
-                                                    <div className='space-y-2'>
+                                                    <div className='space-y-3'>
                                                         {q.options?.map((option: string, oIdx: number) => (
                                                             <div 
                                                                 key={oIdx}
-                                                                className={`p-2 sm:p-3 rounded-lg border text-sm sm:text-base ${
+                                                                className={`p-3 sm:p-4 rounded-lg border-2 text-sm sm:text-base transition-all ${
                                                                     oIdx === q.correct 
-                                                                        ? 'bg-green-50 border-green-300 text-green-900' 
+                                                                        ? 'bg-green-50 border-green-400 text-green-900 font-medium' 
                                                                         : 'bg-gray-50 border-gray-200 text-gray-700'
                                                                 }`}
                                                             >
-                                                                {String.fromCharCode(65 + oIdx)}. {option}
-                                                                {oIdx === q.correct && (
-                                                                    <span className='ml-2 text-green-600 font-semibold'>✓ Correct</span>
-                                                                )}
+                                                                <div className='flex items-center justify-between'>
+                                                                    <span>{String.fromCharCode(65 + oIdx)}. {option}</span>
+                                                                    {oIdx === q.correct && (
+                                                                        <span className='text-green-600 font-bold text-sm'>✓ Correct</span>
+                                                                    )}
+                                                                </div>
                                                             </div>
                                                         ))}
                                                     </div>
