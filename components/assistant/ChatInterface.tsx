@@ -200,27 +200,27 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
   };
 
   return (
-    <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} group mb-4`}>
+    <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} group mb-3 sm:mb-4`}>
       <div
-        className={`max-w-[85%] md:max-w-[75%] rounded-2xl px-4 py-3 ${
+        className={`max-w-[90%] sm:max-w-[85%] md:max-w-[75%] rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 ${
           isUser
             ? 'bg-indigo-600 text-white shadow-md'
             : 'bg-[#FFFFFF] text-gray-900 border border-gray-200 shadow-sm'
         }`}
       >
-        <div className="flex items-start space-x-3">
-          <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
+        <div className="flex items-start space-x-2 sm:space-x-3">
+          <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
             isUser ? 'bg-indigo-500' : 'bg-indigo-100'
           }`}>
             {isUser ? (
-              <div className="w-4 h-4 bg-[#FFFFFF] rounded-full" />
+              <div className="w-3 h-3 sm:w-4 sm:h-4 bg-[#FFFFFF] rounded-full" />
             ) : (
-              <Bot className="w-4 h-4 text-indigo-600" />
+              <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-indigo-600" />
             )}
           </div>
           
           <div className="flex-1 min-w-0">
-            <div className={`text-sm leading-relaxed break-words ${
+            <div className={`text-xs sm:text-sm leading-relaxed break-words ${
               isUser ? 'text-white' : 'text-gray-900'
             }`}>
               {isUser ? (
@@ -232,8 +232,8 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               )}
             </div>
             
-            <div className="flex items-center justify-between mt-3 pt-2 border-t border-opacity-20 border-gray-300">
-              <span className={`text-xs ${
+            <div className="flex items-center justify-between mt-2 sm:mt-3 pt-1.5 sm:pt-2 border-t border-opacity-20 border-gray-300">
+              <span className={`text-[10px] sm:text-xs ${
                 isUser ? 'text-indigo-200' : 'text-gray-500'
               }`}>
                 {formatTime(message.timestamp)}
@@ -386,15 +386,15 @@ export default function ChatInterface({
 
   return (
     <div className="flex flex-col h-full bg-[#FFFFFF]">
-      <div className="border-b border-gray-100 p-4 bg-[#FFFFFF]">
+      <div className="border-b border-gray-100 p-3 sm:p-4 bg-[#FFFFFF]">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
-              <Bot className="w-6 h-6 text-indigo-600" />
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <Bot className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600" />
             </div>
-            <div>
-              <h2 className="font-semibold text-gray-900">{enrolledCourse.courses.name}</h2>
-              <p className="text-sm text-gray-500">
+            <div className="min-w-0">
+              <h2 className="font-semibold text-sm sm:text-base text-gray-900 truncate">{enrolledCourse.courses.name}</h2>
+              <p className="text-xs sm:text-sm text-gray-500">
                 Progress: <span className="font-medium text-indigo-600">
                   {Math.round((enrolledCourse.enrollCourse.completedChapters?.length || 0) / enrolledCourse.courses.noOfChapters * 100)}%
                 </span> • AI Assistant
@@ -405,15 +405,15 @@ export default function ChatInterface({
       </div>
 
       {error && (
-        <div className="bg-red-50 border-b border-red-200 px-4 py-3">
+        <div className="bg-red-50 border-b border-red-200 px-3 sm:px-4 py-2 sm:py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <AlertCircle className="w-4 h-4 text-red-500" />
-              <span className="text-sm text-red-700">{error}</span>
+            <div className="flex items-center space-x-1.5 sm:space-x-2">
+              <AlertCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500 flex-shrink-0" />
+              <span className="text-xs sm:text-sm text-red-700">{error}</span>
             </div>
             <button
               onClick={retryLastMessage}
-              className="text-sm text-red-600 hover:text-red-800 font-medium transition-colors"
+              className="text-xs sm:text-sm text-red-600 hover:text-red-800 font-medium transition-colors ml-2"
             >
               Retry
             </button>
@@ -421,50 +421,50 @@ export default function ChatInterface({
         </div>
       )}
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
         {isLoadingMessages ? (
-          <div className="flex justify-center py-8">
+          <div className="flex justify-center py-6 sm:py-8">
             <div className="text-center">
-              <Loader2 className="w-8 h-8 animate-spin text-indigo-400 mx-auto mb-2" />
-              <p className="text-sm text-gray-500">Loading conversation...</p>
+              <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-indigo-400 mx-auto mb-2" />
+              <p className="text-xs sm:text-sm text-gray-500">Loading conversation...</p>
             </div>
           </div>
         ) : messages.length === 0 ? (
-          <div className="text-center">
-            <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Bot className="w-10 h-10 text-indigo-600" />
+          <div className="text-center px-2">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <Bot className="w-8 h-8 sm:w-10 sm:h-10 text-indigo-600" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">
               Hi! I&apos;m your personal learning assistant
             </h3>
-            <p className="text-gray-600 mb-6 max-w-md mx-auto">
+            <p className="text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6 max-w-md mx-auto">
               I know about your progress in <strong className="text-indigo-700">{enrolledCourse.courses.name}</strong> and can help you with:
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-lg mx-auto text-sm mb-6">
-              <div className="bg-indigo-50 rounded-lg p-3 text-left border border-indigo-100">
-                <strong className="text-indigo-900">Course Content</strong>
-                <p className="text-indigo-700">Explanations, concept clarification</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-w-lg mx-auto text-xs sm:text-sm mb-4 sm:mb-6">
+              <div className="bg-indigo-50 rounded-lg p-2.5 sm:p-3 text-left border border-indigo-100">
+                <strong className="text-indigo-900 text-xs sm:text-sm">Course Content</strong>
+                <p className="text-indigo-700 text-[10px] sm:text-xs">Explanations, concept clarification</p>
               </div>
-              <div className="bg-blue-50 rounded-lg p-3 text-left border border-blue-100">
-                <strong className="text-blue-900">Progress Guidance</strong>
-                <p className="text-blue-700">Next steps and recommendations</p>
+              <div className="bg-blue-50 rounded-lg p-2.5 sm:p-3 text-left border border-blue-100">
+                <strong className="text-blue-900 text-xs sm:text-sm">Progress Guidance</strong>
+                <p className="text-blue-700 text-[10px] sm:text-xs">Next steps and recommendations</p>
               </div>
-              <div className="bg-green-50 rounded-lg p-3 text-left border border-green-100">
-                <strong className="text-green-900">Study Support</strong>
-                <p className="text-green-700">Quiz prep and review help</p>
+              <div className="bg-green-50 rounded-lg p-2.5 sm:p-3 text-left border border-green-100">
+                <strong className="text-green-900 text-xs sm:text-sm">Study Support</strong>
+                <p className="text-green-700 text-[10px] sm:text-xs">Quiz prep and review help</p>
               </div>
-              <div className="bg-orange-50 rounded-lg p-3 text-left border border-orange-100">
-                <strong className="text-orange-900">Learning Path</strong>
-                <p className="text-orange-700">Personalized study suggestions</p>
+              <div className="bg-orange-50 rounded-lg p-2.5 sm:p-3 text-left border border-orange-100">
+                <strong className="text-orange-900 text-xs sm:text-sm">Learning Path</strong>
+                <p className="text-orange-700 text-[10px] sm:text-xs">Personalized study suggestions</p>
               </div>
             </div>
             
-            <div className="flex flex-wrap gap-2 justify-center">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center">
               {quickSuggestions.map((suggestion, index) => (
                 <button
                   key={index}
                   onClick={() => setInputMessage(suggestion)}
-                  className="px-3 py-2 text-sm bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors"
+                  className="px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors"
                 >
                   {suggestion}
                 </button>
@@ -482,17 +482,17 @@ export default function ChatInterface({
         
         {isLoading && (
           <div className="flex justify-start">
-            <div className="max-w-[80%] rounded-2xl px-4 py-3 bg-gray-100 border border-gray-200">
-              <div className="flex items-center space-x-3">
-                <div className="w-6 h-6 bg-indigo-100 rounded-full flex items-center justify-center">
-                  <Bot className="w-3.5 h-3.5 text-indigo-600" />
+            <div className="max-w-[85%] sm:max-w-[80%] rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 bg-gray-100 border border-gray-200">
+              <div className="flex items-center space-x-2 sm:space-x-3">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Bot className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-indigo-600" />
                 </div>
                 <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-indigo-400 rounded-full animate-bounce"></div>
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                 </div>
-                <span className="text-sm text-gray-600">Thinking...</span>
+                <span className="text-xs sm:text-sm text-gray-600">Thinking...</span>
               </div>
             </div>
           </div>
@@ -501,8 +501,8 @@ export default function ChatInterface({
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="border-t border-gray-100 p-4 bg-[#FFFFFF]">
-        <div className="flex space-x-3 -mb-6">
+      <div className="border-t border-gray-100 p-3 sm:p-4 bg-[#FFFFFF]">
+        <div className="flex space-x-2 sm:space-x-3 -mb-6">
           <div className="flex-1 relative">
             <input
               ref={inputRef}
@@ -511,22 +511,22 @@ export default function ChatInterface({
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Ask me anything about your course progress..."
-              className="w-full px-4 py-3 pr-12 border border-gray-200 rounded-full ring-2 ring-indigo-500 transition-all"
+              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-20 sm:pr-24 border border-gray-200 rounded-full ring-2 ring-indigo-500 transition-all text-xs sm:text-sm placeholder:text-xs sm:placeholder:text-sm"
               disabled={isLoading}
             />
-            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-400">
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[10px] sm:text-xs text-gray-400 hidden sm:block">
               Enter to send
             </div>
           </div>
           <button
             onClick={sendMessage}
             disabled={!inputMessage.trim() || isLoading}
-            className="p-3 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center cursor-pointer"
+            className="p-2.5 sm:p-3 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center cursor-pointer"
           >
             {isLoading ? (
-              <Loader2 className="w-5 h-5 animate-spin" />
+              <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
             ) : (
-              <Send className="w-5 h-5" />
+              <Send className="w-4 h-4 sm:w-5 sm:h-5" />
             )}
           </button>
         </div>

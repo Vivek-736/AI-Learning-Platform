@@ -75,15 +75,15 @@ export default function AssistantPage() {
   return (
     <div className="min-h-[76vh] -mt-8 bg-gray-50">
       <div className="bg-[#FFFFFF] border-b border-gray-200 sticky top-0 z-40">
-        <div className="px-6">
+        <div className="px-3 sm:px-6">
           <div className="flex items-center justify-between">
             {isMobileView && (
               <button
                 title="Toggle Sidebar"
                 onClick={() => setShowSidebar(!showSidebar)}
-                className="p-2 text-gray-600 hover:text-gray-900 lg:hidden"
+                className="p-2 text-gray-600 hover:text-gray-900 lg:hidden transition-colors"
               >
-                <MessageSquare className="w-5 h-5" />
+                <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             )}
           </div>
@@ -94,7 +94,7 @@ export default function AssistantPage() {
         <div
           className={`${
             isMobileView && !showSidebar ? "hidden" : "block"
-          } w-80 bg-[#FFFFFF] border-r border-gray-200 flex flex-col`}
+          } w-full lg:w-80 bg-[#FFFFFF] border-r border-gray-200 flex flex-col fixed lg:relative inset-0 lg:inset-auto z-50 lg:z-auto`}
         >
           <CourseSelector
             selectedEnrollment={selectedEnrollment}
@@ -127,7 +127,7 @@ export default function AssistantPage() {
 
       {isMobileView && showSidebar && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
           onClick={() => setShowSidebar(false)}
         />
       )}
