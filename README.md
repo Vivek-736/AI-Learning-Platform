@@ -417,48 +417,6 @@ Navigate to `http://localhost:3000` and start learning! 🎉
       ├── POST   /api/assistant/messages → Chat with AI
       └── GET    /api/assistant/history  → Get chat history
 ```
-
-```
-
-### 🚀 **Deployment Architecture**
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                    GitHub Repository                     │
-│                  (Source Code Storage)                   │
-└─────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                    Vercel Platform                       │
-│  ┌───────────────────────────────────────────────────┐  │
-│  │  Automatic Build & Deployment on Git Push         │  │
-│  │  • Next.js Optimizations                          │  │
-│  │  • Edge Functions                                 │  │
-│  │  • CDN Distribution                               │  │
-│  └───────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────┘
-                          │
-           ┌──────────────┼──────────────┐
-           ▼              ▼              ▼
-    ┌──────────┐   ┌──────────┐   ┌──────────┐
-    │ Frontend │   │ API      │   │ Static   │
-    │ Routes   │   │ Routes   │   │ Assets   │
-    └──────────┘   └──────────┘   └──────────┘
-           │              │              │
-           └──────────────┼──────────────┘
-                          ▼
-              ┌────────────────────┐
-              │  Global CDN Edge   │
-              │    Distribution    │
-              └────────────────────┘
-                          │
-                          ▼
-              ┌────────────────────┐
-              │    End Users 🌍    │
-              └────────────────────┘
-```
-
 ---
 
 ## 🔧 Configuration
