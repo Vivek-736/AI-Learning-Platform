@@ -29,6 +29,8 @@ Transform your fascination into knowledge with cutting-edge AI technology that p
 
 </div>
 
+<div align="center">
+
 ```ascii
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
@@ -38,6 +40,8 @@ Transform your fascination into knowledge with cutting-edge AI technology that p
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
+
+</div>
 
 <br/>
 
@@ -216,7 +220,7 @@ An AI mentor that helps you navigate your career journey and choose the perfect 
 
 <br/>
 
-<table>
+<table align="center">
 <tr>
 <td width="50%" valign="top">
 
