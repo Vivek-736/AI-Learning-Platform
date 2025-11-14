@@ -4,7 +4,7 @@
 
 ### *Where Curiosity Meets Intelligence* 🧠💫
 
-<img src="public/favicon.png" alt="Fascinity Logo" width="140" height="140" style="border-radius: 20px; margin: 20px 0;" />
+<img src="public/favicon.png" alt="Fascinity Favicon" width="140" height="140" style="border-radius: 20px; margin: 20px 0;" />
 
 **An AI-Powered Learning Ecosystem That Adapts to You**
 
