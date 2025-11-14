@@ -22,6 +22,12 @@ const instrumentSerif = Instrument_Serif({
   style: "italic",
 });
 
+const instrumenSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-instrument-serif",
+});
+
 const nohemi = localFont({
   src: [
     {
@@ -117,7 +123,7 @@ export default function Home() {
 
             <div className="flex items-center space-x-4">
               <Link href="/workspace">
-                <Button className="bg-black hover:bg-black-900 cursor-pointer text-white md:px-6 rounded-md transition-colors duration-200">
+                <Button className={`bg-black hover:bg-indigo-900 cursor-pointer text-white md:px-6 rounded-md transition-colors duration-200`}>
                   {user ? "Dashboard" : "LogIn"}
                 </Button>
               </Link>
@@ -152,7 +158,7 @@ export default function Home() {
 
             <div className="mb-16 flex md:mt-0 mt-2 md:mr-14 justify-end">
               <Link href="/workspace">
-                <Button className="bg-black hover:bg-black-900 cursor-pointer text-white px-8 py-3 text-base rounded-md transition-colors duration-200">
+                <Button className={`bg-black hover:bg-slate-900 cursor-pointer text-white px-4 py-3 ${instrumenSerif.className} sm:text-xl text-base rounded-md transition-colors duration-200`}>
                   Start Learning Free
                 </Button>
               </Link>
@@ -172,7 +178,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
 
               <div className="absolute top-6 left-6">
-                <p className="text-white text-lg font-light leading-relaxed">
+                <p className={`text-white text-lg font-light leading-relaxed ${instrumenSerif.className}`}>
                   No more hours of reading
                   <br />
                   and figuring out
@@ -180,9 +186,9 @@ export default function Home() {
               </div>
 
               <div className="absolute bottom-6 right-6">
-                <p className="text-white text-lg font-serif italic">
+                <p className={`text-white sm:text-xl text-base font-serif ${instrumenSerif.className}`}>
                   It&apos;s{" "}
-                  <span className="font-normal text-black-300">simple</span> now
+                  <span className="font-normal text-black-300 italic">simple</span> now
                 </p>
               </div>
             </div>
@@ -199,7 +205,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
 
               <div className="absolute top-6 right-6">
-                <p className="text-white text-lg font-light">
+                <p className={`text-white text-xl font-light ${instrumenSerif.className}`}>
                   no more <span className="italic">hours</span> of{" "}
                   <span className="text-red-400 italic font-serif">
                     mindlessness
@@ -591,7 +597,7 @@ export default function Home() {
 
           <div className="flex justify-center">
             <Link href="/workspace">
-              <Button className="bg-black hover:bg-black-900 cursor-pointer text-white px-8 py-3 rounded-md text-base transition-colors duration-200">
+              <Button className="bg-black hover:bg-indigo-900 cursor-pointer text-white px-8 py-3 rounded-md text-base transition-colors duration-200">
                 Start Learning Free
               </Button>
             </Link>
