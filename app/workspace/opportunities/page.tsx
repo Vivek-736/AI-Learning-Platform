@@ -5,9 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calendar, ExternalLink, MapPin, Trophy, Rocket, Code2, DollarSign, Users } from "lucide-react";
+import { Calendar, ExternalLink, MapPin, Trophy, Rocket, Code2, DollarSign, Users, Star, Sparkles } from "lucide-react";
 import localFont from "next/font/local";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const nohemi = localFont({
   src: [
@@ -50,16 +51,41 @@ interface Opportunity {
   location: string;
   mode: string;
   isActive: boolean;
+  isFeatured?: boolean;
+  relevanceScore?: number;
 }
 
 const OpportunitiesPage = () => {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
+  const [featuredOpportunities, setFeaturedOpportunities] = useState<Opportunity[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingFeatured, setLoadingFeatured] = useState(true);
   const [selectedType, setSelectedType] = useState("all");
+  const [isPersonalized, setIsPersonalized] = useState(false);
+
+  useEffect(() => {
+    fetchFeaturedOpportunities();
+  }, []);
 
   useEffect(() => {
     fetchOpportunities(selectedType);
   }, [selectedType]);
+
+  const fetchFeaturedOpportunities = async () => {
+    setLoadingFeatured(true);
+    try {
+      const response = await fetch(`/api/opportunities?featured=true`);
+      const data = await response.json();
+      if (data.success) {
+        setFeaturedOpportunities(data.opportunities);
+        setIsPersonalized(data.personalized);
+      }
+    } catch (error) {
+      console.error("Failed to fetch featured opportunities:", error);
+    } finally {
+      setLoadingFeatured(false);
+    }
+  };
 
   const fetchOpportunities = async (type: string) => {
     setLoading(true);
@@ -68,6 +94,7 @@ const OpportunitiesPage = () => {
       const data = await response.json();
       if (data.success) {
         setOpportunities(data.opportunities);
+        setIsPersonalized(data.personalized);
       }
     } catch (error) {
       console.error("Failed to fetch opportunities:", error);
@@ -118,6 +145,81 @@ const OpportunitiesPage = () => {
     if (daysLeft === 1) return `Tomorrow - ${formattedDate}`;
     if (daysLeft <= 7) return `${daysLeft} days left - ${formattedDate}`;
     return formattedDate;
+  };
+
+  const FeaturedOpportunityCard = ({ opportunity }: { opportunity: Opportunity }) => {
+    const daysLeft = Math.ceil(
+      (new Date(opportunity.deadline).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
+    );
+    const isUrgent = daysLeft <= 7 && daysLeft >= 0;
+
+    return (
+      <Card className="min-w-[350px] max-w-[400px] group hover:shadow-xl transition-all duration-300 border-2 hover:border-indigo-400 bg-gradient-to-br from-white to-indigo-50 relative overflow-hidden">
+        <div className="absolute top-2 right-2 z-10">
+          <Badge className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white border-0">
+            <Star className="h-3 w-3 mr-1" fill="white" />
+            Featured
+          </Badge>
+        </div>
+        
+        <CardHeader className="space-y-3 pb-3">
+          <div className="flex items-start gap-3">
+            <div className={`p-2.5 rounded-lg ${getTypeColor(opportunity.type)} border-2`}>
+              {getTypeIcon(opportunity.type)}
+            </div>
+            <div className="flex-1 min-w-0">
+              <CardTitle className={`text-lg font-bold text-gray-900 ${nohemi.className} leading-tight line-clamp-2`}>
+                {opportunity.title}
+              </CardTitle>
+              <p className="text-xs text-gray-600 mt-1">{opportunity.organizer}</p>
+            </div>
+          </div>
+          
+          <CardDescription className="text-sm text-gray-700 leading-relaxed line-clamp-2">
+            {opportunity.description}
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="space-y-3 pt-0">
+          <div className="flex flex-wrap gap-1.5">
+            {opportunity.tags.slice(0, 3).map((tag, index) => (
+              <Badge
+                key={index}
+                variant="secondary"
+                className="bg-indigo-100 text-indigo-700 hover:bg-indigo-200 border border-indigo-200 text-xs"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+
+          <div className="space-y-2 text-xs">
+            <div className="flex items-center gap-2 text-gray-700">
+              <Calendar className="h-3.5 w-3.5 text-indigo-600" />
+              <span className={isUrgent ? "font-semibold text-red-600" : "font-medium"}>
+                {formatDeadline(opportunity.deadline)}
+              </span>
+            </div>
+            
+            {opportunity.prizePool && (
+              <div className="flex items-center gap-2 text-gray-700">
+                <DollarSign className="h-3.5 w-3.5 text-indigo-600" />
+                <span className="font-semibold text-indigo-900">{opportunity.prizePool}</span>
+              </div>
+            )}
+          </div>
+
+          <Button
+            onClick={() => window.open(opportunity.registrationUrl, "_blank")}
+            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium transition-all"
+            size="sm"
+          >
+            <span>Register Now</span>
+            <ExternalLink className="ml-2 h-3.5 w-3.5" />
+          </Button>
+        </CardContent>
+      </Card>
+    );
   };
 
   const OpportunityCard = ({ opportunity }: { opportunity: Opportunity }) => {
@@ -232,20 +334,82 @@ const OpportunitiesPage = () => {
     </Card>
   );
 
+  const FeaturedLoadingSkeleton = () => (
+    <Card className="min-w-[350px] max-w-[400px] border-2">
+      <CardHeader className="space-y-3">
+        <div className="flex items-start gap-3">
+          <Skeleton className="h-10 w-10 rounded-lg" />
+          <div className="flex-1 space-y-2">
+            <Skeleton className="h-5 w-3/4" />
+            <Skeleton className="h-3 w-1/2" />
+          </div>
+        </div>
+        <Skeleton className="h-12 w-full" />
+      </CardHeader>
+      <CardContent className="space-y-3">
+        <div className="flex gap-1.5">
+          <Skeleton className="h-5 w-14" />
+          <Skeleton className="h-5 w-16" />
+          <Skeleton className="h-5 w-14" />
+        </div>
+        <Skeleton className="h-8 w-full" />
+      </CardContent>
+    </Card>
+  );
+
   return (
     <div className="min-h-screen bg-white p-6 md:p-8">
-      <div className="max-w-7xl mx-auto space-y-6">
+      <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="space-y-2">
-          <h1 className={`text-4xl font-bold text-gray-900 ${nohemi.className}`}>
-            Opportunities
-          </h1>
+          <div className="flex items-center gap-3">
+            <h1 className={`text-4xl font-bold text-gray-900 ${nohemi.className}`}>
+              Opportunities
+            </h1>
+            {isPersonalized && (
+              <Badge className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-0">
+                <Sparkles className="h-3 w-3 mr-1" />
+                Personalized
+              </Badge>
+            )}
+          </div>
           <p className="text-gray-600 text-lg">
             Discover hackathons, competitions, and funding opportunities to accelerate your career
           </p>
         </div>
 
-        {/* Tabs */}
+        {/* Featured Opportunities Section */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className={`text-2xl font-bold text-gray-900 ${nohemi.className} flex items-center gap-2`}>
+              <Star className="h-6 w-6 text-yellow-500" fill="currentColor" />
+              Featured Opportunities
+            </h2>
+          </div>
+          
+          <ScrollArea className="w-full whitespace-nowrap">
+            <div className="flex gap-4 pb-4">
+              {loadingFeatured ? (
+                <>
+                  {[...Array(5)].map((_, i) => (
+                    <FeaturedLoadingSkeleton key={i} />
+                  ))}
+                </>
+              ) : featuredOpportunities.length === 0 ? (
+                <div className="w-full text-center py-8">
+                  <p className="text-gray-500">No featured opportunities available</p>
+                </div>
+              ) : (
+                featuredOpportunities.map((opportunity) => (
+                  <FeaturedOpportunityCard key={opportunity.id} opportunity={opportunity} />
+                ))
+              )}
+            </div>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
+        </div>
+
+        {/* All Opportunities Tabs */}
         <Tabs value={selectedType} onValueChange={setSelectedType} className="w-full">
           <TabsList className="grid w-full max-w-2xl grid-cols-4 bg-gray-100 p-1">
             <TabsTrigger
