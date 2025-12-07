@@ -46,7 +46,7 @@ export default function RootLayout({
     >
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${schibstedGrotesk.variable} antialiased`}
+          className={`${schibstedGrotesk.className} antialiased`}
         >
           <ThemeProvider
             attribute="class"
