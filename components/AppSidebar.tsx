@@ -27,6 +27,7 @@ import {
   GraduationCap,
   Trophy,
   Code2,
+  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
@@ -138,6 +139,11 @@ const AppSidebar = () => {
       title: "Coding Playground",
       icon: Code2,
       path: "/workspace/coding-playground",
+    },
+    {
+      title: "Opportunities",
+      icon: Sparkles,
+      path: "/workspace/opportunities",
     },
     {
       title: "Leaderboard",

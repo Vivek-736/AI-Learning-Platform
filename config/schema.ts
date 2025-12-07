@@ -219,3 +219,26 @@ export const codingProblemsTable = pgTable("codingProblems", {
     createdAt: timestamp().defaultNow(),
     updatedAt: timestamp().defaultNow()
 });
+
+export const opportunitiesTable = pgTable("opportunities", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    opportunityId: varchar().notNull().unique(),
+    title: varchar().notNull(),
+    description: text(),
+    type: varchar().notNull(),
+    organizer: varchar(),
+    category: varchar(),
+    deadline: timestamp(),
+    registrationUrl: varchar().notNull(),
+    prizePool: varchar(),
+    eligibility: text(),
+    tags: json(),
+    imageUrl: varchar(),
+    location: varchar(),
+    mode: varchar(),
+    isActive: boolean().default(true),
+    externalId: varchar(),
+    source: varchar(),
+    createdAt: timestamp().defaultNow(),
+    updatedAt: timestamp().defaultNow()
+});
