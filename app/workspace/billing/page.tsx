@@ -5,10 +5,10 @@ import { PricingTable } from '@clerk/nextjs'
 
 const BillingPage = () => {
     return (
-        <div className="min-h-screen bg-gray-50 py-8 px-4">
+        <div className="min-h-screen bg-gray-50 dark:bg-[#09090b] py-8 px-4">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                    <h1 className="text-4xl dark:text-white font-bold text-gray-900 mb-4">
                         Select Plan
                     </h1>
                 </div>
