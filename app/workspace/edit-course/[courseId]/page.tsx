@@ -54,22 +54,22 @@ const EditCoursePage = ({ viewCourse = false }: EditCoursePageProps) => {
 
     if (loading) {
         return (
-            <div className="min-h-[78vh] bg-[#FFFFFF] flex items-center justify-center">
+            <div className="min-h-[78vh] bg-white dark:bg-gray-950 flex items-center justify-center">
                 <div className="flex flex-col items-center space-y-4">
                     <div className="relative">
-                        <div className="w-16 h-16 border-4 border-gray-200 border-t-[#000B88] rounded-full animate-spin"></div>
-                        <div className="w-12 h-12 border-4 border-gray-100 border-t-[#000B88] rounded-full animate-spin absolute top-2 left-2 animate-reverse-spin"></div>
+                        <div className="w-16 h-16 border-4 border-gray-200 dark:border-gray-800 border-t-gray-900 dark:border-t-gray-100 rounded-full animate-spin"></div>
+                        <div className="w-12 h-12 border-4 border-gray-100 dark:border-gray-900 border-t-gray-900 dark:border-t-gray-100 rounded-full animate-spin absolute top-2 left-2 animate-reverse-spin"></div>
                     </div>
                                      
                     <div className="text-center">
-                        <h2 className="text-xl font-semibold text-black mb-2">Loading Course</h2>
-                        <p className="text-gray-600">Please wait while we fetch your course details...</p>
+                        <h2 className="text-xl font-semibold text-black dark:text-gray-100 mb-2">Loading Course</h2>
+                        <p className="text-gray-600 dark:text-gray-400">Please wait while we fetch your course details...</p>
                     </div>
                                      
                     <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-[#000B88] rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-[#000B88] rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                        <div className="w-2 h-2 bg-[#000B88] rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                        <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                        <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@ const EditCoursePage = ({ viewCourse = false }: EditCoursePageProps) => {
     }
 
     return (
-        <div>
+        <div className="bg-white dark:bg-gray-950 min-h-screen">
             <CourseInfo course={course} viewCourse={viewCourse} />
             <ChapterTopicList course={course} enrollCourse={enrollCourse} />
         </div>

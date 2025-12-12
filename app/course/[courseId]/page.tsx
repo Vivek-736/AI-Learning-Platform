@@ -35,22 +35,22 @@ const CoursePage = () => {
         return (
             <div>
                 <AppHeader hideSidebar={true} />
-                <div className='min-h-[78vh] bg-[#FFFFFF] flex items-center justify-center'>
+                <div className='min-h-[78vh] bg-white dark:bg-gray-950 flex items-center justify-center'>
                     <div className="flex flex-col items-center space-y-4">
                         <div className="relative">
-                            <div className="w-16 h-16 border-4 border-gray-200 border-t-indigo-600 rounded-full animate-spin"></div>
-                            <div className="w-12 h-12 border-4 border-gray-100 border-t-indigo-400 rounded-full animate-spin absolute top-2 left-2"></div>
+                            <div className="w-16 h-16 border-4 border-gray-200 dark:border-gray-700 border-t-gray-900 dark:border-t-gray-100 rounded-full animate-spin"></div>
+                            <div className="w-12 h-12 border-4 border-gray-100 dark:border-gray-800 border-t-gray-800 dark:border-t-gray-200 rounded-full animate-spin absolute top-2 left-2"></div>
                         </div>
                         
                         <div className="text-center">
-                            <h2 className="text-xl font-semibold text-black mb-2">Loading Course Content</h2>
-                            <p className="text-gray-600">Please wait while we fetch your course materials...</p>
+                            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Loading Course Content</h2>
+                            <p className="text-gray-600 dark:text-gray-400">Please wait while we fetch your course materials...</p>
                         </div>
                         
                         <div className="flex space-x-1">
-                            <div className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce"></div>
-                            <div className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                            <div className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                            <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full animate-bounce"></div>
+                            <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                            <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                         </div>
                     </div>
                 </div>
@@ -59,9 +59,9 @@ const CoursePage = () => {
     }
 
     return (
-        <div className='h-screen flex flex-col overflow-hidden'>
+        <div className='h-screen flex flex-col overflow-hidden bg-white dark:bg-gray-950'>
             <AppHeader hideSidebar={true} />
-            <div className='flex flex-1 overflow-hidden'>
+            <div className='flex flex-1 overflow-hidden bg-white dark:bg-gray-950'>
                 <div className='hidden lg:block'>
                     <ChapterListSidebar courseInfo={courseInfo} />
                 </div>

@@ -17,7 +17,7 @@ const ChapterTopicList = ({ course, enrollCourse }: ChapterTopicListProps) => {
 
   return (
     <div>
-      <h2 className="font-bold text-3xl mt-10">Chapters and Topics</h2>
+      <h2 className="font-bold text-3xl mt-10 dark:text-gray-100">Chapters and Topics</h2>
       <div className="flex flex-col items-center justify-center mt-10">
         {courseLayout?.chapters.map((chapter: any, chapterIndex: any) => {
           const completed = isChapterCompleted(chapterIndex);
@@ -27,8 +27,8 @@ const ChapterTopicList = ({ course, enrollCourse }: ChapterTopicListProps) => {
               <div
                 className={`p-4 border shadow rounded-xl text-white w-full max-w-md transition-all duration-300 ${
                   completed
-                    ? "bg-green-600 border-green-300"
-                    : "bg-primary border-primary"
+                    ? "bg-green-600 border-green-300 dark:bg-green-700 dark:border-green-500"
+                    : "bg-primary border-primary dark:bg-gray-800 dark:border-gray-700"
                 }`}
               >
                 <div className="flex items-center justify-center gap-2">
@@ -49,7 +49,7 @@ const ChapterTopicList = ({ course, enrollCourse }: ChapterTopicListProps) => {
                   <span>No. Of Topics: {chapter?.topics?.length}</span>
                 </h2>
                 {completed && (
-                  <div className="text-center mt-2 text-xs bg-green-500 bg-opacity-50 rounded px-2 py-1">
+                  <div className="text-center mt-2 text-xs bg-green-500 bg-opacity-50 dark:bg-green-600 dark:bg-opacity-50 rounded px-2 py-1">
                     ✓ Completed
                   </div>
                 )}
@@ -59,30 +59,30 @@ const ChapterTopicList = ({ course, enrollCourse }: ChapterTopicListProps) => {
                   <div className="flex flex-col items-center" key={topicIndex}>
                     <div
                       className={`h-10 w-1 ${
-                        completed ? "bg-green-400" : "bg-gray-300"
+                        completed ? "bg-green-400 dark:bg-green-500" : "bg-gray-300 dark:bg-gray-700"
                       }`}
                     ></div>
                     <div className="flex items-center gap-5">
                       <span
                         className={`${
-                          topicIndex % 2 === 0 && "text-transparent"
-                        } max-w-xs ${completed ? "text-green-700" : ""}`}
+                          topicIndex % 2 === 0 && "text-transparent dark:text-transparent"
+                        } max-w-xs ${completed ? "text-green-700 dark:text-green-400" : "dark:text-gray-300"}`}
                       >
                         {topic}
                       </span>
                       <h2
                         className={`text-center rounded-full px-6 p-4 transition-colors duration-300 ${
                           completed
-                            ? "bg-green-300 text-green-800"
-                            : "bg-gray-300 text-gray-500"
+                            ? "bg-green-300 text-green-800 dark:bg-green-700 dark:text-green-100"
+                            : "bg-gray-300 text-gray-500 dark:bg-gray-700 dark:text-gray-400"
                         }`}
                       >
                         {topicIndex + 1}
                       </h2>
                       <span
                         className={`${
-                          topicIndex % 2 !== 0 && "text-transparent"
-                        } max-w-xs ${completed ? "text-green-700" : ""}`}
+                          topicIndex % 2 !== 0 && "text-transparent dark:text-transparent"
+                        } max-w-xs ${completed ? "text-green-700 dark:text-green-400" : "dark:text-gray-300"}`}
                       >
                         {topic}
                       </span>
@@ -91,21 +91,21 @@ const ChapterTopicList = ({ course, enrollCourse }: ChapterTopicListProps) => {
                       <>
                         <div
                           className={`h-10 w-1 ${
-                            completed ? "bg-green-400" : "bg-gray-300"
+                            completed ? "bg-green-400 dark:bg-green-500" : "bg-gray-300 dark:bg-gray-700"
                           }`}
                         ></div>
                         <div className="flex items-center gap-5">
                           <Gift
                             className={`text-center rounded-full h-14 w-14 p-4 transition-colors duration-300 ${
                               completed
-                                ? "bg-green-300 text-green-600"
-                                : "bg-gray-300 text-gray-500"
+                                ? "bg-green-300 text-green-600 dark:bg-green-700 dark:text-green-200"
+                                : "bg-gray-300 text-gray-500 dark:bg-gray-700 dark:text-gray-400"
                             }`}
                           />
                         </div>
                         <div
                           className={`h-10 w-1 ${
-                            completed ? "bg-green-400" : "bg-gray-300"
+                            completed ? "bg-green-400 dark:bg-green-500" : "bg-gray-300 dark:bg-gray-700"
                           }`}
                         ></div>
                       </>
@@ -116,7 +116,7 @@ const ChapterTopicList = ({ course, enrollCourse }: ChapterTopicListProps) => {
             </div>
           );
         })}
-        <div className="p-6 border shadow-lg rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 text-white flex flex-col items-center gap-3 w-full max-w-sm">
+        <div className="p-6 border shadow-lg rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 dark:from-green-700 dark:to-emerald-800 text-white flex flex-col items-center gap-3 w-full max-w-sm dark:border-green-600">
           <CheckCircle className="w-12 h-12 text-white drop-shadow-lg" />
           <h2 className="text-xl font-bold">Congratulations!</h2>
           <p className="text-sm text-center">
