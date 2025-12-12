@@ -54,7 +54,7 @@ const EditCoursePage = ({ viewCourse = false }: EditCoursePageProps) => {
 
     if (loading) {
         return (
-            <div className="min-h-[78vh] bg-white dark:bg-gray-950 flex items-center justify-center">
+            <div className="min-h-[78vh] bg-white dark:bg-[#09090b] flex items-center justify-center">
                 <div className="flex flex-col items-center space-y-4">
                     <div className="relative">
                         <div className="w-16 h-16 border-4 border-gray-200 dark:border-gray-800 border-t-gray-900 dark:border-t-gray-100 rounded-full animate-spin"></div>
@@ -77,7 +77,7 @@ const EditCoursePage = ({ viewCourse = false }: EditCoursePageProps) => {
     }
 
     return (
-        <div className="bg-white dark:bg-gray-950 min-h-screen">
+        <div className="bg-white dark:bg-[#09090b] min-h-screen">
             <CourseInfo course={course} viewCourse={viewCourse} />
             <ChapterTopicList course={course} enrollCourse={enrollCourse} />
         </div>

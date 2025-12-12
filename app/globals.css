@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
@@ -144,19 +143,16 @@
     @apply bg-background text-foreground;
   }
 
-  /* Firefox - super thin scrollbar */
   * {
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
     transition: scrollbar-color 0.3s ease;
   }
 
-  /* Show scrollbar on scroll (Firefox) */
   *:hover {
     scrollbar-color: rgba(120,120,120,0.35) transparent;
   }
 
-  /* Webkit browsers - ultra-thin, only visible when scrolling */
   *::-webkit-scrollbar {
     width: 4px;
     height: 4px;
@@ -166,32 +162,27 @@
     background: transparent;
   }
 
-  /* Hidden by default - invisible scrollbar thumb */
   *::-webkit-scrollbar-thumb {
     background: transparent;
     border-radius: 10px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Show on hover - super thin and sexy */
   *:hover::-webkit-scrollbar-thumb {
     background: rgba(120,120,120,0.28);
   }
 
-  /* Brighter when hovering the scrollbar itself */
   *::-webkit-scrollbar-thumb:hover {
     width: 6px;
     background: rgba(100,100,100,0.6);
     box-shadow: 0 0 6px rgba(0,0,0,0.08);
   }
 
-  /* Active state - full visibility when dragging */
   *::-webkit-scrollbar-thumb:active {
     background: rgba(80,80,80,0.8);
     box-shadow: 0 0 10px rgba(0,0,0,0.12);
   }
 
-  /* Dark mode - slightly brighter for visibility */
   .dark *:hover::-webkit-scrollbar-thumb {
     background: rgba(200,200,200,0.26);
   }
@@ -206,7 +197,6 @@
     box-shadow: 0 0 8px rgba(0,0,0,0.08);
   }
 
-  /* Firefox dark mode */
   .dark *:hover {
     scrollbar-color: rgba(200,200,200,0.4) transparent;
   }
@@ -215,7 +205,6 @@
     background: transparent;
   }
 
-  /* Even thinner dimensions */
   *::-webkit-scrollbar:horizontal {
     height: 4px;
   }
@@ -289,4 +278,23 @@
   font-family: "Instrument Serif", serif;
   font-weight: 400;
   font-style: italic;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@property --animate-shimmer {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
 }

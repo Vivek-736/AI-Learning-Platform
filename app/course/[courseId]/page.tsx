@@ -35,7 +35,7 @@ const CoursePage = () => {
         return (
             <div>
                 <AppHeader hideSidebar={true} />
-                <div className='min-h-[78vh] bg-white dark:bg-gray-950 flex items-center justify-center'>
+                <div className='min-h-[78vh] bg-white dark:bg-[#09090b] flex items-center justify-center'>
                     <div className="flex flex-col items-center space-y-4">
                         <div className="relative">
                             <div className="w-16 h-16 border-4 border-gray-200 dark:border-gray-700 border-t-gray-900 dark:border-t-gray-100 rounded-full animate-spin"></div>

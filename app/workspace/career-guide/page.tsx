@@ -109,8 +109,8 @@ export default function CareerGuidePage() {
   };
 
   return (
-    <div className={`flex flex-col h-[calc(100vh-140px)] ${nohemi.variable} bg-white dark:bg-gray-950`}>
-      <div className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 bg-white dark:bg-gray-950">
+    <div className={`flex flex-col h-[calc(100vh-140px)] ${nohemi.variable} bg-white dark:bg-[#09090b]`}>
+      <div className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 bg-white dark:bg-[#09090b]">
         <div className="max-w-4xl mx-auto">
           <AnimatePresence>
             {messages.map((message, index) => (
