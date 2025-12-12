@@ -63,7 +63,6 @@ const NSQFMappingPage = () => {
       type === "skills"
         ? career.required_skills.join(", ")
         : career.training_pathway.join("\n");
-
     try {
       await navigator.clipboard.writeText(text);
       setCopiedId(`${career.id}-${type}`);
@@ -104,28 +103,28 @@ const NSQFMappingPage = () => {
   };
 
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen p-6 bg-white dark:bg-[#09090b]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2 text-center">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2 text-center">
             NSQF Career Mapping
           </h1>
-          <p className="text-gray-600 text-lg text-center">
+          <p className="text-gray-600 dark:text-gray-400 text-lg text-center">
             Explore career pathways based on National Skills Qualifications
             Framework (NSQF)
           </p>
         </div>
 
-        <div className="bg-[#FFFFFF] rounded-lg shadow-sm border p-6 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <div className="relative lg:col-span-2">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 h-5 w-5" />
               <input
                 type="text"
                 placeholder="Search careers, skills, or pathways..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 focus:border-transparent"
               />
             </div>
 
@@ -136,7 +135,7 @@ const NSQFMappingPage = () => {
                   e.target.value === "" ? "" : parseInt(e.target.value)
                 )
               }
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 focus:border-transparent"
             >
               <option value="">All Levels</option>
               {nsqfLevels.map((level) => (
@@ -149,7 +148,7 @@ const NSQFMappingPage = () => {
             <select
               value={selectedDemand}
               onChange={(e) => setSelectedDemand(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 focus:border-transparent"
             >
               <option value="">All Demands</option>
               {jobDemands.map((demand) => (
@@ -162,7 +161,7 @@ const NSQFMappingPage = () => {
             <select
               value={selectedSector}
               onChange={(e) => setSelectedSector(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 focus:border-transparent"
             >
               <option value="">All Sectors</option>
               {sectors.map((sector) => (
@@ -178,15 +177,15 @@ const NSQFMappingPage = () => {
           {filteredCareers.map((career) => (
             <div
               key={career.id}
-              className="bg-[#FFFFFF] rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-200"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow duration-200"
             >
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
                       {career.career}
                     </h3>
-                    <div className="flex items-center space-x-2 text-sm text-gray-600">
+                    <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
                       <GraduationCap className="h-4 w-4" />
                       <span>NSQF Level {career.nsqf_level}</span>
                     </div>
@@ -214,16 +213,16 @@ const NSQFMappingPage = () => {
                   </div>
                 </div>
 
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
                   {career.description}
                 </p>
 
                 <div className="flex items-center justify-between mb-4 text-sm">
-                  <div className="flex items-center text-gray-600">
+                  <div className="flex items-center text-gray-600 dark:text-gray-400">
                     <Building className="h-4 w-4 mr-1" />
                     <span>{career.sector}</span>
                   </div>
-                  <div className="flex items-center text-gray-900 font-medium">
+                  <div className="flex items-center text-gray-900 dark:text-gray-100 font-medium">
                     <IndianRupee className="h-4 w-4 mr-1" />
                     <span>{career.average_salary}</span>
                   </div>
@@ -231,7 +230,7 @@ const NSQFMappingPage = () => {
 
                 <div className="mb-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h4 className="text-sm font-medium text-gray-900 flex items-center">
+                    <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100 flex items-center">
                       <Users className="h-4 w-4 mr-1" />
                       Required Skills
                     </h4>
@@ -239,12 +238,12 @@ const NSQFMappingPage = () => {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleCopyToClipboard(career, "skills")}
-                      className="h-6 w-6 p-0 hover:bg-indigo-50"
+                      className="h-6 w-6 p-0 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       {copiedId === `${career.id}-skills` ? (
-                        <CheckCheck className="h-3 w-3 text-green-600" />
+                        <CheckCheck className="h-3 w-3 text-green-600 dark:text-green-500" />
                       ) : (
-                        <Copy className="h-3 w-3 text-gray-400" />
+                        <Copy className="h-3 w-3 text-gray-400 dark:text-gray-500" />
                       )}
                     </Button>
                   </div>
@@ -252,7 +251,7 @@ const NSQFMappingPage = () => {
                     {career.required_skills.map((skill, index) => (
                       <span
                         key={index}
-                        className="px-2 py-1 bg-indigo-50 text-indigo-700 text-xs rounded-md font-medium"
+                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 text-xs rounded-md font-medium"
                       >
                         {skill}
                       </span>
@@ -262,7 +261,7 @@ const NSQFMappingPage = () => {
 
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-2">
-                    <h4 className="text-sm font-medium text-gray-900 flex items-center">
+                    <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100 flex items-center">
                       <BookOpen className="h-4 w-4 mr-1" />
                       Training Pathway
                     </h4>
@@ -270,24 +269,24 @@ const NSQFMappingPage = () => {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleCopyToClipboard(career, "pathway")}
-                      className="h-6 w-6 p-0 hover:bg-indigo-50"
+                      className="h-6 w-6 p-0 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       {copiedId === `${career.id}-pathway` ? (
-                        <CheckCheck className="h-3 w-3 text-green-600" />
+                        <CheckCheck className="h-3 w-3 text-green-600 dark:text-green-500" />
                       ) : (
-                        <Copy className="h-3 w-3 text-gray-400" />
+                        <Copy className="h-3 w-3 text-gray-400 dark:text-gray-500" />
                       )}
                     </Button>
                   </div>
                   <div className="space-y-2">
                     {career.training_pathway.map((step, index) => (
                       <div key={index} className="flex items-start space-x-2">
-                        <div className="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="text-xs font-medium text-indigo-600">
+                        <div className="w-6 h-6 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-xs font-medium text-gray-900 dark:text-gray-100">
                             {index + 1}
                           </span>
                         </div>
-                        <span className="text-xs text-gray-600 leading-relaxed">
+                        <span className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
                           {step}
                         </span>
                       </div>
@@ -295,8 +294,8 @@ const NSQFMappingPage = () => {
                   </div>
                 </div>
 
-                <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-3">
-                  <p className="text-xs text-indigo-700 leading-relaxed">
+                <div className="bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-3">
+                  <p className="text-xs text-gray-900 dark:text-gray-100 leading-relaxed">
                     💡 <strong>Tip:</strong> Copy the required skills and
                     training pathway above to use in course generation. Use
                     these details to create personalized learning paths in our
@@ -310,18 +309,19 @@ const NSQFMappingPage = () => {
 
         {filteredCareers.length === 0 && (
           <div className="text-center py-12">
-            <div className="w-24 h-24 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
-              <Search className="h-12 w-12 text-gray-400" />
+            <div className="w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
+              <Search className="h-12 w-12 text-gray-400 dark:text-gray-500" />
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
+            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
               No careers found
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
               Try adjusting your search terms or filters to find relevant career
               pathways.
             </p>
             <Button
               variant="outline"
+              className="border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700"
               onClick={() => {
                 setSearchTerm("");
                 setSelectedLevel("");
