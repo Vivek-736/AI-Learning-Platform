@@ -110,7 +110,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
   };
 
   return (
-    <div className="group rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:shadow-[0_0_25px_rgba(0,0,0,0.15)] transition-all duration-300 bg-[#FFFFFF] overflow-hidden">
+    <div className="group rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:shadow-[0_0_25px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_0_25px_rgba(0,0,0,0.4)] transition-all duration-300 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 overflow-hidden">
       <div className="relative">
         <Image
           src={course?.bannerImageUrl || '/course.jpg'}
@@ -121,7 +121,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
         />
         <div className="absolute top-3 left-3 flex gap-2">
           {course.level && (
-            <Badge className={`text-xs font-medium border ${getLevelColor(course.level)}`}>
+            <Badge className={`text-xs font-medium border backdrop-blur-sm ${getLevelColor(course.level)}`}>
               <Award className="w-3 h-3 mr-1" />
               {course.level}
             </Badge>
@@ -129,7 +129,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
         </div>
         {course.category && (
           <div className="absolute top-2 right-3">
-            <Badge className={`text-xs font-medium border ${getCategoryColor(course.category)}`}>
+            <Badge className={`text-xs font-medium border backdrop-blur-sm ${getCategoryColor(course.category)}`}>
               {course.category}
             </Badge>
           </div>
@@ -138,29 +138,29 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
       
       <div className="p-5 flex flex-col gap-4">
         <div className="space-y-2">
-          <h2 className="font-bold text-xl text-gray-900 line-clamp-1 group-hover:text-indigo-700 transition-colors duration-200">
+          <h2 className="font-bold text-xl text-gray-900 dark:text-gray-100 line-clamp-1 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-200">
             {courseLayout?.name || course.name}
           </h2>
-          <p className="line-clamp-2 text-gray-600 text-sm leading-relaxed">
+          <p className="line-clamp-2 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
             {courseLayout?.description || course.description}
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-4 text-xs text-gray-500">
+        <div className="flex flex-wrap gap-4 text-xs text-gray-500 dark:text-gray-400">
           <div className="flex items-center gap-1">
-            <Book className="h-4 w-4 text-indigo-600" />
+            <Book className="h-4 w-4 text-gray-900 dark:text-gray-100" />
             <span className="font-medium">{course.noOfChapters || courseLayout?.noOfChapters} Chapters</span>
           </div>
           <div className="flex items-center gap-1">
-            <Clock className="h-4 w-4 text-blue-600" />
+            <Clock className="h-4 w-4 text-gray-700 dark:text-gray-300" />
             <span>Self-paced</span>
           </div>
         </div>
 
-        <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-          <div className="xl:text-[10px] 2xl:text-xs text-xs text-gray-500">
+        <div className="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-700">
+          <div className="xl:text-[10px] 2xl:text-xs text-xs text-gray-500 dark:text-gray-400">
             <span>Created by:</span>
-            <span className="font-medium text-gray-700 ml-1">
+            <span className="font-medium text-gray-700 dark:text-gray-300 ml-1">
               {course.userEmail?.split('@')[0].replace(/\d.*$/, '')}
             </span>
           </div>
@@ -169,7 +169,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
             <Button 
               disabled={isLoading} 
               onClick={onEnrollCourse} 
-              className="cursor-pointer bg-black hover:bg-slate-900 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 shadow-md hover:shadow-lg" 
+              className="cursor-pointer bg-gray-900 hover:bg-gray-800 dark:bg-gray-100 dark:hover:bg-gray-200 text-white dark:text-gray-900 px-6 py-2 rounded-lg font-medium transition-all duration-200 shadow-md hover:shadow-lg" 
               size="sm"
             >
               {!isLoading ? (
@@ -182,7 +182,7 @@ const ExploreCourseCard: React.FC<ExploreCourseCardProps> = ({ course, onEnrollS
           ) : (
             <Button
               size="sm"
-              className="cursor-pointer border-indigo-200 text-indigo-700 hover:bg-indigo-50 px-6 py-2 rounded-lg font-medium transition-all duration-200"
+              className="cursor-pointer border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-6 py-2 rounded-lg font-medium transition-all duration-200"
               variant="outline"
               onClick={generateCourseContent}
               disabled={loading}
