@@ -53,38 +53,38 @@ const CourseInfo = ({ course, viewCourse }: CourseInfoProps) => {
     }
 
     return (
-        <div className='flex md:flex-row flex-col-reverse gap-5 justify-between p-5 rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.2)]'>
+        <div className='flex md:flex-row flex-col-reverse gap-5 justify-between p-5 rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.2)] dark:shadow-[0_0_15px_rgba(0,0,0,0.6)] dark:bg-gray-900'>
             <div>
-                <h2 className='font-bold text-2xl'>
+                <h2 className='font-bold text-2xl dark:text-gray-100'>
                     {courseLayout?.name}
                 </h2>
-                <p className='line-clamp-2 mt-2'>
+                <p className='line-clamp-2 mt-2 dark:text-gray-300'>
                     {courseLayout?.description}
                 </p>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mt-4'>
-                    <div className='flex gap-4 items-center p-3 rounded-lg shadow'>
-                        <Clock className='text-blue-500' />
+                    <div className='flex gap-4 items-center p-3 rounded-lg shadow dark:bg-gray-800 dark:shadow-black/40'>
+                        <Clock className='text-blue-500 dark:text-blue-400' />
                         <section>
-                            <h2 className='font-bold'>Duration</h2>
-                            <h3>{calculateTotalDuration()}</h3>
+                            <h2 className='font-bold dark:text-gray-100'>Duration</h2>
+                            <h3 className='dark:text-gray-300'>{calculateTotalDuration()}</h3>
                         </section>
                     </div>
-                    <div className='flex gap-4 items-center p-3 rounded-lg shadow'>
-                        <Book className='text-green-500' />
+                    <div className='flex gap-4 items-center p-3 rounded-lg shadow dark:bg-gray-800 dark:shadow-black/40'>
+                        <Book className='text-green-500 dark:text-green-400' />
                         <section>
-                            <h2 className='font-bold'>Chapters</h2>
-                            <h3>{calculateTotalDuration()}</h3>
+                            <h2 className='font-bold dark:text-gray-100'>Chapters</h2>
+                            <h3 className='dark:text-gray-300'>{calculateTotalDuration()}</h3>
                         </section>
                     </div>
-                    <div className='flex gap-4 items-center p-3 rounded-lg shadow'>
-                        <TrendingUp className='text-red-500' />
+                    <div className='flex gap-4 items-center p-3 rounded-lg shadow dark:bg-gray-800 dark:shadow-black/40'>
+                        <TrendingUp className='text-red-500 dark:text-red-400' />
                         <section>
-                            <h2 className='font-bold'>Difficulty</h2>
-                            <h3>{courseLayout?.level}</h3>
+                            <h2 className='font-bold dark:text-gray-100'>Difficulty</h2>
+                            <h3 className='dark:text-gray-300'>{courseLayout?.level}</h3>
                         </section>
                     </div>
                 </div>
-                {!viewCourse ? <Button onClick={GenerateCourseContent} className='w-full cursor-pointer text-center mt-3' disabled={loading}>{!loading ? <Settings /> : <Loader className='animate-spin' />} {!loading ? 'Generate Content' : 'Generating Content'}</Button>: <Link href={`/course/${course?.cid}`}><Button className='w-full cursor-pointer text-center mt-3'>
+                {!viewCourse ? <Button onClick={GenerateCourseContent} className='w-full cursor-pointer text-center mt-3 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200' disabled={loading}>{!loading ? <Settings /> : <Loader className='animate-spin' />} {!loading ? 'Generate Content' : 'Generating Content'}</Button>: <Link href={`/course/${course?.cid}`}><Button className='w-full cursor-pointer text-center mt-3 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200'>
                     <PlayCircle /> Continue Learning
                 </Button></Link>}
             </div>

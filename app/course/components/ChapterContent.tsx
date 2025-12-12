@@ -90,24 +90,24 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                         key={index} 
                         dangerouslySetInnerHTML={{ __html: part }}
                         className="prose prose-sm sm:prose-base lg:prose-lg max-w-none 
-                            prose-headings:text-gray-900 prose-headings:font-bold prose-headings:mb-6 prose-headings:mt-10
+                            prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-headings:font-bold prose-headings:mb-6 prose-headings:mt-10
                             prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-6 prose-h3:leading-tight
                             prose-h4:text-xl prose-h4:mt-8 prose-h4:mb-4 prose-h4:leading-snug
-                            prose-p:text-gray-700 prose-p:leading-loose prose-p:mb-6 prose-p:text-base sm:prose-p:text-lg
-                            prose-strong:text-gray-900 prose-strong:font-bold
-                            prose-ul:text-gray-700 prose-ul:my-6 prose-ul:space-y-3 prose-ul:pl-6
-                            prose-ol:text-gray-700 prose-ol:my-6 prose-ol:space-y-3 prose-ol:pl-6
+                            prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-loose prose-p:mb-6 prose-p:text-base sm:prose-p:text-lg
+                            prose-strong:text-gray-900 dark:prose-strong:text-gray-100 prose-strong:font-bold
+                            prose-ul:text-gray-700 dark:prose-ul:text-gray-300 prose-ul:my-6 prose-ul:space-y-3 prose-ul:pl-6
+                            prose-ol:text-gray-700 dark:prose-ol:text-gray-300 prose-ol:my-6 prose-ol:space-y-3 prose-ol:pl-6
                             prose-li:text-base sm:prose-li:text-lg prose-li:leading-loose prose-li:mb-3 prose-li:pl-2
-                            prose-blockquote:border-l-4 prose-blockquote:border-l-indigo-600 
-                            prose-blockquote:bg-indigo-50 prose-blockquote:py-5 prose-blockquote:px-6 
+                            prose-blockquote:border-l-4 prose-blockquote:border-l-gray-900 dark:prose-blockquote:border-l-gray-100 
+                            prose-blockquote:bg-gray-100 dark:prose-blockquote:bg-gray-800 prose-blockquote:py-5 prose-blockquote:px-6 
                             prose-blockquote:rounded-r-lg prose-blockquote:my-8 prose-blockquote:italic prose-blockquote:text-base sm:prose-blockquote:text-lg
                             
                             [&_table]:w-full [&_table]:my-8 [&_table]:border-collapse [&_table]:shadow-lg [&_table]:rounded-xl [&_table]:overflow-hidden
-                            [&_thead]:bg-gradient-to-r [&_thead]:from-indigo-600 [&_thead]:to-indigo-700
+                            [&_thead]:bg-gradient-to-r [&_thead]:from-gray-900 [&_thead]:to-gray-800 dark:[&_thead]:from-gray-800 dark:[&_thead]:to-gray-700
                             [&_th]:text-white [&_th]:font-bold [&_th]:text-left [&_th]:py-5 [&_th]:px-6 [&_th]:text-base sm:[&_th]:text-lg [&_th]:border-0
-                            [&_tbody]:bg-white [&_tbody]:divide-y [&_tbody]:divide-gray-200
-                            [&_tr]:transition-colors hover:[&_tbody_tr]:bg-gray-50
-                            [&_td]:py-5 [&_td]:px-6 [&_td]:text-gray-700 [&_td]:text-base sm:[&_td]:text-lg [&_td]:border-0 [&_td]:leading-relaxed
+                            [&_tbody]:bg-white dark:[&_tbody]:bg-gray-900 [&_tbody]:divide-y [&_tbody]:divide-gray-200 dark:[&_tbody]:divide-gray-700
+                            [&_tr]:transition-colors hover:[&_tbody_tr]:bg-gray-50 dark:hover:[&_tbody_tr]:bg-gray-800
+                            [&_td]:py-5 [&_td]:px-6 [&_td]:text-gray-700 dark:[&_td]:text-gray-300 [&_td]:text-base sm:[&_td]:text-lg [&_td]:border-0 [&_td]:leading-relaxed
                             
                             first:[&_h3]:mt-0 first:[&_p]:mt-0"
                     />
@@ -118,13 +118,13 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
 
     if (!courseContent || courseContent.length === 0) {
         return (
-            <div className='flex-1 p-4 sm:p-6 lg:p-10 flex items-center justify-center'>
+            <div className='flex-1 p-4 sm:p-6 lg:p-10 flex items-center justify-center dark:bg-gray-900'>
                 <div className="text-center">
-                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4 mx-auto">
                         <span className="text-2xl">📚</span>
                     </div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">No Content Available</h3>
-                    <p className="text-gray-600">This course doesn&apos;t have any content yet.</p>
+                    <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">No Content Available</h3>
+                    <p className="text-gray-600 dark:text-gray-400">This course doesn&apos;t have any content yet.</p>
                 </div>
             </div>
         );
@@ -158,7 +158,7 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
     const isChapterCompleted = enrollCourse?.completedChapters?.includes(selectedChapterIndex) ?? false;
 
     return (
-        <div className='flex-1 bg-gray-50 overflow-y-auto h-full'>
+        <div className='flex-1 bg-gray-50 dark:bg-gray-900 overflow-y-auto h-full'>
             <div className='max-w-5xl container mx-auto p-4 sm:p-6 lg:p-10'>
                 {/* Mobile Chapter Selector */}
                 <div className='lg:hidden mb-4'>
@@ -166,17 +166,17 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                         value={String(selectedChapterIndex)} 
                         onValueChange={(value) => setSelectedChapterIndex(Number(value))}
                     >
-                        <SelectTrigger className="w-full bg-white border-2 border-indigo-200 h-12">
+                        <SelectTrigger className="w-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 h-12 text-gray-900 dark:text-gray-100">
                             <SelectValue placeholder="Select Chapter" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
                             {courseContent?.map((chapter: any, index: number) => {
                                 const completed = enrollCourse?.completedChapters?.includes(index) ?? false;
                                 return (
-                                    <SelectItem key={index} value={String(index)}>
+                                    <SelectItem key={index} value={String(index)} className="text-gray-900 dark:text-gray-100">
                                         <div className='flex items-center gap-2'>
-                                            {completed && <CheckCircle className='w-4 h-4 text-green-600' />}
-                                            <span className={completed ? 'text-green-700 font-medium' : ''}>
+                                            {completed && <CheckCircle className='w-4 h-4 text-green-600 dark:text-green-500' />}
+                                            <span className={completed ? 'text-green-700 dark:text-green-500 font-medium' : ''}>
                                                 Chapter {index + 1}: {chapter?.courseData?.chapterName || chapter?.courseData?.[0]?.chapterName}
                                             </span>
                                         </div>
@@ -187,19 +187,19 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                     </Select>
                 </div>
 
-                <div className='mb-6 sm:mb-8 bg-white rounded-2xl shadow-sm border border-gray-200 p-4 sm:p-6'>
+                <div className='mb-6 sm:mb-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6'>
                     <div className='flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4'>
                         <div className='flex-1'>
-                            <h1 className='font-bold text-2xl sm:text-3xl lg:text-4xl text-gray-900 mb-2'>
+                            <h1 className='font-bold text-2xl sm:text-3xl lg:text-4xl text-gray-900 dark:text-gray-100 mb-2'>
                                 {courseContent?.[selectedChapterIndex]?.courseData?.chapterName || courseContent?.[selectedChapterIndex]?.courseData?.[0]?.chapterName}
                             </h1>
-                            <p className='text-sm sm:text-base text-gray-600'>
+                            <p className='text-sm sm:text-base text-gray-600 dark:text-gray-400'>
                                 {topics?.length || 0} topics • Chapter {selectedChapterIndex + 1}
                             </p>
                         </div>
                         <Button 
                             onClick={() => markChapterAsCompleted()} 
-                            className={`w-full sm:w-auto cursor-pointer transition-all ${isChapterCompleted ? 'bg-green-600 hover:bg-green-700' : 'bg-indigo-600 hover:bg-indigo-700'}`}
+                            className={`w-full sm:w-auto cursor-pointer transition-all ${isChapterCompleted ? 'bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800' : 'bg-gray-900 hover:bg-gray-800 dark:bg-gray-100 dark:hover:bg-gray-200 text-white dark:text-gray-900'}`}
                             disabled={isChapterCompleted}
                             size="lg"
                         >
@@ -209,18 +209,18 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                     </div>
                 </div>
                 {videoData && videoData.length > 0 && (
-                    <div className='mb-6 sm:mb-8 bg-white rounded-2xl shadow-sm border border-gray-200 p-4 sm:p-6 lg:p-8'>
+                    <div className='mb-6 sm:mb-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6 lg:p-8'>
                         <div className='flex items-center gap-2 mb-4 sm:mb-6'>
-                            <div className='w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center'>
+                            <div className='w-8 h-8 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center'>
                                 <span className='text-lg'>🎬</span>
                             </div>
-                            <h2 className='text-lg sm:text-xl font-bold text-gray-900'>
+                            <h2 className='text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100'>
                                 Related Video Tutorials
                             </h2>
                         </div>
                         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6'>
                             {videoData?.map((video: any, index: any) => index < 2 && (
-                                <div key={index} className='bg-gray-50 rounded-xl p-3 sm:p-4 border border-gray-200 hover:border-indigo-300 transition-colors'>
+                                <div key={index} className='bg-gray-50 dark:bg-gray-900 rounded-xl p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors'>
                                     <div className='aspect-video w-full rounded-lg overflow-hidden mb-3'>
                                         <YouTube
                                             videoId={video?.videoId}
@@ -236,7 +236,7 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                                             className='w-full h-full'
                                         />
                                     </div>
-                                    <h3 className='text-xs sm:text-sm font-medium text-gray-800 line-clamp-2'>
+                                    <h3 className='text-xs sm:text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2'>
                                         {video?.title}
                                     </h3>
                                 </div>
@@ -247,34 +247,34 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
 
                 <div className='space-y-6 sm:space-y-8'>
                     {topics?.map((topic: any, index: any) => (
-                        <div key={index} className='bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden'>
-                            <div className='bg-gradient-to-r from-indigo-600 to-indigo-700 px-4 sm:px-6 py-4 sm:py-5'>
+                        <div key={index} className='bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden'>
+                            <div className='bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-700 dark:to-gray-600 px-4 sm:px-6 py-4 sm:py-5'>
                                 <div className='flex items-center gap-3'>
-                                    <div className='w-8 h-8 sm:w-10 sm:h-10 bg-white text-indigo-600 rounded-full flex items-center justify-center text-sm sm:text-base font-bold shadow-lg'>
+                                    <div className='w-8 h-8 sm:w-10 sm:h-10 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-full flex items-center justify-center text-sm sm:text-base font-bold shadow-lg'>
                                         {index + 1}
                                     </div>
-                                    <h2 className='font-bold text-lg sm:text-xl text-white'>{topic?.topic}</h2>
+                                    <h2 className='font-bold text-lg sm:text-xl text-white'>{ topic?.topic}</h2>
                                 </div>
                             </div>
 
-                            <div className='p-6 sm:p-8 lg:p-10 space-y-8'>
+                            <div className='p-6 sm:p-8 lg:p-10 space-y-8 bg-white dark:bg-gray-800'>
                                 <div className="prose prose-sm sm:prose-base max-w-none">
                                     {processContent(topic?.content)}
                                 </div>
 
                                 {topic?.keyTakeaways && topic?.keyTakeaways?.length > 0 && (
-                                    <div className='bg-amber-50 border-2 border-amber-200 rounded-xl p-5 sm:p-7 shadow-sm'>
+                                    <div className='bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-200 dark:border-amber-800 rounded-xl p-5 sm:p-7 shadow-sm'>
                                         <div className='flex items-center gap-3 mb-5'>
-                                            <div className='w-9 h-9 bg-amber-600 rounded-lg flex items-center justify-center'>
+                                            <div className='w-9 h-9 bg-amber-600 dark:bg-amber-700 rounded-lg flex items-center justify-center'>
                                                 <Target className='w-5 h-5 text-white' />
                                             </div>
-                                            <h3 className='font-bold text-lg sm:text-xl text-amber-900'>Key Takeaways</h3>
+                                            <h3 className='font-bold text-lg sm:text-xl text-amber-900 dark:text-amber-200'>Key Takeaways</h3>
                                         </div>
                                         <ul className='space-y-3 sm:space-y-4'>
                                             {topic.keyTakeaways.map((takeaway: string, idx: number) => (
                                                 <li key={idx} className='flex items-start gap-3 sm:gap-4'>
-                                                    <CheckCircle className='w-5 h-5 sm:w-6 sm:h-6 text-amber-600 flex-shrink-0 mt-1' />
-                                                    <span className='text-base sm:text-lg text-amber-900 leading-relaxed'>{takeaway}</span>
+                                                    <CheckCircle className='w-5 h-5 sm:w-6 sm:h-6 text-amber-600 dark:text-amber-500 flex-shrink-0 mt-1' />
+                                                    <span className='text-base sm:text-lg text-amber-900 dark:text-amber-200 leading-relaxed'>{takeaway}</span>
                                                 </li>
                                             ))}
                                         </ul>
@@ -282,14 +282,14 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                                 )}
 
                                 {topic?.practicalExample && (
-                                    <div className='bg-green-50 border-2 border-green-200 rounded-xl p-5 sm:p-7 shadow-sm'>
+                                    <div className='bg-green-50 dark:bg-green-950/30 border-2 border-green-200 dark:border-green-800 rounded-xl p-5 sm:p-7 shadow-sm'>
                                         <div className='flex items-center gap-3 mb-5'>
-                                            <div className='w-9 h-9 bg-green-600 rounded-lg flex items-center justify-center'>
+                                            <div className='w-9 h-9 bg-green-600 dark:bg-green-700 rounded-lg flex items-center justify-center'>
                                                 <Lightbulb className='w-5 h-5 text-white' />
                                             </div>
-                                            <h3 className='font-bold text-lg sm:text-xl text-green-900'>Practical Example</h3>
+                                            <h3 className='font-bold text-lg sm:text-xl text-green-900 dark:text-green-200'>Practical Example</h3>
                                         </div>
-                                        <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none prose-p:text-green-900 prose-p:leading-relaxed prose-p:text-base sm:prose-p:text-lg">
+                                        <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none prose-p:text-green-900 dark:prose-p:text-green-200 prose-p:leading-relaxed prose-p:text-base sm:prose-p:text-lg">
                                             {processContent(topic.practicalExample)}
                                         </div>
                                     </div>
@@ -329,33 +329,33 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                                 )}
 
                                 {topic?.diagram && (
-                                    <div className='bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl p-5 sm:p-7 shadow-md'>
+                                    <div className='bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/30 border-2 border-blue-200 dark:border-blue-800 rounded-xl p-5 sm:p-7 shadow-md'>
                                         <div className='flex items-center gap-3 mb-5'>
-                                            <div className='w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center'>
+                                            <div className='w-9 h-9 bg-blue-600 dark:bg-blue-700 rounded-lg flex items-center justify-center'>
                                                 <BookOpen className='w-5 h-5 text-white' />
                                             </div>
-                                            <h3 className='font-bold text-lg sm:text-xl text-blue-900'>Visual Diagram</h3>
+                                            <h3 className='font-bold text-lg sm:text-xl text-blue-900 dark:text-blue-200'>Visual Diagram</h3>
                                         </div>
-                                        <div className='bg-white rounded-xl p-4 sm:p-6 border-2 border-blue-300 shadow-inner overflow-x-auto'>
+                                        <div className='bg-white dark:bg-gray-900 rounded-xl p-4 sm:p-6 border-2 border-blue-300 dark:border-blue-700 shadow-inner overflow-x-auto'>
                                             <MermaidDiagram chart={topic.diagram} />
                                         </div>
-                                        <p className='text-sm sm:text-base text-blue-700 mt-4 italic'>
+                                        <p className='text-sm sm:text-base text-blue-700 dark:text-blue-300 mt-4 italic'>
                                             💡 Interactive diagram - zoom and pan as needed
                                         </p>
                                     </div>
                                 )}
                                 {topic?.quiz && topic?.quiz?.length > 0 && (
-                                    <div className='bg-purple-50 border-2 border-purple-200 rounded-xl p-5 sm:p-7 shadow-sm'>
+                                    <div className='bg-purple-50 dark:bg-purple-950/30 border-2 border-purple-200 dark:border-purple-800 rounded-xl p-5 sm:p-7 shadow-sm'>
                                         <div className='flex items-center gap-3 mb-5'>
-                                            <div className='w-9 h-9 bg-purple-600 rounded-lg flex items-center justify-center'>
+                                            <div className='w-9 h-9 bg-purple-600 dark:bg-purple-700 rounded-lg flex items-center justify-center'>
                                                 <Award className='w-5 h-5 text-white' />
                                             </div>
-                                            <h3 className='font-bold text-lg sm:text-xl text-purple-900'>Quick Quiz</h3>
+                                            <h3 className='font-bold text-lg sm:text-xl text-purple-900 dark:text-purple-200'>Quick Quiz</h3>
                                         </div>
                                         <div className='space-y-5 sm:space-y-6'>
                                             {topic.quiz.map((q: any, qIdx: number) => (
-                                                <div key={qIdx} className='bg-white rounded-lg p-4 sm:p-5 border-2 border-purple-200 shadow-sm'>
-                                                    <p className='font-semibold text-base sm:text-lg text-purple-900 mb-4'>
+                                                <div key={qIdx} className='bg-white dark:bg-gray-900 rounded-lg p-4 sm:p-5 border-2 border-purple-200 dark:border-purple-700 shadow-sm'>
+                                                    <p className='font-semibold text-base sm:text-lg text-purple-900 dark:text-purple-200 mb-4'>
                                                         Q{qIdx + 1}. {q.question}
                                                     </p>
                                                     <div className='space-y-3'>
@@ -364,14 +364,14 @@ const ChapterContent = ({ courseInfo, refreshData }: ChapterContentProps) => {
                                                                 key={oIdx}
                                                                 className={`p-3 sm:p-4 rounded-lg border-2 text-sm sm:text-base transition-all ${
                                                                     oIdx === q.correct 
-                                                                        ? 'bg-green-50 border-green-400 text-green-900 font-medium' 
-                                                                        : 'bg-gray-50 border-gray-200 text-gray-700'
+                                                                        ? 'bg-green-50 dark:bg-green-950/30 border-green-400 dark:border-green-700 text-green-900 dark:text-green-200 font-medium' 
+                                                                        : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300'
                                                                 }`}
                                                             >
                                                                 <div className='flex items-center justify-between'>
                                                                     <span>{String.fromCharCode(65 + oIdx)}. {option}</span>
                                                                     {oIdx === q.correct && (
-                                                                        <span className='text-green-600 font-bold text-sm'>✓ Correct</span>
+                                                                        <span className='text-green-600 dark:text-green-400 font-bold text-sm'>✓ Correct</span>
                                                                     )}
                                                                 </div>
                                                             </div>
