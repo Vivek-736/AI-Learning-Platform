@@ -100,10 +100,10 @@ interface PlatformStats {
 const COLORS = ['#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#ec4899'];
 
 const CHART_COLORS = {
-  courses: '#8b5cf6',    // Purple
-  quizzes: '#3b82f6',    // Blue
-  flashcards: '#10b981', // Green
-  messages: '#f59e0b'    // Orange
+  courses: '#8b5cf6',     // Purple
+  quizzes: '#3b82f6',     // Blue
+  flashcards: '#10b981',  // Green
+  messages: '#f59e0b'     // Orange
 };
 
 const AnalyticsPage = () => {
