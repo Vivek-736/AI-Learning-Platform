@@ -472,8 +472,6 @@ npm start
 <div align="center">
   
 ### 💜 Built with Passion by [Vivek](https://github.com/Vivek-736)
-  
-*"Education is the most powerful weapon which you can use to change the world. Fascinity makes it smarter."*
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Vivek-736)
 
