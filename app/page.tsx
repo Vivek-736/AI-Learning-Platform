@@ -9,6 +9,7 @@ import { useUser } from "@clerk/nextjs";
 import localFont from "next/font/local";
 import { Instrument_Serif } from "next/font/google";
 import { Schibsted_Grotesk } from "next/font/google";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const schibstedGrotesk = Schibsted_Grotesk({
   variable: "--font-schibsted-grotesk",
@@ -90,21 +91,21 @@ export default function Home() {
   };
 
   return (
-    <div className={`min-h-screen md:overflow-auto overflow-x-hidden bg-white ${nohemi.variable}`}>
-      <nav className="fixed top-0 left-0 px-4 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black-100">
+    <div className={`min-h-screen md:overflow-auto overflow-x-hidden bg-white dark:bg-gray-950 ${nohemi.variable}`}>
+      <nav className="fixed top-0 left-0 px-4 right-0 z-50 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-black-100 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center space-x-12">
               <Link
                 href="#features"
                 onClick={scrollToFeatures}
-                className={`text-base text-gray-900 hover:text-black-600 transition-colors cursor-pointer ${nohemi.className} font-medium tracking-wide`}
+                className={`text-base text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors cursor-pointer ${nohemi.className} font-medium tracking-wide`}
               >
                 Features
               </Link>
               <Link
                 href="/workspace/billing"
-                className={`text-base text-gray-900 md:block hidden hover:text-black-600 transition-colors ${nohemi.className} font-medium tracking-wide`}
+                className={`text-base text-gray-900 dark:text-gray-100 md:block hidden hover:text-gray-600 dark:hover:text-gray-300 transition-colors ${nohemi.className} font-medium tracking-wide`}
               >
                 Pricing
               </Link>
@@ -112,18 +113,19 @@ export default function Home() {
 
             <Link
               href="/"
-              className="absolute left-1/2 transform -translate-x-1/2"
+              className="absolute md:block hidden left-1/2 transform -translate-x-1/2"
             >
               <h1
-                className={`md:text-3xl text-sm font-bold tracking-wider ${nohemi.className}`}
+                className={`md:text-3xl text-sm text-black dark:text-white font-bold tracking-wider ${nohemi.className}`}
               >
                 Fascinity
               </h1>
             </Link>
 
             <div className="flex items-center space-x-4">
+              <ModeToggle />
               <Link href="/workspace">
-                <Button className={`bg-black hover:bg-indigo-900 cursor-pointer text-white md:px-6 rounded-md transition-colors duration-200`}>
+                <Button className={`bg-black dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer text-white md:px-6 rounded-md transition-colors duration-200`}>
                   {user ? "Dashboard" : "LogIn"}
                 </Button>
               </Link>
@@ -135,7 +137,7 @@ export default function Home() {
       <section className="pt-32 pb-12 px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <h1
-            className={` ${instrumentSerif.className} instrument-serif-regular-italic text-7xl md:text-9xl italic text-gray-900 text-center mb-12 leading-tight font-light`}
+            className={` ${instrumentSerif.className} instrument-serif-regular-italic text-7xl md:text-9xl italic text-gray-900 dark:text-gray-100 text-center mb-12 leading-tight font-light`}
           >
             Learning, Reimagined
           </h1>
@@ -143,10 +145,10 @@ export default function Home() {
           <div className="px-4">
             <div className="max-w-3xl md:-mb-10">
               <p
-                className={`text-lg md:text-xl text-gray-700 leading-relaxed ${schibstedGrotesk.className} font-normal`}
+                className={`text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed ${schibstedGrotesk.className} font-normal`}
               >
                 <span
-                  className={`text-black-600 font-bold`}
+                  className={`text-black-600 dark:text-white font-bold`}
                 >
                   ✦✦✦
                 </span>
@@ -156,9 +158,9 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mb-16 flex md:mt-0 mt-2 md:mr-14 justify-end">
+            <div className="mb-16 flex md:mt-0 mt-4 md:mr-14 justify-end">
               <Link href="/workspace">
-                <Button className={`bg-black hover:bg-slate-900 cursor-pointer text-white px-4 py-3 ${instrumenSerif.className} sm:text-xl text-base rounded-md transition-colors duration-200`}>
+                <Button className={`bg-slate-800 hover:bg-slate-900 cursor-pointer text-white px-4 py-3 ${instrumenSerif.className} sm:text-xl text-base rounded-md transition-colors duration-200`}>
                   Start Learning Free
                 </Button>
               </Link>
@@ -217,26 +219,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-b from-white via-black-50/30 to-gray-50">
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-b from-white dark:from-gray-950 via-black-50/30 dark:via-gray-900/30 to-gray-50 dark:to-gray-900">
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-center mb-12">
             <div
-              className={`inline-flex items-center space-x-3 text-sm font-semibold text-gray-900 ${nohemi.className} tracking-wider`}
+              className={`inline-flex items-center space-x-3 text-sm font-semibold text-gray-900 dark:text-gray-100 ${nohemi.className} tracking-wider`}
             >
-              <span className="text-black-600">✦</span>
+              <span className="text-gray-900 dark:text-gray-100">✦</span>
               <span>AI-Learning management System</span>
-              <span className="text-black-600">✦</span>
+              <span className="text-gray-900 dark:text-gray-100">✦</span>
             </div>
           </div>
 
           <div className="text-center mb-8">
             <h2
-              className={`text-5xl md:text-6xl lg:text-7xl italic text-gray-900 mb-6 leading-tight font-light ${instrumentSerif.className}`}
+              className={`text-5xl md:text-6xl lg:text-7xl italic text-gray-900 dark:text-gray-100 mb-6 leading-tight font-light ${instrumentSerif.className}`}
             >
               An AI Driven
             </h2>
             <h2
-              className={`text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-12 leading-tight ${nohemi.className}`}
+              className={`text-5xl md:text-6xl lg:text-7xl text-gray-900 dark:text-gray-100 mb-12 leading-tight ${nohemi.className}`}
             >
               <span>self-learning</span> platform
             </h2>
@@ -258,25 +260,25 @@ export default function Home() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"
-                  className="text-black-400"
+                  className="text-gray-400 dark:text-gray-400"
                 />
                 <circle
                   cx="90"
                   cy="10"
                   r="3"
                   fill="currentColor"
-                  className="text-black-600"
+                  className="text-gray-900 dark:text-gray-100"
                 />
                 <circle
                   cx="90"
                   cy="90"
                   r="3"
                   fill="currentColor"
-                  className="text-black-600"
+                  className="text-gray-900 dark:text-gray-100"
                 />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-2xl font-medium text-gray-900 tracking-wider">
+                <span className="text-2xl font-medium text-gray-900 dark:text-gray-100 tracking-wider">
                   FOR
                 </span>
               </div>
@@ -284,13 +286,13 @@ export default function Home() {
           </div>
 
           <div className="text-center mb-12">
-            <h3 className={`${instrumentSerif.className} text-4xl md:text-5xl lg:text-6xl font-serif italic text-gray-900 leading-tight`}>
-              People who <span className="text-black-600">Break</span> Tradition
+            <h3 className={`${instrumentSerif.className} text-4xl md:text-5xl lg:text-6xl font-serif italic text-gray-900 dark:text-gray-100 leading-tight`}>
+              People who <span className="text-gray-900 dark:text-gray-100">Break</span> Tradition
             </h3>
           </div>
 
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
               We&apos;re dismantling the rigid, one-size-fits-all classroom
               model by replacing static lectures and generic textbooks with
               AI-powered personalized learning that adapts in real-time to each
@@ -299,30 +301,30 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center">
-            <div className="inline-flex items-center space-x-3 text-sm font-medium text-gray-900">
-              <span className="text-black-600">✦</span>
+            <div className="inline-flex items-center space-x-3 text-sm font-medium text-gray-900 dark:text-gray-100">
+              <span className="text-gray-900 dark:text-gray-100">✦</span>
               <span>In Your way of Learning</span>
-              <span className="text-black-600">✦</span>
+              <span className="text-gray-900 dark:text-gray-100">✦</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-6 lg:px-14 bg-white">
+      <section className="py-20 px-6 lg:px-14 bg-white dark:bg-gray-950">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-8 leading-tight">
                 AI-Powered
                 <br />
-                <span className="text-black-600">Course</span> Generation
+                <span className="text-gray-900 dark:text-gray-100">Course</span> Generation
               </h2>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                 Transform any topic into comprehensive learning experiences with
                 our advanced AI course generation engine. Simply input your
                 subject matter, learning objectives, and target audience.
               </p>
-              <p className="text-base text-gray-600 italic leading-relaxed">
+              <p className="text-base text-gray-600 dark:text-gray-400 italic leading-relaxed">
                 watch as our platform creates structured curricula complete with
                 lesson plans, interactive content, and assessments
               </p>
@@ -344,7 +346,7 @@ export default function Home() {
 
       <motion.section
         id="features"
-        className="py-20 px-6 lg:px-8 bg-gray-50 scroll-mt-20"
+        className="py-20 px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 scroll-mt-20"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -352,51 +354,51 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               AI-Learning and{" "}
-              <span className="text-black-600">Self-Assessment</span>
+              <span className="text-gray-900 dark:text-gray-100">Self-Assessment</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <motion.div
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-black-100 hover:border-black-300 flex flex-col items-center text-center"
+              className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 flex flex-col items-center text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-20 h-20 mb-6 flex items-center justify-center bg-black-50 rounded-full">
-                <Brain className="w-10 h-10 text-black-600" strokeWidth={1} />
+              <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-full">
+                <Brain className="w-10 h-10 text-gray-900 dark:text-gray-100" strokeWidth={1} />
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-4">
+              <h3 className="text-2xl md:text-3xl font-serif text-gray-900 dark:text-gray-100 mb-4">
                 Quiz Generator
               </h3>
 
-              <p className="text-base text-gray-600 mb-8 leading-relaxed flex-grow">
+              <p className="text-base text-gray-600 dark:text-gray-300 mb-8 leading-relaxed flex-grow">
                 Generate AI-powered quizzes from your courses
               </p>
 
               <Link href="/workspace/ai-tools/quiz">
-                <Button className="bg-black hover:bg-black-900 cursor-pointer text-white px-8 py-3 rounded-md w-full transition-colors duration-200">
+                <Button className="bg-black dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer text-white px-8 py-3 rounded-md w-full transition-colors duration-200">
                   Get started
                 </Button>
               </Link>
             </motion.div>
 
             <motion.div
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-black-100 hover:border-black-300 flex flex-col items-center text-center"
+              className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 flex flex-col items-center text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-20 h-20 mb-6 flex items-center justify-center bg-black-50 rounded-full">
+              <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gray-100 rounded-full">
                 <svg
-                  className="w-10 h-10 text-black-600"
+                  className="w-10 h-10 text-gray-900"
                   viewBox="0 0 80 80"
                   fill="none"
                 >
@@ -446,43 +448,43 @@ export default function Home() {
                 </svg>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-4">
+              <h3 className="text-2xl md:text-3xl font-serif text-gray-900 dark:text-gray-100 mb-4">
                 Flashcards
               </h3>
 
-              <p className="text-base text-gray-600 mb-8 leading-relaxed flex-grow">
+              <p className="text-base text-gray-600 dark:text-gray-300 mb-8 leading-relaxed flex-grow">
                 Create smart flashcards for better learning
               </p>
 
               <Link href="/workspace/ai-tools/flashcard">
-                <Button className="bg-black hover:bg-black-900 cursor-pointer text-white px-8 py-3 rounded-md w-full transition-colors duration-200">
+                <Button className="bg-black dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer text-white px-8 py-3 rounded-md w-full transition-colors duration-200">
                   Get started
                 </Button>
               </Link>
             </motion.div>
 
             <motion.div
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-black-100 hover:border-black-300 flex flex-col items-center text-center"
+              className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 flex flex-col items-center text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-20 h-20 mb-6 flex items-center justify-center bg-black-50 rounded-full">
-                <Mic className="w-10 h-10 text-black-600" strokeWidth={1} />
+              <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-full">
+                <Mic className="w-10 h-10 text-gray-900 dark:text-gray-100" strokeWidth={1} />
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-serif text-gray-900 mb-4">
+              <h3 className="text-2xl md:text-3xl font-serif text-gray-900 dark:text-gray-100 mb-4">
                 Voice Interview
               </h3>
 
-              <p className="text-base text-gray-600 mb-8 leading-relaxed flex-grow">
+              <p className="text-base text-gray-600 dark:text-gray-300 mb-8 leading-relaxed flex-grow">
                 Practice interviews with AI feedback
               </p>
 
               <Link href="/workspace/ai-tools/interview">
-                <Button className="bg-black hover:bg-black-900 cursor-pointer text-white px-8 py-3 rounded-md w-full transition-colors duration-200">
+                <Button className="bg-black dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer text-white px-8 py-3 rounded-md w-full transition-colors duration-200">
                   Get started
                 </Button>
               </Link>
@@ -491,14 +493,14 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <section className="py-20 px-6 lg:px-8 bg-black text-white">
+      <section className="py-20 px-6 lg:px-8 bg-black dark:bg-indigo-950 text-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
             <div>
               <h2 className="text-5xl md:text-6xl font-serif font-light mb-8 leading-tight">
                 Why Choose
                 <br />
-                <span className="text-black-300">Fascinity</span>
+                <span className="text-gray-300 dark:text-gray-300">Fascinity</span>
               </h2>
             </div>
 
@@ -506,7 +508,7 @@ export default function Home() {
               <Link href="/workspace">
                 <Button
                   variant="outline"
-                  className="text-black hover:text-slate-900 cursor-pointer"
+                  className="text-black dark:text-white hover:text-gray-900 dark:hover:text-gray-200 cursor-pointer border-white dark:border-white"
                 >
                   Start Learning Free
                 </Button>
@@ -524,19 +526,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 px-6 lg:px-8 bg-white">
+      <section className="py-20 px-6 lg:px-8 bg-white dark:bg-gray-950">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-center gap-2 mb-16">
             <Image
               src="/favicon.png"
               alt="Fascinity Logo"
-              className="bg-black rounded-2xl"
+              className="bg-black dark:bg-gray-800 rounded-2xl"
               width={120}
               height={120}
             />
 
-            <h2 className="text-4xl md:text-9xl font-bold text-gray-900">
-              <span className={`bg-gradient-to-r font-normal from-gray-900 via-black-600 to-gray-900 bg-clip-text text-transparent ${nohemi.className}`}>
+            <h2 className="text-4xl md:text-9xl font-bold text-gray-900 dark:text-gray-100">
+              <span className={`bg-gradient-to-r font-normal from-gray-900 dark:from-gray-100 via-gray-600 dark:via-gray-400 to-gray-900 dark:to-gray-100 bg-clip-text text-transparent ${nohemi.className}`}>
                 Fascinity
               </span>
             </h2>
@@ -544,51 +546,51 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-6xl mx-auto mb-16">
             <div className="text-center">
-              <p className="text-xs md:text-sm text-gray-500 mb-2">
+              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-2">
                 what we are?
               </p>
-              <h3 className="text-lg md:text-xl font-serif text-gray-900 leading-tight">
-                An AI-<span className="text-black-600">LMS</span>
+              <h3 className="text-lg md:text-xl font-serif text-gray-900 dark:text-gray-100 leading-tight">
+                An AI-<span className="text-gray-900 dark:text-gray-100">LMS</span>
               </h3>
             </div>
 
             <div className="text-center">
-              <p className="text-xs md:text-sm text-gray-500 mb-2">
+              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-2">
                 What we do?
               </p>
-              <h3 className="text-lg md:text-xl font-serif text-gray-900 leading-tight">
-                <span className="text-black-600">Transform</span>
+              <h3 className="text-lg md:text-xl font-serif text-gray-900 dark:text-gray-100 leading-tight">
+                <span className="text-gray-900 dark:text-gray-100">Transform</span>
               </h3>
             </div>
 
             <div className="text-center">
-              <p className="text-xs md:text-sm text-gray-500 mb-2">
+              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-2">
                 What do we envision?
               </p>
-              <h3 className="text-lg md:text-xl font-serif text-gray-900 leading-tight">
-                A <span className="text-black-600">Better</span>
+              <h3 className="text-lg md:text-xl font-serif text-gray-900 dark:text-gray-100 leading-tight">
+                A <span className="text-gray-900 dark:text-gray-100">Better</span>
                 <br />
                 Tomorrow
               </h3>
             </div>
 
             <div className="text-center">
-              <p className="text-xs md:text-sm text-gray-500 mb-2">
+              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-2">
                 what we deliver
               </p>
-              <h3 className="text-lg md:text-xl font-serif text-gray-900 leading-tight">
-                <span className="text-black-600">Quality</span>
+              <h3 className="text-lg md:text-xl font-serif text-gray-900 dark:text-gray-100 leading-tight">
+                <span className="text-gray-900 dark:text-gray-100">Quality</span>
                 <br />
                 content
               </h3>
             </div>
 
             <div className="text-center md:block hidden">
-              <p className="text-xs md:text-sm text-gray-500 mb-2">
+              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-2">
                 what&apos;re we Breaking
               </p>
-              <h3 className="text-lg md:text-xl font-serif text-gray-900 leading-tight">
-                <span className="text-black-600">Traditional</span>
+              <h3 className="text-lg md:text-xl font-serif text-gray-900 dark:text-gray-100 leading-tight">
+                <span className="text-gray-900 dark:text-gray-100">Traditional</span>
                 <br />
                 classrooms
               </h3>
@@ -597,7 +599,7 @@ export default function Home() {
 
           <div className="flex justify-center">
             <Link href="/workspace">
-              <Button className="bg-black hover:bg-indigo-900 cursor-pointer text-white px-8 py-3 rounded-md text-base transition-colors duration-200">
+              <Button className="bg-black dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer text-white px-8 py-3 rounded-md text-base transition-colors duration-200">
                 Start Learning Free
               </Button>
             </Link>
@@ -605,31 +607,31 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-black text-white py-8 px-6 lg:px-8 border-t border-black-900/30">
+      <footer className="bg-black dark:bg-gray-950 text-white py-8 px-6 lg:px-8 border-t border-black-900/30 dark:border-gray-800">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-sm text-gray-400">
+            <div className="text-sm text-gray-400 dark:text-gray-500">
               <p>
                 © 2025 Fascinity. All educational and general purposes only 2025
               </p>
               <Link
                 href="/privacy"
-                className="hover:text-black-400 transition-colors"
+                className="hover:text-gray-300 dark:hover:text-gray-300 transition-colors"
               >
                 Privacy Policy
               </Link>
             </div>
 
-            <div className="text-sm text-gray-400 flex items-center space-x-2">
+            <div className="text-sm text-gray-400 dark:text-gray-500 flex items-center space-x-2">
               <span>Learn with AI</span>
-              <span className="text-lg text-black-600">✦</span>
+              <span className="text-lg text-gray-400 dark:text-gray-400">✦</span>
             </div>
 
             <div className="flex items-center space-x-4">
               <Link
                 href="/"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-black-400 transition-colors"
+                className="text-gray-400 dark:text-gray-500 hover:text-gray-300 dark:hover:text-gray-300 transition-colors"
               >
                 <svg
                   className="w-5 h-5"
@@ -642,7 +644,7 @@ export default function Home() {
               <Link
                 href="/"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-black-400 transition-colors"
+                className="text-gray-400 hover:text-gray-300 transition-colors"
               >
                 <svg
                   className="w-5 h-5"
@@ -655,7 +657,7 @@ export default function Home() {
               <Link
                 href="/"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-black-400 transition-colors"
+                className="text-gray-400 hover:text-gray-300 transition-colors"
               >
                 <svg
                   className="w-5 h-5"
@@ -669,7 +671,7 @@ export default function Home() {
           </div>
 
           <div className="text-right mt-6">
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-500 dark:text-gray-600">
               All rights reserved. All wrongs reversed.
             </p>
           </div>
