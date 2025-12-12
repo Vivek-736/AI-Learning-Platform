@@ -42,16 +42,16 @@ const EnrolledCourseCard: React.FC<EnrolledCourseCardProps> = ({
 
   const getProgressColor = (): string => {
     const progress = CalculateProgress();
-    if (progress === 100) return 'text-green-600';
-    if (progress >= 50) return 'text-blue-600';
-    return 'text-primary';
+    if (progress === 100) return 'text-green-600 dark:text-green-400';
+    if (progress >= 50) return 'text-blue-600 dark:text-blue-400';
+    return 'text-primary dark:text-gray-100';
   };
 
   const getProgressBgColor = (): string => {
     const progress = CalculateProgress();
-    if (progress === 100) return 'bg-green-100';
-    if (progress >= 50) return 'bg-blue-50';
-    return 'bg-indigo-50';
+    if (progress === 100) return 'bg-green-100 dark:bg-green-900/20';
+    if (progress >= 50) return 'bg-blue-50 dark:bg-blue-900/20';
+    return 'bg-indigo-50 dark:bg-gray-800';
   };
 
   const isCompleted = CalculateProgress() === 100;
@@ -59,8 +59,8 @@ const EnrolledCourseCard: React.FC<EnrolledCourseCardProps> = ({
   const totalChapters = course?.courseContent?.length ?? 0;
 
   return (
-    <div className={`rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.2)] mt-4 transition-all duration-300 ${
-      isCompleted ? 'ring-2 ring-green-300' : ''
+    <div className={`rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.2)] dark:shadow-[0_0_15px_rgba(0,0,0,0.6)] dark:bg-gray-900 mt-4 transition-all duration-300 ${
+      isCompleted ? 'ring-2 ring-green-300 dark:ring-green-500' : ''
     }`}>
       <div className="relative">
         <Image
@@ -79,13 +79,13 @@ const EnrolledCourseCard: React.FC<EnrolledCourseCardProps> = ({
       
       <div className="p-3 flex flex-col gap-3">
         <div className="flex items-start justify-between">
-          <h2 className="font-bold text-lg line-clamp-1 flex-1">{courseLayout?.name}</h2>
+          <h2 className="font-bold text-lg line-clamp-1 flex-1 dark:text-gray-100">{courseLayout?.name}</h2>
           {isCompleted && (
-            <span className="text-green-600 text-sm font-medium ml-2">✓ Complete</span>
+            <span className="text-green-600 dark:text-green-400 text-sm font-medium ml-2">✓ Complete</span>
           )}
         </div>
         
-        <p className="line-clamp-2 text-gray-500 text-sm">
+        <p className="line-clamp-2 text-gray-500 dark:text-gray-400 text-sm">
           {courseLayout?.description}
         </p>
         
@@ -98,7 +98,7 @@ const EnrolledCourseCard: React.FC<EnrolledCourseCardProps> = ({
               <span className={`text-sm font-bold ${getProgressColor()}`}>
                 {Math.round(CalculateProgress())}%
               </span>
-              {isCompleted && <CheckCircle className="w-4 h-4 text-green-600" />}
+              {isCompleted && <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400" />}
             </div>
           </div>
           
@@ -107,7 +107,7 @@ const EnrolledCourseCard: React.FC<EnrolledCourseCardProps> = ({
             className="mb-2"
           />
           
-          <div className="flex justify-between text-xs text-gray-600">
+          <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400">
             <span>{completedChaptersCount} of {totalChapters} chapters completed</span>
             <span>{totalChapters - completedChaptersCount} remaining</span>
           </div>
@@ -116,8 +116,8 @@ const EnrolledCourseCard: React.FC<EnrolledCourseCardProps> = ({
         <Link href={`/workspace/view-course/${course?.cid}`}>
           <Button className={`w-full mt-2 cursor-pointer transition-all duration-200 ${
             isCompleted 
-              ? 'bg-green-600 hover:bg-green-700 text-white' 
-              : 'bg-primary hover:bg-primary/90'
+              ? 'bg-green-600 hover:bg-green-700 text-white dark:bg-green-600 dark:hover:bg-green-700' 
+              : 'bg-primary hover:bg-primary/90 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200'
           }`}>
             <PlayCircleIcon className="mr-2 h-4 w-4" />
             {isCompleted ? 'Review Course' : 'Continue Learning'}

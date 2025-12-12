@@ -179,14 +179,14 @@ const AppSidebar = () => {
 
   return (
     <Sidebar>
-      <SidebarHeader className="p-4 flex items-center flex-row">
-        <Image src={"/favicon.png"} alt="logo" className="rounded-lg bg-black" width={40} height={40} />
-        <p className={`text-3xl font-normal ${nohemi.className} mt-1`}>Fascinity</p>
+      <SidebarHeader className="p-4 flex items-center flex-row dark:border-b dark:border-gray-800">
+        <Image src="/favicon.png" alt="logo" className="rounded-lg bg-black dark:bg-gray-800 dark:ring-1 dark:ring-gray-700" width={40} height={40} />
+        <p className={`text-3xl font-normal ${nohemi.className} mt-1 dark:text-gray-100`}>Fascinity</p>
       </SidebarHeader>
       <SidebarContent className="flex flex-col">
         <SidebarGroup className="flex-shrink-0">
           <AddNewCourseDialog>
-            <Button className={`cursor-pointer w-full ${schibstedGrotesk.className}`}>Create New Course</Button>
+            <Button className={`cursor-pointer w-full ${schibstedGrotesk.className} dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200 dark:shadow-lg dark:shadow-gray-900/20`}>Create New Course</Button>
           </AddNewCourseDialog>
         </SidebarGroup>
         <SidebarGroup className="flex-1 overflow-hidden flex flex-col">
@@ -199,9 +199,9 @@ const AppSidebar = () => {
                       href={item.path}
                       className={`text-[17px] ${nohemi.className} ${
                         pathname === item.path
-                          ? "text-primary bg-gradient-to-b border-2 border-gray-900 from-gray-200 to-gray-100"
-                          : "text-gray-800 hover:text-black"
-                      } flex items-center space-x-3`}>
+                          ? "text-primary bg-gradient-to-b border-2 border-gray-900 from-gray-200 to-gray-100 dark:border-gray-700 dark:from-gray-800 dark:to-gray-900 dark:text-gray-100"
+                          : "text-gray-800 hover:text-black dark:text-gray-300 dark:hover:text-gray-100 dark:hover:bg-gray-800/60"
+                      } flex items-center space-x-3 transition-all duration-200`}>
                       <item.icon className="h-7 w-7" />
                       <span className="mt-1">{item.title}</span>
                     </Link>
@@ -212,21 +212,21 @@ const AppSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="md:bg-none bg-[#FFFFFF] flex-shrink-0">
+      <SidebarFooter className="md:bg-none bg-[#FFFFFF] dark:bg-gray-900/20 flex-shrink-0">
         {user && (
-          <div className="p-4 border-t border-gray-200">
+          <div className="p-4 border-t border-gray-200 dark:border-gray-800">
             <div className="flex items-center space-x-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={user.imageUrl}
                 alt="User profile"
-                className="w-8 h-8 rounded-full"
+                className="w-8 h-8 rounded-full ring-2 ring-gray-200 dark:ring-gray-700"
               />
               <div className={`${schibstedGrotesk.className}`}>
-                <p className="text-sm font-semibold text-black">
+                <p className="text-sm font-semibold text-black dark:text-gray-100">
                   {user.fullName || "User"}
                 </p>
-                <p className="text-xs text-gray-600">
+                <p className="text-xs text-gray-600 dark:text-gray-400">
                   {user.primaryEmailAddress?.emailAddress}
                 </p>
               </div>
