@@ -78,7 +78,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onEnrollSuccess }) => {
   };
 
   return (
-    <div className="rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.2)] mt-4">
+    <div className="rounded-2xl dark:shadow-white dark:shadow-sm shadow-[0_0_15px_rgba(0,0,0,0.2)] mt-4">
       <Image
         src={course?.bannerImageUrl || '/course.jpg'}
         alt="Course Banner"

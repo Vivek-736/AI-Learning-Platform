@@ -58,14 +58,14 @@ const Welcome = () => {
     };
 
     return (
-        <div className='relative p-4 md:p-6 bg-gradient-to-r from-white via-indigo-50/30 to-white border border-gray-200/50 rounded-xl mb-6 shadow-[0_0_15px_rgba(0,0,0,0.2)] overflow-hidden'>
-            <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-100/20 to-transparent rounded-full -translate-y-8 translate-x-8'></div>
-            <div className='absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo-50/30 to-transparent rounded-full translate-y-6 -translate-x-6'></div>
+        <div className='relative p-4 md:p-6 bg-gradient-to-r from-white via-gray-50 to-white border border-gray-200 rounded-xl mb-6 shadow-[0_0_15px_rgba(0,0,0,0.2)] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:border-gray-700 dark:shadow-black/40 overflow-hidden'>
+            <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-gray-100/30 to-transparent rounded-full -translate-y-8 translate-x-8 dark:from-gray-700/20'></div>
+            <div className='absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-gray-50/40 to-transparent rounded-full translate-y-6 -translate-x-6 dark:from-gray-800/30'></div>
             
             <div className='relative'>
                 <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4'>
                     <div className='flex items-center gap-3'>
-                        <div className='w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center shadow-sm border border-gray-400 bg-black'>
+                        <div className='w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center shadow-sm border dark:border-2 border-gray-300 bg-black'>
                             <Image 
                                 src="/favicon.png"
                                 alt="Fascinity Logo"
@@ -75,14 +75,14 @@ const Welcome = () => {
                             />
                         </div>
                         <div className='flex-1'>
-                            <h2 className='font-bold text-base md:text-xl text-gray-900 flex flex-wrap items-center gap-2'>
+                            <h2 className='font-bold text-base md:text-xl text-gray-900 dark:text-gray-100 flex flex-wrap items-center gap-2'>
                                 Welcome back, 
-                                <span className='bg-[#000B88] text-transparent bg-clip-text'>
+                                <span className='bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-300 text-transparent bg-clip-text'>
                                     {user?.firstName || 'Learner'}
                                 </span>
-                                <Sparkles className='w-4 h-4 text-[#000B88]' />
+                                <Sparkles className='w-4 h-4 text-gray-900 dark:text-gray-100' />
                             </h2>
-                            <p className='text-xs md:text-sm text-gray-500 mt-0.5'>
+                            <p className='text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-0.5'>
                                 Continue your learning journey
                             </p>
                         </div>
@@ -90,25 +90,25 @@ const Welcome = () => {
 
                     <div className='flex items-center gap-2'>
                         {isLoading ? (
-                            <div className='flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full border border-gray-200'>
-                                <div className='w-5 h-5 border-2 border-[#000B88] border-t-transparent rounded-full animate-spin'></div>
-                                <span className='text-sm text-gray-600 font-medium'>Loading XP...</span>
+                            <div className='flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700'>
+                                <div className='w-5 h-5 border-2 border-gray-900 dark:border-gray-100 border-t-transparent rounded-full animate-spin'></div>
+                                <span className='text-sm text-gray-600 dark:text-gray-300 font-medium'>Loading XP...</span>
                             </div>
                         ) : xpData ? (
-                            <div className='flex items-center gap-3 px-4 py-2 bg-gradient-to-r bg-indigo-100 rounded-full border border-[#000B88]/50'>
+                            <div className='flex items-center gap-3 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full border border-gray-300 dark:border-gray-600'>
                                 <div className='flex items-center gap-1.5'>
-                                    <Trophy className='w-5 h-5 text-[#000B88]' />
+                                    <Trophy className='w-5 h-5 text-gray-900 dark:text-gray-100' />
                                     <div className='flex flex-col'>
-                                        <span className='text-xs text-[#000B88] font-medium'>Level {getLevel(xpData.totalXp)}</span>
-                                        <span className='text-[10px] text-[#000B88]'>
+                                        <span className='text-xs text-gray-900 dark:text-gray-100 font-medium'>Level {getLevel(xpData.totalXp)}</span>
+                                        <span className='text-[10px] text-gray-600 dark:text-gray-400'>
                                             {getXPToNextLevel(xpData.totalXp)} XP to next
                                         </span>
                                     </div>
                                 </div>
-                                <div className='h-8 w-px bg-[#000B88]'></div>
+                                <div className='h-8 w-px bg-gray-300 dark:bg-gray-600'></div>
                                 <div className='flex flex-col items-end'>
-                                    <span className='text-sm font-bold text-[#000B88]'>{xpData.totalXp.toLocaleString()}</span>
-                                    <span className='text-[10px] text-[#000B88] font-medium'>Total XP</span>
+                                    <span className='text-sm font-bold text-gray-900 dark:text-gray-100'>{xpData.totalXp.toLocaleString()}</span>
+                                    <span className='text-[10px] text-gray-600 dark:text-gray-400 font-medium'>Total XP</span>
                                 </div>
                             </div>
                         ) : null}
@@ -118,16 +118,16 @@ const Welcome = () => {
                 {!isLoading && xpData && (
                     <div className='mb-4'>
                         <div className='flex items-center justify-between mb-1.5'>
-                            <span className='text-xs text-gray-600 font-medium ml-0.5 mb-0.5'>
+                            <span className='text-xs text-gray-600 dark:text-gray-400 font-medium ml-0.5 mb-0.5'>
                                 Level Progress
                             </span>
-                            <span className='text-xs text-black font-semibold'>
+                            <span className='text-xs text-gray-900 dark:text-gray-100 font-semibold'>
                                 {Math.round(getProgressPercentage(xpData.totalXp))}%
                             </span>
                         </div>
-                        <div className='w-full h-2 bg-gray-100 rounded-full overflow-hidden'>
+                        <div className='w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden'>
                             <div 
-                                className='h-full bg-slate-900 rounded-full transition-all duration-500 ease-out mr-0.5 mb-0.5'
+                                className='h-full bg-gray-900 dark:bg-gray-100 rounded-full transition-all duration-500 ease-out'
                                 style={{ width: `${getProgressPercentage(xpData.totalXp)}%` }}
                             ></div>
                         </div>
@@ -136,53 +136,53 @@ const Welcome = () => {
 
                 {!isLoading && xpData && (
                     <div className='grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-3'>
-                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-300'>
-                            <div className='w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center'>
-                                <GraduationCap className='w-4 h-4 text-blue-600' />
+                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 dark:bg-gray-800/80 rounded-lg border border-gray-200 dark:border-gray-700'>
+                            <div className='w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center'>
+                                <GraduationCap className='w-4 h-4 text-blue-600 dark:text-blue-400' />
                             </div>
                             <div className='flex flex-col'>
-                                <span className='text-xs text-gray-500'>Courses</span>
-                                <span className='text-sm font-bold text-gray-900'>{xpData.courseCompletionXp}{" "}XP</span>
+                                <span className='text-xs text-gray-500 dark:text-gray-400'>Courses</span>
+                                <span className='text-sm font-bold text-gray-900 dark:text-gray-100'>{xpData.courseCompletionXp}{" "}XP</span>
                             </div>
                         </div>
 
-                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-300'>
-                            <div className='w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center'>
-                                <Target className='w-4 h-4 text-green-600' />
+                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 dark:bg-gray-800/80 rounded-lg border border-gray-200 dark:border-gray-700'>
+                            <div className='w-8 h-8 rounded-lg bg-green-50 dark:bg-green-900/30 flex items-center justify-center'>
+                                <Target className='w-4 h-4 text-green-600 dark:text-green-400' />
                             </div>
                             <div className='flex flex-col'>
-                                <span className='text-xs text-gray-500'>Quizzes</span>
-                                <span className='text-sm font-bold text-gray-900'>{xpData.quizXp}{" "}XP</span>
+                                <span className='text-xs text-gray-500 dark:text-gray-400'>Quizzes</span>
+                                <span className='text-sm font-bold text-gray-900 dark:text-gray-100'>{xpData.quizXp}{" "}XP</span>
                             </div>
                         </div>
 
-                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-300'>
-                            <div className='w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center'>
-                                <Zap className='w-4 h-4 text-indigo-600' />
+                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 dark:bg-gray-800/80 rounded-lg border border-gray-200 dark:border-gray-700'>
+                            <div className='w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center'>
+                                <Zap className='w-4 h-4 text-indigo-600 dark:text-indigo-400' />
                             </div>
                             <div className='flex flex-col'>
-                                <span className='text-xs text-gray-500'>Flashcards</span>
-                                <span className='text-sm font-bold text-gray-900'>{xpData.flashcardXp}{" "}XP</span>
+                                <span className='text-xs text-gray-500 dark:text-gray-400'>Flashcards</span>
+                                <span className='text-sm font-bold text-gray-900 dark:text-gray-100'>{xpData.flashcardXp}{" "}XP</span>
                             </div>
                         </div>
 
-                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-300'>
-                            <div className='w-8 h-8 rounded-lg bg-rose-50 flex items-center justify-center'>
-                                <Code className='w-4 h-4 text-rose-600' />
+                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 dark:bg-gray-800/80 rounded-lg border border-gray-200 dark:border-gray-700'>
+                            <div className='w-8 h-8 rounded-lg bg-rose-50 dark:bg-rose-900/30 flex items-center justify-center'>
+                                <Code className='w-4 h-4 text-rose-600 dark:text-rose-400' />
                             </div>
                             <div className='flex flex-col'>
-                                <span className='text-xs text-gray-500'>Coding</span>
-                                <span className='text-sm font-bold text-gray-900'>{xpData.codingXp}{" "}XP</span>
+                                <span className='text-xs text-gray-500 dark:text-gray-400'>Coding</span>
+                                <span className='text-sm font-bold text-gray-900 dark:text-gray-100'>{xpData.codingXp}{" "}XP</span>
                             </div>
                         </div>
 
-                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 rounded-lg border border-gray-300'>
-                            <div className='w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center'>
-                                <Trophy className='w-4 h-4 text-orange-600' />
+                        <div className='flex items-center gap-2 px-3 py-2 bg-white/80 dark:bg-gray-800/80 rounded-lg border border-gray-200 dark:border-gray-700'>
+                            <div className='w-8 h-8 rounded-lg bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center'>
+                                <Trophy className='w-4 h-4 text-orange-600 dark:text-orange-400' />
                             </div>
                             <div className='flex flex-col'>
-                                <span className='text-xs text-gray-500'>Interviews</span>
-                                <span className='text-sm font-bold text-gray-900'>{xpData.interviewXp}{" "}XP</span>
+                                <span className='text-xs text-gray-500 dark:text-gray-400'>Interviews</span>
+                                <span className='text-sm font-bold text-gray-900 dark:text-gray-100'>{xpData.interviewXp}{" "}XP</span>
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,7 @@ const Welcome = () => {
                 {isLoading && (
                     <div className='grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-3'>
                         {[...Array(5)].map((_, i) => (
-                            <div key={i} className='h-16 bg-gray-100 rounded-lg animate-pulse'></div>
+                            <div key={i} className='h-16 bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse'></div>
                         ))}
                     </div>
                 )}
