@@ -1,0 +1,92 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#4F46E5" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#1F2937" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="nodeGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </linearGradient>
+    <linearGradient id="panelGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0F172A" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.66 0 0 0 0 0.44 0 0 0 0 1 0 0 0 0.8 0"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="1200" rx="72" fill="url(#bgGradient)"/>
+
+  <circle cx="260" cy="260" r="120" fill="#0F172A" opacity="0.5"/>
+  <circle cx="260" cy="260" r="110" stroke="#4B5563" stroke-dasharray="6 10" stroke-width="2" opacity="0.6"/>
+  <circle cx="260" cy="260" r="6" fill="#E5E7EB"/>
+  <path d="M260 140C260 140 320 160 348 210C376 260 384 320 384 320" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  <path d="M260 140C260 140 212 170 188 214C164 258 152 312 152 312" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="384" cy="320" r="10" fill="#38BDF8"/>
+  <circle cx="152" cy="312" r="10" fill="#A855F7"/>
+
+  <g filter="url(#glow)">
+    <circle cx="840" cy="260" r="110" fill="#1E293B" opacity="0.9"/>
+  </g>
+  <circle cx="840" cy="260" r="100" fill="#020617" stroke="#4B5563" stroke-width="2"/>
+  <path d="M800 210C800 190 816 174 836 174H844C864 174 880 190 880 210V222C880 242 864 258 844 258H836C816 258 800 242 800 222V210Z" fill="#0EA5E9" opacity="0.85"/>
+  <rect x="792" y="248" width="104" height="80" rx="18" fill="#020617" stroke="#4B5563" stroke-width="2"/>
+  <rect x="806" y="262" width="76" height="10" rx="5" fill="#111827"/>
+  <rect x="806" y="280" width="54" height="8" rx="4" fill="#4B5563"/>
+  <rect x="806" y="298" width="64" height="8" rx="4" fill="#6366F1"/>
+  <circle cx="874" cy="306" r="4" fill="#22C55E"/>
+
+  <rect x="180" y="520" width="840" height="440" rx="40" fill="url(#panelGradient)" stroke="#1F2937" stroke-width="2"/>
+  <rect x="220" y="560" width="240" height="80" rx="20" fill="#020617" stroke="#374151"/>
+  <rect x="220" y="660" width="240" height="80" rx="20" fill="#020617" stroke="#374151"/>
+  <rect x="220" y="760" width="240" height="80" rx="20" fill="#020617" stroke="#374151"/>
+  <circle cx="256" cy="600" r="10" fill="#22C55E"/>
+  <circle cx="256" cy="700" r="10" fill="#FACC15"/>
+  <circle cx="256" cy="800" r="10" fill="#F97316"/>
+  <rect x="280" y="588" width="150" height="8" rx="4" fill="#E5E7EB" opacity="0.85"/>
+  <rect x="280" y="688" width="120" height="8" rx="4" fill="#E5E7EB" opacity="0.7"/>
+  <rect x="280" y="788" width="170" height="8" rx="4" fill="#E5E7EB" opacity="0.7"/>
+
+  <rect x="520" y="560" width="280" height="220" rx="24" fill="#020617" stroke="#374151"/>
+  <rect x="540" y="580" width="100" height="10" rx="5" fill="#4B5563"/>
+  <rect x="540" y="606" width="180" height="8" rx="4" fill="#6B7280"/>
+  <rect x="540" y="630" width="160" height="8" rx="4" fill="#6366F1"/>
+  <rect x="540" y="654" width="120" height="8" rx="4" fill="#F97316"/>
+  <rect x="540" y="678" width="80" height="8" rx="4" fill="#22C55E"/>
+  <rect x="540" y="712" width="60" height="20" rx="10" fill="#111827" stroke="#4B5563"/>
+  <rect x="612" y="712" width="60" height="20" rx="10" fill="#111827" stroke="#4B5563"/>
+  <rect x="684" y="712" width="60" height="20" rx="10" fill="#4F46E5"/>
+
+  <g>
+    <circle cx="900" cy="640" r="60" fill="#020617" stroke="#4B5563"/>
+    <path d="M900 596C916 596 930 608 934 624C944 626 952 634 952 646C952 660 940 672 926 672H874C862 672 852 662 852 650C852 640 858 632 866 628C868 609 882 596 900 596Z" fill="#1F2937"/>
+    <circle cx="884" cy="638" r="6" fill="#22C55E"/>
+    <circle cx="916" cy="638" r="6" fill="#38BDF8"/>
+    <path d="M884 656C888 664 894 668 900 668C906 668 912 664 916 656" stroke="#E5E7EB" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <g stroke="url(#nodeGradient)" stroke-width="2" stroke-linecap="round">
+    <path d="M260 260L520 560" opacity="0.7"/>
+    <path d="M260 260L520 640" opacity="0.5"/>
+    <path d="M260 260L520 720" opacity="0.5"/>
+    <path d="M840 260L800 560" opacity="0.7"/>
+    <path d="M840 260L840 560" opacity="0.6"/>
+    <path d="M840 260L880 560" opacity="0.7"/>
+  </g>
+
+  <circle cx="520" cy="560" r="6" fill="url(#nodeGradient)"/>
+  <circle cx="520" cy="640" r="6" fill="url(#nodeGradient)"/>
+  <circle cx="520" cy="720" r="6" fill="url(#nodeGradient)"/>
+  <circle cx="800" cy="560" r="6" fill="url(#nodeGradient)"/>
+  <circle cx="840" cy="560" r="6" fill="url(#nodeGradient)"/>
+  <circle cx="880" cy="560" r="6" fill="url(#nodeGradient)"/>
+
+  <text x="220" y="500" fill="#E5E7EB" font-size="20" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" opacity="0.8">
+    Fascinity · AI Learning Graph
+  </text>
+</svg>
