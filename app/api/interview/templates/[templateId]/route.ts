@@ -101,7 +101,7 @@ Generate 8-12 questions appropriate for ${estimatedDuration} minutes.`;
     const contents = [{ role: "user", parts: [{ text: prompt }] }];
 
     const result = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-2.5-flash-lite",
       contents,
       config,
     });
