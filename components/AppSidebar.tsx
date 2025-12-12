@@ -179,11 +179,17 @@ const AppSidebar = () => {
 
   return (
     <Sidebar>
-      <SidebarHeader className="p-4 flex items-center flex-row dark:border-b dark:border-gray-800">
-        <Image src="/favicon.png" alt="logo" className="rounded-lg bg-black dark:bg-gray-800 dark:ring-1 dark:ring-gray-700" width={40} height={40} />
+      <SidebarHeader className="p-4 flex items-center flex-row dark:border-b dark:border-gray-800 dark:bg-slate-900/40">
+        <Image 
+          src="/favicon.png" 
+          alt="logo" 
+          className="rounded-lg bg-black dark:bg-gray-800 dark:ring-1 dark:ring-gray-700" 
+          width={40} 
+          height={40} 
+        />
         <p className={`text-3xl font-normal ${nohemi.className} mt-1 dark:text-gray-100`}>Fascinity</p>
       </SidebarHeader>
-      <SidebarContent className="flex flex-col">
+      <SidebarContent className="flex flex-col dark:bg-slate-900/40">
         <SidebarGroup className="flex-shrink-0">
           <AddNewCourseDialog>
             <Button className={`cursor-pointer w-full ${schibstedGrotesk.className} dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200 dark:shadow-lg dark:shadow-gray-900/20`}>Create New Course</Button>
@@ -212,7 +218,7 @@ const AppSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="md:bg-none bg-[#FFFFFF] dark:bg-gray-900/20 flex-shrink-0">
+      <SidebarFooter className="md:bg-none bg-[#FFFFFF] dark:bg-slate-900/40 flex-shrink-0">
         {user && (
           <div className="p-4 border-t border-gray-200 dark:border-gray-800">
             <div className="flex items-center space-x-3">
