@@ -96,8 +96,8 @@ export default function ConversationSidebar({
   );
 
   return (
-    <div className="flex flex-col h-full bg-gray-50 dark:bg-gray-900">
-      <div className="p-3 sm:p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <div className="flex flex-col h-full bg-gray-50 dark:bg-[#09090b]">
+      <div className="p-3 sm:p-4 bg-white dark:bg-[#09090b] border-b border-gray-200 dark:border-none">
         <div className="flex items-center space-x-2 mb-2 sm:mb-3">
           <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600 dark:text-indigo-400 flex-shrink-0" />
           <div className="flex-1 min-w-0">
@@ -114,7 +114,7 @@ export default function ConversationSidebar({
         </button>
       </div>
 
-      <div className="p-2 sm:p-3 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="p-2 sm:p-3 bg-white dark:bg-[#09090b] border-b border-gray-200 dark:border-none">
         <div className="relative">
           <Search className="absolute left-2.5 sm:left-3 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 dark:text-gray-500" />
           <input

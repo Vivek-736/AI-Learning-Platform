@@ -499,7 +499,7 @@ export default function ChatInterface({
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="border-t border-gray-100 dark:border-gray-800 p-3 sm:p-4 bg-white dark:bg-gray-900">
+      <div className="border-t border-gray-100 dark:border-gray-800 p-3 sm:p-4 bg-white dark:bg-[#09090b]">
         <div className="flex space-x-2 sm:space-x-3 -mb-6">
           <div className="flex-1 relative">
             <input

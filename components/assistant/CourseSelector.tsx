@@ -74,7 +74,7 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
 
   if (isLoading) {
     return (
-      <div className="p-3 sm:p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="p-3 sm:p-4 bg-white dark:bg-[#09090b] border-b border-gray-200 dark:border-gray-700">
         <div className="animate-pulse flex items-center space-x-2 sm:space-x-3">
           <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
           <div className="flex-1">
@@ -88,7 +88,7 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
 
   if (enrolledCourses.length === 0) {
     return (
-      <div className="p-4 sm:p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 text-center">
+      <div className="p-4 sm:p-6 bg-white dark:bg-[#09090b] border-b border-gray-200 dark:border-gray-700 text-center">
         <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 text-gray-300 dark:text-gray-600 mx-auto mb-2 sm:mb-3" />
         <h3 className="font-medium text-sm sm:text-base text-gray-900 dark:text-gray-100 mb-1">No Enrolled Courses</h3>
         <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-3 sm:mb-4">You haven&apos;t enrolled in any courses yet</p>
@@ -104,7 +104,7 @@ export default function CourseSelector({ selectedEnrollment, onEnrollmentChange 
 
   return (
     <div className="relative">
-      <div className="p-3 sm:p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="p-3 sm:p-4 bg-white dark:bg-[#09090b] border-b border-gray-200 dark:border-gray-700">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           className="w-full flex items-center space-x-2 sm:space-x-3 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 sm:p-3 rounded-lg transition-colors group"
