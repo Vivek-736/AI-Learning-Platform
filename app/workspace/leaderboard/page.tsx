@@ -364,40 +364,40 @@ function BreakdownRow({ label, value, color, textColor }: { label: string; value
 
 function getTopThreeColors(rank: number) {
     if (rank === 1) return {
-        bg: "bg-yellow-50",
-        text: "text-yellow-800",
-        border: "border-yellow-300",
-        iconBg: "bg-yellow-400",
-        accent: "bg-yellow-200/80",
-        levelBg: "bg-yellow-400",
-        progressBg: "bg-yellow-400"
+        bg: "bg-yellow-50 dark:bg-yellow-950/20",
+        text: "text-yellow-800 dark:text-yellow-400",
+        border: "border-yellow-300 dark:border-yellow-700",
+        iconBg: "bg-yellow-400 dark:bg-yellow-600",
+        accent: "bg-yellow-200/80 dark:bg-yellow-900/40",
+        levelBg: "bg-yellow-400 dark:bg-yellow-600",
+        progressBg: "bg-yellow-400 dark:bg-yellow-500"
     };
     if (rank === 2) return {
-        bg: "bg-gray-50",
-        text: "text-gray-700",
-        border: "border-gray-200",
-        iconBg: "bg-gray-100",
-        accent: "bg-gray-100/80",
-        levelBg: "bg-gray-100",
-        progressBg: "bg-gray-300"
+        bg: "bg-gray-50 dark:bg-gray-900/30",
+        text: "text-gray-700 dark:text-gray-300",
+        border: "border-gray-200 dark:border-gray-700",
+        iconBg: "bg-gray-100 dark:bg-gray-700",
+        accent: "bg-gray-100/80 dark:bg-gray-800/40",
+        levelBg: "bg-gray-100 dark:bg-gray-700",
+        progressBg: "bg-gray-300 dark:bg-gray-500"
     };
     if (rank === 3) return {
-        bg: "bg-stone-50",
-        text: "text-stone-800",
-        border: "border-stone-300",
-        iconBg: "bg-stone-400",
-        accent: "bg-stone-200/80",
-        levelBg: "bg-stone-400",
-        progressBg: "bg-stone-400"
+        bg: "bg-stone-50 dark:bg-stone-950/20",
+        text: "text-stone-800 dark:text-stone-400",
+        border: "border-stone-300 dark:border-stone-700",
+        iconBg: "bg-stone-400 dark:bg-stone-600",
+        accent: "bg-stone-200/80 dark:bg-stone-900/40",
+        levelBg: "bg-stone-400 dark:bg-stone-600",
+        progressBg: "bg-stone-400 dark:bg-stone-500"
     };
     return {
-        bg: "bg-gray-100",
-        text: "text-gray-900",
-        border: "border-gray-300",
-        iconBg: "bg-gray-400",
-        accent: "bg-gray-200",
-        levelBg: "bg-gray-400",
-        progressBg: "bg-gray-500"
+        bg: "bg-gray-100 dark:bg-gray-900/30",
+        text: "text-gray-900 dark:text-gray-200",
+        border: "border-gray-300 dark:border-gray-700",
+        iconBg: "bg-gray-400 dark:bg-gray-600",
+        accent: "bg-gray-200 dark:bg-gray-800/40",
+        levelBg: "bg-gray-400 dark:bg-gray-600",
+        progressBg: "bg-gray-500 dark:bg-gray-500"
     };
 }
 
