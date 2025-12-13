@@ -46,10 +46,10 @@ export default function AssistantPage() {
 
   if (!isLoaded) {
     return (
-      <div className="min-h-[76vh] bg-gray-50 flex items-center justify-center">
+      <div className="min-h-[76vh] bg-gray-50 dark:bg-[#101828] flex items-center justify-center">
         <div className="text-center">
-          <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Bot className="w-6 h-6 text-indigo-600 animate-pulse" />
+          <div className="w-12 h-12 bg-indigo-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Bot className="w-6 h-6 text-indigo-600 dark:text-gray-400 animate-pulse" />
           </div>
         </div>
       </div>
@@ -58,13 +58,13 @@ export default function AssistantPage() {
 
   if (!user) {
     return (
-      <div className="min-h-[76vh] bg-gray-50 flex items-center justify-center">
+      <div className="min-h-[76vh] bg-gray-50 dark:bg-[#101828] flex items-center justify-center">
         <div className="text-center">
-          <Bot className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <Bot className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
             Course Assistant
           </h1>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
             Please sign in to access your personalized learning assistant
           </p>
         </div>
@@ -73,15 +73,15 @@ export default function AssistantPage() {
   }
 
   return (
-    <div className="min-h-[76vh] -mt-8 bg-gray-50">
-      <div className="bg-[#FFFFFF] border-b border-gray-200 sticky top-0 z-40">
+    <div className="min-h-[76vh] -mt-8 bg-gray-50 dark:bg-[#101828]">
+      <div className="bg-white dark:bg-[#101828] border-b border-gray-200 dark:border-gray-800 sticky top-0 z-40">
         <div className="px-3 sm:px-6">
           <div className="flex items-center justify-between">
             {isMobileView && (
               <button
                 title="Toggle Sidebar"
                 onClick={() => setShowSidebar(!showSidebar)}
-                className="p-2 text-gray-600 hover:text-gray-900 lg:hidden transition-colors"
+                className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 lg:hidden transition-colors"
               >
                 <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
@@ -94,7 +94,7 @@ export default function AssistantPage() {
         <div
           className={`${
             isMobileView && !showSidebar ? "hidden" : "block"
-          } w-full lg:w-80 bg-[#FFFFFF] border-r border-gray-200 flex flex-col fixed lg:relative inset-0 lg:inset-auto z-50 lg:z-auto`}
+          } w-full lg:w-80 bg-white dark:bg-[#101828] border-r border-gray-200 dark:border-gray-800 flex flex-col fixed lg:relative inset-0 lg:inset-auto z-50 lg:z-auto`}
         >
           <CourseSelector
             selectedEnrollment={selectedEnrollment}
