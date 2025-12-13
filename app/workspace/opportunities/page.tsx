@@ -154,22 +154,21 @@ const OpportunitiesPage = () => {
     const isUrgent = daysLeft <= 7 && daysLeft >= 0;
 
     return (
-      <Card className="min-w-[350px] max-w-[400px] group hover:shadow-xl dark:hover:shadow-indigo-500/10 transition-all duration-300 border-2 border-gray-200 dark:border-zinc-800 hover:border-indigo-400 dark:hover:border-indigo-600 bg-white dark:bg-zinc-900/50 relative overflow-hidden">
-        <CardHeader className="space-y-3 pb-3">
+      <Card className="min-w-[350px] max-w-[400px] h-[420px] flex flex-col group hover:shadow-xl dark:hover:shadow-indigo-500/10 transition-all duration-300 border-2 border-gray-200 dark:border-zinc-800 hover:border-indigo-400 dark:hover:border-indigo-600 bg-white dark:bg-zinc-900/50 relative overflow-hidden">
+        <CardHeader className="space-y-3 pb-3 flex-shrink-0">
           <div className="flex items-start gap-3">
             <div className={`p-2.5 rounded-lg ${getTypeColor(opportunity.type)} border-2 shrink-0`}>
               {getTypeIcon(opportunity.type)}
             </div>
-            <div className="flex-1 min-w-0 pr-20">
+            <div className="flex-1 min-w-0 pr-2">
               <CardTitle className={`text-lg font-bold text-gray-900 dark:text-gray-100 ${nohemi.className} leading-tight line-clamp-2`}>
                 {opportunity.title}
               </CardTitle>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">{opportunity.organizer}</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 truncate">{opportunity.organizer}</p>
             </div>
-            <div className="absolute top-4 right-4">
-              <Badge className="bg-indigo-600 dark:bg-indigo-500 text-white border-0 shadow-sm">
-                <Star className="h-3 w-3 mr-1" fill="white" />
-                Featured
+            <div className="absolute top-2 right-2 shrink-0">
+              <Badge className="bg-indigo-600 dark:bg-indigo-500 text-white border-0 shadow-sm text-[9px] px-1.5 py-0.5 leading-tight">
+                <Star className="h-2 w-2" fill="white" />
               </Badge>
             </div>
           </div>
@@ -179,38 +178,38 @@ const OpportunitiesPage = () => {
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-3 pt-0">
-          <div className="flex flex-wrap gap-1.5">
+        <CardContent className="space-y-3 pt-0 flex-1 flex flex-col">
+          <div className="flex flex-wrap gap-1.5 min-h-[28px]">
             {opportunity.tags.slice(0, 3).map((tag, index) => (
               <Badge
                 key={index}
                 variant="secondary"
-                className="bg-indigo-100 dark:bg-indigo-950/30 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-200 dark:hover:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 text-xs"
+                className="bg-indigo-100 dark:bg-indigo-950/30 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-200 dark:hover:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 text-xs truncate max-w-[100px]"
               >
                 {tag}
               </Badge>
             ))}
           </div>
 
-          <div className="space-y-2 text-xs">
+          <div className="space-y-2 text-xs flex-1">
             <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-              <Calendar className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
-              <span className={isUrgent ? "font-semibold text-red-600 dark:text-red-400" : "font-medium"}>
+              <Calendar className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400 shrink-0" />
+              <span className={`truncate ${isUrgent ? "font-semibold text-red-600 dark:text-red-400" : "font-medium"}`}>
                 {formatDeadline(opportunity.deadline)}
               </span>
             </div>
             
             {opportunity.prizePool && (
               <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                <DollarSign className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
-                <span className="font-semibold text-indigo-900 dark:text-indigo-300">{opportunity.prizePool}</span>
+                <DollarSign className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400 shrink-0" />
+                <span className="font-semibold text-indigo-900 dark:text-indigo-300 truncate">{opportunity.prizePool}</span>
               </div>
             )}
           </div>
 
           <Button
             onClick={() => window.open(opportunity.registrationUrl, "_blank")}
-            className="w-full bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-medium transition-all"
+            className="w-full bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-medium transition-all mt-auto"
             size="sm"
           >
             <span>Register Now</span>
@@ -228,18 +227,18 @@ const OpportunitiesPage = () => {
     const isUrgent = daysLeft <= 7 && daysLeft >= 0;
 
     return (
-      <Card className="group hover:shadow-lg dark:hover:shadow-indigo-500/10 transition-all duration-300 border-2 border-gray-200 dark:border-zinc-800 hover:border-indigo-300 dark:hover:border-indigo-700 bg-white dark:bg-zinc-900/50">
-        <CardHeader className="space-y-3">
+      <Card className="h-full flex flex-col group hover:shadow-lg dark:hover:shadow-indigo-500/10 transition-all duration-300 border-2 border-gray-200 dark:border-zinc-800 hover:border-indigo-300 dark:hover:border-indigo-700 bg-white dark:bg-zinc-900/50">
+        <CardHeader className="space-y-3 flex-shrink-0">
           <div className="flex items-start justify-between gap-3">
-            <div className="flex items-start gap-3 flex-1">
+            <div className="flex items-start gap-3 flex-1 min-w-0">
               <div className={`p-2.5 rounded-lg ${getTypeColor(opportunity.type)} border shrink-0`}>
                 {getTypeIcon(opportunity.type)}
               </div>
               <div className="flex-1 min-w-0">
-                <CardTitle className={`text-xl font-semibold text-gray-900 dark:text-gray-100 ${nohemi.className} leading-tight`}>
+                <CardTitle className={`text-xl font-semibold text-gray-900 dark:text-gray-100 ${nohemi.className} leading-tight line-clamp-2`}>
                   {opportunity.title}
                 </CardTitle>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{opportunity.organizer}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 truncate">{opportunity.organizer}</p>
               </div>
             </div>
             <Badge
@@ -250,53 +249,53 @@ const OpportunitiesPage = () => {
             </Badge>
           </div>
           
-          <CardDescription className="text-gray-700 dark:text-gray-300 leading-relaxed">
+          <CardDescription className="text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-3">
             {opportunity.description}
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-4">
-          <div className="flex flex-wrap gap-2">
+        <CardContent className="space-y-4 flex-1 flex flex-col">
+          <div className="flex flex-wrap gap-2 min-h-[32px]">
             {opportunity.tags.slice(0, 4).map((tag, index) => (
               <Badge
                 key={index}
                 variant="secondary"
-                className="bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
+                className="bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700 truncate max-w-[120px]"
               >
                 {tag}
               </Badge>
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm flex-1">
             <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-              <Calendar className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
-              <span className={isUrgent ? "font-semibold text-red-600 dark:text-red-400" : ""}>
+              <Calendar className="h-4 w-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+              <span className={`truncate ${isUrgent ? "font-semibold text-red-600 dark:text-red-400" : ""}`}>
                 {formatDeadline(opportunity.deadline)}
               </span>
             </div>
             
             <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-              <MapPin className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
-              <span>{opportunity.location} • {opportunity.mode}</span>
+              <MapPin className="h-4 w-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+              <span className="truncate">{opportunity.location} • {opportunity.mode}</span>
             </div>
 
             {opportunity.prizePool && (
               <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                <DollarSign className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
-                <span className="font-medium">{opportunity.prizePool}</span>
+                <DollarSign className="h-4 w-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+                <span className="font-medium truncate">{opportunity.prizePool}</span>
               </div>
             )}
 
             <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-              <Users className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
-              <span>{opportunity.eligibility}</span>
+              <Users className="h-4 w-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+              <span className="truncate">{opportunity.eligibility}</span>
             </div>
           </div>
 
           <Button
             onClick={() => window.open(opportunity.registrationUrl, "_blank")}
-            className="w-full bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-medium transition-colors"
+            className="w-full bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-medium transition-colors mt-auto"
           >
             <span>Register Now</span>
             <ExternalLink className="ml-2 h-4 w-4" />
@@ -408,7 +407,6 @@ const OpportunitiesPage = () => {
           </ScrollArea>
         </div>
 
-        {/* All Opportunities Tabs */}
         <Tabs value={selectedType} onValueChange={setSelectedType} className="w-full">
           <TabsList className="grid w-full max-w-2xl grid-cols-4 bg-gray-100 dark:bg-zinc-900 p-1">
             <TabsTrigger
