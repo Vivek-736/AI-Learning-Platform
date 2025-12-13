@@ -159,7 +159,7 @@ export default function CodingPlaygroundPage() {
     };
 
     return (
-        <div className={`min-h-screen bg-white dark:bg-gray-950 ${nohemi.variable}`}>
+        <div className={`min-h-screen bg-white dark:bg-[#09090b] ${nohemi.variable}`}>
             <div className="max-w-7xl mx-auto p-6">
                 {/* Header */}
                 <motion.div
