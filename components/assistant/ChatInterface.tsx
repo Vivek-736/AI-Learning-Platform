@@ -75,7 +75,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               return (
                 <code
                   key={segIndex}
-                  className="px-2 py-1 bg-gray-100 text-indigo-700 rounded font-mono text-sm border"
+                  className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-indigo-700 dark:text-indigo-400 rounded font-mono text-sm border dark:border-gray-700"
                 >
                   {segment.slice(1, -1)}
                 </code>
@@ -87,7 +87,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               return (
                 <strong
                   key={segIndex}
-                  className="font-semibold text-indigo-700 bg-indigo-50 px-1 py-0.5 rounded"
+                  className="font-semibold text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-1 py-0.5 rounded"
                 >
                   {segment.slice(2, -2)}
                 </strong>
@@ -99,7 +99,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               return (
                 <sup
                   key={segIndex}
-                  className="text-xs font-medium text-indigo-600"
+                  className="text-xs font-medium text-indigo-600 dark:text-indigo-400"
                   style={{ fontSize: '0.6em', verticalAlign: 'super' }}
                 >
                   {segment.slice(5, -6)}
@@ -107,12 +107,11 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               );
             }
 
-            // Handle subscript
             if (segment.startsWith('<sub>') && segment.endsWith('</sub>')) {
               return (
                 <sub
                   key={segIndex}
-                  className="text-xs font-medium text-indigo-600"
+                  className="text-xs font-medium text-indigo-600 dark:text-indigo-400"
                   style={{ fontSize: '0.6em', verticalAlign: 'sub' }}
                 >
                   {segment.slice(5, -6)}
@@ -120,7 +119,6 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               );
             }
 
-            // Handle other HTML tags (em, strong, u, etc.)
             if (segment.startsWith('<') && segment.includes('</')) {
               const tagMatch = segment.match(/^<(\w+)>([^<]*)<\/\1>$/);
               if (tagMatch) {
@@ -131,7 +129,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
                     return (
                       <em
                         key={segIndex}
-                        className="italic text-indigo-600 font-medium"
+                        className="italic text-indigo-600 dark:text-indigo-400 font-medium"
                       >
                         {content}
                       </em>
@@ -140,7 +138,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
                     return (
                       <u
                         key={segIndex}
-                        className="underline text-indigo-600"
+                        className="underline text-indigo-600 dark:text-indigo-400"
                       >
                         {content}
                       </u>
@@ -149,7 +147,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
                     return (
                       <mark
                         key={segIndex}
-                        className="bg-yellow-200 text-gray-900 px-1 rounded"
+                        className="bg-yellow-200 dark:bg-yellow-800/60 text-gray-900 dark:text-yellow-100 px-1 rounded"
                       >
                         {content}
                       </mark>
@@ -158,7 +156,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
                     return (
                       <small
                         key={segIndex}
-                        className="text-sm text-gray-600"
+                        className="text-sm text-gray-600 dark:text-gray-400"
                       >
                         {content}
                       </small>
@@ -167,7 +165,7 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
                     return (
                       <span
                         key={segIndex}
-                        className="text-indigo-600 font-medium"
+                        className="text-indigo-600 dark:text-indigo-400 font-medium"
                       >
                         {content}
                       </span>
@@ -204,24 +202,24 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
       <div
         className={`max-w-[90%] sm:max-w-[85%] md:max-w-[75%] rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 ${
           isUser
-            ? 'bg-indigo-600 text-white shadow-md'
-            : 'bg-[#FFFFFF] text-gray-900 border border-gray-200 shadow-sm'
+            ? 'bg-indigo-600 dark:bg-indigo-700 text-white shadow-md'
+            : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 shadow-sm'
         }`}
       >
         <div className="flex items-start space-x-2 sm:space-x-3">
           <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-            isUser ? 'bg-indigo-500' : 'bg-indigo-100'
+            isUser ? 'bg-indigo-500 dark:bg-indigo-600' : 'bg-indigo-100 dark:bg-indigo-900'
           }`}>
             {isUser ? (
-              <div className="w-3 h-3 sm:w-4 sm:h-4 bg-[#FFFFFF] rounded-full" />
+              <div className="w-3 h-3 sm:w-4 sm:h-4 bg-white rounded-full" />
             ) : (
-              <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-indigo-600" />
+              <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-indigo-600 dark:text-indigo-400" />
             )}
           </div>
           
           <div className="flex-1 min-w-0">
             <div className={`text-xs sm:text-sm leading-relaxed break-words ${
-              isUser ? 'text-white' : 'text-gray-900'
+              isUser ? 'text-white' : 'text-gray-900 dark:text-gray-100'
             }`}>
               {isUser ? (
                 <span className="whitespace-pre-wrap">{message.content}</span>
@@ -232,9 +230,9 @@ const EnhancedMessageBubble = ({ message }: { message: Message }) => {
               )}
             </div>
             
-            <div className="flex items-center justify-between mt-2 sm:mt-3 pt-1.5 sm:pt-2 border-t border-opacity-20 border-gray-300">
+            <div className="flex items-center justify-between mt-2 sm:mt-3 pt-1.5 sm:pt-2 border-t border-opacity-20 border-gray-300 dark:border-gray-600">
               <span className={`text-[10px] sm:text-xs ${
-                isUser ? 'text-indigo-200' : 'text-gray-500'
+                isUser ? 'text-indigo-200' : 'text-gray-500 dark:text-gray-400'
               }`}>
                 {formatTime(message.timestamp)}
               </span>
@@ -385,17 +383,17 @@ export default function ChatInterface({
   ];
 
   return (
-    <div className="flex flex-col h-full bg-[#FFFFFF]">
-      <div className="border-b border-gray-100 p-3 sm:p-4 bg-[#FFFFFF]">
+    <div className="flex flex-col h-full bg-white dark:bg-gray-950">
+      <div className="border-b border-gray-100 dark:border-gray-800 p-3 sm:p-4 bg-white dark:bg-gray-900">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2 sm:space-x-3">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
-              <Bot className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center flex-shrink-0">
+              <Bot className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600 dark:text-indigo-400" />
             </div>
             <div className="min-w-0">
-              <h2 className="font-semibold text-sm sm:text-base text-gray-900 truncate">{enrolledCourse.courses.name}</h2>
-              <p className="text-xs sm:text-sm text-gray-500">
-                Progress: <span className="font-medium text-indigo-600">
+              <h2 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-gray-100 truncate">{enrolledCourse.courses.name}</h2>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                Progress: <span className="font-medium text-indigo-600 dark:text-indigo-400">
                   {Math.round((enrolledCourse.enrollCourse.completedChapters?.length || 0) / enrolledCourse.courses.noOfChapters * 100)}%
                 </span> • AI Assistant
               </p>
@@ -405,15 +403,15 @@ export default function ChatInterface({
       </div>
 
       {error && (
-        <div className="bg-red-50 border-b border-red-200 px-3 sm:px-4 py-2 sm:py-3">
+        <div className="bg-red-50 dark:bg-red-900/30 border-b border-red-200 dark:border-red-800 px-3 sm:px-4 py-2 sm:py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-1.5 sm:space-x-2">
-              <AlertCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500 flex-shrink-0" />
-              <span className="text-xs sm:text-sm text-red-700">{error}</span>
+              <AlertCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500 dark:text-red-400 flex-shrink-0" />
+              <span className="text-xs sm:text-sm text-red-700 dark:text-red-300">{error}</span>
             </div>
             <button
               onClick={retryLastMessage}
-              className="text-xs sm:text-sm text-red-600 hover:text-red-800 font-medium transition-colors ml-2"
+              className="text-xs sm:text-sm text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 font-medium transition-colors ml-2"
             >
               Retry
             </button>
@@ -426,36 +424,36 @@ export default function ChatInterface({
           <div className="flex justify-center py-6 sm:py-8">
             <div className="text-center">
               <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-indigo-400 mx-auto mb-2" />
-              <p className="text-xs sm:text-sm text-gray-500">Loading conversation...</p>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Loading conversation...</p>
             </div>
           </div>
         ) : messages.length === 0 ? (
           <div className="text-center px-2">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <Bot className="w-8 h-8 sm:w-10 sm:h-10 text-indigo-600" />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <Bot className="w-8 h-8 sm:w-10 sm:h-10 text-indigo-600 dark:text-indigo-400" />
             </div>
-            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
               Hi! I&apos;m your personal learning assistant
             </h3>
-            <p className="text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6 max-w-md mx-auto">
-              I know about your progress in <strong className="text-indigo-700">{enrolledCourse.courses.name}</strong> and can help you with:
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 max-w-md mx-auto">
+              I know about your progress in <strong className="text-indigo-700 dark:text-indigo-400">{enrolledCourse.courses.name}</strong> and can help you with:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-w-lg mx-auto text-xs sm:text-sm mb-4 sm:mb-6">
-              <div className="bg-indigo-50 rounded-lg p-2.5 sm:p-3 text-left border border-indigo-100">
-                <strong className="text-indigo-900 text-xs sm:text-sm">Course Content</strong>
-                <p className="text-indigo-700 text-[10px] sm:text-xs">Explanations, concept clarification</p>
+              <div className="bg-indigo-50 dark:bg-indigo-950/50 rounded-lg p-2.5 sm:p-3 text-left border border-indigo-100 dark:border-indigo-800">
+                <strong className="text-indigo-900 dark:text-indigo-300 text-xs sm:text-sm">Course Content</strong>
+                <p className="text-indigo-700 dark:text-indigo-400 text-[10px] sm:text-xs">Explanations, concept clarification</p>
               </div>
-              <div className="bg-blue-50 rounded-lg p-2.5 sm:p-3 text-left border border-blue-100">
-                <strong className="text-blue-900 text-xs sm:text-sm">Progress Guidance</strong>
-                <p className="text-blue-700 text-[10px] sm:text-xs">Next steps and recommendations</p>
+              <div className="bg-blue-50 dark:bg-blue-950/50 rounded-lg p-2.5 sm:p-3 text-left border border-blue-100 dark:border-blue-800">
+                <strong className="text-blue-900 dark:text-blue-300 text-xs sm:text-sm">Progress Guidance</strong>
+                <p className="text-blue-700 dark:text-blue-400 text-[10px] sm:text-xs">Next steps and recommendations</p>
               </div>
-              <div className="bg-green-50 rounded-lg p-2.5 sm:p-3 text-left border border-green-100">
-                <strong className="text-green-900 text-xs sm:text-sm">Study Support</strong>
-                <p className="text-green-700 text-[10px] sm:text-xs">Quiz prep and review help</p>
+              <div className="bg-green-50 dark:bg-green-950/50 rounded-lg p-2.5 sm:p-3 text-left border border-green-100 dark:border-green-800">
+                <strong className="text-green-900 dark:text-green-300 text-xs sm:text-sm">Study Support</strong>
+                <p className="text-green-700 dark:text-green-400 text-[10px] sm:text-xs">Quiz prep and review help</p>
               </div>
-              <div className="bg-orange-50 rounded-lg p-2.5 sm:p-3 text-left border border-orange-100">
-                <strong className="text-orange-900 text-xs sm:text-sm">Learning Path</strong>
-                <p className="text-orange-700 text-[10px] sm:text-xs">Personalized study suggestions</p>
+              <div className="bg-orange-50 dark:bg-orange-950/50 rounded-lg p-2.5 sm:p-3 text-left border border-orange-100 dark:border-orange-800">
+                <strong className="text-orange-900 dark:text-orange-300 text-xs sm:text-sm">Learning Path</strong>
+                <p className="text-orange-700 dark:text-orange-400 text-[10px] sm:text-xs">Personalized study suggestions</p>
               </div>
             </div>
             
@@ -464,7 +462,7 @@ export default function ChatInterface({
                 <button
                   key={index}
                   onClick={() => setInputMessage(suggestion)}
-                  className="px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors"
+                  className="px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm bg-indigo-100 dark:bg-indigo-900/50 hover:bg-indigo-200 dark:hover:bg-indigo-800 text-indigo-700 dark:text-indigo-300 rounded-full transition-colors"
                 >
                   {suggestion}
                 </button>
@@ -482,17 +480,17 @@ export default function ChatInterface({
         
         {isLoading && (
           <div className="flex justify-start">
-            <div className="max-w-[85%] sm:max-w-[80%] rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 bg-gray-100 border border-gray-200">
+            <div className="max-w-[85%] sm:max-w-[80%] rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center space-x-2 sm:space-x-3">
-                <div className="w-5 h-5 sm:w-6 sm:h-6 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Bot className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-indigo-600" />
+                <div className="w-5 h-5 sm:w-6 sm:h-6 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Bot className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-indigo-600 dark:text-indigo-400" />
                 </div>
                 <div className="flex space-x-1">
                   <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-indigo-400 rounded-full animate-bounce"></div>
                   <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                   <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                 </div>
-                <span className="text-xs sm:text-sm text-gray-600">Thinking...</span>
+                <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Thinking...</span>
               </div>
             </div>
           </div>
@@ -501,7 +499,7 @@ export default function ChatInterface({
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="border-t border-gray-100 p-3 sm:p-4 bg-[#FFFFFF]">
+      <div className="border-t border-gray-100 dark:border-gray-800 p-3 sm:p-4 bg-white dark:bg-gray-900">
         <div className="flex space-x-2 sm:space-x-3 -mb-6">
           <div className="flex-1 relative">
             <input
@@ -511,17 +509,17 @@ export default function ChatInterface({
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Ask me anything about your course progress..."
-              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-20 sm:pr-24 border border-gray-200 rounded-full ring-2 ring-indigo-500 transition-all text-xs sm:text-sm placeholder:text-xs sm:placeholder:text-sm"
+              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-20 sm:pr-24 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-full ring-2 ring-indigo-500 dark:ring-indigo-400 transition-all text-xs sm:text-sm placeholder:text-xs sm:placeholder:text-sm placeholder:text-gray-500 dark:placeholder:text-gray-400"
               disabled={isLoading}
             />
-            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[10px] sm:text-xs text-gray-400 hidden sm:block">
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[10px] sm:text-xs text-gray-400 dark:text-gray-500 hidden sm:block">
               Enter to send
             </div>
           </div>
           <button
             onClick={sendMessage}
             disabled={!inputMessage.trim() || isLoading}
-            className="p-2.5 sm:p-3 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center cursor-pointer"
+            className="p-2.5 sm:p-3 bg-indigo-600 dark:bg-indigo-700 text-white rounded-full hover:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center cursor-pointer"
           >
             {isLoading ? (
               <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />

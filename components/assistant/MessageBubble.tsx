@@ -44,7 +44,7 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
       if (/^\d+\.\s/.test(line)) {
         return (
           <div key={index} className="ml-2 mb-1">
-            <span className="font-medium text-indigo-700">{line.match(/^\d+\./)?.[0]}</span>
+            <span className="font-medium text-indigo-700 dark:text-indigo-400">{line.match(/^\d+\./)?.[0]}</span>
             <span className="ml-1">{line.replace(/^\d+\.\s/, '')}</span>
           </div>
         );
@@ -53,7 +53,7 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
       if (/^[-•*]\s/.test(line)) {
         return (
           <div key={index} className="flex items-start ml-2 mb-1">
-            <span className="text-indigo-600 mr-2 mt-1">•</span>
+            <span className="text-indigo-600 dark:text-indigo-400 mr-2 mt-1">•</span>
             <span>{line.replace(/^[-•*]\s/, '')}</span>
           </div>
         );
@@ -79,24 +79,24 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
       <div
         className={`max-w-[85%] md:max-w-[75%] rounded-2xl px-4 py-3 ${
           isUser
-            ? 'bg-indigo-600 text-white shadow-md'
-            : 'bg-[#FFFFFF] text-gray-900 border border-gray-200 shadow-sm'
+            ? 'bg-indigo-600 dark:bg-indigo-700 text-white shadow-md'
+            : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 shadow-sm'
         }`}
       >
         <div className="flex items-start space-x-3">
           <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-            isUser ? 'bg-indigo-500' : 'bg-indigo-100'
+            isUser ? 'bg-indigo-500 dark:bg-indigo-600' : 'bg-indigo-100 dark:bg-indigo-900'
           }`}>
             {isUser ? (
               <User className="w-4 h-4 text-white" />
             ) : (
-              <Bot className="w-4 h-4 text-indigo-600" />
+              <Bot className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
             )}
           </div>
           
           <div className="flex-1 min-w-0">
             <div className={`text-sm leading-relaxed break-words ${
-              isUser ? 'text-white' : 'text-gray-900'
+              isUser ? 'text-white' : 'text-gray-900 dark:text-gray-100'
             }`}>
               {isUser ? (
                 <span className="whitespace-pre-wrap">{message.content}</span>
@@ -107,9 +107,9 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
               )}
             </div>
             
-            <div className="flex items-center justify-between mt-3 pt-2 border-t border-opacity-20 border-gray-300">
+            <div className="flex items-center justify-between mt-3 pt-2 border-t border-opacity-20 border-gray-300 dark:border-gray-600">
               <span className={`text-xs ${
-                isUser ? 'text-indigo-200' : 'text-gray-500'
+                isUser ? 'text-indigo-200' : 'text-gray-500 dark:text-gray-400'
               }`}>
                 {formatTime(message.timestamp)}
               </span>
@@ -118,13 +118,13 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
                 <div className="flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button
                     onClick={copyToClipboard}
-                    className="p-1.5 hover:bg-gray-100 rounded-full transition-colors"
+                    className="p-1.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
                     title="Copy message"
                   >
                     {copied ? (
                       <Check className="w-3.5 h-3.5 text-green-500" />
                     ) : (
-                      <Copy className="w-3.5 h-3.5 text-gray-400 hover:text-gray-600" />
+                      <Copy className="w-3.5 h-3.5 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300" />
                     )}
                   </button>
                   
@@ -132,8 +132,8 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
                     onClick={() => handleFeedback('up')}
                     className={`p-1.5 rounded-full transition-colors ${
                       feedback === 'up' 
-                        ? 'bg-green-100 text-green-600' 
-                        : 'hover:bg-gray-100 text-gray-400 hover:text-green-600'
+                        ? 'bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400' 
+                        : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400'
                     }`}
                     title="Helpful response"
                   >
@@ -144,8 +144,8 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
                     onClick={() => handleFeedback('down')}
                     className={`p-1.5 rounded-full transition-colors ${
                       feedback === 'down' 
-                        ? 'bg-red-100 text-red-600' 
-                        : 'hover:bg-gray-100 text-gray-400 hover:text-red-600'
+                        ? 'bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400' 
+                        : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400'
                     }`}
                     title="Not helpful"
                   >
@@ -160,7 +160,7 @@ export default function MessageBubble({ message, isLast = false }: MessageBubble
       
       {!isUser && feedback && (
         <div className={`ml-2 mt-2 px-2 py-1 rounded-full text-xs font-medium ${
-          feedback === 'up' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+          feedback === 'up' ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400' : 'bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-400'
         }`}>
           {feedback === 'up' ? '👍 Helpful' : '👎 Not helpful'}
         </div>
