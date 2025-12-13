@@ -101,9 +101,9 @@ From coding to interviews, flashcards to career advice — all in one place
 
 | Feature | Description | Impact |
 |---------|-------------|--------|
-| **🤖 AI Generation** | Create complete courses with structured chapters in seconds | ⚡ 10x faster course creation |
-| **📊 Progress Tracking** | Real-time analytics on learning patterns and milestones | 📈 Data-driven insights |
-| **🎥 Rich Content** | Support for videos, diagrams, code blocks, and interactive elements | 💎 Engaging learning |
+| **🤖 AI Generation** | Create complete courses with structured chapters | ⚡ 10x faster creation |
+| **📊 Progress** | Real-time analytics on learning patterns and milestones | 📈 Data-driven insights |
+| **🎥 Rich Content** | Support for videos, diagrams, code blocks, and a lot more | 💎 Engaging learning |
 | **📱 Mobile First** | Beautifully responsive design that works everywhere | 🌍 Learn anywhere |
 
 </details>
