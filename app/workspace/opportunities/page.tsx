@@ -119,13 +119,13 @@ const OpportunitiesPage = () => {
   const getTypeColor = (type: string) => {
     switch (type) {
       case "hackathon":
-        return "bg-indigo-100 text-indigo-800 border-indigo-200";
+        return "bg-indigo-100 dark:bg-indigo-950/30 text-indigo-800 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800";
       case "competition":
-        return "bg-purple-100 text-purple-800 border-purple-200";
+        return "bg-indigo-100 dark:bg-indigo-950/30 text-indigo-800 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800";
       case "funding":
-        return "bg-blue-100 text-blue-800 border-blue-200";
+        return "bg-indigo-100 dark:bg-indigo-950/30 text-indigo-800 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800";
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
+        return "bg-gray-100 dark:bg-gray-900/30 text-gray-800 dark:text-gray-300 border-gray-200 dark:border-gray-800";
     }
   };
 
@@ -154,28 +154,27 @@ const OpportunitiesPage = () => {
     const isUrgent = daysLeft <= 7 && daysLeft >= 0;
 
     return (
-      <Card className="min-w-[350px] max-w-[400px] group hover:shadow-xl transition-all duration-300 border-2 hover:border-indigo-400 bg-gradient-to-br from-white to-indigo-50 relative overflow-hidden">
-        <div className="absolute top-2 right-2 z-10">
-          <Badge className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white border-0">
-            <Star className="h-3 w-3 mr-1" fill="white" />
-            Featured
-          </Badge>
-        </div>
-        
+      <Card className="min-w-[350px] max-w-[400px] group hover:shadow-xl dark:hover:shadow-indigo-500/10 transition-all duration-300 border-2 border-gray-200 dark:border-zinc-800 hover:border-indigo-400 dark:hover:border-indigo-600 bg-white dark:bg-zinc-900/50 relative overflow-hidden">
         <CardHeader className="space-y-3 pb-3">
           <div className="flex items-start gap-3">
-            <div className={`p-2.5 rounded-lg ${getTypeColor(opportunity.type)} border-2`}>
+            <div className={`p-2.5 rounded-lg ${getTypeColor(opportunity.type)} border-2 shrink-0`}>
               {getTypeIcon(opportunity.type)}
             </div>
-            <div className="flex-1 min-w-0">
-              <CardTitle className={`text-lg font-bold text-gray-900 ${nohemi.className} leading-tight line-clamp-2`}>
+            <div className="flex-1 min-w-0 pr-20">
+              <CardTitle className={`text-lg font-bold text-gray-900 dark:text-gray-100 ${nohemi.className} leading-tight line-clamp-2`}>
                 {opportunity.title}
               </CardTitle>
-              <p className="text-xs text-gray-600 mt-1">{opportunity.organizer}</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">{opportunity.organizer}</p>
+            </div>
+            <div className="absolute top-4 right-4">
+              <Badge className="bg-indigo-600 dark:bg-indigo-500 text-white border-0 shadow-sm">
+                <Star className="h-3 w-3 mr-1" fill="white" />
+                Featured
+              </Badge>
             </div>
           </div>
           
-          <CardDescription className="text-sm text-gray-700 leading-relaxed line-clamp-2">
+          <CardDescription className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-2">
             {opportunity.description}
           </CardDescription>
         </CardHeader>
@@ -186,7 +185,7 @@ const OpportunitiesPage = () => {
               <Badge
                 key={index}
                 variant="secondary"
-                className="bg-indigo-100 text-indigo-700 hover:bg-indigo-200 border border-indigo-200 text-xs"
+                className="bg-indigo-100 dark:bg-indigo-950/30 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-200 dark:hover:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 text-xs"
               >
                 {tag}
               </Badge>
@@ -194,24 +193,24 @@ const OpportunitiesPage = () => {
           </div>
 
           <div className="space-y-2 text-xs">
-            <div className="flex items-center gap-2 text-gray-700">
-              <Calendar className="h-3.5 w-3.5 text-indigo-600" />
-              <span className={isUrgent ? "font-semibold text-red-600" : "font-medium"}>
+            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+              <Calendar className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+              <span className={isUrgent ? "font-semibold text-red-600 dark:text-red-400" : "font-medium"}>
                 {formatDeadline(opportunity.deadline)}
               </span>
             </div>
             
             {opportunity.prizePool && (
-              <div className="flex items-center gap-2 text-gray-700">
-                <DollarSign className="h-3.5 w-3.5 text-indigo-600" />
-                <span className="font-semibold text-indigo-900">{opportunity.prizePool}</span>
+              <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <DollarSign className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+                <span className="font-semibold text-indigo-900 dark:text-indigo-300">{opportunity.prizePool}</span>
               </div>
             )}
           </div>
 
           <Button
             onClick={() => window.open(opportunity.registrationUrl, "_blank")}
-            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium transition-all"
+            className="w-full bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-medium transition-all"
             size="sm"
           >
             <span>Register Now</span>
@@ -229,18 +228,18 @@ const OpportunitiesPage = () => {
     const isUrgent = daysLeft <= 7 && daysLeft >= 0;
 
     return (
-      <Card className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-indigo-300 bg-white">
+      <Card className="group hover:shadow-lg dark:hover:shadow-indigo-500/10 transition-all duration-300 border-2 border-gray-200 dark:border-zinc-800 hover:border-indigo-300 dark:hover:border-indigo-700 bg-white dark:bg-zinc-900/50">
         <CardHeader className="space-y-3">
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-start gap-3 flex-1">
-              <div className={`p-2.5 rounded-lg ${getTypeColor(opportunity.type)} border`}>
+              <div className={`p-2.5 rounded-lg ${getTypeColor(opportunity.type)} border shrink-0`}>
                 {getTypeIcon(opportunity.type)}
               </div>
               <div className="flex-1 min-w-0">
-                <CardTitle className={`text-xl font-semibold text-gray-900 ${nohemi.className} leading-tight`}>
+                <CardTitle className={`text-xl font-semibold text-gray-900 dark:text-gray-100 ${nohemi.className} leading-tight`}>
                   {opportunity.title}
                 </CardTitle>
-                <p className="text-sm text-gray-600 mt-1">{opportunity.organizer}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{opportunity.organizer}</p>
               </div>
             </div>
             <Badge
@@ -251,7 +250,7 @@ const OpportunitiesPage = () => {
             </Badge>
           </div>
           
-          <CardDescription className="text-gray-700 leading-relaxed">
+          <CardDescription className="text-gray-700 dark:text-gray-300 leading-relaxed">
             {opportunity.description}
           </CardDescription>
         </CardHeader>
@@ -262,7 +261,7 @@ const OpportunitiesPage = () => {
               <Badge
                 key={index}
                 variant="secondary"
-                className="bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                className="bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
               >
                 {tag}
               </Badge>
@@ -270,34 +269,34 @@ const OpportunitiesPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-            <div className="flex items-center gap-2 text-gray-700">
-              <Calendar className="h-4 w-4 text-indigo-600" />
-              <span className={isUrgent ? "font-semibold text-red-600" : ""}>
+            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+              <Calendar className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+              <span className={isUrgent ? "font-semibold text-red-600 dark:text-red-400" : ""}>
                 {formatDeadline(opportunity.deadline)}
               </span>
             </div>
             
-            <div className="flex items-center gap-2 text-gray-700">
-              <MapPin className="h-4 w-4 text-indigo-600" />
+            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+              <MapPin className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
               <span>{opportunity.location} • {opportunity.mode}</span>
             </div>
 
             {opportunity.prizePool && (
-              <div className="flex items-center gap-2 text-gray-700">
-                <DollarSign className="h-4 w-4 text-indigo-600" />
+              <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <DollarSign className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
                 <span className="font-medium">{opportunity.prizePool}</span>
               </div>
             )}
 
-            <div className="flex items-center gap-2 text-gray-700">
-              <Users className="h-4 w-4 text-indigo-600" />
+            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+              <Users className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
               <span>{opportunity.eligibility}</span>
             </div>
           </div>
 
           <Button
             onClick={() => window.open(opportunity.registrationUrl, "_blank")}
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium group-hover:bg-indigo-700 transition-colors"
+            className="w-full bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-medium transition-colors"
           >
             <span>Register Now</span>
             <ExternalLink className="ml-2 h-4 w-4" />
@@ -308,72 +307,72 @@ const OpportunitiesPage = () => {
   };
 
   const LoadingSkeleton = () => (
-    <Card className="border-2">
+    <Card className="border-2 border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
       <CardHeader className="space-y-3">
         <div className="flex items-start gap-3">
-          <Skeleton className="h-12 w-12 rounded-lg" />
+          <Skeleton className="h-12 w-12 rounded-lg bg-gray-200 dark:bg-zinc-800" />
           <div className="flex-1 space-y-2">
-            <Skeleton className="h-6 w-3/4" />
-            <Skeleton className="h-4 w-1/2" />
+            <Skeleton className="h-6 w-3/4 bg-gray-200 dark:bg-zinc-800" />
+            <Skeleton className="h-4 w-1/2 bg-gray-200 dark:bg-zinc-800" />
           </div>
         </div>
-        <Skeleton className="h-16 w-full" />
+        <Skeleton className="h-16 w-full bg-gray-200 dark:bg-zinc-800" />
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex gap-2">
-          <Skeleton className="h-6 w-16" />
-          <Skeleton className="h-6 w-20" />
-          <Skeleton className="h-6 w-16" />
+          <Skeleton className="h-6 w-16 bg-gray-200 dark:bg-zinc-800" />
+          <Skeleton className="h-6 w-20 bg-gray-200 dark:bg-zinc-800" />
+          <Skeleton className="h-6 w-16 bg-gray-200 dark:bg-zinc-800" />
         </div>
         <div className="grid grid-cols-2 gap-3">
-          <Skeleton className="h-5 w-full" />
-          <Skeleton className="h-5 w-full" />
+          <Skeleton className="h-5 w-full bg-gray-200 dark:bg-zinc-800" />
+          <Skeleton className="h-5 w-full bg-gray-200 dark:bg-zinc-800" />
         </div>
-        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full bg-gray-200 dark:bg-zinc-800" />
       </CardContent>
     </Card>
   );
 
   const FeaturedLoadingSkeleton = () => (
-    <Card className="min-w-[350px] max-w-[400px] border-2">
+    <Card className="min-w-[350px] max-w-[400px] border-2 border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
       <CardHeader className="space-y-3">
         <div className="flex items-start gap-3">
-          <Skeleton className="h-10 w-10 rounded-lg" />
+          <Skeleton className="h-10 w-10 rounded-lg bg-gray-200 dark:bg-zinc-800" />
           <div className="flex-1 space-y-2">
-            <Skeleton className="h-5 w-3/4" />
-            <Skeleton className="h-3 w-1/2" />
+            <Skeleton className="h-5 w-3/4 bg-gray-200 dark:bg-zinc-800" />
+            <Skeleton className="h-3 w-1/2 bg-gray-200 dark:bg-zinc-800" />
           </div>
         </div>
-        <Skeleton className="h-12 w-full" />
+        <Skeleton className="h-12 w-full bg-gray-200 dark:bg-zinc-800" />
       </CardHeader>
       <CardContent className="space-y-3">
         <div className="flex gap-1.5">
-          <Skeleton className="h-5 w-14" />
-          <Skeleton className="h-5 w-16" />
-          <Skeleton className="h-5 w-14" />
+          <Skeleton className="h-5 w-14 bg-gray-200 dark:bg-zinc-800" />
+          <Skeleton className="h-5 w-16 bg-gray-200 dark:bg-zinc-800" />
+          <Skeleton className="h-5 w-14 bg-gray-200 dark:bg-zinc-800" />
         </div>
-        <Skeleton className="h-8 w-full" />
+        <Skeleton className="h-8 w-full bg-gray-200 dark:bg-zinc-800" />
       </CardContent>
     </Card>
   );
 
   return (
-    <div className="min-h-screen bg-white p-6 md:p-8">
+    <div className="min-h-screen bg-white dark:bg-[#09090b] p-6 md:p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="space-y-2">
           <div className="flex items-center gap-3">
-            <h1 className={`text-4xl font-bold text-gray-900 ${nohemi.className}`}>
+            <h1 className={`text-4xl font-bold text-gray-900 dark:text-white ${nohemi.className}`}>
               Opportunities
             </h1>
             {isPersonalized && (
-              <Badge className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-0">
+              <Badge className="bg-indigo-600 dark:bg-indigo-500 text-white border-0">
                 <Sparkles className="h-3 w-3 mr-1" />
                 Personalized
               </Badge>
             )}
           </div>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 dark:text-gray-400 text-lg">
             Discover hackathons, competitions, and funding opportunities to accelerate your career
           </p>
         </div>
@@ -381,8 +380,8 @@ const OpportunitiesPage = () => {
         {/* Featured Opportunities Section */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className={`text-2xl font-bold text-gray-900 ${nohemi.className} flex items-center gap-2`}>
-              <Star className="h-6 w-6 text-yellow-500" fill="currentColor" />
+            <h2 className={`text-2xl font-bold text-gray-900 dark:text-white ${nohemi.className} flex items-center gap-2`}>
+              <Star className="h-6 w-6 text-indigo-600 dark:text-indigo-400" fill="currentColor" />
               Featured Opportunities
             </h2>
           </div>
@@ -397,7 +396,7 @@ const OpportunitiesPage = () => {
                 </>
               ) : featuredOpportunities.length === 0 ? (
                 <div className="w-full text-center py-8">
-                  <p className="text-gray-500">No featured opportunities available</p>
+                  <p className="text-gray-500 dark:text-gray-400">No featured opportunities available</p>
                 </div>
               ) : (
                 featuredOpportunities.map((opportunity) => (
@@ -411,28 +410,28 @@ const OpportunitiesPage = () => {
 
         {/* All Opportunities Tabs */}
         <Tabs value={selectedType} onValueChange={setSelectedType} className="w-full">
-          <TabsList className="grid w-full max-w-2xl grid-cols-4 bg-gray-100 p-1">
+          <TabsList className="grid w-full max-w-2xl grid-cols-4 bg-gray-100 dark:bg-zinc-900 p-1">
             <TabsTrigger
               value="all"
-              className="data-[state=active]:bg-white data-[state=active]:text-indigo-600 font-medium"
+              className="data-[state=active]:bg-white dark:data-[state=active]:bg-zinc-800 data-[state=active]:text-indigo-600 dark:data-[state=active]:text-indigo-400 font-medium"
             >
               All
             </TabsTrigger>
             <TabsTrigger
               value="hackathon"
-              className="data-[state=active]:bg-white data-[state=active]:text-indigo-600 font-medium"
+              className="data-[state=active]:bg-white dark:data-[state=active]:bg-zinc-800 data-[state=active]:text-indigo-600 dark:data-[state=active]:text-indigo-400 font-medium"
             >
               Hackathons
             </TabsTrigger>
             <TabsTrigger
               value="competition"
-              className="data-[state=active]:bg-white data-[state=active]:text-indigo-600 font-medium"
+              className="data-[state=active]:bg-white dark:data-[state=active]:bg-zinc-800 data-[state=active]:text-indigo-600 dark:data-[state=active]:text-indigo-400 font-medium"
             >
               Competitions
             </TabsTrigger>
             <TabsTrigger
               value="funding"
-              className="data-[state=active]:bg-white data-[state=active]:text-indigo-600 font-medium"
+              className="data-[state=active]:bg-white dark:data-[state=active]:bg-zinc-800 data-[state=active]:text-indigo-600 dark:data-[state=active]:text-indigo-400 font-medium"
             >
               Funding
             </TabsTrigger>
@@ -447,11 +446,11 @@ const OpportunitiesPage = () => {
               </div>
             ) : opportunities.length === 0 ? (
               <div className="text-center py-16">
-                <Trophy className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                <h3 className={`text-xl font-semibold text-gray-700 ${nohemi.className}`}>
+                <Trophy className="h-16 w-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+                <h3 className={`text-xl font-semibold text-gray-700 dark:text-gray-300 ${nohemi.className}`}>
                   No opportunities found
                 </h3>
-                <p className="text-gray-500 mt-2">Check back later for new opportunities</p>
+                <p className="text-gray-500 dark:text-gray-400 mt-2">Check back later for new opportunities</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -463,50 +462,49 @@ const OpportunitiesPage = () => {
           </TabsContent>
         </Tabs>
 
-        {/* Stats */}
         {!loading && opportunities.length > 0 && (
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card className="border-2 border-indigo-100 bg-indigo-50">
+            <Card className="border-2 border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/20">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 bg-indigo-600 rounded-lg">
+                  <div className="p-3 bg-indigo-600 dark:bg-indigo-500 rounded-lg">
                     <Trophy className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-indigo-900">{opportunities.length}</p>
-                    <p className="text-sm text-indigo-700">Active Opportunities</p>
+                    <p className="text-2xl font-bold text-indigo-900 dark:text-indigo-300">{opportunities.length}</p>
+                    <p className="text-sm text-indigo-700 dark:text-indigo-400">Active Opportunities</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-2 border-purple-100 bg-purple-50">
+            <Card className="border-2 border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/20">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 bg-purple-600 rounded-lg">
+                  <div className="p-3 bg-indigo-600 dark:bg-indigo-500 rounded-lg">
                     <Code2 className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-purple-900">
+                    <p className="text-2xl font-bold text-indigo-900 dark:text-indigo-300">
                       {opportunities.filter((o) => o.type === "hackathon").length}
                     </p>
-                    <p className="text-sm text-purple-700">Hackathons</p>
+                    <p className="text-sm text-indigo-700 dark:text-indigo-400">Hackathons</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-2 border-blue-100 bg-blue-50">
+            <Card className="border-2 border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/20">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 bg-blue-600 rounded-lg">
+                  <div className="p-3 bg-indigo-600 dark:bg-indigo-500 rounded-lg">
                     <Rocket className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-blue-900">
+                    <p className="text-2xl font-bold text-indigo-900 dark:text-indigo-300">
                       {opportunities.filter((o) => o.type === "funding").length}
                     </p>
-                    <p className="text-sm text-blue-700">Funding Events</p>
+                    <p className="text-sm text-indigo-700 dark:text-indigo-400">Funding Events</p>
                   </div>
                 </div>
               </CardContent>
