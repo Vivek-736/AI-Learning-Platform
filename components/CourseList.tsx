@@ -76,9 +76,9 @@ const CourseList: React.FC<CourseListProps> = ({ onCourseEnrolled }) => {
                     </div>
                 </div>
             ) : courseList?.length === 0 ? (
-                <div className='flex p-7 gap-y-3 items-center justify-center flex-col border-black border-dashed border-2 rounded-xl mt-6 bg-indigo-50'>
+                <div className='flex p-7 gap-y-3 items-center justify-center flex-col border-black border-dashed border-2 rounded-xl mt-6 bg-indigo-50 dark:bg-gray-900 dark:border-gray-700'>
                     <Image src={'/workspace.png'} alt='education' width={80} height={80} />
-                    <h2 className='my-2 text-xl font-bold'>Looks like you haven&apos;t created any course yet</h2>
+                    <h2 className='my-2 text-xl font-bold dark:text-gray-100'>Looks like you haven&apos;t created any course yet</h2>
                     <AddNewCourseDialog>
                         <Button className='cursor-pointer'>
                             Create your first course
