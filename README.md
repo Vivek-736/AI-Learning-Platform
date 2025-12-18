@@ -387,42 +387,6 @@ Navigate to `http://localhost:3000` and start learning! 🎉
 
 ---
 
-### 🔌 **API Endpoints Structure**
-
-```
-📁 /api
-  │
-  ├── 📁 courses
-  │   ├── GET    /api/courses          → List all courses
-  │   ├── POST   /api/courses          → Create new course
-  │   ├── GET    /api/courses/[id]     → Get course details
-  │   └── PUT    /api/courses/[id]     → Update course
-  │
-  ├── 📁 quiz
-  │   ├── POST   /api/quiz/generate    → Generate quiz questions
-  │   ├── POST   /api/quiz/attempts    → Submit quiz attempt
-  │   ├── GET    /api/quiz/results     → Get quiz results
-  │   └── GET    /api/quiz/stats       → Get statistics
-  │
-  ├── 📁 flashcard
-  │   ├── POST   /api/flashcard/generate → Generate flashcards
-  │   ├── GET    /api/flashcard/[id]    → Get flashcard set
-  │   └── PUT    /api/flashcard/[id]    → Update progress
-  │
-  ├── 📁 interview
-  │   ├── POST   /api/interview/sessions → Start interview
-  │   ├── GET    /api/interview/[id]     → Get interview data
-  │   └── POST   /api/interview/feedback → Submit feedback
-  │
-  ├── 📁 career-guide
-  │   └── POST   /api/career-guide       → Get AI career guidance
-  │
-  └── 📁 assistant
-      ├── POST   /api/assistant/messages → Chat with AI
-      └── GET    /api/assistant/history  → Get chat history
-```
----
-
 ## 🔧 Configuration
 
 ### Database Schema
