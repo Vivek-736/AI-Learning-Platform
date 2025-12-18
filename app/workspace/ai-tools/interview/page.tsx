@@ -131,8 +131,8 @@ const InterviewPage = () => {
     return (
         <div className={`min-h-screen bg-white dark:bg-[#09090b] ${nohemi.variable}`}>
             {/* Hero Section */}
-            <div className="relative overflow-hidden border-b border-gray-200 dark:border-gray-900">
-                <div className="absolute inset-0 bg-blue-50/50 dark:bg-blue-950/10 pointer-events-none" />
+            <div className="relative overflow-hidden border-b border-gray-200 rounded-lg dark:border-gray-900">
+                <div className="absolute inset-0 bg-blue-50/50 dark:bg-blue-950/10 rounded-lg pointer-events-none" />
                 <div className="max-w-7xl mx-auto px-6 py-12 lg:py-20 relative z-10">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-8">
@@ -173,7 +173,7 @@ const InterviewPage = () => {
                             <img 
                                 src="/interview_hero.png" 
                                 alt="AI Interview" 
-                                className="relative z-10 w-full max-w-md lg:max-w-full drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                                className="relative z-10 w-full max-w-md lg:max-w-full drop-shadow-2xl rounded-lg"
                             />
                         </div>
                     </div>
