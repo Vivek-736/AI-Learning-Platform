@@ -61,16 +61,16 @@ const FlashcardPage = () => {
     }
 
     return (
-        <div className="max-w-7xl mx-auto p-6">
+        <div className="max-w-7xl mx-auto p-6 dark:bg-[#09090b]">
             <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-800">Smart Flashcards</h1>
-                        <p className="text-gray-600">Master concepts with AI-generated flashcards</p>
+                        <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Smart Flashcards</h1>
+                        <p className="text-gray-600 dark:text-gray-400">Master concepts with AI-generated flashcards</p>
                     </div>
                 </div>
                 <div className="flex gap-3">
-                    <Button onClick={() => setShowCreateDialog(true)} className='cursor-pointer'>
+                    <Button onClick={() => setShowCreateDialog(true)} className='cursor-pointer bg-green-600 hover:bg-green-700 text-white'>
                         <Plus className="h-4 w-4 mr-1" />
                         Create Flashcards
                     </Button>
@@ -78,42 +78,42 @@ const FlashcardPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <Card>
+                <Card className="dark:bg-gray-900 dark:border-gray-800">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Total Sets</CardTitle>
-                        <Target className="h-4 w-4 text-muted-foreground" />
+                        <CardTitle className="text-sm font-medium dark:text-gray-300">Total Sets</CardTitle>
+                        <Target className="h-4 w-4 text-muted-foreground dark:text-gray-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">{flashcardSets.length}</div>
+                        <div className="text-2xl font-bold dark:text-white">{flashcardSets.length}</div>
                     </CardContent>
                 </Card>
                 
-                <Card>
+                <Card className="dark:bg-gray-900 dark:border-gray-800">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Total Cards</CardTitle>
-                        <Brain className="h-4 w-4 text-muted-foreground" />
+                        <CardTitle className="text-sm font-medium dark:text-gray-300">Total Cards</CardTitle>
+                        <Brain className="h-4 w-4 text-muted-foreground dark:text-gray-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">
+                        <div className="text-2xl font-bold dark:text-white">
                             {flashcardSets.reduce((total, set) => total + set.totalCards, 0)}
                         </div>
                     </CardContent>
                 </Card>
                 
-                <Card>
+                <Card className="dark:bg-gray-900 dark:border-gray-800">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Study Time</CardTitle>
-                        <Clock className="h-4 w-4 text-muted-foreground" />
+                        <CardTitle className="text-sm font-medium dark:text-gray-300">Study Time</CardTitle>
+                        <Clock className="h-4 w-4 text-muted-foreground dark:text-gray-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">0h</div>
-                        <p className="text-xs text-muted-foreground mt-1"></p>
+                        <div className="text-2xl font-bold dark:text-white">0h</div>
+                        <p className="text-xs text-muted-foreground mt-1 dark:text-gray-400"></p>
                     </CardContent>
                 </Card>
             </div>
 
             <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-gray-800">Your Flashcard Sets</h2>
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Your Flashcard Sets</h2>
                 
                 {flashcardSets.length === 0 ? (
                     <Card className="text-center py-16">

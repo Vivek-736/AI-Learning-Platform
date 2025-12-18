@@ -131,7 +131,7 @@ const FlashcardStudyPage = () => {
 
     if (loading) {
         return (
-            <div className="min-h-[76vh] flex items-center justify-center bg-gray-50">
+            <div className="min-h-[76vh] flex items-center justify-center bg-gray-50 dark:bg-[#09090b]">
                 <div className="text-center">
                     <div className="w-8 h-8 border-2 border-green-200 border-t-green-600 rounded-full animate-spin mb-4"></div>
                 </div>
@@ -142,9 +142,9 @@ const FlashcardStudyPage = () => {
     if (!flashcardSet) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gray-50">
-                <Card className="max-w-md">
+                <Card className="max-w-md dark:bg-gray-900 dark:border-gray-800">
                     <CardContent className="pt-6 text-center">
-                        <p className="text-gray-600 mb-4">Flashcard set not found</p>
+                        <p className="text-gray-600 dark:text-gray-400 mb-4">Flashcard set not found</p>
                         <Button onClick={() => router.push('/workspace/ai-tools/flashcard')}>
                             Back to Flashcards
                         </Button>
@@ -157,12 +157,12 @@ const FlashcardStudyPage = () => {
     const currentCard = flashcardSet.flashcards[currentIndex];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100 p-4">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100 dark:from-[#09090b] dark:to-gray-950 p-4">
             <div className="max-w-4xl mx-auto">
                 <div className="flex items-center justify-between mb-6">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900">{flashcardSet.title}</h1>
-                        <p className="text-gray-600 mt-1">Card {currentIndex + 1} of {flashcardSet.flashcards.length}</p>
+                        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{flashcardSet.title}</h1>
+                        <p className="text-gray-600 dark:text-gray-400 mt-1">Card {currentIndex + 1} of {flashcardSet.flashcards.length}</p>
                     </div>
                     <div className="flex items-center space-x-3">
                         <Badge variant="outline" className="bg-green-50 border-green-200 text-green-700">
@@ -204,22 +204,22 @@ const FlashcardStudyPage = () => {
                     <div className="w-96 h-[600px] perspective-1000">
                         <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
                             <Card 
-                                className="w-96 h-[600px] cursor-pointer transition-all duration-300 hover:shadow-2xl bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 hover:border-blue-300"
+                                className="w-96 h-[600px] cursor-pointer transition-all duration-300 hover:shadow-2xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500"
                                 onClick={handleFlipCard}
                             >
                                 <CardContent className="h-full flex flex-col justify-between p-8">
                                     <div className="flex justify-between items-center">
                                         <Badge className={
                                             masteredCards.has(currentIndex) 
-                                                ? 'bg-green-100 text-green-800 border-green-200' :
+                                                ? 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-800' :
                                             reviewCards.has(currentIndex) 
-                                                ? 'bg-amber-100 text-amber-800 border-amber-200' :
-                                                'bg-blue-100 text-blue-800 border-blue-200'
+                                                ? 'bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800' :
+                                                'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800'
                                         }>
                                             {masteredCards.has(currentIndex) ? 'Mastered' :
                                              reviewCards.has(currentIndex) ? 'Review' : 'New'}
                                         </Badge>
-                                        <div className="text-xs text-gray-500 flex items-center">
+                                        <div className="text-xs text-gray-500 dark:text-gray-400 flex items-center">
                                             <Eye className="h-3 w-3 mr-1" />
                                             Click to flip
                                         </div>
@@ -227,31 +227,31 @@ const FlashcardStudyPage = () => {
 
                                     <div className="flex-1 flex items-center justify-center text-center">
                                         <div className="space-y-6">
-                                            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
+                                            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto">
                                                 <span className="text-2xl">❓</span>
                                             </div>
-                                            <h2 className="text-2xl font-bold text-gray-900 leading-relaxed">
+                                            <h2 className="text-2xl font-bold text-gray-900 dark:text-white leading-relaxed">
                                                 {currentCard.front}
                                             </h2>
                                         </div>
                                     </div>
 
                                     <div className="text-center">
-                                        <p className="text-sm text-gray-500">Tap to reveal answer</p>
+                                        <p className="text-sm text-gray-500 dark:text-gray-400">Tap to reveal answer</p>
                                     </div>
                                 </CardContent>
                             </Card>
 
                             <Card 
-                                className="w-96 h-[600px] cursor-pointer transition-all duration-300 hover:shadow-2xl bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 hover:border-blue-400"
+                                className="w-96 h-[600px] cursor-pointer transition-all duration-300 hover:shadow-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40 border-2 border-blue-200 dark:border-blue-800 hover:border-blue-400 dark:hover:border-blue-600"
                                 onClick={handleFlipCard}
                             >
                                 <CardContent className="h-full flex flex-col justify-between p-8">
                                     <div className="flex justify-between items-center">
-                                        <Badge className="bg-blue-100 text-blue-800 border-blue-200">
+                                        <Badge className="bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800">
                                             Answer
                                         </Badge>
-                                        <div className="text-xs text-gray-600 flex items-center">
+                                        <div className="text-xs text-gray-600 dark:text-gray-400 flex items-center">
                                             <EyeOff className="h-3 w-3 mr-1" />
                                             Click to flip back
                                         </div>
@@ -259,24 +259,24 @@ const FlashcardStudyPage = () => {
 
                                     <div className="flex-1 flex flex-col items-center justify-center space-y-6">
                                         <div className="text-center">
-                                            <div className="border-t border-blue-200 pt-6">
-                                                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <div className="border-t border-blue-200 dark:border-blue-800 pt-6">
+                                                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
                                                     <span className="text-2xl">✅</span>
                                                 </div>
-                                                <p className="text-sm font-medium text-green-700 mb-2">Answer:</p>
-                                                <h2 className="text-lg font-bold text-gray-900 mb-4">
+                                                <p className="text-sm font-medium text-green-700 dark:text-green-400 mb-2">Answer:</p>
+                                                <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
                                                     {currentCard.back}
                                                 </h2>
                                             </div>
                                         </div>
 
                                         {currentCard.explanation && (
-                                            <div className="bg-[#FFFFFF]/80 backdrop-blur-sm border border-blue-200 rounded-lg p-4 -mt-4">
+                                            <div className="bg-[#FFFFFF]/80 dark:bg-black/40 backdrop-blur-sm border border-blue-200 dark:border-blue-800 rounded-lg p-4 -mt-4">
                                                 <div className="flex items-start space-x-2">
                                                     <Lightbulb className="h-4 w-4 text-amber-500 mt-0.5 flex-shrink-0" />
                                                     <div>
-                                                        <p className="text-xs font-medium text-amber-700 mb-1">Explanation:</p>
-                                                        <p className="text-sm text-gray-700">{currentCard.explanation}</p>
+                                                        <p className="text-xs font-medium text-amber-700 dark:text-amber-500 mb-1">Explanation:</p>
+                                                        <p className="text-sm text-gray-700 dark:text-gray-300">{currentCard.explanation}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -319,7 +319,7 @@ const FlashcardStudyPage = () => {
                         onClick={handlePrevious}
                         disabled={currentIndex === 0}
                         variant="outline"
-                        className="hover:bg-gray-50"
+                        className="hover:bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-900 dark:text-white dark:border-gray-700"
                     >
                         <ArrowLeft className="h-4 w-4 mr-2" />
                         Previous
@@ -328,7 +328,7 @@ const FlashcardStudyPage = () => {
                     <Button
                         onClick={handleFlipCard}
                         variant="outline"
-                        className="hover:bg-blue-50 border-blue-200 text-blue-700"
+                        className="hover:bg-blue-50 border-blue-200 text-blue-700 dark:hover:bg-blue-900/30 dark:border-blue-800 dark:text-blue-400 dark:bg-transparent"
                     >
                         {isFlipped ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
                         {isFlipped ? 'Hide Answer' : 'Show Answer'}
@@ -346,7 +346,8 @@ const FlashcardStudyPage = () => {
                         <Button
                             onClick={handleNext}
                             disabled={currentIndex === flashcardSet.flashcards.length - 1}
-                            className="hover:bg-blue-50"
+                            className="hover:bg-blue-50 dark:hover:bg-blue-900/30 dark:bg-gray-900 dark:text-white dark:border-gray-700"
+                            variant="outline"
                         >
                             Next
                             <ArrowRight className="h-4 w-4 ml-2" />
@@ -355,13 +356,13 @@ const FlashcardStudyPage = () => {
                 </div>
 
                 {currentIndex === flashcardSet.flashcards.length - 1 && masteredCards.size === flashcardSet.flashcards.length && (
-                    <Card className="mt-8 border-green-200 bg-gradient-to-r from-green-50 to-emerald-50">
+                    <Card className="mt-8 border-green-200 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 dark:border-green-800">
                         <CardContent className="pt-6 text-center">
-                            <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-green-800 mb-2">
+                            <CheckCircle className="h-16 w-16 text-green-600 dark:text-green-500 mx-auto mb-4" />
+                            <h3 className="text-xl font-bold text-green-800 dark:text-green-400 mb-2">
                                 Congratulations!
                             </h3>
-                            <p className="text-green-700">
+                            <p className="text-green-700 dark:text-green-300">
                                 You&apos;ve mastered all cards in this set. Excellent work on your study session!
                             </p>
                         </CardContent>

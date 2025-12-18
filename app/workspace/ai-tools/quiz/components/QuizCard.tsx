@@ -29,10 +29,10 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, onQuizUpdate }) => {
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
-            case 'easy': return 'bg-green-100 text-green-800';
-            case 'medium': return 'bg-yellow-100 text-yellow-800';
-            case 'hard': return 'bg-red-100 text-red-800';
-            default: return 'bg-gray-100 text-gray-800';
+            case 'easy': return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400';
+            case 'medium': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400';
+            case 'hard': return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400';
+            default: return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300';
         }
     };
 
@@ -41,14 +41,14 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, onQuizUpdate }) => {
     };
 
     return (
-        <Card className="group hover:shadow-lg transition-all duration-300 transform">
+        <Card className="group hover:shadow-lg transition-all duration-300 transform dark:bg-gray-900 dark:border-gray-800">
             <CardHeader>
                 <div className="flex justify-between items-start">
                     <div className="flex-1">
-                        <CardTitle className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors line-clamp-1">
+                        <CardTitle className="text-lg font-bold text-gray-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">
                             {quiz.title}
                         </CardTitle>
-                        <CardDescription className="mt-2 text-sm text-gray-600 line-clamp-1">
+                        <CardDescription className="mt-2 text-sm text-gray-600 dark:text-gray-400 line-clamp-1">
                             {quiz.description || 'No description provided'}
                         </CardDescription>
                     </div>
@@ -60,7 +60,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, onQuizUpdate }) => {
             
             <CardContent>
                 <div className="space-y-4">
-                    <div className="flex items-center justify-between text-sm text-gray-600">
+                    <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
                         <div className="flex items-center">
                             <Target className="h-4 w-4 mr-1" />
                             {quiz.totalQuestions} Questions
@@ -71,7 +71,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, onQuizUpdate }) => {
                         </div>
                     </div>
 
-                    <div className="flex items-center text-sm text-gray-600">
+                    <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                         {quiz.courseId ? (
                             <>
                                 <BookOpen className="h-4 w-4 mr-2" />
@@ -85,7 +85,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, onQuizUpdate }) => {
                         )}
                     </div>
 
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-gray-500 dark:text-gray-500">
                         Created {new Date(quiz.createdAt).toLocaleDateString()}
                     </div>
 

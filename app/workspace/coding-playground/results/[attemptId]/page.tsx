@@ -114,7 +114,7 @@ export default function ResultsPage() {
 
     if (loading) {
         return (
-            <div className="min-h-[74vh] flex items-center justify-center bg-white dark:bg-gray-950">
+            <div className="min-h-[74vh] flex items-center justify-center bg-white dark:bg-[#09090b]">
                 <div className="animate-pulse text-indigo-600 dark:text-indigo-400">Loading results...</div>
             </div>
         );
@@ -122,7 +122,7 @@ export default function ResultsPage() {
 
     if (!attempt || !attempt.feedback) {
         return (
-            <div className="min-h-[74vh] flex items-center justify-center bg-white dark:bg-gray-950">
+            <div className="min-h-[74vh] flex items-center justify-center bg-white dark:bg-[#09090b]">
                 <p className="text-gray-600 dark:text-gray-400">Results not found</p>
             </div>
         );
@@ -140,7 +140,7 @@ export default function ResultsPage() {
     };
 
     return (
-        <div className={`min-h-screen bg-white dark:bg-gray-950 ${nohemi.variable}`}>
+        <div className={`min-h-screen bg-white dark:bg-[#09090b] ${nohemi.variable}`}>
             <div className="max-w-6xl mx-auto p-6 py-12">
                 {/* Header */}
                 <motion.div

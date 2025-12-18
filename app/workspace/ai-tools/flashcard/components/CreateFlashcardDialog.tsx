@@ -107,10 +107,10 @@ const CreateFlashcardDialog: React.FC<CreateFlashcardDialogProps> = ({
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto dark:bg-gray-900 dark:border-gray-800">
                 <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold text-center">Create Flashcard Set</DialogTitle>
-                    <DialogDescription className='text-center'>
+                    <DialogTitle className="text-2xl font-bold text-center dark:text-white">Create Flashcard Set</DialogTitle>
+                    <DialogDescription className='text-center dark:text-gray-400'>
                         Generate AI-powered flashcards from your courses or custom topics
                     </DialogDescription>
                 </DialogHeader>
@@ -118,44 +118,46 @@ const CreateFlashcardDialog: React.FC<CreateFlashcardDialogProps> = ({
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-4">
                         <div>
-                            <Label className='ml-1 mb-2' htmlFor="title">Set Title</Label>
+                            <Label className='ml-1 mb-2 dark:text-gray-300' htmlFor="title">Set Title</Label>
                             <Input
                                 id="title"
                                 value={formData.title}
                                 onChange={(e) => setFormData({...formData, title: e.target.value})}
                                 placeholder="Enter flashcard set title..."
                                 required
+                                className="dark:bg-gray-800 dark:border-gray-700"
                             />
                         </div>
                         <div>
-                            <Label className='ml-1 mb-2' htmlFor="description">Description (Optional)</Label>
+                            <Label className='ml-1 mb-2 dark:text-gray-300' htmlFor="description">Description (Optional)</Label>
                             <Textarea
                                 id="description"
                                 value={formData.description}
                                 onChange={(e) => setFormData({...formData, description: e.target.value})}
                                 placeholder="Brief description of the flashcard set..."
                                 rows={3}
+                                className="dark:bg-gray-800 dark:border-gray-700"
                             />
                         </div>
                     </div>
 
                     <div className="space-y-4">
-                        <Label className='ml-1'>Flashcard Source</Label>
+                        <Label className='ml-1 dark:text-gray-300'>Flashcard Source</Label>
                         <RadioGroup
                             value={formData.type}
                             onValueChange={(value) => setFormData({...formData, type: value})}
                         >
-                            <div className="flex items-center space-x-2 p-4 border rounded-lg">
+                            <div className="flex items-center space-x-2 p-4 border rounded-lg dark:border-gray-800">
                                 <RadioGroupItem value="course" id="course" />
-                                <BookOpen className="h-4 w-4" />
-                                <Label htmlFor="course" className="flex-1 cursor-pointer">
+                                <BookOpen className="h-4 w-4 dark:text-gray-400" />
+                                <Label htmlFor="course" className="flex-1 cursor-pointer dark:text-gray-300">
                                     Based on Enrolled Course
                                 </Label>
                             </div>
-                            <div className="flex items-center space-x-2 p-4 border rounded-lg">
+                            <div className="flex items-center space-x-2 p-4 border rounded-lg dark:border-gray-800">
                                 <RadioGroupItem value="custom" id="custom" />
-                                <PenTool className="h-4 w-4" />
-                                <Label htmlFor="custom" className="flex-1 cursor-pointer">
+                                <PenTool className="h-4 w-4 dark:text-gray-400" />
+                                <Label htmlFor="custom" className="flex-1 cursor-pointer dark:text-gray-300">
                                     Custom Topic
                                 </Label>
                             </div>
@@ -164,12 +166,12 @@ const CreateFlashcardDialog: React.FC<CreateFlashcardDialogProps> = ({
 
                     {formData.type === 'course' ? (
                         <div>
-                            <Label className='ml-1 mb-2'>Select Course</Label>
+                            <Label className='ml-1 mb-2 dark:text-gray-300'>Select Course</Label>
                             <Select value={formData.courseId} onValueChange={(value) => setFormData({...formData, courseId: value})}>
-                                <SelectTrigger>
+                                <SelectTrigger className="dark:bg-gray-800 dark:border-gray-700">
                                     <SelectValue placeholder="Choose a course..." />
                                 </SelectTrigger>
-                                <SelectContent>
+                                <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
                                     {courses.map((course) => (
                                         <SelectItem key={course.cid} value={course.cid}>
                                             {course.name}
@@ -180,25 +182,26 @@ const CreateFlashcardDialog: React.FC<CreateFlashcardDialogProps> = ({
                         </div>
                     ) : (
                         <div>
-                            <Label className='ml-1 mb-2' htmlFor="customTopic">Custom Topic</Label>
+                            <Label className='ml-1 mb-2 dark:text-gray-300' htmlFor="customTopic">Custom Topic</Label>
                             <Input
                                 id="customTopic"
                                 value={formData.customTopic}
                                 onChange={(e) => setFormData({...formData, customTopic: e.target.value})}
                                 placeholder="e.g., Machine Learning Algorithms, World History, etc."
                                 required={formData.type === 'custom'}
+                                className="dark:bg-gray-800 dark:border-gray-700"
                             />
                         </div>
                     )}
 
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <Label className='ml-1 mb-2'>Difficulty Level</Label>
+                            <Label className='ml-1 mb-2 dark:text-gray-300'>Difficulty Level</Label>
                             <Select value={formData.difficulty} onValueChange={(value) => setFormData({...formData, difficulty: value})}>
-                                <SelectTrigger>
+                                <SelectTrigger className="dark:bg-gray-800 dark:border-gray-700">
                                     <SelectValue />
                                 </SelectTrigger>
-                                <SelectContent>
+                                <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
                                     <SelectItem value="easy">Easy</SelectItem>
                                     <SelectItem value="medium">Medium</SelectItem>
                                     <SelectItem value="hard">Hard</SelectItem>
@@ -207,12 +210,12 @@ const CreateFlashcardDialog: React.FC<CreateFlashcardDialogProps> = ({
                         </div>
                         
                         <div>
-                            <Label className='ml-1 mb-2'>Number of Cards</Label>
+                            <Label className='ml-1 mb-2 dark:text-gray-300'>Number of Cards</Label>
                             <Select value={formData.cardCount} onValueChange={(value) => setFormData({...formData, cardCount: value})}>
-                                <SelectTrigger>
+                                <SelectTrigger className="dark:bg-gray-800 dark:border-gray-700">
                                     <SelectValue />
                                 </SelectTrigger>
-                                <SelectContent>
+                                <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
                                     <SelectItem value="5">5 Cards</SelectItem>
                                     <SelectItem value="10">10 Cards</SelectItem>
                                     <SelectItem value="15">15 Cards</SelectItem>
@@ -226,7 +229,7 @@ const CreateFlashcardDialog: React.FC<CreateFlashcardDialogProps> = ({
                     <div className="flex justify-end space-x-3 pt-6">
                         <Button
                             type="button"
-                            className='cursor-pointer'
+                            className='cursor-pointer dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700'
                             variant="outline"
                             onClick={() => onOpenChange(false)}
                             disabled={loading}

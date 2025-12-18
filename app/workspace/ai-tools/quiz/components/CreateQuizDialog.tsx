@@ -107,10 +107,10 @@ const CreateQuizDialog: React.FC<CreateQuizDialogProps> = ({
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto dark:bg-gray-900 dark:border-gray-800">
                 <DialogHeader className='text-center'>
-                    <DialogTitle className="text-2xl font-bold text-center">Create New Quiz</DialogTitle>
-                    <DialogDescription className='text-center'>
+                    <DialogTitle className="text-2xl font-bold text-center dark:text-white">Create New Quiz</DialogTitle>
+                    <DialogDescription className='text-center dark:text-gray-400'>
                         Generate an AI-powered quiz from your courses or custom topics
                     </DialogDescription>
                 </DialogHeader>
@@ -118,46 +118,48 @@ const CreateQuizDialog: React.FC<CreateQuizDialogProps> = ({
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-4">
                         <div>
-                            <Label htmlFor="title" className='ml-1 mb-2'>Quiz Title</Label>
+                            <Label htmlFor="title" className='ml-1 mb-2 dark:text-gray-300'>Quiz Title</Label>
                             <Input
                                 id="title"
                                 value={formData.title}
                                 onChange={(e) => setFormData({...formData, title: e.target.value})}
                                 placeholder="Enter quiz title..."
                                 required
+                                className="dark:bg-gray-800 dark:border-gray-700"
                             />
                         </div>
                         
                         <div>
-                            <Label htmlFor="description" className='ml-1 mb-2'>Description (Optional)</Label>
+                            <Label htmlFor="description" className='ml-1 mb-2 dark:text-gray-300'>Description (Optional)</Label>
                             <Textarea
                                 id="description"
                                 value={formData.description}
                                 onChange={(e) => setFormData({...formData, description: e.target.value})}
                                 placeholder="Brief description of the quiz..."
                                 rows={3}
+                                className="dark:bg-gray-800 dark:border-gray-700"
                             />
                         </div>
                     </div>
 
                     <div className="space-y-4">
-                        <Label className='ml-1 mb-2'>Quiz Source</Label>
+                        <Label className='ml-1 mb-2 dark:text-gray-300'>Quiz Source</Label>
                         <RadioGroup
                             value={formData.type}
                             // eslint-disable-next-line @typescript-eslint/no-explicit-any
                             onValueChange={(value: any) => setFormData({...formData, type: value})}
                         >
-                            <div className="flex items-center space-x-2 p-4 border rounded-lg">
+                            <div className="flex items-center space-x-2 p-4 border rounded-lg dark:border-gray-800">
                                 <RadioGroupItem value="course" id="course" />
-                                <BookOpen className="h-4 w-4" />
-                                <Label htmlFor="course" className="flex-1 cursor-pointer">
+                                <BookOpen className="h-4 w-4 dark:text-gray-400" />
+                                <Label htmlFor="course" className="flex-1 cursor-pointer dark:text-gray-300">
                                     Based on Enrolled Course
                                 </Label>
                             </div>
-                            <div className="flex items-center space-x-2 p-4 border rounded-lg">
+                            <div className="flex items-center space-x-2 p-4 border rounded-lg dark:border-gray-800">
                                 <RadioGroupItem value="custom" id="custom" />
-                                <PenTool className="h-4 w-4" />
-                                <Label htmlFor="custom" className="flex-1 cursor-pointer">
+                                <PenTool className="h-4 w-4 dark:text-gray-400" />
+                                <Label htmlFor="custom" className="flex-1 cursor-pointer dark:text-gray-300">
                                     Custom Topic
                                 </Label>
                             </div>
@@ -166,12 +168,12 @@ const CreateQuizDialog: React.FC<CreateQuizDialogProps> = ({
 
                     {formData.type === 'course' ? (
                         <div>
-                            <Label className='ml-1 mb-2'>Select Course</Label>
+                            <Label className='ml-1 mb-2 dark:text-gray-300'>Select Course</Label>
                             <Select value={formData.courseId} onValueChange={(value) => setFormData({...formData, courseId: value})}>
-                                <SelectTrigger>
+                                <SelectTrigger className="dark:bg-gray-800 dark:border-gray-700">
                                     <SelectValue placeholder="Choose a course..." />
                                 </SelectTrigger>
-                                <SelectContent>
+                                <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
                                     {courses.map((course) => (
                                         <SelectItem key={course.cid} value={course.cid}>
                                             {course.name}
@@ -182,25 +184,26 @@ const CreateQuizDialog: React.FC<CreateQuizDialogProps> = ({
                         </div>
                     ) : (
                         <div>
-                            <Label htmlFor="customTopic" className='ml-1 mb-2'>Custom Topic</Label>
+                            <Label htmlFor="customTopic" className='ml-1 mb-2 dark:text-gray-300'>Custom Topic</Label>
                             <Input
                                 id="customTopic"
                                 value={formData.customTopic}
                                 onChange={(e) => setFormData({...formData, customTopic: e.target.value})}
                                 placeholder="e.g., JavaScript Arrays, React Hooks, etc."
                                 required={formData.type === 'custom'}
+                                className="dark:bg-gray-800 dark:border-gray-700"
                             />
                         </div>
                     )}
 
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <Label className='ml-1 mb-2'>Difficulty Level</Label>
+                            <Label className='ml-1 mb-2 dark:text-gray-300'>Difficulty Level</Label>
                             <Select value={formData.difficulty} onValueChange={(value) => setFormData({...formData, difficulty: value})}>
-                                <SelectTrigger>
+                                <SelectTrigger className="dark:bg-gray-800 dark:border-gray-700">
                                     <SelectValue />
                                 </SelectTrigger>
-                                <SelectContent>
+                                <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
                                     <SelectItem value="easy">Easy</SelectItem>
                                     <SelectItem value="medium">Medium</SelectItem>
                                     <SelectItem value="hard">Hard</SelectItem>
@@ -209,12 +212,12 @@ const CreateQuizDialog: React.FC<CreateQuizDialogProps> = ({
                         </div>
                         
                         <div>
-                            <Label className='ml-1 mb-2'>Number of Questions</Label>
+                            <Label className='ml-1 mb-2 dark:text-gray-300'>Number of Questions</Label>
                             <Select value={formData.questionCount} onValueChange={(value) => setFormData({...formData, questionCount: value})}>
-                                <SelectTrigger>
+                                <SelectTrigger className="dark:bg-gray-800 dark:border-gray-700">
                                     <SelectValue />
                                 </SelectTrigger>
-                                <SelectContent>
+                                <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
                                     <SelectItem value="5">5 Questions</SelectItem>
                                     <SelectItem value="10">10 Questions</SelectItem>
                                     <SelectItem value="15">15 Questions</SelectItem>
@@ -230,7 +233,7 @@ const CreateQuizDialog: React.FC<CreateQuizDialogProps> = ({
                             variant="outline"
                             onClick={() => onOpenChange(false)}
                             disabled={loading}
-                            className='cursor-pointer'
+                            className='cursor-pointer dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700'
                         >
                             Cancel
                         </Button>

@@ -7,11 +7,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Clock, ChevronLeft, ChevronRight, CheckCircle2, AlertCircle, Loader2, Send, Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import localFont from "next/font/local";
+import Editor from "@monaco-editor/react";
 
 const nohemi = localFont({
     src: [
@@ -571,16 +571,48 @@ export default function ChallengeAttemptPage() {
                                     </div>
                                 </div>
 
-                                <Textarea
+                            <div className="h-[600px] border rounded-md overflow-hidden dark:border-gray-800">
+                                <Editor
+                                    height="100%"
+                                    language={languages[currentProblem.problemId] || "python"}
                                     value={solutions[currentProblem.problemId] || ""}
-                                    onChange={(e) => handleSolutionChange(currentProblem.problemId, e.target.value)}
-                                    placeholder="// Write your code here..."
-                                    className="min-h-[400px] font-mono text-sm bg-gray-50 dark:bg-gray-900"
-                                    spellCheck={false}
-                                    autoComplete="off"
-                                    autoCorrect="off"
-                                    autoCapitalize="off"
+                                    theme="vs-dark"
+                                    onChange={(value) => handleSolutionChange(currentProblem.problemId, value || "")}
+                                    options={{
+                                        minimap: { enabled: false },
+                                        fontSize: 16,
+                                        scrollBeyondLastLine: false,
+                                        automaticLayout: true,
+                                        padding: { top: 16, bottom: 16 },
+                                        fontFamily: "'Fira Code', 'JetBrains Mono', 'Consolas', monospace",
+                                        fontLigatures: true,
+                                        suggest: {
+                                            showWords: true,
+                                            showClasses: true,
+                                            showFunctions: true,
+                                            showVariables: true,
+                                            showConstants: true,
+                                            showStructs: true,
+                                            showInterfaces: true,
+                                            showModules: true,
+                                            showProperties: true,
+                                            showEvents: true,
+                                            showOperators: true,
+                                            showUnits: true,
+                                            showValues: true,
+                                            showKeywords: true,
+                                            showSnippets: true,
+                                            showReferences: true,
+                                            showFolders: true,
+                                            showTypeParameters: true,
+                                            showIssues: true,
+                                            showUsers: true,
+                                            showFiles: true,
+                                            showEnumMembers: true
+                                        }
+                                    }}
                                 />
+                            </div>
 
                                 <div className="flex items-center justify-between mt-4">
                                     <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -589,7 +621,7 @@ export default function ChallengeAttemptPage() {
                                     <Button
                                         onClick={() => handleRunTests(currentProblem.problemId)}
                                         disabled={isRunning}
-                                        className="bg-blue-600 hover:bg-blue-700"
+                                        className="bg-blue-600 hover:bg-blue-700 cursor-pointer"
                                     >
                                         {isRunning ? (
                                             <>

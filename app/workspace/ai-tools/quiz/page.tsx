@@ -79,27 +79,27 @@ const QuizPage = () => {
     }
 
     return (
-        <div className="min-h-screen p-6">
+        <div className="min-h-screen p-6 dark:bg-[#09090b]">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
                     <div className="flex items-center mb-4 sm:mb-0">
                         <div>
-                            <h1 className="text-3xl font-bold text-gray-800">AI Quiz Generator</h1>
-                            <p className="text-gray-600">Test your knowledge with AI-generated quizzes</p>
+                            <h1 className="text-3xl font-bold text-gray-800 dark:text-white">AI Quiz Generator</h1>
+                            <p className="text-gray-600 dark:text-gray-400">Test your knowledge with AI-generated quizzes</p>
                         </div>
                     </div>
                     <div className="flex gap-3">
                         <Button
                             onClick={() => setShowHistory(true)}
                             variant="outline"
-                            className="flex items-center gap-2 cursor-pointer"
+                            className="flex items-center gap-2 cursor-pointer dark:text-white dark:border-gray-700 dark:hover:bg-gray-800"
                         >
                             <History className="h-4 w-4" />
                             History
                         </Button>
                         <Button
                             onClick={() => setShowCreateDialog(true)}
-                            className="cursor-pointer"
+                            className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white"
                         >
                             <Plus className="h-4 w-4" />
                             Create Quiz
@@ -108,31 +108,31 @@ const QuizPage = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <Card>
+                    <Card className="dark:bg-gray-900 dark:border-gray-800">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                            <CardTitle className="text-sm font-medium">Total Quizzes</CardTitle>
-                            <Target className="h-4 w-4 text-muted-foreground" />
+                            <CardTitle className="text-sm font-medium dark:text-gray-300">Total Quizzes</CardTitle>
+                            <Target className="h-4 w-4 text-muted-foreground dark:text-gray-500" />
                         </CardHeader>
                         <CardContent>
-                            <div className="text-2xl font-bold">{quizzes.length}</div>
+                            <div className="text-2xl font-bold dark:text-white">{quizzes.length}</div>
                         </CardContent>
                     </Card>
-                    <Card>
+                    <Card className="dark:bg-gray-900 dark:border-gray-800">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                            <CardTitle className="text-sm font-medium">Recent Attempts</CardTitle>
-                            <Clock className="h-4 w-4 text-muted-foreground" />
+                            <CardTitle className="text-sm font-medium dark:text-gray-300">Recent Attempts</CardTitle>
+                            <Clock className="h-4 w-4 text-muted-foreground dark:text-gray-500" />
                         </CardHeader>
                         <CardContent>
-                            <div className="text-2xl font-bold">{recentAttempts.length}</div>
+                            <div className="text-2xl font-bold dark:text-white">{recentAttempts.length}</div>
                         </CardContent>
                     </Card>
-                    <Card>
+                    <Card className="dark:bg-gray-900 dark:border-gray-800">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                            <CardTitle className="text-sm font-medium">Average Score</CardTitle>
-                            <Trophy className="h-4 w-4 text-muted-foreground" />
+                            <CardTitle className="text-sm font-medium dark:text-gray-300">Average Score</CardTitle>
+                            <Trophy className="h-4 w-4 text-muted-foreground dark:text-gray-500" />
                         </CardHeader>
                         <CardContent>
-                            <div className="text-2xl font-bold">
+                            <div className="text-2xl font-bold dark:text-white">
                                 {recentAttempts.length > 0 
                                     ? Math.round(recentAttempts.reduce((sum, attempt) => sum + attempt.percentage, 0) / recentAttempts.length)
                                     : 0
@@ -143,7 +143,7 @@ const QuizPage = () => {
                 </div>
 
                 <div className="space-y-6">
-                    <h2 className="text-2xl font-bold text-gray-800">Your Quizzes</h2>
+                    <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Your Quizzes</h2>
                     {quizzes.length === 0 ? (
                         <Card className="text-center py-12">
                             <CardContent>
