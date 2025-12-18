@@ -94,10 +94,10 @@ const QuizHistory: React.FC<QuizHistoryProps> = ({ open, onOpenChange }) => {
 
         if (attempts.length < 2) {
             return (
-                <div className="h-64 flex items-center justify-center border border-dashed border-gray-200 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100">
+                <div className="h-64 flex items-center justify-center border border-dashed border-gray-200 dark:border-gray-800 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950">
                     <div className="text-center">
                         <TrendingUp className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                        <p className="text-gray-500">Take more quizzes to see your performance trend</p>
+                        <p className="text-gray-500 dark:text-gray-400">Take more quizzes to see your performance trend</p>
                     </div>
                 </div>
             );
@@ -138,12 +138,12 @@ const QuizHistory: React.FC<QuizHistoryProps> = ({ open, onOpenChange }) => {
 
         return (
             <TooltipProvider>
-                <div className="h-64 relative bg-gradient-to-br from-white to-gray-50 rounded-lg shadow-lg p-4">
+                <div className="h-64 relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 rounded-lg shadow-lg p-4">
                     <div className="absolute inset-0 p-6">
                         {[0, 25, 50, 75, 100].map((value) => (
                             <div
                                 key={value}
-                                className="absolute left-4 right-10 border-t border-gray-200/50"
+                                className="absolute left-4 right-10 border-t border-gray-200/50 dark:border-gray-800/50"
                                 style={{ bottom: `${value * 0.95}%` }}
                             >
                                 <span className="absolute -left-10 text-[9px] text-gray-400 font-medium">
@@ -199,18 +199,18 @@ const QuizHistory: React.FC<QuizHistoryProps> = ({ open, onOpenChange }) => {
                         </svg>
                     </div>
 
-                    <div className="absolute top-4 right-4 flex items-center space-x-2 bg-[#FFFFFF]/80 backdrop-blur-sm px-3 py-8 rounded-full shadow">
+                    <div className="absolute top-4 right-4 flex items-center space-x-2 bg-[#FFFFFF]/80 dark:bg-gray-800/80 backdrop-blur-sm px-3 py-8 rounded-full shadow">
                         {isImproving ? (
                             <>
-                                <TrendingUp className="h-5 w-5 text-green-600" />
-                                <span className="text-sm font-medium text-green-600">
+                                <TrendingUp className="h-5 w-5 text-green-600 dark:text-green-400" />
+                                <span className="text-sm font-medium text-green-600 dark:text-green-400">
                                     +{trendPercentage}% trend
                                 </span>
                             </>
                         ) : (
                             <>
-                                <TrendingDown className="h-5 w-5 text-red-600" />
-                                <span className="text-sm font-medium text-red-600">
+                                <TrendingDown className="h-5 w-5 text-red-600 dark:text-red-400" />
+                                <span className="text-sm font-medium text-red-600 dark:text-red-400">
                                     -{trendPercentage}% trend
                                 </span>
                             </>
@@ -240,7 +240,7 @@ const QuizHistory: React.FC<QuizHistoryProps> = ({ open, onOpenChange }) => {
     if (loading) {
         return (
             <Dialog open={open} onOpenChange={onOpenChange}>
-                <DialogContent className="max-w-4xl max-h-[60vh]">
+                <DialogContent className="max-w-4xl max-h-[60vh] dark:bg-gray-900 dark:border-gray-800">
                     <div className="flex items-center justify-center mt-4">
                         <div className="text-center">
                             <div className="w-12 h-12 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mb-4"></div>
@@ -253,16 +253,16 @@ const QuizHistory: React.FC<QuizHistoryProps> = ({ open, onOpenChange }) => {
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="max-w-6xl max-h-[90vh]">
+            <DialogContent className="max-w-6xl max-h-[90vh] dark:bg-gray-950 dark:border-gray-800">
                 <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold text-center">Quiz History & Statistics</DialogTitle>
-                    <DialogDescription className='text-center'>
+                    <DialogTitle className="text-2xl font-bold text-center dark:text-white">Quiz History & Statistics</DialogTitle>
+                    <DialogDescription className='text-center dark:text-gray-400'>
                         Track your progress and review past quiz attempts
                     </DialogDescription>
                 </DialogHeader>
 
                 <Tabs defaultValue="history" className="w-full">
-                    <TabsList className="grid w-full grid-cols-2">
+                    <TabsList className="grid w-full grid-cols-2 dark:bg-gray-900">
                         <TabsTrigger value="history">Quiz History</TabsTrigger>
                         <TabsTrigger value="stats">Statistics</TabsTrigger>
                     </TabsList>
@@ -271,17 +271,17 @@ const QuizHistory: React.FC<QuizHistoryProps> = ({ open, onOpenChange }) => {
                             {attempts.length === 0 ? (
                                 <div className="text-center py-12">
                                     <Trophy className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                                    <h3 className="text-lg font-semibold text-gray-600 mb-2">No quiz attempts yet</h3>
-                                    <p className="text-gray-500">Start taking quizzes to see your history here!</p>
+                                    <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-300 mb-2">No quiz attempts yet</h3>
+                                    <p className="text-gray-500 dark:text-gray-400">Start taking quizzes to see your history here!</p>
                                 </div>
                             ) : (
                                 <div className="space-y-4">
                                     {attempts.map((attempt) => (
-                                        <Card key={attempt.attemptId} className="hover:shadow-md transition-shadow">
+                                        <Card key={attempt.attemptId} className="hover:shadow-md transition-shadow dark:bg-gray-900 dark:border-gray-800">
                                             <CardHeader>
                                                 <div className="flex justify-between items-start">
                                                     <div>
-                                                        <CardTitle className="text-lg">{attempt.quizTitle}</CardTitle>
+                                                        <CardTitle className="text-lg dark:text-white">{attempt.quizTitle}</CardTitle>
                                                         <CardDescription>
                                                             Completed on {new Date(attempt.completedAt).toLocaleDateString()} at{' '}
                                                             {new Date(attempt.completedAt).toLocaleTimeString()}

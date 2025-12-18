@@ -18,10 +18,10 @@ interface FlashcardHistoryProps {
 const FlashcardHistory: React.FC<FlashcardHistoryProps> = ({ open, onOpenChange }) => {
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="max-w-4xl max-h-[90vh]">
+            <DialogContent className="max-w-4xl max-h-[90vh] dark:bg-gray-900 dark:border-gray-800">
                 <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold">Flashcard History</DialogTitle>
-                    <DialogDescription>
+                    <DialogTitle className="text-2xl font-bold dark:text-white">Flashcard History</DialogTitle>
+                    <DialogDescription className="dark:text-gray-400">
                         Track your study sessions and progress
                     </DialogDescription>
                 </DialogHeader>
@@ -29,8 +29,8 @@ const FlashcardHistory: React.FC<FlashcardHistoryProps> = ({ open, onOpenChange 
                 <div className="flex items-center justify-center h-64">
                     <div className="text-center">
                         <MessageSquare className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                        <h3 className="text-lg font-semibold text-gray-600 mb-2">No History yet, generate one!</h3>
-                        <p className="text-gray-500">We&apos;re working on detailed study analytics and progress tracking.</p>
+                        <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-300 mb-2">No History yet, generate one!</h3>
+                        <p className="text-gray-500 dark:text-gray-400">We&apos;re working on detailed study analytics and progress tracking.</p>
                     </div>
                 </div>
             </DialogContent>

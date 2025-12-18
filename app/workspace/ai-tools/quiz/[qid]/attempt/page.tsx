@@ -133,9 +133,9 @@ const QuizAttemptPage = () => {
     if (!quiz) {
         return (
             <div className="min-h-screen flex items-center justify-center">
-                <Card className="max-w-md">
+                <Card className="max-w-md dark:bg-gray-900 dark:border-gray-800">
                     <CardContent className="pt-6 text-center">
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Quiz Not Found</h3>
+                        <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Quiz Not Found</h3>
                         <Button onClick={() => router.push('/workspace/ai-tools/quiz')}>
                             Back to Quizzes
                         </Button>
@@ -151,10 +151,10 @@ const QuizAttemptPage = () => {
         <div className="max-w-4xl mx-auto p-6">
             <div className="flex items-center justify-between mb-6">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-800">{quiz.title}</h1>
-                    <p className="text-gray-600">Question {currentQuestion + 1} of {quiz.totalQuestions}</p>
+                    <h1 className="text-2xl font-bold text-gray-800 dark:text-white">{quiz.title}</h1>
+                    <p className="text-gray-600 dark:text-gray-400">Question {currentQuestion + 1} of {quiz.totalQuestions}</p>
                 </div>
-                <div className="flex items-center space-x-4 text-sm">
+                <div className="flex items-center space-x-4 text-sm dark:text-gray-300">
                     <div className="flex items-center">
                         <Clock className="h-4 w-4 mr-1" />
                         {formatTime(timeLeft)}
@@ -169,9 +169,9 @@ const QuizAttemptPage = () => {
                 <Progress value={((currentQuestion + 1) / quiz.totalQuestions) * 100} />
             </div>
 
-            <Card className="mb-6">
+            <Card className="mb-6 dark:bg-gray-900 dark:border-gray-800">
                 <CardHeader>
-                    <CardTitle className="text-xl">{currentQ.question}</CardTitle>
+                    <CardTitle className="text-xl dark:text-white">{currentQ.question}</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <RadioGroup
@@ -182,17 +182,17 @@ const QuizAttemptPage = () => {
                         {currentQ.options.map((option, index) => (
                             <div 
                                 key={index} 
-                                className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-gray-50 cursor-pointer min-h-[100px] transition-colors duration-200"
+                                className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:border-gray-800 cursor-pointer min-h-[100px] transition-colors duration-200"
                                 onClick={() => handleAnswerSelect(currentQuestion, index)}
                             >
                                 <RadioGroupItem 
                                     value={index.toString()} 
                                     id={`option-${index}`} 
-                                    className="shrink-0"
+                                    className="shrink-0 dark:border-gray-600 dark:text-blue-500"
                                 />
                                 <Label 
                                     htmlFor={`option-${index}`} 
-                                    className="flex-1 cursor-pointer text-sm leading-relaxed select-none"
+                                    className="flex-1 cursor-pointer text-sm leading-relaxed select-none dark:text-gray-300"
                                 >
                                     {option}
                                 </Label>
@@ -216,6 +216,7 @@ const QuizAttemptPage = () => {
                         }
                     }}
                     disabled={currentQuestion === 0}
+                    className="dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800 dark:border-gray-700"
                 >
                     <ChevronLeft className="h-4 w-4 mr-2" />
                     Previous
@@ -241,6 +242,8 @@ const QuizAttemptPage = () => {
                                 });
                             }
                         }}
+                        className="dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800 dark:border-gray-700"
+                        variant="outline"
                     >
                         Next
                         <ChevronRight className="h-4 w-4 ml-2" />

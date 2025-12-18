@@ -75,9 +75,9 @@ const QuizResultsPage = () => {
     if (!result) {
         return (
             <div className="min-h-screen flex items-center justify-center">
-                <Card className="max-w-md">
+                <Card className="max-w-md dark:bg-gray-900 dark:border-gray-800">
                     <CardContent className="pt-6 text-center">
-                        <p className="text-gray-600 mb-4">Results not found</p>
+                        <p className="text-gray-600 dark:text-gray-400 mb-4">Results not found</p>
                         <Button onClick={() => router.push('/workspace/ai-tools/quiz')}>
                             Back to Quizzes
                         </Button>
@@ -90,27 +90,27 @@ const QuizResultsPage = () => {
     return (
         <div className="max-w-4xl mx-auto p-6">
             <div className="text-center mb-8">
-                <h1 className="text-3xl font-bold text-gray-800 mb-2">Quiz Results</h1>
-                <p className="text-gray-600">{result.quizTitle}</p>
+                <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">Quiz Results</h1>
+                <p className="text-gray-600 dark:text-gray-400">{result.quizTitle}</p>
             </div>
 
-            <Card className="mb-8">
+            <Card className="mb-8 dark:bg-gray-900 dark:border-gray-800">
                 <CardContent className="pt-6 text-center">
                     <div className={`text-6xl font-bold mb-4 ${getScoreColor(result.percentage)}`}>
                         {result.percentage}%
                     </div>
-                    <p className="text-xl mb-4">
+                    <p className="text-xl mb-4 dark:text-white">
                         {result.score} out of {result.totalQuestions} correct
                     </p>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-400">
                         Completed in {formatTime(result.timeSpent)}
                     </p>
                 </CardContent>
             </Card>
 
-            <Card className="mb-8">
+            <Card className="mb-8 dark:bg-gray-900 dark:border-gray-800">
                 <CardHeader>
-                    <CardTitle>Question Review</CardTitle>
+                    <CardTitle className="dark:text-white">Question Review</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     {result.questions?.map((question, index) => {
@@ -120,16 +120,16 @@ const QuizResultsPage = () => {
                         return (
                             <Collapsible key={index}>
                                 <CollapsibleTrigger asChild>
-                                    <div className="flex items-center justify-between p-4 border rounded cursor-pointer hover:bg-gray-50">
+                                    <div className="flex items-center justify-between p-4 border rounded cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 dark:border-gray-800">
                                         <div className="flex items-center space-x-3">
                                             {isCorrect ? (
-                                                <CheckCircle className="h-5 w-5 text-green-600" />
+                                                <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-500" />
                                             ) : (
-                                                <XCircle className="h-5 w-5 text-red-600" />
+                                                <XCircle className="h-5 w-5 text-red-600 dark:text-red-500" />
                                             )}
                                             <div>
-                                                <p className="font-medium">Question {index + 1}</p>
-                                                <p className="text-sm text-gray-600 truncate max-w-md">
+                                                <p className="font-medium dark:text-gray-200">Question {index + 1}</p>
+                                                <p className="text-sm text-gray-600 dark:text-gray-400 truncate max-w-md">
                                                     {question.question}
                                                 </p>
                                             </div>
@@ -138,8 +138,8 @@ const QuizResultsPage = () => {
                                     </div>
                                 </CollapsibleTrigger>
                                 <CollapsibleContent>
-                                    <div className="p-4 border-t bg-gray-50">
-                                        <h4 className="font-medium mb-3">{question.question}</h4>
+                                    <div className="p-4 border-t bg-gray-50 dark:bg-gray-950 dark:border-gray-800">
+                                        <h4 className="font-medium mb-3 dark:text-white">{question.question}</h4>
                                         <div className="space-y-2 mb-4">
                                             {question.options?.map((option: string, optIndex: number) => {
                                                 const isUserAnswer = userAnswer === optIndex;
@@ -150,22 +150,22 @@ const QuizResultsPage = () => {
                                                         key={optIndex}
                                                         className={`p-2 rounded border ${
                                                             isCorrectOption 
-                                                                ? 'bg-green-100 border-green-300'
+                                                                ? 'bg-green-100 border-green-300 dark:bg-green-900/30 dark:border-green-800 dark:text-green-300'
                                                                 : isUserAnswer 
-                                                                    ? 'bg-red-100 border-red-300'
-                                                                    : 'bg-[#FFFFFF] border-gray-200'
+                                                                    ? 'bg-red-100 border-red-300 dark:bg-red-900/30 dark:border-red-800 dark:text-red-300'
+                                                                    : 'bg-[#FFFFFF] border-gray-200 dark:bg-gray-900 dark:border-gray-800 dark:text-gray-400'
                                                         }`}
                                                     >
                                                         <div className="flex items-center justify-between">
                                                             <span>{option}</span>
                                                             <div className="flex space-x-2">
                                                                 {isUserAnswer && (
-                                                                    <Badge variant="outline" className="text-xs">
+                                                                    <Badge variant="outline" className="text-xs dark:text-gray-300 dark:border-gray-600">
                                                                         Your Answer
                                                                     </Badge>
                                                                 )}
                                                                 {isCorrectOption && (
-                                                                    <Badge className="text-xs bg-green-600">
+                                                                    <Badge className="text-xs bg-green-600 dark:bg-green-700 dark:text-white">
                                                                         Correct
                                                                     </Badge>
                                                                 )}
@@ -176,9 +176,9 @@ const QuizResultsPage = () => {
                                             })}
                                         </div>
                                         {question.explanation && (
-                                            <div className="p-3 bg-blue-50 border rounded">
-                                                <p className="text-sm">
-                                                    <strong>Explanation:</strong> {question.explanation}
+                                            <div className="p-3 bg-blue-50 border rounded dark:bg-blue-900/20 dark:border-blue-800">
+                                                <p className="text-sm dark:text-gray-300">
+                                                    <strong className="dark:text-blue-400">Explanation:</strong> {question.explanation}
                                                 </p>
                                             </div>
                                         )}
@@ -194,6 +194,7 @@ const QuizResultsPage = () => {
                 <Button
                     onClick={() => router.push(`/workspace/ai-tools/quiz/${qid}/attempt`)}
                     variant="outline"
+                    className="dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800 dark:border-gray-700"
                 >
                     <RotateCcw className="h-4 w-4 mr-2" />
                     Retake Quiz
