@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
         const config = {
             responseMimeType: 'application/json',
         };
-        const model = 'gemini-2.5-flash-lite';
+        const model = 'gemini-2.5-flash';
 
         let prompt = "";
         if (testType === 'full-syllabus') {
