@@ -30,7 +30,7 @@ export interface CourseContext {
 export class GeminiAssistant {
   private defaultModel: string;
 
-  constructor(modelName = "gemini-2.5-flash-lite") {
+  constructor(modelName = "gemini-2.5-flash") {
     this.defaultModel = modelName;
   }
 
