@@ -157,7 +157,7 @@ export async function POST(request: Request) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const promises = courseJson?.chapters?.map(async (chapter: any) => {
             const ai = new GoogleGenAI({
-                apiKey: process.env.GEMINI_API_KEY,
+                apiKey: process.env.GEMINI_API_KEY2,
             });
             const config = {
                 responseMimeType: 'application/json',

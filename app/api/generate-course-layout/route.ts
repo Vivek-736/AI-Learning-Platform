@@ -40,7 +40,7 @@ export async function POST(request: Request) {
   const { courseId, ...formData } = await request.json();
 
   const ai = new GoogleGenAI({
-    apiKey: process.env.GEMINI_API_KEY,
+    apiKey: process.env.GEMINI_API_KEY3,
   });
   const config = {
     responseMimeType: "text/plain",

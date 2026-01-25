@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
         const challengeId = `chall_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
         const ai = new GoogleGenAI({
-            apiKey: process.env.GEMINI_API_KEY,
+            apiKey: process.env.GEMINI_API_KEY1,
         });
         const config = {
             responseMimeType: 'application/json',
