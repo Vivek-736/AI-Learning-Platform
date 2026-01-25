@@ -6,7 +6,7 @@ import { GoogleGenAI } from "@google/genai";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
+  apiKey: process.env.GEMINI_API_KEY4,
 });
 
 export async function GET(

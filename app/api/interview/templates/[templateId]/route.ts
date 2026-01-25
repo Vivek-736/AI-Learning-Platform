@@ -7,7 +7,7 @@ import { GoogleGenAI } from "@google/genai";
 import { v4 as uuidv4 } from "uuid";
 
 const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY!,
+  apiKey: process.env.GEMINI_API_KEY6!,
 });
 
 export async function GET() {
