@@ -431,7 +431,7 @@ npm start
 
 ---
 
-## 👥 Meet the Team
+## 🧑‍💻 Meet The Developer
 
 <div align="center">
   
