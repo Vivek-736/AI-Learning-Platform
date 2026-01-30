@@ -9,7 +9,7 @@ const WorkspaceProvider = ({ children }: { children: React.ReactNode }) => {
             <AppSidebar />
             <div className='w-full'>
                 <AppHeader />
-                <div className='p-10'>
+                <div className='sm:p-10 p-2'>
                     {children}
                 </div>
             </div>
