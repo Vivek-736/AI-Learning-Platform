@@ -10,6 +10,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import React from "react";
@@ -95,6 +96,7 @@ const nohemi = localFont({
 const AppSidebar = () => {
   const { user } = useUser();
   const pathname = usePathname();
+  const { isMobile, setOpenMobile } = useSidebar();
 
   const adminEmails = [
     "vivekvrc777@gmail.com",
@@ -203,6 +205,11 @@ const AppSidebar = () => {
                   <SidebarMenuButton asChild className="p-5">
                     <Link
                       href={item.path}
+                      onClick={() => {
+                        if (isMobile) {
+                          setOpenMobile(false);
+                        }
+                      }}
                       className={`text-[17px] ${nohemi.className} ${
                         pathname === item.path
                           ? "text-primary bg-gradient-to-b border-2 border-gray-900 from-gray-200 to-gray-100 dark:border-gray-700 dark:from-gray-800 dark:to-gray-900 dark:text-gray-100"
