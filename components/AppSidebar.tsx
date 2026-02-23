@@ -24,11 +24,9 @@ import {
   UserCircle2Icon,
   WalletCards,
   BarChart2,
-  MapPin,
   GraduationCap,
   Trophy,
   Code2,
-  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
@@ -128,11 +126,6 @@ const AppSidebar = () => {
       path: "/workspace/explore",
     },
     {
-      title: "NSQF Mapping",
-      icon: MapPin,
-      path: "/workspace/nsqf-mapping",
-    },
-    {
       title: "AI Tools",
       icon: PencilRulerIcon,
       path: "/workspace/ai-tools",
@@ -141,11 +134,6 @@ const AppSidebar = () => {
       title: "Coding Playground",
       icon: Code2,
       path: "/workspace/coding-playground",
-    },
-    {
-      title: "Opportunities",
-      icon: Sparkles,
-      path: "/workspace/opportunities",
     },
     {
       title: "Leaderboard",
@@ -197,6 +185,7 @@ const AppSidebar = () => {
             <Button className={`cursor-pointer w-full ${schibstedGrotesk.className} dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200 dark:shadow-lg dark:shadow-gray-900/20`}>Create New Course</Button>
           </AddNewCourseDialog>
         </SidebarGroup>
+        
         <SidebarGroup className="flex-1 overflow-hidden flex flex-col">
           <SidebarGroupContent className="flex-1 overflow-y-auto">
             <SidebarMenu>
